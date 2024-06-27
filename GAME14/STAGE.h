@@ -18,6 +18,7 @@ namespace GAME14 {
             VECTOR2 imgPos;
             COLOR textColor;
             float textSize;
+            int maxDigit;
             VECTOR2 salmonText;
 
             COLOR undercoatColor;

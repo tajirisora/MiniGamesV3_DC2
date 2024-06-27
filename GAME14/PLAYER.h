@@ -41,6 +41,7 @@ namespace GAME14 {
 
             bool clearFlag = false;
             int numSalmon = 0;
+            int limitSalmon;
        };
     private:
         DATA Player;
@@ -72,6 +73,7 @@ namespace GAME14 {
         float Left() { return Player.pos.x + Chara.offsetLeft; }
         float Top() { return Player.pos.y - Player.imgOffsetY; }
         float Bottom() { return Player.pos.y - Player.imgOffsetY + Chara.offsetTop; }
+        int limitSalmon() { return Player.limitSalmon; }
 
     };
 }
