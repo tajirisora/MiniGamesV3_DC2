@@ -75,10 +75,6 @@ namespace GAME14 {
             Chara.worldPos.x += Player.vecX * Player.curSpeed.x * delta;
             break;
         }
-         if (isPress(KEY_D)) { Chara.worldPos.x += Player.jumpSpeed.x * delta; }
-         if (isPress(KEY_S)) { Chara.worldPos.y += Player.jumpSpeed.y * delta; }
-         if (isPress(KEY_W)) { Chara.worldPos.y -= Player.jumpSpeed.y * delta; }
-         if (isPress(KEY_A)) { Chara.worldPos.x -= Player.jumpSpeed.x * delta; }
     }
     void PLAYER::CollisionWithMap(){
         MAP* map = game()->map();
