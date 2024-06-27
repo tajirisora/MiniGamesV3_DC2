@@ -78,6 +78,7 @@ namespace GAME14 {
 		Data.player.imgOffsetY = 270.0f;
 		Data.player.imgOffsetX = 120.0f;
 		Data.player.offsetTop = 90;
+		Data.player.limitSalmon = 99;
 
 		Data.salmonChara.charaId = MAP::SALMON_ID;
 		Data.salmonChara.hp = 0;

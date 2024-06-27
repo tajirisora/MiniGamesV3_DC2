@@ -34,7 +34,13 @@ namespace GAME14 {
 		textSize(Stage.textSize);
 		int numSalmon = game()->characterManager()->player()->stacSalmon();
 		text("~", Stage.imgPos.x+50, Stage.imgPos.y+Stage.textSize);
-		text(numSalmon,Stage.salmonText.x - (Stage.textSize * (numSalmon / 10)) / 2, Stage.salmonText.y);
+		bool flag = true;
+		int i = 0;
+		if (numSalmon / 10 && flag) {
+			i++;
+			flag = false;
+		}
+		text(numSalmon,Stage.salmonText.x - (Stage.textSize * i) / 2, Stage.salmonText.y);
 		if (game()->characterManager()->player()->clearFlag()) {
 			fill(0,0,0,80);
 			rect(game()->map()->ofset(), Stage.str1Pos.y - Stage.str1Size , game()->map()->worldWidht(), Stage.str1Size + Stage.str2Size+20);

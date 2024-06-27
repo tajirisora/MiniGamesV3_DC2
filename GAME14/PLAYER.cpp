@@ -19,6 +19,7 @@ namespace GAME14 {
     }
     void PLAYER::init() {
         JumpPow->init();
+        Player.clearFlag = false;
         ActState = WAIT;
         Chara.hp = 0;
         Player.pos = VECTOR2(0, 0);
@@ -53,30 +54,31 @@ namespace GAME14 {
             JumpPow->draw(Player.pos,Chara.offsetRight,Player.vecX);
         }
     }
-    void PLAYER::Move(){
-            Player.curPos = Chara.worldPos;
-            if (isTrigger(MOUSE_LBUTTON) && ActState != JUMP) {
-                ChangeActState();
-            }
-            switch (ActState) {
-            case WAIT:
-                DirectionX();
-                ChangeImg();
-                break;
-            case CROUCH:
-                JumpPow->update();
+    void PLAYER::Move() {
+        
+        Player.curPos = Chara.worldPos;
+        if (isTrigger(MOUSE_LBUTTON) && ActState != JUMP) {
+            ChangeActState();
+        }
+        switch (ActState) {
+        case WAIT:
+            DirectionX();
+            ChangeImg();
+            break;
+        case CROUCH:
+            JumpPow->update();
 
-                break;
-            case JUMP:
-                Player.curSpeed.y -= Player.gravity;
-                Chara.worldPos.y -= Player.curSpeed.y * delta;
-                Chara.worldPos.x += Player.vecX * Player.curSpeed.x * delta;
-                break;
-            }
-           // if (isPress(KEY_D)) { Chara.worldPos.x += Player.jumpSpeed.x * delta; }
-           // if (isPress(KEY_S)) { Chara.worldPos.y += Player.jumpSpeed.y * delta; }
-           // if (isPress(KEY_W)) { Chara.worldPos.y -= Player.jumpSpeed.y * delta; }
-           // if (isPress(KEY_A)) { Chara.worldPos.x -= Player.jumpSpeed.x * delta; }
+            break;
+        case JUMP:
+            Player.curSpeed.y -= Player.gravity;
+            Chara.worldPos.y -= Player.curSpeed.y * delta;
+            Chara.worldPos.x += Player.vecX * Player.curSpeed.x * delta;
+            break;
+        }
+         if (isPress(KEY_D)) { Chara.worldPos.x += Player.jumpSpeed.x * delta; }
+         if (isPress(KEY_S)) { Chara.worldPos.y += Player.jumpSpeed.y * delta; }
+         if (isPress(KEY_W)) { Chara.worldPos.y -= Player.jumpSpeed.y * delta; }
+         if (isPress(KEY_A)) { Chara.worldPos.x -= Player.jumpSpeed.x * delta; }
     }
     void PLAYER::CollisionWithMap(){
         MAP* map = game()->map();
