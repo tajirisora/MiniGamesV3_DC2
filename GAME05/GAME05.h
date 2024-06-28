@@ -219,7 +219,7 @@ namespace GAME05
 
         int gachaCnt = 0;
 
-        int tamaCnt = 100000;
+        int tamaCnt = 0;
 
         int LTcnt = 0;
 
