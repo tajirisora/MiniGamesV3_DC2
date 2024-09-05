@@ -3,10 +3,12 @@
   <ItemGroup>
     <ClCompile Include="GAME09.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="GAME_OBJECT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="GAME_OBJECT.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
