@@ -133,9 +133,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="GAME09.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="GAME09.h" />
   </ItemGroup>
   <ItemGroup>
