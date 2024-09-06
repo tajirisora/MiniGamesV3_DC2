@@ -1,12 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GAME14.cpp" />
+    <ClCompile Include="GAME14.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME_OBJECT.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE.cpp">
+      <Filter>scene\bace</Filter>
+    </ClCompile>
+    <ClCompile Include="TITLE.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="HOME.cpp" />
+    <ClCompile Include="RESULT.cpp" />
+    <ClCompile Include="CONTAINER.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GAME14.h" />
+    <ClInclude Include="GAME14.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME_OBJECT.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE.h">
+      <Filter>scene\bace</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="HOME.h" />
+    <ClInclude Include="RESULT.h" />
+    <ClInclude Include="CONTAINER.h">
+      <Filter>container</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game14\title.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="scene">
+      <UniqueIdentifier>{b50000ea-7bed-4fe4-88be-94d3760a04f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{ae62c833-4371-471c-80d7-04f75876b8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\bace">
+      <UniqueIdentifier>{c3add2d4-8546-4566-b3bd-7145f683b617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{4d6174b9-2459-4082-af8b-284138b4f64f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
