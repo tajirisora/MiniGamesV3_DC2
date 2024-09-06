@@ -10,6 +10,9 @@ namespace GAME09
 	}
 	void CONTAINER::setData() {
 
+		Data.fade.alpha = 0;
+		Data.fade.color = COLOR(0, 0, 0);
+		Data.fade.speed = 700;
 	}
 	void CONTAINER::loadGraphic() {
 
