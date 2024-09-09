@@ -21,6 +21,7 @@
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="GAME_CLEAR.h" />
     <ClInclude Include="FADE.h" />
+    <ClInclude Include="SONGINFO.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
