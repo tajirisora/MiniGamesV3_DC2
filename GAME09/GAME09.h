@@ -1,5 +1,8 @@
 #pragma once
 #include "../MAIN/GAME_BASE.h"
+#include "SONGINFO.h"
+#include <vector>
+
 namespace GAME09
 {
     class GAME :
@@ -42,6 +45,8 @@ namespace GAME09
 		class OPTION* Option;
 		class SONGTITLE* SongTitle;
 		class ACHIEVEMENT* Achievement;
+
+		std::vector<SONGINFO> SongInfos;
 	public:
 		void changeScene(SCENE_ID sceneId);
 		class SCENE* scene(SCENE_ID sceneId) { return Scenes[sceneId]; }
@@ -58,5 +63,7 @@ namespace GAME09
 		class OPTION* option() { return Option; }
 		class SONGTITLE* songTitle() { return SongTitle; }
 		class ACHIEVEMENT* achievement() { return Achievement; }
+
+		std::vector<SONGINFO>& songInfos() { return SongInfos; }
     };
 }

@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CHARTMANAGER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME09.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME09.h" />

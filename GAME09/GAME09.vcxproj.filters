@@ -10,6 +10,7 @@
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="GAME_CLEAR.cpp" />
     <ClCompile Include="FADE.cpp" />
+    <ClCompile Include="CHARTMANAGER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -22,6 +23,7 @@
     <ClInclude Include="GAME_CLEAR.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="SONGINFO.h" />
+    <ClInclude Include="CHARTMANAGER.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
