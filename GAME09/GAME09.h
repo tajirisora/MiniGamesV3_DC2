@@ -46,7 +46,7 @@ namespace GAME09
 		class SONGTITLE* SongTitle;
 		class ACHIEVEMENT* Achievement;
 
-		std::vector<SONGINFO> SongInfos;
+		std::vector<SONGINFO> Songs;
 	public:
 		void changeScene(SCENE_ID sceneId);
 		class SCENE* scene(SCENE_ID sceneId) { return Scenes[sceneId]; }
@@ -64,6 +64,6 @@ namespace GAME09
 		class SONGTITLE* songTitle() { return SongTitle; }
 		class ACHIEVEMENT* achievement() { return Achievement; }
 
-		std::vector<SONGINFO>& songInfos() { return SongInfos; }
+		std::vector<SONGINFO>& songs() { return Songs; }
     };
 }
