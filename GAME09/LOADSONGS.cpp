@@ -21,7 +21,8 @@ namespace GAME09 {
 	}
 	void LOADSONGS::update() {
 		bool stopFlag = false;
-		std::thread msg(loadingMsg, std::ref(stopFlag));
+		// メンバ関数をスレッドで呼び出す際にthisポインタを渡す
+		std::thread msg(&LOADSONGS::loadingMsg, this, std::ref(stopFlag));
 
 		game()->chartMNG()->loadCharts();
 		std::this_thread::sleep_for(std::chrono::seconds(3));
