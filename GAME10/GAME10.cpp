@@ -15,12 +15,7 @@ namespace GAME10
 
 	void GAME::proc()
 	{
-		clear(0, 0, 64);
-		textSize(50);
-		fill(255, 255, 0);
-		text("GAME10", 0, 100);
-		fill(255);
-		text("ENTERキーでメニューに戻る", 0, 1080);
+		game.run();
 		if (isTrigger(KEY_ENTER)) {
 			main()->backToMenu();
 		}

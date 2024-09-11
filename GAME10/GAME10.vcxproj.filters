@@ -1,12 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GAME10.cpp" />
+    <ClCompile Include="GAME10.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME10_GAME.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME_OBJECT10.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="TITLE.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="STAGE.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="RESULT.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="CONTAINER.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GAME10.h" />
+    <ClInclude Include="GAME10.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME10_GAME.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME_OBJECT10.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="STAGE.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="RESULT.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="CONTAINER.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="header">
+      <UniqueIdentifier>{89f1f4a6-1e01-4bf5-83f4-2c5c9c66ca98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sauce">
+      <UniqueIdentifier>{676ebb15-1fdb-4459-bf5f-acf61ac0a9db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{ffcca74c-6d00-474a-b473-501d92d1344b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
