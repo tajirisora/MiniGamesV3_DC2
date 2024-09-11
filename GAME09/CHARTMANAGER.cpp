@@ -300,9 +300,22 @@ namespace GAME09 {
 						int d = std::stoi(content.substr(content.find('/') + 1));
 						songInfo.measure = VECTOR2(n, d);
 					}
-								break;
+						break;
 					case VOLUME:
 						songInfo.volume = std::stof(content);
+						break;
+					case LANES: {
+						auto offset = std::string::size_type(0);
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								songInfo.lanes.emplace_back(std::stoi(content.substr(offset)));
+								break;
+							}
+							songInfo.lanes.emplace_back(std::stoi(content.substr(offset, pos - offset)));
+							offset = pos + 1;
+						}
+					}
 						break;
 					case NOTES:
 						notes = true;
