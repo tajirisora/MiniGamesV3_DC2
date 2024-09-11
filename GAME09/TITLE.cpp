@@ -31,7 +31,7 @@ namespace GAME09 {
 			game()->fade()->outStart();
 		}
 		if (game()->fade()->outEndFlag()) {
-			game()->changeScene(GAME::SELECT_ID);
+			game()->changeScene(GAME::LOADSONGS_ID);
 		}
 	}
 }

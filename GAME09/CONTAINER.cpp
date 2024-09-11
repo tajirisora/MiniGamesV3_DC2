@@ -10,6 +10,10 @@ namespace GAME09
 	}
 	void CONTAINER::setData() {
 
+		Data.fade.alpha = 0;
+		Data.fade.color = COLOR(0, 0, 0);
+		Data.fade.speed = 700;
+
 		Data.chartMNG.infoStartStr[CHARTMANAGER::TITLE] = "#TITLE";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::ARTIST] = "#ARTIST";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::CREDIT] = "#CREDIT";
@@ -27,10 +31,6 @@ namespace GAME09
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::SCORE] = "#SCORE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::ACHIEVEMENT] = "#ACHIEVEMENT";
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";
-
-		Data.fade.alpha = 0;
-		Data.fade.color = COLOR(0, 0, 0);
-		Data.fade.speed = 700;
 	}
 	void CONTAINER::loadGraphic() {
 

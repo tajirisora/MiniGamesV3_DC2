@@ -11,6 +11,7 @@
     <ClCompile Include="GAME_CLEAR.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="CHARTMANAGER.cpp" />
+    <ClCompile Include="LOADSONGS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -24,6 +25,7 @@
     <ClInclude Include="FADE.h" />
     <ClInclude Include="SONGINFO.h" />
     <ClInclude Include="CHARTMANAGER.h" />
+    <ClInclude Include="LOADSONGS.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

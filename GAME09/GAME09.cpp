@@ -2,6 +2,7 @@
 #include "../MAIN/MAIN.h"
 #include "GAME09.h"
 #include "CONTAINER.h"
+#include "LOADSONGS.h"
 namespace GAME09
 {
 	int GAME::create()
@@ -11,14 +12,18 @@ namespace GAME09
 		Scenes[SELECT_ID] = new MUSICSELECT(this);
 		Scenes[STAGE_ID] = new STAGE(this);
 		Scenes[GAME_CLEAR_ID] = new GAME_CLEAR(this);
+		Scenes[LOADSONGS_ID] = new LOADSONGS(this);
 		Fade = new FADE(this);
+		ChartMNG = new CHARTMANAGER(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[SELECT_ID]->create();
 		Scenes[STAGE_ID]->create();
 		Scenes[GAME_CLEAR_ID]->create();
+		Scenes[LOADSONGS_ID]->create();
 		Fade->create();
+		ChartMNG->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -26,6 +31,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete ChartMNG;
 		delete Fade;
 		for (int i = 0; i < NUM_SCENES; i++) {
 			delete Scenes[i];
@@ -42,6 +48,8 @@ namespace GAME09
 	void GAME::changeScene(SCENE_ID sceneId) {
 		CurSceneId = sceneId;
 		Scenes[CurSceneId]->init();
-		Fade->inStart();
+		if (CurSceneId != LOADSONGS_ID) {
+			Fade->inStart();
+		}
 	}
 }
