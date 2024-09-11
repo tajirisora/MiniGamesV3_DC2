@@ -48,7 +48,10 @@ namespace GAME09
 	void GAME::changeScene(SCENE_ID sceneId) {
 		CurSceneId = sceneId;
 		Scenes[CurSceneId]->init();
-		if (CurSceneId != LOADSONGS_ID) {
+		if (CurSceneId == LOADSONGS_ID) {
+			clear(0);
+		}
+		else {
 			Fade->inStart();
 		}
 	}

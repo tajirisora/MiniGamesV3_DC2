@@ -1,6 +1,7 @@
 #include "CONTAINER.h"
 #include "GAME09.h"
 #include "LOADSONGS.h"
+#include "../../libOne/inc/window.h"
 #include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/mathUtil.h"
 #include <thread>
@@ -22,11 +23,14 @@ namespace GAME09 {
 	void LOADSONGS::update() {
 		bool stopFlag = false;
 		// メンバ関数をスレッドで呼び出す際にthisポインタを渡す
+		// ChatGPTは神　みんな使おう
 		std::thread msg(&LOADSONGS::loadingMsg, this, std::ref(stopFlag));
 
+		//譜面ファイルの読み込み処理
 		game()->chartMNG()->loadCharts();
 		std::this_thread::sleep_for(std::chrono::seconds(3));
 
+		//スレッドを止める
 		stopFlag = true;
 		msg.join();
 	}
@@ -49,6 +53,9 @@ namespace GAME09 {
 		
 	}
 	void LOADSONGS::nextScene() {
+		//フリーズしてた時間を解除
+		setDeltaTime();
+		setDeltaTime();
 		game()->changeScene(GAME::SELECT_ID);
 	}
 }
