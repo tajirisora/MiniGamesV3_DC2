@@ -41,6 +41,7 @@ namespace GAME09 {
             std::string commandStr[NUM_COMMANDS];
             std::string scoreDataStr[NUM_SCORE_DATAS];
             std::string chartPath;
+            int tempImage;
         };
     private:
         DATA ChartMNG;

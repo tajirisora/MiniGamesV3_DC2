@@ -33,7 +33,7 @@ namespace GAME09
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";
 	}
 	void CONTAINER::loadGraphic() {
-
+		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
 	}
 	void CONTAINER::loadSounds() {
 

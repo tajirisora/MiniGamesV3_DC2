@@ -360,7 +360,8 @@ namespace GAME09 {
 
 	void CHARTMANAGER::loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size) {
 		if (fileName == "") {
-			idx = -1;
+			idx = ChartMNG.tempImage;
+			size = VECTOR2(100, 100);
 		}
 		else {
 			std::string imageFile = chartPath + "\\" + fileName;
