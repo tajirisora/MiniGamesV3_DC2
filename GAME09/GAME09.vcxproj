@@ -145,6 +145,7 @@
     <ClCompile Include="MUSICSELECT.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="textFunc.cpp" />
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +157,11 @@
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="LOADSONGS.h" />
     <ClInclude Include="MUSICSELECT.h" />
+    <ClInclude Include="myFunc.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SONGINFO.h" />
     <ClInclude Include="STAGE.h" />
+    <ClInclude Include="textFunc.h" />
     <ClInclude Include="TITLE.h" />
   </ItemGroup>
   <ItemGroup>
