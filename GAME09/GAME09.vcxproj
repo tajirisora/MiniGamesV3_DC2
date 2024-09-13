@@ -165,6 +165,7 @@
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="textFunc.h" />
     <ClInclude Include="TITLE.h" />
+    <ClInclude Include="TRANSFORM.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

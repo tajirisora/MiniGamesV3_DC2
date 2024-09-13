@@ -31,6 +31,7 @@
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="textFunc.h" />
     <ClInclude Include="BANNER.h" />
+    <ClInclude Include="TRANSFORM.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
