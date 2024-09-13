@@ -76,7 +76,7 @@ namespace GAME09 {
 		const int startBannerIdx = Round(AnimeNum) - (drawBannerNum / 2);
 		for (int i = 0; i < drawBannerNum; i++) {
 			float dist = startBannerIdx + i - AnimeNum;
-			int bannerNum = (startBannerIdx + i) % game()->songs().size();
+			int bannerNum = (startBannerIdx + i) % (int)game()->songs().size();
 			if (bannerNum < 0) bannerNum += game()->songs().size();
 
 			VECTOR2 pos = Banner.centerPos;
