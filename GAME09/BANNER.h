@@ -38,5 +38,6 @@ namespace GAME09 {
         void draw();
 
         bool animeFlag() { return AnimeFlag; }
+        int curNum() { return BackGroundImageNum; }
     };
 }

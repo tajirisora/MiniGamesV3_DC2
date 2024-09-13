@@ -12,7 +12,7 @@
 //#include "BEAM.h"
 #include "BANNER.h"
 //#include "BACKGROUND.h"
-//#include "JACKET.h"
+#include "JACKET.h"
 #include "FADE.h"
 //#include "DETAIL_VIEW.h"
 //#include "COMBO.h"
@@ -41,7 +41,7 @@ namespace GAME09
 			//BEAM::DATA beam;
 			BANNER::DATA banner;
 			//BACKGROUND::DATA back;
-			//JACKET::DATA jacket;
+			JACKET::DATA jacket;
 			FADE::DATA fade;
 			//DETAIL_VIEW::DATA detail;
 			//COMBO::DATA combo;

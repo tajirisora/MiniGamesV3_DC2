@@ -16,6 +16,7 @@ namespace GAME09
 		Fade = new FADE(this);
 		ChartMNG = new CHARTMANAGER(this);
 		Banner = new BANNER(this);
+		Jacket = new JACKET(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -26,6 +27,7 @@ namespace GAME09
 		Fade->create();
 		ChartMNG->create();
 		Banner->create();
+		Jacket->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -33,6 +35,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete Jacket;
 		delete Banner;
 		delete ChartMNG;
 		delete Fade;

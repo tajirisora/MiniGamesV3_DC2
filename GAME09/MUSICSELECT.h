@@ -1,6 +1,6 @@
 #pragma once
 #include "SCENE.h"
-#include "../../libOne/inc/VECTOR2.h"
+#include "TRANSFORM.h"
 
 namespace GAME09 {
     class MUSICSELECT :
@@ -8,7 +8,7 @@ namespace GAME09 {
     {
     public:
         struct DATA {
-            
+            TRANSFORM jacketTf;
         };
     private:
         DATA Select;

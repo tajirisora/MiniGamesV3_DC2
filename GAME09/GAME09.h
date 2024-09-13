@@ -36,6 +36,7 @@ namespace GAME09
 		class FADE* Fade;
 		class CHARTMANAGER* ChartMNG;
 		class BANNER* Banner;
+		class JACKET* Jacket;
 
 		std::vector<SONGINFO> Songs;
 	public:
@@ -44,6 +45,7 @@ namespace GAME09
 		class FADE* fade() { return Fade; }
 		class CHARTMANAGER* chartMNG() { return ChartMNG; }
 		class BANNER* banner() { return Banner; }
+		class JACKET* jacket() { return Jacket; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
     };

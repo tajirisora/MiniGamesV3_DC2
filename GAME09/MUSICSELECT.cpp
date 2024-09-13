@@ -3,9 +3,6 @@
 #include "CONTAINER.h"
 #include "GAME09.h"
 #include "MUSICSELECT.h"
-//#include "ACHIEVEMENT.h"
-//#include "BANNER.h"
-//#include <filesystem>
 
 namespace GAME09 {
 	MUSICSELECT::MUSICSELECT(class GAME* game) :
@@ -30,17 +27,16 @@ namespace GAME09 {
 	}
 	void MUSICSELECT::draw() {
 		clear(200);
-		fill(0);
-		print("select");
+		SONGINFO songInfo = game()->songs()[game()->banner()->curNum()];
 
 		game()->banner()->draw();
+		game()->jacket()->draw(songInfo, Select.jacketTf);
 
 		rectMode(CORNER);
 		rect(0, 1020, 1920, 60);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
 		//game()->back()->draw(songInfo.backImageIdx, songInfo.backImageSize);
-		//game()->jacket()->draw(songInfo.jacketImageIdx, songInfo.jacketImageSize);
 		//game()->autoButton()->draw();
 		//game()->optionButton()->draw();
 		//game()->score()->draw(Select.scorePos, Select.scoreSize, songInfo.highScore);

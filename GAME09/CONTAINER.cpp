@@ -10,6 +10,9 @@ namespace GAME09
 	}
 	void CONTAINER::setData() {
 
+		Data.select.jacketTf.pos = VECTOR2(1340, 380);
+		Data.select.jacketTf.size = 0.93f;
+
 		Data.fade.alpha = 0;
 		Data.fade.color = COLOR(0, 0, 0);
 		Data.fade.speed = 700;
@@ -40,9 +43,12 @@ namespace GAME09
 		Data.banner.titleStrSize = VECTOR2(680, 50);
 		Data.banner.artistStrSize = VECTOR2(700, 35);
 		Data.banner.moveAnimeTime = 0.3f;
+
+		Data.jacket.areaSize = VECTOR2(700, 700);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
+		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
 	}
 	void CONTAINER::loadSounds() {
 
