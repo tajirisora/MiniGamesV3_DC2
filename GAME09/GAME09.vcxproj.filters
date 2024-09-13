@@ -13,6 +13,7 @@
     <ClCompile Include="CHARTMANAGER.cpp" />
     <ClCompile Include="LOADSONGS.cpp" />
     <ClCompile Include="textFunc.cpp" />
+    <ClCompile Include="BANNER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="LOADSONGS.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="textFunc.h" />
+    <ClInclude Include="BANNER.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

@@ -10,7 +10,7 @@
 #include "CHARTMANAGER.h"
 //#include "JUDGEMANAGER.h"
 //#include "BEAM.h"
-//#include "BANNER.h"
+#include "BANNER.h"
 //#include "BACKGROUND.h"
 //#include "JACKET.h"
 #include "FADE.h"
@@ -39,7 +39,7 @@ namespace GAME09
 			CHARTMANAGER::DATA chartMNG;
 			//JUDGEMANAGER::DATA judge;
 			//BEAM::DATA beam;
-			//BANNER::DATA banner;
+			BANNER::DATA banner;
 			//BACKGROUND::DATA back;
 			//JACKET::DATA jacket;
 			FADE::DATA fade;

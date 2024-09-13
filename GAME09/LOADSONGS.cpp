@@ -28,7 +28,7 @@ namespace GAME09 {
 
 		//譜面ファイルの読み込み処理
 		game()->chartMNG()->loadCharts();
-		std::this_thread::sleep_for(std::chrono::seconds(3));
+		//std::this_thread::sleep_for(std::chrono::seconds(3));
 
 		//スレッドを止める
 		stopFlag = true;

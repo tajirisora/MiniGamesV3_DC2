@@ -22,25 +22,24 @@ namespace GAME09 {
 		
 	}
 	void MUSICSELECT::update() {
-		//if (game()->fade()->inEndFlag()) {
-		//	if (Option) {
-		//		game()->option()->update();
-		//	}
-		//	else {
-		//		game()->banner()->update();
-		//		game()->autoButton()->update();
-		//		game()->optionButton()->update();
-		//		if (isTrigger(KEY_ESCAPE)) game()->quit();
-		//	}
-		//}
+		if (game()->fade()->inEndFlag()) {
+			game()->banner()->update();
+			//game()->autoButton()->update();
+			//game()->optionButton()->update();
+		}
 	}
 	void MUSICSELECT::draw() {
-		clear(255);
+		clear(200);
 		fill(0);
 		print("select");
+
+		game()->banner()->draw();
+
+		rectMode(CORNER);
+		rect(0, 1020, 1920, 60);
+
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
 		//game()->back()->draw(songInfo.backImageIdx, songInfo.backImageSize);
-		//game()->banner()->draw();
 		//game()->jacket()->draw(songInfo.jacketImageIdx, songInfo.jacketImageSize);
 		//game()->autoButton()->draw();
 		//game()->optionButton()->draw();

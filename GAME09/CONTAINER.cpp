@@ -31,6 +31,15 @@ namespace GAME09
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::SCORE] = "#SCORE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::ACHIEVEMENT] = "#ACHIEVEMENT";
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";
+
+		Data.banner.centerPos = VECTOR2(450, height / 2 - 30);
+		Data.banner.nextPosOfst = VECTOR2(45, 150);
+		Data.banner.imgSize = 2.0f;
+		Data.banner.titlePosOfst = VECTOR2(-210, 5);
+		Data.banner.artistPosOfst = VECTOR2(-210, 60);
+		Data.banner.titleStrSize = VECTOR2(680, 50);
+		Data.banner.artistStrSize = VECTOR2(700, 35);
+		Data.banner.moveAnimeTime = 0.3f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

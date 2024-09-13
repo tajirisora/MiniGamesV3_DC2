@@ -35,6 +35,7 @@ namespace GAME09
 		SCENE_ID CurSceneId;
 		class FADE* Fade;
 		class CHARTMANAGER* ChartMNG;
+		class BANNER* Banner;
 
 		std::vector<SONGINFO> Songs;
 	public:
@@ -42,6 +43,7 @@ namespace GAME09
 		class SCENE* scene(SCENE_ID sceneId) { return Scenes[sceneId]; }
 		class FADE* fade() { return Fade; }
 		class CHARTMANAGER* chartMNG() { return ChartMNG; }
+		class BANNER* banner() { return Banner; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
     };

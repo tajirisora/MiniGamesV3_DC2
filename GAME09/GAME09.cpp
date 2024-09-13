@@ -15,6 +15,7 @@ namespace GAME09
 		Scenes[LOADSONGS_ID] = new LOADSONGS(this);
 		Fade = new FADE(this);
 		ChartMNG = new CHARTMANAGER(this);
+		Banner = new BANNER(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -24,6 +25,7 @@ namespace GAME09
 		Scenes[LOADSONGS_ID]->create();
 		Fade->create();
 		ChartMNG->create();
+		Banner->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -31,6 +33,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete Banner;
 		delete ChartMNG;
 		delete Fade;
 		for (int i = 0; i < NUM_SCENES; i++) {

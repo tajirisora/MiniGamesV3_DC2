@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BANNER.cpp" />
     <ClCompile Include="CHARTMANAGER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="FADE.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BANNER.h" />
     <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="FADE.h" />
