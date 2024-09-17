@@ -16,6 +16,7 @@
     <ClCompile Include="BANNER.cpp" />
     <ClCompile Include="JACKET.cpp" />
     <ClCompile Include="BACKGROUND.cpp" />
+    <ClCompile Include="NOTE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -36,6 +37,7 @@
     <ClInclude Include="TRANSFORM.h" />
     <ClInclude Include="JACKET.h" />
     <ClInclude Include="BACKGROUND.h" />
+    <ClInclude Include="NOTE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

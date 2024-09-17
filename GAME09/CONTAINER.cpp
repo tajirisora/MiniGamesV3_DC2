@@ -47,6 +47,11 @@ namespace GAME09
 		Data.jacket.areaSize = VECTOR2(700, 700);
 
 		Data.back.area = VECTOR2(width, height);
+
+		Data.note.imgSize = 1;
+		Data.note.edgeOfst = 50;
+		Data.note.rectOfst = 60;
+		Data.note.rectHeight = 30;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
