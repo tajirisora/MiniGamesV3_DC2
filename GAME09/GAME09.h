@@ -37,6 +37,7 @@ namespace GAME09
 		class CHARTMANAGER* ChartMNG;
 		class BANNER* Banner;
 		class JACKET* Jacket;
+		class BACKGROUND* BackGround;
 
 		std::vector<SONGINFO> Songs;
 	public:
@@ -46,6 +47,7 @@ namespace GAME09
 		class CHARTMANAGER* chartMNG() { return ChartMNG; }
 		class BANNER* banner() { return Banner; }
 		class JACKET* jacket() { return Jacket; }
+		class BACKGROUND* backGround() { return BackGround; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
     };

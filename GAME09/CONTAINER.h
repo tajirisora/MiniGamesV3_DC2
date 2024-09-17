@@ -11,7 +11,7 @@
 //#include "JUDGEMANAGER.h"
 //#include "BEAM.h"
 #include "BANNER.h"
-//#include "BACKGROUND.h"
+#include "BACKGROUND.h"
 #include "JACKET.h"
 #include "FADE.h"
 //#include "DETAIL_VIEW.h"
@@ -40,7 +40,7 @@ namespace GAME09
 			//JUDGEMANAGER::DATA judge;
 			//BEAM::DATA beam;
 			BANNER::DATA banner;
-			//BACKGROUND::DATA back;
+			BACKGROUND::DATA back;
 			JACKET::DATA jacket;
 			FADE::DATA fade;
 			//DETAIL_VIEW::DATA detail;

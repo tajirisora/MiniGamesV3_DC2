@@ -17,6 +17,7 @@ namespace GAME09
 		ChartMNG = new CHARTMANAGER(this);
 		Banner = new BANNER(this);
 		Jacket = new JACKET(this);
+		BackGround = new BACKGROUND(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -28,6 +29,7 @@ namespace GAME09
 		ChartMNG->create();
 		Banner->create();
 		Jacket->create();
+		BackGround->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -35,6 +37,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete BackGround;
 		delete Jacket;
 		delete Banner;
 		delete ChartMNG;

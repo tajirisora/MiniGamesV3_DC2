@@ -26,9 +26,10 @@ namespace GAME09 {
 		}
 	}
 	void MUSICSELECT::draw() {
-		clear(200);
+		clear(0);
 		SONGINFO songInfo = game()->songs()[game()->banner()->curNum()];
 
+		game()->backGround()->draw(songInfo);
 		game()->banner()->draw();
 		game()->jacket()->draw(songInfo, Select.jacketTf);
 
@@ -36,7 +37,6 @@ namespace GAME09 {
 		rect(0, 1020, 1920, 60);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
-		//game()->back()->draw(songInfo.backImageIdx, songInfo.backImageSize);
 		//game()->autoButton()->draw();
 		//game()->optionButton()->draw();
 		//game()->score()->draw(Select.scorePos, Select.scoreSize, songInfo.highScore);

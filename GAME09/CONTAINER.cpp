@@ -45,6 +45,8 @@ namespace GAME09
 		Data.banner.moveAnimeTime = 0.3f;
 
 		Data.jacket.areaSize = VECTOR2(700, 700);
+
+		Data.back.area = VECTOR2(width, height);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
