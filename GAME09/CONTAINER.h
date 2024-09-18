@@ -5,7 +5,7 @@
 #include "GAME_CLEAR.h"
 #include "NOTE.h"
 //#include "LONGBELT.h"
-//#include "RHYTHM_GAME_CONTROLLER.h"
+#include "RHYTHM_GAME_CONTROLLER.h"
 //#include "SOUNDMANAGER.h"
 #include "CHARTMANAGER.h"
 //#include "JUDGEMANAGER.h"
@@ -34,7 +34,7 @@ namespace GAME09
 			GAME_CLEAR::DATA gameClear;
 			NOTE::DATA note;
 			//LONGBELT::DATA longBelt;
-			//RHYTHM_GAME_CONTROLLER::DATA rgCont;
+			RHYTHM_GAME_CONTROLLER::DATA rgCont;
 			//SOUNDMANAGER::DATA sound;
 			CHARTMANAGER::DATA chartMNG;
 			//JUDGEMANAGER::DATA judge;

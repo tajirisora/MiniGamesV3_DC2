@@ -17,6 +17,7 @@
     <ClCompile Include="JACKET.cpp" />
     <ClCompile Include="BACKGROUND.cpp" />
     <ClCompile Include="NOTE.cpp" />
+    <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="JACKET.h" />
     <ClInclude Include="BACKGROUND.h" />
     <ClInclude Include="NOTE.h" />
+    <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

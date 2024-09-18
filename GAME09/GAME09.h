@@ -38,6 +38,7 @@ namespace GAME09
 		class BANNER* Banner;
 		class JACKET* Jacket;
 		class BACKGROUND* BackGround;
+		class RHYTHM_GAME_CONTROLLER* RGCont;
 
 		std::vector<SONGINFO> Songs;
 	public:
@@ -48,6 +49,7 @@ namespace GAME09
 		class BANNER* banner() { return Banner; }
 		class JACKET* jacket() { return Jacket; }
 		class BACKGROUND* backGround() { return BackGround; }
+		class RHYTHM_GAME_CONTROLLER* rgCont() { return RGCont; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
     };

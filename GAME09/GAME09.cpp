@@ -18,6 +18,7 @@ namespace GAME09
 		Banner = new BANNER(this);
 		Jacket = new JACKET(this);
 		BackGround = new BACKGROUND(this);
+		RGCont = new RHYTHM_GAME_CONTROLLER(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -30,6 +31,7 @@ namespace GAME09
 		Banner->create();
 		Jacket->create();
 		BackGround->create();
+		RGCont->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -37,6 +39,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete RGCont;
 		delete BackGround;
 		delete Jacket;
 		delete Banner;

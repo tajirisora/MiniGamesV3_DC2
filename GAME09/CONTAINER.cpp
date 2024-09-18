@@ -52,6 +52,11 @@ namespace GAME09
 		Data.note.edgeOfst = 50;
 		Data.note.rectOfst = 60;
 		Data.note.rectHeight = 30;
+
+		Data.rgCont.rawSpeed = 10000;
+		Data.rgCont.detailViewTime = 3;
+		Data.rgCont.detailViewDisappearTime = 0.5f;
+		Data.rgCont.BeforePlayTime = 2;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

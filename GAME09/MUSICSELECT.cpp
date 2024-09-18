@@ -16,7 +16,7 @@ namespace GAME09 {
 		Select = game()->container()->data().select;
 	}
 	void MUSICSELECT::init() {
-		
+		game()->banner()->init();
 	}
 	void MUSICSELECT::update() {
 		if (game()->fade()->inEndFlag()) {

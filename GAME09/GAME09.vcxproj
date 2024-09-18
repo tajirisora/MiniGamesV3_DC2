@@ -147,6 +147,7 @@
     <ClCompile Include="LOADSONGS.cpp" />
     <ClCompile Include="MUSICSELECT.cpp" />
     <ClCompile Include="NOTE.cpp" />
+    <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="textFunc.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="MUSICSELECT.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="NOTE.h" />
+    <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SONGINFO.h" />
     <ClInclude Include="STAGE.h" />
