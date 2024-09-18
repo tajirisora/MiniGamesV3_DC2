@@ -150,6 +150,7 @@
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TAPNOTE.cpp" />
     <ClCompile Include="textFunc.cpp" />
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SONGINFO.h" />
     <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TAPNOTE.h" />
     <ClInclude Include="textFunc.h" />
     <ClInclude Include="TITLE.h" />
     <ClInclude Include="TRANSFORM.h" />

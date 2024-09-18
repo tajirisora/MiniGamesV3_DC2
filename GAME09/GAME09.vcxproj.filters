@@ -18,6 +18,7 @@
     <ClCompile Include="BACKGROUND.cpp" />
     <ClCompile Include="NOTE.cpp" />
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
+    <ClCompile Include="TAPNOTE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="BACKGROUND.h" />
     <ClInclude Include="NOTE.h" />
     <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
+    <ClInclude Include="TAPNOTE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
