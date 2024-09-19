@@ -10,22 +10,27 @@
     <ClCompile Include="GAME_OBJECT10.cpp">
       <Filter>sauce</Filter>
     </ClCompile>
-    <ClCompile Include="SCENE.cpp">
-      <Filter>sauce</Filter>
-    </ClCompile>
-    <ClCompile Include="TITLE.cpp">
-      <Filter>sauce</Filter>
-    </ClCompile>
-    <ClCompile Include="STAGE.cpp">
-      <Filter>sauce</Filter>
-    </ClCompile>
-    <ClCompile Include="RESULT.cpp">
-      <Filter>sauce</Filter>
-    </ClCompile>
     <ClCompile Include="CONTAINER.cpp">
       <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="TITLE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="STAGE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RESULT.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="HP_GAUGE.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME10.h">
@@ -37,22 +42,27 @@
     <ClInclude Include="GAME_OBJECT10.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="SCENE.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="STAGE.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="RESULT.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="TITLE.h">
-      <Filter>header</Filter>
-    </ClInclude>
     <ClInclude Include="CONTAINER.h">
       <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="PLAYER.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="RESULT.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="STAGE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="HP_GAUGE.h">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />
@@ -66,6 +76,12 @@
     </Filter>
     <Filter Include="container">
       <UniqueIdentifier>{ffcca74c-6d00-474a-b473-501d92d1344b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sauce\scene">
+      <UniqueIdentifier>{7fc827a2-d41b-494a-8a1c-540472dc7a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\scene">
+      <UniqueIdentifier>{b120df26-5d89-4c89-b41d-a0aacf5fcd82}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

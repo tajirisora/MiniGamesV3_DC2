@@ -1,4 +1,5 @@
 #include "TITLE.h"
+#include"STAGE.h"
 #include"CONTAINER.h"
 #include"GAME10_GAME.h"
 #include "../../libOne/inc/libOne.h"
@@ -12,10 +13,11 @@ void TITLE::create() {
 }
 void TITLE::draw(){
 	clear(255);
-	image(Title.titleImg, Title.imgPos.x, Title.imgPos.y);
+  	image(Title.titleImg, Title.imgPos.x, Title.imgPos.y);
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE)) {
+		game()->scene()->init();
 		game()->changeScene(GAME10_GAME::STAGE_ID);
 	}
 }

@@ -10,7 +10,6 @@ namespace GAME10
 
 	void GAME::destroy()
 	{
-
 	}
 
 	void GAME::proc()
