@@ -19,7 +19,7 @@ namespace GAME09 {
 	}
 
 	void NOTE::init() {
-		float laneWidth = 700;
+		float laneWidth = 700; //あとでレーンクラスで定義したものに置き換える
 		float oneLaneWidth = (laneWidth / LaneNum);
 		PosX = (Lane - (LaneNum - 1) / 2.0f) * oneLaneWidth + width / 2;
 		EdgeImgDist = oneLaneWidth / 2 - Note.edgeOfst;

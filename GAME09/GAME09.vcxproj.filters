@@ -42,6 +42,7 @@
     <ClInclude Include="NOTE.h" />
     <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
     <ClInclude Include="TAPNOTE.h" />
+    <ClInclude Include="CHANGEDATA.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

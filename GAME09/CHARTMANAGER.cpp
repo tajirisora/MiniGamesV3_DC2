@@ -1,7 +1,7 @@
 #include "CHARTMANAGER.h"
 #include "GAME09.h"
 #include "CONTAINER.h"
-//#include "TAPNOTE.h"
+#include "TAPNOTE.h"
 //#include "LONGNOTE.h"
 //#include "LONGBELT.h"
 #include "../../libOne/inc/window.h"
@@ -12,7 +12,7 @@
 #include "../../libOne/inc/stb_image_reader.h"
 #include <filesystem>
 #include <iostream>
-//#include "myFunc.h"
+#include "myFunc.h"
 
 //#define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
 
@@ -33,177 +33,182 @@ namespace GAME09 {
 
 	}
 
-	/*
-	//double CHARTMANAGER::loadChart(const char* fileName, std::vector<NOTE*>& notes,
-	//	std::vector<RHYTHM_GAME_CONTROLLER::CHANGEDATA>& changeDatas, RHYTHM_GAME_CONTROLLER::SONGINFO& songInfo) {
+	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo){
 
-	//	//音声オフセットを反映
-	//	songInfo.offset += AudioOffset / 1000.0f;
-	//	songInfo.offset += VisualOffset / 1000.0f;
-	//	songInfo.offsetB = -songInfo.offset / (60.0f / songInfo.bpm);
-	//	songInfo.offset -= VisualOffset / 1000.0f;
+		//音声オフセットを反映
+		songInfo.offset += AudioOffset / 1000.0f;
+		songInfo.offset += VisualOffset / 1000.0f;
+		songInfo.offsetB = -songInfo.offset / (60.0f / songInfo.bpm);
+		songInfo.offset -= VisualOffset / 1000.0f;
 
-	//	safe_clear(notes);
-	//	//notes.clear();
-	//	changeDatas.clear();
-	//	NOTE::NOTE_DATA data;
-	//	RHYTHM_GAME_CONTROLLER::CHANGEDATA changeData;
-	//	std::vector<NOTE::NOTE_DATA*> longData;
-	//	std::vector< std::vector<NOTE::NOTE_DATA*>* > longBeltData;
-	//	for (int i = 0; i < Cont->numLane(); i++) {
-	//		longData.emplace_back(nullptr);
-	//		longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
-	//	}
+		std::vector<NOTE*>& notes = game()->notes();
+		std::vector<CHANGEDATA>& changeDatas = game()->changeDatas();
+		
+		safe_clear(notes);
+		changeDatas.clear();
+		NOTE::NOTE_DATA data;
+		CHANGEDATA changeData;
+		std::vector<NOTE::NOTE_DATA*> longData;
+		std::vector< std::vector<NOTE::NOTE_DATA*>* > longBeltData;
+		const int maxLane = 6; //あとでレーンクラスで定義したものに置き換える
+		for (int i = 0; i < maxLane; i++) {
+			longData.emplace_back(nullptr);
+			longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
+		}
 
-	//	std::ifstream file;
-	//	file.open(fileName, std::ios::in);
-	//	std::string buffer;
-	//	std::vector<std::string> bar;
-	//	bool notesTag = false;
+		std::ifstream file;
+		file.open(songInfo.fileName, std::ios::in);
+		std::string buffer;
+		std::vector<std::string> bar;
+		bool notesTag = false;
 
-	//	double offset = songInfo.offset;
-	//	double offsetB = songInfo.offsetB;
-	//	double bpm = songInfo.bpm;
-	//	VECTOR2 measure = songInfo.measure;
-	//	int curBar = 0;
-	//	float speed = 0;
-	//	double tempTime = 0;       //bpmなどが変わったときにその時点の時間を記録しておく
-	//	double curTime = 0;        //現在の時間
-	//	double tempVisualBeat = 0; //bpmなどが変わったときにその時点の見た目上の拍数を記録しておく
-	//	double visualBeat = 0;     //現在の見た目上の拍数
-	//	double endTime = 0;        //最後のノーツの時間
+		double offset = songInfo.offset;
+		double offsetB = songInfo.offsetB;
+		double bpm = songInfo.bpm;
+		VECTOR2 measure = songInfo.measure;
+		int curBar = 0;
+		float speed = 0;
+		double tempTime = 0;       //bpmなどが変わったときにその時点の時間を記録しておく
+		double curTime = 0;        //現在の時間
+		double tempVisualBeat = 0; //bpmなどが変わったときにその時点の見た目上の拍数を記録しておく
+		double visualBeat = 0;     //現在の見た目上の拍数
+		double endTime = 0;        //最後のノーツの時間
 
-	//	while (std::getline(file, buffer)) {
-	//		if (!notesTag) {
-	//			std::string t = "#NOTES";
-	//			if (buffer.size() >= t.size() &&
-	//				buffer.find(t) != std::string::npos) {
-	//				notesTag = true;
-	//				for (int i = 0; i < 4; i++) {   //余計な情報4行分を飛ばす
-	//					std::getline(file, buffer);
-	//				}
-	//			}
-	//		}
-	//		else {
-	//			if (buffer.find(ChartMNG.commandStr[BPMCHANGE]) != std::string::npos) { //BPMコマンド
-	//				tempTime += (60.0 / bpm / (measure.y / 4) * measure.x) * curBar;
-	//				tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
-	//				curBar = 0;
+		while (std::getline(file, buffer)) {
+			//空白の行なら飛ばす
+			if (std::all_of(buffer.begin(), buffer.end(), [](unsigned char c) { return std::isspace(c); })) {
+				continue;
+			}
+			if (!notesTag) {
+				std::string t = "#NOTES";
+				if (buffer.size() >= t.size() &&
+					buffer.find(t) != std::string::npos) {
+					notesTag = true;
+					for (int i = 0; i < 4; i++) {   //余計な情報4行分を飛ばす
+						std::getline(file, buffer);
+					}
+				}
+			}
+			else {
+				if (buffer.find(ChartMNG.commandStr[BPMCHANGE]) != std::string::npos) { //BPMコマンド
+					tempTime += (60.0 / bpm / (measure.y / 4) * measure.x) * curBar;
+					tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
+					curBar = 0;
 
-	//				int conS = buffer.find(':') + 1;
-	//				int conE = buffer.find_last_of(';');
-	//				std::string content = buffer.substr(conS, conE - conS);
-	//				bpm = std::stof(content);
+					int conS = buffer.find(':') + 1;
+					int conE = buffer.find_last_of(';');
+					std::string content = buffer.substr(conS, conE - conS);
+					bpm = std::stof(content);
 
-	//				changeData.time = tempTime - offset;
-	//				changeData.visualBeat = tempVisualBeat + offsetB;
-	//				changeData.bpm = bpm;
-	//				changeData.measure = measure;
-	//				changeDatas.emplace_back(changeData);
-	//			}
-	//			else if (buffer.find(ChartMNG.commandStr[MEASURECHANGE]) != std::string::npos) { //MEASUREコマンド
-	//				tempTime += (60.0 / bpm / (measure.y / 4) * measure.x) * curBar;
-	//				tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
-	//				curBar = 0;
+					changeData.time = tempTime - offset;
+					changeData.visualBeat = tempVisualBeat + offsetB;
+					changeData.bpm = bpm;
+					changeData.measure = measure;
+					game()->changeDatas().emplace_back(changeData);
+				}
+				else if (buffer.find(ChartMNG.commandStr[MEASURECHANGE]) != std::string::npos) { //MEASUREコマンド
+					tempTime += (60.0 / bpm / (measure.y / 4) * measure.x) * curBar;
+					tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
+					curBar = 0;
 
-	//				int conS = buffer.find(':') + 1;
-	//				int conE = buffer.find_last_of(';');
-	//				std::string content = buffer.substr(conS, conE - conS);
-	//				int n = std::stoi(content.substr(0, content.find('/')));
-	//				int d = std::stoi(content.substr(content.find('/') + 1));
-	//				measure = VECTOR2(n, d);
+					int conS = buffer.find(':') + 1;
+					int conE = buffer.find_last_of(';');
+					std::string content = buffer.substr(conS, conE - conS);
+					int n = std::stoi(content.substr(0, content.find('/')));
+					int d = std::stoi(content.substr(content.find('/') + 1));
+					measure = VECTOR2(n, d);
 
-	//				changeData.time = tempTime - offset;
-	//				changeData.visualBeat = tempVisualBeat + offsetB;
-	//				changeData.bpm = bpm;
-	//				changeData.measure = measure;
-	//				changeDatas.emplace_back(changeData);
-	//			}
-	//			else {
-	//				//一小節分の情報を一度に読む
-	//				bar.clear();
-	//				bar.emplace_back(buffer);
-	//				bool end = false;
-	//				while (!end) {
-	//					std::getline(file, buffer);
-	//					if (buffer.find(',') != std::string::npos ||
-	//						buffer.find(';') != std::string::npos) {
-	//						end = true;
-	//					}
-	//					else {
-	//						bar.emplace_back(buffer);
-	//					}
-	//				}
-	//				int divisionNum = bar.size();
-	//				int j = 0;
-	//				for (auto it = bar.begin(); it != bar.end(); ++it) {
-	//					visualBeat = tempVisualBeat + (measure.x * 4 / measure.y) * (curBar + (float)j / divisionNum) + offsetB;
-	//					curTime = tempTime + (60.0 / bpm / (measure.y / 4) * measure.x) * (curBar + (float)j / divisionNum) - offset;
-	//					speed = Cont->speed() * (Cont->rawSpeed() / songInfo.bpm);
+					changeData.time = tempTime - offset;
+					changeData.visualBeat = tempVisualBeat + offsetB;
+					changeData.bpm = bpm;
+					changeData.measure = measure;
+					game()->changeDatas().emplace_back(changeData);
+				}
+				else {
+					//一小節分の情報を一度に読む
+					bar.clear();
+					bar.emplace_back(buffer);
+					bool end = false;
+					while (!end) {
+						std::getline(file, buffer);
+						if (buffer.find(',') != std::string::npos ||
+							buffer.find(';') != std::string::npos) {
+							end = true;
+						}
+						else {
+							bar.emplace_back(buffer);
+						}
+					}
+					int divisionNum = bar.size();
+					int j = 0;
+					for (auto it = bar.begin(); it != bar.end(); ++it) {
+						visualBeat = tempVisualBeat + (measure.x * 4 / measure.y) * (curBar + (float)j / divisionNum) + offsetB;
+						curTime = tempTime + (60.0 / bpm / (measure.y / 4) * measure.x) * (curBar + (float)j / divisionNum) - offset;
+						speed = game()->rgCont()->speed() * (game()->rgCont()->rawSpeed() / songInfo.bpm);
 
-	//					for (int i = 0; i < Cont->numLane(); i++) {
-	//						if ((*it)[i] == '1' || (*it)[i] == 'F') {
-	//							notes.emplace_back(new TAPNOTE(game(), Cont, Cont->soundMNG()));
-	//							notes.back()->create();
-	//							data.lane = i;
-	//							data.speed = speed;
-	//							data.time = curTime;
-	//							data.visualBeat = visualBeat;
-	//							notes.back()->setData(data);
-	//							notes.back()->init();
-	//							endTime = curTime;
-	//						}
-	//						else if (std::toupper((*it)[i]) == 'A' || std::toupper((*it)[i]) == 'X') {
-	//							if (longData[i] == nullptr) {
-	//								longData[i] = new NOTE::NOTE_DATA;
-	//								longData[i]->lane = i;
-	//								longData[i]->speed = speed;
-	//								longData[i]->time = curTime;
-	//								longData[i]->visualBeat = visualBeat;
+						for (int i = 0; i < maxLane; i++) { //ここからのmaxLaneはあとでそのときのレーン数に変える
+							if ((*it)[i] == '1') {
+								notes.emplace_back(new TAPNOTE(game()));
+								notes.back()->create();
+								data.laneNum = maxLane;
+								data.lane = i;
+								data.speed = speed;
+								data.time = curTime;
+								data.visualBeat = visualBeat;
+								notes.back()->setData(data);
+								notes.back()->init();
+								endTime = curTime;
+							}
+							else if (std::toupper((*it)[i]) == 'A') {
+								if (longData[i] == nullptr) {
+									longData[i] = new NOTE::NOTE_DATA;
+									longData[i]->laneNum = maxLane;
+									longData[i]->lane = i;
+									longData[i]->speed = speed;
+									longData[i]->time = curTime;
+									longData[i]->visualBeat = visualBeat;
 
-	//								longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
-	//								longBeltData[i]->back()->lane = i;
-	//								longBeltData[i]->back()->speed = speed;
-	//								longBeltData[i]->back()->time = curTime;
-	//								longBeltData[i]->back()->visualBeat = visualBeat;
-	//							}
-	//						}
-	//						else if (std::toupper((*it)[i]) == 'C' || std::toupper((*it)[i]) == 'Z') {
-	//							if (longData[i] != nullptr) {
-	//								longData[i]->timeE = curTime;
-	//								longData[i]->visualBeatE = visualBeat;
-	//								longBeltData[i]->back()->timeE = curTime;
-	//								longBeltData[i]->back()->visualBeatE = visualBeat;
-	//								endTime = curTime;
+									longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
+									longBeltData[i]->back()->laneNum = maxLane;
+									longBeltData[i]->back()->lane = i;
+									longBeltData[i]->back()->speed = speed;
+									longBeltData[i]->back()->time = curTime;
+									longBeltData[i]->back()->visualBeat = visualBeat;
+								}
+							}
+							else if (std::toupper((*it)[i]) == 'C') {
+								if (longData[i] != nullptr) {
+									longData[i]->timeE = curTime;
+									longData[i]->visualBeatE = visualBeat;
+									longBeltData[i]->back()->timeE = curTime;
+									longBeltData[i]->back()->visualBeatE = visualBeat;
+									endTime = curTime;
 
-	//								notes.emplace_back(new LONGNOTE(game(), Cont, Cont->soundMNG()));
-	//								notes.back()->create();
-	//								notes.back()->setData(*longData[i]);
-	//								notes.back()->init();
-	//								((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);
+									/*notes.emplace_back(new LONGNOTE(game(), Cont, Cont->soundMNG()));
+									notes.back()->create();
+									notes.back()->setData(*longData[i]);
+									notes.back()->init();
+									((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);*/
 
-	//								delete longData[i];
-	//								longData[i] = nullptr;
-	//								safe_clear(*longBeltData[i]);
-	//							}
-	//						}
-	//					}
-	//					j++;
-	//				}
-	//				curBar++;
-	//			}
-	//		}
-	//	}
-	//	file.close();
-	//	longData.clear();
-	//	safe_clear(longBeltData);
+									delete longData[i];
+									longData[i] = nullptr;
+									safe_clear(*longBeltData[i]);
+								}
+							}
+						}
+						j++;
+					}
+					curBar++;
+				}
+			}
+		}
+		file.close();
+		longData.clear();
+		safe_clear(longBeltData);
 
-	//	//音声オフセットの値が毎回足されるのを防ぐためにここで減らす
-	//	songInfo.offset -= AudioOffset / 1000.0f;
-
-	//	return curTime;
-	//}
-	*/
+		//音声オフセットの値が毎回足されるのを防ぐためにここで減らす
+		songInfo.offset -= AudioOffset / 1000.0f;
+	}
 
 	void CHARTMANAGER::loadCharts() {
 		std::vector<SONGINFO>& Songs = game()->songs();

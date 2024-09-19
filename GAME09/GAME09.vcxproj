@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="BACKGROUND.h" />
     <ClInclude Include="BANNER.h" />
+    <ClInclude Include="CHANGEDATA.h" />
     <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="FADE.h" />

@@ -1,6 +1,8 @@
 #pragma once
 #include "../MAIN/GAME_BASE.h"
 #include "SONGINFO.h"
+#include "CHANGEDATA.h"
+#include "NOTE.h"
 #include <vector>
 
 namespace GAME09
@@ -41,6 +43,8 @@ namespace GAME09
 		class RHYTHM_GAME_CONTROLLER* RGCont;
 
 		std::vector<SONGINFO> Songs;
+		std::vector<NOTE*> Notes;
+		std::vector<CHANGEDATA> ChangeDatas;
 	public:
 		void changeScene(SCENE_ID sceneId);
 		class SCENE* scene(SCENE_ID sceneId) { return Scenes[sceneId]; }
@@ -52,5 +56,7 @@ namespace GAME09
 		class RHYTHM_GAME_CONTROLLER* rgCont() { return RGCont; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
+		std::vector<NOTE*>& notes() { return Notes; }
+		std::vector<CHANGEDATA>& changeDatas() { return ChangeDatas; }
     };
 }

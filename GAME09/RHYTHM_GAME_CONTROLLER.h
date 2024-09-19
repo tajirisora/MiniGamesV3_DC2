@@ -21,12 +21,6 @@ namespace GAME09 {
             PLAY,
             AFTER_PLAY
         };
-        struct CHANGEDATA {
-            double time;
-            double visualBeat;
-            double bpm;
-            VECTOR2 measure;
-        };
     private:
         DATA RGCont;
         //std::vector<NOTE*> Notes;
@@ -67,5 +61,7 @@ namespace GAME09 {
         bool isPlay() { return State == PLAY; }
         float* speedPtr() { return &Speed; }
         bool* autoPtr() { return &Auto; }
+
+        void setEndTime(double endTime) { EndTime = endTime; }
     };
 }

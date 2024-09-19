@@ -56,14 +56,11 @@ namespace GAME09 {
         void create();
         void init();
 
-        //ï‘ÇËílÇÕç≈å„ÇÃÉmÅ[ÉcÇÃéûä‘
-        //double loadChart(const char* fileName, std::vector<NOTE*>& notes,
-        //    std::vector<RHYTHM_GAME_CONTROLLER::CHANGEDATA>& changeDatas, RHYTHM_GAME_CONTROLLER::SONGINFO& songInfo);
-        
         void loadCharts();
         void loadChartInfo(std::string fileName, struct SONGINFO& songInfo);
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);
+        void loadChart(struct SONGINFO& songInfo);
 
         float* audioOffsetPtr() { return &AudioOffset; }
         float* visualOffsetPtr() { return &VisualOffset; }
