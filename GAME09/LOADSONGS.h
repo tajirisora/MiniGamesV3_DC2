@@ -8,9 +8,16 @@ namespace GAME09 {
     {
     public:
         struct DATA {
+            int msgSize;
+            VECTOR2 barPos;
+            VECTOR2 barSize;
+            VECTOR2 msgPos;
+            VECTOR2 percentPos;
         };
     private:
         DATA LoadSongs;
+        int NumSongs;
+        int CurLoad;
     public:
         LOADSONGS(class GAME* game);
         ~LOADSONGS();

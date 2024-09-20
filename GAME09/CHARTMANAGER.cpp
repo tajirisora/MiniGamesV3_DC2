@@ -33,6 +33,17 @@ namespace GAME09 {
 
 	}
 
+	int CHARTMANAGER::cntSongs() {
+		int cnt = 0;
+		//chartsフォルダのイテレーター
+		std::filesystem::directory_iterator songsDirectory = std::filesystem::directory_iterator(ChartMNG.chartPath);
+		//範囲forでchartsフォルダの中のすべてのフォルダを確認
+		for (auto d : songsDirectory) {
+			cnt++;
+		}
+		return cnt;
+	}
+
 	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo){
 
 		//音声オフセットを反映
@@ -210,7 +221,7 @@ namespace GAME09 {
 		songInfo.offset -= AudioOffset / 1000.0f;
 	}
 
-	void CHARTMANAGER::loadCharts() {
+	void CHARTMANAGER::loadCharts(int& curLoad) {
 		std::vector<SONGINFO>& Songs = game()->songs();
 		Songs.clear();
 		//chartsフォルダのイテレーター
@@ -258,6 +269,7 @@ namespace GAME09 {
 			}
 			Songs.back().highScore = Score;
 			Songs.back().achievement = Achievement;
+			curLoad++;
 		}
 	}
 

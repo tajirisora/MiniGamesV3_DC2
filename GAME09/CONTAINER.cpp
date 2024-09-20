@@ -61,6 +61,12 @@ namespace GAME09
 		Data.lane.laneWidth = 700;
 		Data.lane.pos = VECTOR2(width / 2, 900);
 		Data.lane.maxLaneNum = 6;
+
+		Data.loadSongs.msgSize = 70;
+		Data.loadSongs.barPos = VECTOR2(width / 2, 1000);
+		Data.loadSongs.barSize = VECTOR2(width * 0.9f, 70);
+		Data.loadSongs.msgPos = VECTOR2(100, 960);
+		Data.loadSongs.percentPos = VECTOR2(1820 - Data.loadSongs.msgSize * 2.5f, 960);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

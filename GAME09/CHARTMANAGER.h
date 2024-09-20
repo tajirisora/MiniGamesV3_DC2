@@ -56,7 +56,8 @@ namespace GAME09 {
         void create();
         void init();
 
-        void loadCharts();
+        int cntSongs();
+        void loadCharts(int& curLoad);
         void loadChartInfo(std::string fileName, struct SONGINFO& songInfo);
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);

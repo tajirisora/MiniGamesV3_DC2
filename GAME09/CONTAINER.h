@@ -23,6 +23,7 @@
 //#include "SONGTITLE.h"
 //#include "ACHIEVEMENT.h"
 #include "LANE.h"
+#include "LOADSONGS.h"
 
 namespace GAME09
 {
@@ -33,6 +34,7 @@ namespace GAME09
 			MUSICSELECT::DATA select;
 			STAGE::DATA stage;
 			GAME_CLEAR::DATA gameClear;
+			LOADSONGS::DATA loadSongs;
 			NOTE::DATA note;
 			//LONGBELT::DATA longBelt;
 			RHYTHM_GAME_CONTROLLER::DATA rgCont;

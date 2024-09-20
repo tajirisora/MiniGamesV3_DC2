@@ -15,37 +15,46 @@ namespace GAME09 {
 
 	}
 	void LOADSONGS::create() {
-		//LoadSongs = game()->container()->data().title;
+		LoadSongs = game()->container()->data().loadSongs;
 	}
 	void LOADSONGS::init() {
 
 	}
 	void LOADSONGS::update() {
 		bool stopFlag = false;
+		NumSongs = game()->chartMNG()->cntSongs();
+		CurLoad = 0;
 		// メンバ関数をスレッドで呼び出す際にthisポインタを渡す
 		// ChatGPTは神　みんな使おう
 		std::thread msg(&LOADSONGS::loadingMsg, this, std::ref(stopFlag));
 
 		//譜面ファイルの読み込み処理
-		game()->chartMNG()->loadCharts();
-		//std::this_thread::sleep_for(std::chrono::seconds(3));
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		game()->chartMNG()->loadCharts(CurLoad);
+		std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
 		//スレッドを止める
 		stopFlag = true;
 		msg.join();
 	}
 	void LOADSONGS::loadingMsg(bool& stopFlag) {
-		float angle = 0;
 		rectMode(CENTER);
-		angleMode(DEGREES);
 		while (!stopFlag) {
-			angle += 1;
 			clear();
-			fill(100, 100, 100);
-			rect(width / 2, height / 2, 200, 200, angle);
+
+			int percent = (CurLoad * 100) / NumSongs;
+			char str[128];
+			sprintf_s(str, 128, "%3d％", percent);
+
+			textSize(LoadSongs.msgSize);
 			fill(255);
-			textSize(100);
-			text("NowLoding...", width / 2, height / 2);
+			text("NowLoding...", LoadSongs.msgPos.x, LoadSongs.msgPos.y);
+			text(str, LoadSongs.percentPos.x, LoadSongs.percentPos.y);
+			fill(100);
+			rect(LoadSongs.barPos.x, LoadSongs.barPos.y, LoadSongs.barSize.x, LoadSongs.barSize.y);
+			fill(0, 200, 255);
+			rect(LoadSongs.barPos.x - LoadSongs.barSize.x / 200 * (100 - percent), LoadSongs.barPos.y, 
+				LoadSongs.barSize.x / 100 * percent, LoadSongs.barSize.y);
 			present();
 		}
 	}
