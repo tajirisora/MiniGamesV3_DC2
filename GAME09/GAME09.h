@@ -7,15 +7,15 @@
 
 namespace GAME09
 {
-    class GAME :
-        public GAME_BASE
-    {
-    public:
-        GAME(class MAIN* main) :GAME_BASE(main) {};
-        ~GAME() {};
-        int create();
-        void proc();
-        void destroy();
+	class GAME :
+		public GAME_BASE
+	{
+	public:
+		GAME(class MAIN* main) :GAME_BASE(main) {};
+		~GAME() {};
+		int create();
+		void proc();
+		void destroy();
 		//ƒRƒ“ƒeƒi
 	private:
 		class CONTAINER* Container;
@@ -41,6 +41,7 @@ namespace GAME09
 		class JACKET* Jacket;
 		class BACKGROUND* BackGround;
 		class RHYTHM_GAME_CONTROLLER* RGCont;
+		class LANE* Lane;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -54,6 +55,7 @@ namespace GAME09
 		class JACKET* jacket() { return Jacket; }
 		class BACKGROUND* backGround() { return BackGround; }
 		class RHYTHM_GAME_CONTROLLER* rgCont() { return RGCont; }
+		class LANE* lane() { return Lane; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

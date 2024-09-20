@@ -22,6 +22,7 @@
 //#include "OPTION.h"
 //#include "SONGTITLE.h"
 //#include "ACHIEVEMENT.h"
+#include "LANE.h"
 
 namespace GAME09
 {
@@ -51,6 +52,7 @@ namespace GAME09
 			//OPTION::DATA option;
 			//SONGTITLE::DATA songTitle;
 			//ACHIEVEMENT::DATA achievement;
+			LANE::DATA lane;
 		};
 		DATA Data;
 	public:

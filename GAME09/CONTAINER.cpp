@@ -57,6 +57,10 @@ namespace GAME09
 		Data.rgCont.detailViewTime = 3;
 		Data.rgCont.detailViewDisappearTime = 0.5f;
 		Data.rgCont.BeforePlayTime = 2;
+
+		Data.lane.laneWidth = 700;
+		Data.lane.pos = VECTOR2(width / 2, 900);
+		Data.lane.maxLaneNum = 6;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

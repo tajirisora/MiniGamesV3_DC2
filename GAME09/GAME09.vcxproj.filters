@@ -19,6 +19,7 @@
     <ClCompile Include="NOTE.cpp" />
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
     <ClCompile Include="TAPNOTE.cpp" />
+    <ClCompile Include="LANE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
     <ClInclude Include="TAPNOTE.h" />
     <ClInclude Include="CHANGEDATA.h" />
+    <ClInclude Include="LANE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

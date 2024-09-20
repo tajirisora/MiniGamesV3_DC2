@@ -50,7 +50,7 @@ namespace GAME09 {
 		CHANGEDATA changeData;
 		std::vector<NOTE::NOTE_DATA*> longData;
 		std::vector< std::vector<NOTE::NOTE_DATA*>* > longBeltData;
-		const int maxLane = 6; //あとでレーンクラスで定義したものに置き換える
+		const int maxLane = game()->lane()->maxLaneNum();
 		for (int i = 0; i < maxLane; i++) {
 			longData.emplace_back(nullptr);
 			longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
