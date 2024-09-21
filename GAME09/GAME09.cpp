@@ -13,6 +13,7 @@ namespace GAME09
 		Scenes[STAGE_ID] = new STAGE(this);
 		Scenes[GAME_CLEAR_ID] = new GAME_CLEAR(this);
 		Scenes[LOADSONGS_ID] = new LOADSONGS(this);
+		Scenes[LOADCHART_ID] = new LOADCHART(this);
 		Fade = new FADE(this);
 		ChartMNG = new CHARTMANAGER(this);
 		Banner = new BANNER(this);
@@ -27,6 +28,7 @@ namespace GAME09
 		Scenes[STAGE_ID]->create();
 		Scenes[GAME_CLEAR_ID]->create();
 		Scenes[LOADSONGS_ID]->create();
+		Scenes[LOADCHART_ID]->create();
 		Fade->create();
 		ChartMNG->create();
 		Banner->create();
@@ -58,12 +60,17 @@ namespace GAME09
 	{
 		Scenes[CurSceneId]->proc();
 		Fade->proc();
+		if (CurSceneId == STAGE_ID) {
+			int a = 1;
+			Notes;
+		}
 	}
 
 	void GAME::changeScene(SCENE_ID sceneId) {
 		CurSceneId = sceneId;
 		Scenes[CurSceneId]->init();
-		if (CurSceneId == LOADSONGS_ID) {
+		if (CurSceneId == LOADSONGS_ID ||
+			CurSceneId == LOADCHART_ID) {
 			clear(0);
 		}
 		else {

@@ -24,6 +24,7 @@
 //#include "ACHIEVEMENT.h"
 #include "LANE.h"
 #include "LOADSONGS.h"
+#include "LOADCHART.h"
 
 namespace GAME09
 {
@@ -35,6 +36,7 @@ namespace GAME09
 			STAGE::DATA stage;
 			GAME_CLEAR::DATA gameClear;
 			LOADSONGS::DATA loadSongs;
+			LOADCHART::DATA loadChart;
 			NOTE::DATA note;
 			//LONGBELT::DATA longBelt;
 			RHYTHM_GAME_CONTROLLER::DATA rgCont;

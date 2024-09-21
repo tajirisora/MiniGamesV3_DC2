@@ -30,6 +30,7 @@ namespace GAME09
 			STAGE_ID,
 			GAME_CLEAR_ID,
 			LOADSONGS_ID,
+			LOADCHART_ID,
 			NUM_SCENES
 		};
 	private:

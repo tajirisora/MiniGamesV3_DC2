@@ -57,11 +57,12 @@ namespace GAME09 {
         void init();
 
         int cntSongs();
+        int cntRows(struct SONGINFO& songInfo);
         void loadCharts(int& curLoad);
         void loadChartInfo(std::string fileName, struct SONGINFO& songInfo);
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);
-        void loadChart(struct SONGINFO& songInfo);
+        void loadChart(struct SONGINFO& songInfo, int& curRow);
 
         float* audioOffsetPtr() { return &AudioOffset; }
         float* visualOffsetPtr() { return &VisualOffset; }

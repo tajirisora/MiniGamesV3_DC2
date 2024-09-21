@@ -43,8 +43,18 @@ namespace GAME09 {
 		}
 		return cnt;
 	}
+	int CHARTMANAGER::cntRows(struct SONGINFO& songInfo) {
+		int cnt = 0;
+		std::ifstream file;
+		file.open(songInfo.fileName, std::ios::in);
+		std::string buffer;
+		while (std::getline(file, buffer)) {
+			cnt++;
+		}
+		return cnt;
+	}
 
-	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo){
+	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo, int& curRow){
 
 		//音声オフセットを反映
 		songInfo.offset += AudioOffset / 1000.0f;
@@ -86,6 +96,7 @@ namespace GAME09 {
 		double endTime = 0;        //最後のノーツの時間
 
 		while (std::getline(file, buffer)) {
+			curRow++;
 			//空白の行なら飛ばす
 			if (std::all_of(buffer.begin(), buffer.end(), [](unsigned char c) { return std::isspace(c); })) {
 				continue;
@@ -97,6 +108,7 @@ namespace GAME09 {
 					notesTag = true;
 					for (int i = 0; i < 4; i++) {   //余計な情報4行分を飛ばす
 						std::getline(file, buffer);
+						curRow++;
 					}
 				}
 			}
@@ -142,6 +154,7 @@ namespace GAME09 {
 					bool end = false;
 					while (!end) {
 						std::getline(file, buffer);
+						curRow++;
 						if (buffer.find(',') != std::string::npos ||
 							buffer.find(';') != std::string::npos) {
 							end = true;

@@ -44,19 +44,13 @@ namespace GAME09 {
 		//if (Option) game()->option()->draw();
 	}
 	void MUSICSELECT::nextScene() {
-		//if (isTrigger(KEY_ENTER)) {
-		//	if (!Option && game()->banner()->ChangeScene()) {
-		//		game()->fade()->outStart();
-		//	}
-		//}
-		//if (game()->fade()->outEndFlag()) {
-		//	game()->changeScene(GAME::STAGE_ID);
-		//}
 		if (isTrigger(KEY_ENTER)) {
-			game()->fade()->outStart();
+			if (!game()->banner()->animeFlag()) {
+				game()->fade()->outStart();
+			}
 		}
 		if (game()->fade()->outEndFlag()) {
-			game()->changeScene(GAME::STAGE_ID);
+			game()->changeScene(GAME::LOADCHART_ID);
 		}
 	}
 }
