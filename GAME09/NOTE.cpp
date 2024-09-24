@@ -19,9 +19,9 @@ namespace GAME09 {
 	}
 
 	void NOTE::init() {
-		float laneWidth = 700; //あとでレーンクラスで定義したものに置き換える
+		float laneWidth = game()->lane()->laneWidth(); //あとでレーンクラスで定義したものに置き換える
 		float oneLaneWidth = (laneWidth / LaneNum);
-		PosX = (Lane - (LaneNum - 1) / 2.0f) * oneLaneWidth + width / 2;
+		PosX = (Lane - (LaneNum - 1) / 2.0f) * oneLaneWidth + game()->lane()->lanePos().x;
 		EdgeImgDist = oneLaneWidth / 2 - Note.edgeOfst;
 		RectSize = VECTOR2(oneLaneWidth - Note.rectOfst * 2, Note.rectHeight);
 	}
@@ -31,8 +31,8 @@ namespace GAME09 {
 	}
 
 	VECTOR2 NOTE::SetPos(double beat) {
-		//float y = Cont->judgePos(Lane).y - (beat - Cont->visualBeat()) * Speed;
-		return VECTOR2(PosX, 0);
+		float y = game()->lane()->lanePos().y - (beat - game()->rgCont()->visualBeat()) * Speed;
+		return VECTOR2(PosX, y);
 	}
 
 	void NOTE::draw() {

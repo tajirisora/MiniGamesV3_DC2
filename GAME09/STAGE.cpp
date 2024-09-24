@@ -18,11 +18,18 @@ namespace GAME09 {
 		Stage = game()->container()->data().stage;
 	}
 	void STAGE::init() {
-		//game()->rgCont()->init();
+		game()->rgCont()->init();
 		//Pause = false;
 		Choices = RETRY;
 	}
 	void STAGE::update() {
+		game()->rgCont()->update();
+
+		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
+			(*it)->update();
+			++it;
+		}
+
 		//if (Pause) {
 		//	if (game()->fade()->inEndFlag()) {
 		//		if (isTrigger(KEY_UP) && Choices > 0) Choices = (CHOICES)(Choices - 1);
@@ -41,6 +48,15 @@ namespace GAME09 {
 	}
 	void STAGE::draw() {
 		clear(255);
+		fill(0);
+
+		game()->rgCont()->draw();
+		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
+			(*it)->draw();
+			print((*it)->getTime());
+			++it;
+		}
+
 		//game()->back()->draw(game()->rgCont()->getSongInfo().backImageIdx, game()->rgCont()->getSongInfo().backImageSize);
 		//game()->rgCont()->draw();
 		//if (Pause) {

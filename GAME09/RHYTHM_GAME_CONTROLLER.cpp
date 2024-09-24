@@ -30,6 +30,11 @@ namespace GAME09 {
 		CurTime = -RGCont.BeforePlayTime;
 		TempVisualBeat = 0;
 		VisualBeat = 0;
+
+		SongInfo = game()->songs()[game()->banner()->curNum()];
+		BPM = SongInfo.bpm;
+		Offset = SongInfo.offset;
+		Measure = SongInfo.measure;
 	}
 
 	void RHYTHM_GAME_CONTROLLER::update() {
@@ -87,6 +92,7 @@ namespace GAME09 {
 	}
 
 	void RHYTHM_GAME_CONTROLLER::draw() {
+
 		//‹È‚ÌÚ×‚ğ•\¦
 		//if (State == DETAIL_VIEW) {
 		//	game()->detail()->draw();

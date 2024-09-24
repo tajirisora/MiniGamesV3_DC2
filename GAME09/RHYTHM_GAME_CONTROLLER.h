@@ -1,6 +1,7 @@
 #pragma once
 #include "GAME_OBJECT.h"
 #include "NOTE.h"
+#include "SONGINFO.h"
 #include <vector>
 #include <string>
 
@@ -23,10 +24,7 @@ namespace GAME09 {
         };
     private:
         DATA RGCont;
-        //std::vector<NOTE*> Notes;
-        //std::vector<CHANGEDATA> ChangeDatas;
-        //SONGINFO SongInfo;
-        //std::vector<INPUT_CODE> KeyConfig;
+        SONGINFO SongInfo;
         int AllNotesNum;
 
         double BPM;

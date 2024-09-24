@@ -49,8 +49,8 @@ namespace GAME09
 		Data.back.area = VECTOR2(width, height);
 
 		Data.note.imgSize = 1;
-		Data.note.edgeOfst = 50;
-		Data.note.rectOfst = 60;
+		Data.note.edgeOfst = 25;
+		Data.note.rectOfst = 30;
 		Data.note.rectHeight = 30;
 
 		Data.rgCont.rawSpeed = 10000;

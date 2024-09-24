@@ -60,10 +60,6 @@ namespace GAME09
 	{
 		Scenes[CurSceneId]->proc();
 		Fade->proc();
-		if (CurSceneId == STAGE_ID) {
-			int a = 1;
-			Notes;
-		}
 	}
 
 	void GAME::changeScene(SCENE_ID sceneId) {
