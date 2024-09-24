@@ -18,12 +18,17 @@ namespace GAME09 {
 		Stage = game()->container()->data().stage;
 	}
 	void STAGE::init() {
+		SongInfo = game()->songs()[game()->banner()->curNum()];
+
 		game()->rgCont()->init();
+		game()->lane()->init();
 		//Pause = false;
 		Choices = RETRY;
 	}
 	void STAGE::update() {
 		game()->rgCont()->update();
+
+		game()->lane()->update();
 
 		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
 			(*it)->update();
@@ -48,8 +53,9 @@ namespace GAME09 {
 	}
 	void STAGE::draw() {
 		clear(255);
-		fill(0);
 
+		game()->backGround()->draw(SongInfo);
+		game()->lane()->draw();
 		game()->rgCont()->draw();
 		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
 			(*it)->draw();
@@ -57,7 +63,6 @@ namespace GAME09 {
 			++it;
 		}
 
-		//game()->back()->draw(game()->rgCont()->getSongInfo().backImageIdx, game()->rgCont()->getSongInfo().backImageSize);
 		//game()->rgCont()->draw();
 		//if (Pause) {
 		//	fill(Stage.pauseBackColor);

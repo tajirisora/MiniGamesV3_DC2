@@ -1,5 +1,6 @@
 #pragma once
 #include "SCENE.h"
+#include "SONGINFO.h"
 #include "../../libOne/inc/VECTOR2.h"
 
 namespace GAME09 {
@@ -17,6 +18,7 @@ namespace GAME09 {
         };
     private:
         DATA Stage;
+        SONGINFO SongInfo;
         CHOICES Choices;
     public:
         STAGE(class GAME* game);

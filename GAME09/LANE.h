@@ -33,7 +33,7 @@ namespace GAME09 {
     private:
         DATA Lane;
         std::vector<LANEDATA> Lanes;
-        std::vector<std::vector<int>> ChangeLaneData;
+        std::vector<CHANGEDATA> ChangeLaneData;
 
         float LaneWidthSum();
         int SearchLaneNum(int num);

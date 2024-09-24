@@ -37,6 +37,7 @@ namespace GAME09 {
 
 	void NOTE::draw() {
 		rectMode(CENTER);
+		noStroke();
 		fill(0, 255, 255);
 		//image(Img, Pos.x, Pos.y, 0, Note.imgSize);
 		rect(Pos.x, Pos.y, RectSize.x, RectSize.y);
