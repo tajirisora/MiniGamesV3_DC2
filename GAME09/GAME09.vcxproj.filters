@@ -21,6 +21,8 @@
     <ClCompile Include="TAPNOTE.cpp" />
     <ClCompile Include="LANE.cpp" />
     <ClCompile Include="LOADCHART.cpp" />
+    <ClCompile Include="LONGNOTE.cpp" />
+    <ClCompile Include="LONGBELT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -47,6 +49,8 @@
     <ClInclude Include="CHANGEDATA.h" />
     <ClInclude Include="LANE.h" />
     <ClInclude Include="LOADCHART.h" />
+    <ClInclude Include="LONGNOTE.h" />
+    <ClInclude Include="LONGBELT.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

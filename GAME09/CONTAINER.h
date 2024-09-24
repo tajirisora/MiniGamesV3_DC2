@@ -4,7 +4,7 @@
 #include "STAGE.h"
 #include "GAME_CLEAR.h"
 #include "NOTE.h"
-//#include "LONGBELT.h"
+#include "LONGBELT.h"
 #include "RHYTHM_GAME_CONTROLLER.h"
 //#include "SOUNDMANAGER.h"
 #include "CHARTMANAGER.h"
@@ -38,7 +38,7 @@ namespace GAME09
 			LOADSONGS::DATA loadSongs;
 			LOADCHART::DATA loadChart;
 			NOTE::DATA note;
-			//LONGBELT::DATA longBelt;
+			LONGBELT::DATA longBelt;
 			RHYTHM_GAME_CONTROLLER::DATA rgCont;
 			//SOUNDMANAGER::DATA sound;
 			CHARTMANAGER::DATA chartMNG;

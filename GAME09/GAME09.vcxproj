@@ -147,6 +147,8 @@
     <ClCompile Include="LANE.cpp" />
     <ClCompile Include="LOADCHART.cpp" />
     <ClCompile Include="LOADSONGS.cpp" />
+    <ClCompile Include="LONGBELT.cpp" />
+    <ClCompile Include="LONGNOTE.cpp" />
     <ClCompile Include="MUSICSELECT.cpp" />
     <ClCompile Include="NOTE.cpp" />
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
@@ -170,6 +172,8 @@
     <ClInclude Include="LANE.h" />
     <ClInclude Include="LOADCHART.h" />
     <ClInclude Include="LOADSONGS.h" />
+    <ClInclude Include="LONGBELT.h" />
+    <ClInclude Include="LONGNOTE.h" />
     <ClInclude Include="MUSICSELECT.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="NOTE.h" />

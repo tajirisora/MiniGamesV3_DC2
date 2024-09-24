@@ -1,4 +1,5 @@
 #include "CONTAINER.h"
+#include "../../libOne/inc/COLOR.h"
 #include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/sound.h"
 namespace GAME09
@@ -73,6 +74,8 @@ namespace GAME09
 		Data.loadChart.barSize = VECTOR2(width * 0.9f, 70);
 		Data.loadChart.msgPos = VECTOR2(100, 960);
 		Data.loadChart.percentPos = VECTOR2(1820 - Data.loadSongs.msgSize * 2.5f, 960);
+
+		Data.longBelt.color = COLOR(0, 255, 255);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
