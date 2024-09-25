@@ -56,13 +56,14 @@ namespace GAME09 {
 
 		game()->backGround()->draw(SongInfo);
 		game()->lane()->draw();
-		game()->rgCont()->draw();
 		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
 			(*it)->draw();
 			print((*it)->getTime());
 			++it;
 		}
 
+		game()->rgCont()->draw();
+		
 		//game()->rgCont()->draw();
 		//if (Pause) {
 		//	fill(Stage.pauseBackColor);

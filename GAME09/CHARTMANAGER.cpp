@@ -158,14 +158,14 @@ namespace GAME09 {
 					bar.clear();
 					bar.emplace_back(buffer);
 					bool end = false; //一小節の終わりのフラグ
-					int divisionNum = 1; //一小節の分割数(何分音符か)
+					int divisionNum = 0; //一小節の分割数(何分音符か)
+					if (buffer.find(ChartMNG.commandStr[LANECHANGE]) == std::string::npos) divisionNum++;
+
 					while (!end) {
 						std::getline(file, buffer);
 						curRow++; //ロード状況のカウント
-						divisionNum++; //分割数を増やす
 						if (buffer.find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) {
 							bar.emplace_back(buffer);
-							divisionNum--; //コマンドの場合は分割数に含まれないので減らす
 						}
 						else if (buffer.find(',') != std::string::npos ||
 							buffer.find(';') != std::string::npos) {
@@ -173,6 +173,7 @@ namespace GAME09 {
 						}
 						else {
 							bar.emplace_back(buffer);
+							divisionNum++; //分割数を増やす
 						}
 					}
 					int j = 0; //一小節の何番目を見ているか

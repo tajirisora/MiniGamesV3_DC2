@@ -23,10 +23,80 @@ namespace GAME09 {
 		for (auto it = songInfo.lanes.begin(); it != songInfo.lanes.end(); it++) {
 			Lanes.emplace_back(LANEDATA{ *it,STAY,1 });
 		}
+
+		BeatS = 0;
+		BeatE = 0;
 	}
 
 	void LANE::update() {
-		
+		//レーンの切り替え処理
+		for (auto it = ChangeLaneData.begin(); it != ChangeLaneData.end(); ) {
+			if ((*it).beatS > game()->rgCont()->visualBeat()) {
+				break;
+			}
+			else {
+				//動いてる途中の場合は動き終わった状態に遷移
+				//一度すべてのステートをENDに
+				for (auto it2 = Lanes.begin(); it2 != Lanes.end();) {
+					switch (it2->state) {
+					case START:
+						it2->state = END;
+						it2->laneWidth = 1;
+						it2++;
+						break;
+					case STAY:
+						it2->state = END;
+						it2++;
+						break;
+					case END:
+						it2 = Lanes.erase(it2);
+						break;
+					default:
+						it2++;
+						break;
+					}
+				}
+				//init
+				BeatS = (*it).beatS;
+				BeatE = (*it).beatE;
+				//レーンステートを設定
+				std::vector<int>& data = (*it).lane;
+				int size = data.size();
+				int index = 0;
+				for (int i = 0; i < size; i++) {
+					index = SearchLaneNum(data[i]);
+					if (index == -1) {
+						Lanes.emplace_back(LANEDATA{ data[i],START,0 });
+					}
+					else {
+						Lanes[index].state = STAY;
+					}
+				}
+				SortLane();
+				it = ChangeLaneData.erase(it);
+			}
+		}
+
+		//レーンの状態を変更
+		float ratio = 0;
+		double beat = game()->rgCont()->visualBeat();
+		if (BeatS < beat) {
+			if (BeatE < beat) {
+				ratio = 1;
+			}
+			else {
+				ratio = (beat - BeatS) / (BeatE - BeatS);
+			}
+		}
+		for (auto it = Lanes.begin(); it != Lanes.end();) {
+			if (ratio == 1 && it->state == END) {
+				it = Lanes.erase(it);
+			}
+			else {
+				it->setWidth(ratio);
+				it++;
+			}
+		}
 	}
 
 	void LANE::draw() {

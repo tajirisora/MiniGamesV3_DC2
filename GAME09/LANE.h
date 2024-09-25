@@ -35,6 +35,9 @@ namespace GAME09 {
         std::vector<LANEDATA> Lanes;
         std::vector<CHANGEDATA> ChangeLaneData;
 
+        double BeatS;
+        double BeatE;
+
         float LaneWidthSum();
         int SearchLaneNum(int num);
         void SortLane();
