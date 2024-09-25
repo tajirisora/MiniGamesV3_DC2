@@ -12,7 +12,6 @@ namespace GAME09 {
         };
     private:
         DATA LongBelt;
-        COLOR Color;
         int Img;
     public:
         LONGBELT(class GAME* game);

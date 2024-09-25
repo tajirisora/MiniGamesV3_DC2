@@ -2,8 +2,8 @@
 #include "GAME09.h"
 #include "CONTAINER.h"
 #include "TAPNOTE.h"
-//#include "LONGNOTE.h"
-//#include "LONGBELT.h"
+#include "LONGNOTE.h"
+#include "LONGBELT.h"
 #include "../../libOne/inc/window.h"
 #include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/input.h"
@@ -208,11 +208,11 @@ namespace GAME09 {
 									longBeltData[i]->back()->visualBeatE = visualBeat;
 									endTime = curTime;
 
-									/*notes.emplace_back(new LONGNOTE(game(), Cont, Cont->soundMNG()));
+									notes.emplace_back(new LONGNOTE(game()));
 									notes.back()->create();
 									notes.back()->setData(*longData[i]);
 									notes.back()->init();
-									((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);*/
+									((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);
 
 									delete longData[i];
 									longData[i] = nullptr;

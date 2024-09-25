@@ -37,7 +37,7 @@ namespace GAME09 {
 	void LONGBELT::draw() {
 		rectMode(CENTER);
 		noStroke();
-		fill(Color);
+		fill(LongBelt.color);
 		rect(Pos.x, (Pos.y + PosE.y) / 2.0f, RectSize.x, Abs(PosE.y - Pos.y));
 		//int divisionNum = ceil((Pos.y - PosE.y - LongBelt.beltHeight / 2.0f) / LongBelt.beltHeight);
 		//float startY = PosE.y + (divisionNum - 0.5f) * LongBelt.beltHeight;
