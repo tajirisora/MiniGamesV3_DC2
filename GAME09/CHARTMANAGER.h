@@ -29,6 +29,7 @@ namespace GAME09 {
         enum COMMANDNAME {
             BPMCHANGE,
             MEASURECHANGE,
+            LANECHANGE,
             NUM_COMMANDS
         };
         enum SCORE_DATAS {

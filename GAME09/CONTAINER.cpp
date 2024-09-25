@@ -32,6 +32,7 @@ namespace GAME09
 		Data.chartMNG.infoStartStr[CHARTMANAGER::NOTES] = "#NOTES";
 		Data.chartMNG.commandStr[CHARTMANAGER::BPMCHANGE] = "#BPMCHANGE";
 		Data.chartMNG.commandStr[CHARTMANAGER::MEASURECHANGE] = "#MEASURECHANGE";
+		Data.chartMNG.commandStr[CHARTMANAGER::LANECHANGE] = "#LANECHANGE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::SCORE] = "#SCORE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::ACHIEVEMENT] = "#ACHIEVEMENT";
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";

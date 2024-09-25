@@ -64,11 +64,14 @@ namespace GAME09 {
 
 		std::vector<NOTE*>& notes = game()->notes();
 		std::vector<CHANGEDATA>& changeDatas = game()->changeDatas();
+		std::vector<LANE::CHANGEDATA>& changeLaneDatas = game()->lane()->changeLaneData();
 		
 		safe_clear(notes);
 		changeDatas.clear();
+		changeLaneDatas.clear();
 		NOTE::NOTE_DATA data;
 		CHANGEDATA changeData;
+		LANE::CHANGEDATA changeLaneData;
 		std::vector<NOTE::NOTE_DATA*> longData;
 		std::vector< std::vector<NOTE::NOTE_DATA*>* > longBeltData;
 		const int maxLane = game()->lane()->maxLaneNum();
@@ -76,6 +79,9 @@ namespace GAME09 {
 			longData.emplace_back(nullptr);
 			longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
 		}
+		//LaneChangeコマンドは、その次読み込む行のレーン数は変更しない
+		int nextLane = songInfo.lanes.size(); //次の行を読み込んだ後にレーン数が何になるか
+		int curLane = songInfo.lanes.size();
 
 		std::ifstream file;
 		file.open(songInfo.fileName, std::ios::in);
@@ -151,74 +157,106 @@ namespace GAME09 {
 					//一小節分の情報を一度に読む
 					bar.clear();
 					bar.emplace_back(buffer);
-					bool end = false;
+					bool end = false; //一小節の終わりのフラグ
+					int divisionNum = 1; //一小節の分割数(何分音符か)
 					while (!end) {
 						std::getline(file, buffer);
-						curRow++;
-						if (buffer.find(',') != std::string::npos ||
+						curRow++; //ロード状況のカウント
+						divisionNum++; //分割数を増やす
+						if (buffer.find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) {
+							bar.emplace_back(buffer);
+							divisionNum--; //コマンドの場合は分割数に含まれないので減らす
+						}
+						else if (buffer.find(',') != std::string::npos ||
 							buffer.find(';') != std::string::npos) {
-							end = true;
+							end = true; //,か;が見つかったら小節の終了
 						}
 						else {
 							bar.emplace_back(buffer);
 						}
 					}
-					int divisionNum = bar.size();
-					int j = 0;
+					int j = 0; //一小節の何番目を見ているか
 					for (auto it = bar.begin(); it != bar.end(); ++it) {
 						visualBeat = tempVisualBeat + (measure.x * 4 / measure.y) * (curBar + (float)j / divisionNum) + offsetB;
 						curTime = tempTime + (60.0 / bpm / (measure.y / 4) * measure.x) * (curBar + (float)j / divisionNum) - offset;
 						speed = game()->rgCont()->speed() * (game()->rgCont()->rawSpeed() / songInfo.bpm);
 
-						for (int i = 0; i < maxLane; i++) { //ここからのmaxLaneはあとでそのときのレーン数に変える
-							if ((*it)[i] == '1') {
-								notes.emplace_back(new TAPNOTE(game()));
-								notes.back()->create();
-								data.laneNum = maxLane;
-								data.lane = i;
-								data.speed = speed;
-								data.time = curTime;
-								data.visualBeat = visualBeat;
-								notes.back()->setData(data);
-								notes.back()->init();
-								endTime = curTime;
-							}
-							else if (std::toupper((*it)[i]) == 'A') {
-								if (longData[i] == nullptr) {
-									longData[i] = new NOTE::NOTE_DATA;
-									longData[i]->laneNum = maxLane;
-									longData[i]->lane = i;
-									longData[i]->speed = speed;
-									longData[i]->time = curTime;
-									longData[i]->visualBeat = visualBeat;
+						if ((*it).find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) { //LANEコマンド
+							int conS = (*it).find(':') + 1;
+							int conE = (*it).find_last_of(';');
+							std::string content = (*it).substr(conS, conE - conS);
+							std::string lanes = content.substr(0, content.find('/'));
+							double beat = std::stof(content.substr(content.find('/') + 1));
 
-									longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
-									longBeltData[i]->back()->laneNum = maxLane;
-									longBeltData[i]->back()->lane = i;
-									longBeltData[i]->back()->speed = speed;
-									longBeltData[i]->back()->time = curTime;
-									longBeltData[i]->back()->visualBeat = visualBeat;
+							changeLaneData.lane.clear();
+							auto offset = std::string::size_type(0);
+							while (1) {
+								auto pos = lanes.find(",", offset);
+								if (pos == std::string::npos) {
+									changeLaneData.lane.emplace_back(std::stoi(lanes.substr(offset)));
+									break;
 								}
+								changeLaneData.lane.emplace_back(std::stoi(lanes.substr(offset, pos - offset)));
+								offset = pos + 1;
 							}
-							else if (std::toupper((*it)[i]) == 'C') {
-								if (longData[i] != nullptr) {
-									longData[i]->timeE = curTime;
-									longData[i]->visualBeatE = visualBeat;
-									longBeltData[i]->back()->timeE = curTime;
-									longBeltData[i]->back()->visualBeatE = visualBeat;
-									endTime = curTime;
-
-									notes.emplace_back(new LONGNOTE(game()));
+							nextLane = (int)changeLaneData.lane.size();
+							changeLaneData.beatS = visualBeat;
+							changeLaneData.beatE = visualBeat + beat;
+							changeLaneDatas.emplace_back(changeLaneData);
+							j--;
+						}
+						else {
+							for (int i = 0; i < curLane; i++) {
+								if ((*it)[i] == '1') {
+									notes.emplace_back(new TAPNOTE(game()));
 									notes.back()->create();
-									notes.back()->setData(*longData[i]);
+									data.laneNum = curLane;
+									data.lane = i;
+									data.speed = speed;
+									data.time = curTime;
+									data.visualBeat = visualBeat;
+									notes.back()->setData(data);
 									notes.back()->init();
-									((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);
+									endTime = curTime;
+								}
+								else if (std::toupper((*it)[i]) == 'A') {
+									if (longData[i] == nullptr) {
+										longData[i] = new NOTE::NOTE_DATA;
+										longData[i]->laneNum = curLane;
+										longData[i]->lane = i;
+										longData[i]->speed = speed;
+										longData[i]->time = curTime;
+										longData[i]->visualBeat = visualBeat;
 
-									delete longData[i];
-									longData[i] = nullptr;
-									safe_clear(*longBeltData[i]);
+										longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
+										longBeltData[i]->back()->laneNum = curLane;
+										longBeltData[i]->back()->lane = i;
+										longBeltData[i]->back()->speed = speed;
+										longBeltData[i]->back()->time = curTime;
+										longBeltData[i]->back()->visualBeat = visualBeat;
+									}
+								}
+								else if (std::toupper((*it)[i]) == 'C') {
+									if (longData[i] != nullptr) {
+										longData[i]->timeE = curTime;
+										longData[i]->visualBeatE = visualBeat;
+										longBeltData[i]->back()->timeE = curTime;
+										longBeltData[i]->back()->visualBeatE = visualBeat;
+										endTime = curTime;
+
+										notes.emplace_back(new LONGNOTE(game()));
+										notes.back()->create();
+										notes.back()->setData(*longData[i]);
+										notes.back()->init();
+										((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);
+
+										delete longData[i];
+										longData[i] = nullptr;
+										safe_clear(*longBeltData[i]);
+									}
 								}
 							}
+							curLane = nextLane;
 						}
 						j++;
 					}

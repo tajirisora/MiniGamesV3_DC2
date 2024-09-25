@@ -49,5 +49,6 @@ namespace GAME09 {
         float laneWidth() { return Lane.laneWidth; }
         int maxLaneNum() { return Lane.maxLaneNum; }
         VECTOR2 lanePos() { return Lane.pos; }
+        std::vector<CHANGEDATA>& changeLaneData() { return ChangeLaneData; }
     };
 }
