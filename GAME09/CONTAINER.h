@@ -6,7 +6,7 @@
 #include "NOTE.h"
 #include "LONGBELT.h"
 #include "RHYTHM_GAME_CONTROLLER.h"
-//#include "SOUNDMANAGER.h"
+#include "SOUNDMANAGER.h"
 #include "CHARTMANAGER.h"
 //#include "JUDGEMANAGER.h"
 //#include "BEAM.h"
@@ -40,7 +40,7 @@ namespace GAME09
 			NOTE::DATA note;
 			LONGBELT::DATA longBelt;
 			RHYTHM_GAME_CONTROLLER::DATA rgCont;
-			//SOUNDMANAGER::DATA sound;
+			SOUNDMANAGER::DATA sound;
 			CHARTMANAGER::DATA chartMNG;
 			//JUDGEMANAGER::DATA judge;
 			//BEAM::DATA beam;

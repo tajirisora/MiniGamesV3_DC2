@@ -306,7 +306,7 @@ namespace GAME09 {
 						loadChartInfo(chart.path().string().c_str(), Songs.back());
 						//楽曲ファイルを読み込んでインデックスを格納
 						std::string musicFile = chartPath + "\\" + Songs.back().music;
-						//Songs.back().musicIdx = game()->soundMNG()->loadMusic(musicFile.c_str(), Songs.back().volume);
+						Songs.back().musicIdx = game()->soundMNG()->loadMusic(musicFile.c_str(), Songs.back().volume);
 						//背景画像ファイルを読み込んでインデックスを格納
 						loadChartImage(chartPath, Songs.back().backGround, Songs.back().backImageIdx, Songs.back().backImageSize);
 						//ジャケ絵ファイルを読み込んでインデックスを格納

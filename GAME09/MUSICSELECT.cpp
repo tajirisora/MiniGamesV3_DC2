@@ -50,6 +50,7 @@ namespace GAME09 {
 			}
 		}
 		if (game()->fade()->outEndFlag()) {
+			game()->soundMNG()->stopMusic();
 			game()->changeScene(GAME::LOADCHART_ID);
 		}
 	}

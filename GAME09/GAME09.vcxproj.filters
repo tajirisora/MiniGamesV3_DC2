@@ -23,6 +23,7 @@
     <ClCompile Include="LOADCHART.cpp" />
     <ClCompile Include="LONGNOTE.cpp" />
     <ClCompile Include="LONGBELT.cpp" />
+    <ClCompile Include="SOUNDMANAGER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -51,6 +52,7 @@
     <ClInclude Include="LOADCHART.h" />
     <ClInclude Include="LONGNOTE.h" />
     <ClInclude Include="LONGBELT.h" />
+    <ClInclude Include="SOUNDMANAGER.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

@@ -21,6 +21,7 @@ namespace GAME09
 		BackGround = new BACKGROUND(this);
 		RGCont = new RHYTHM_GAME_CONTROLLER(this);
 		Lane = new LANE(this);
+		SoundMNG = new SOUNDMANAGER(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -36,6 +37,7 @@ namespace GAME09
 		BackGround->create();
 		RGCont->create();
 		Lane->create();
+		SoundMNG->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -43,6 +45,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete SoundMNG;
 		delete Lane;
 		delete RGCont;
 		delete BackGround;

@@ -56,7 +56,7 @@ namespace GAME09 {
 			}
 			if (CurTime > 0) {
 				CurTime = 0;
-				//Sound->playMusic(SongInfo.musicIdx);
+				game()->soundMNG()->playMusic(SongInfo.musicIdx);
 				State = PLAY;
 			}
 		}

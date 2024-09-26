@@ -53,7 +53,7 @@ namespace GAME09 {
 		}
 		else {
 			if (PlayDemoMusic) {
-				//game()->rgCont()->soundMNG()->playMusic(Songs[CurNum].musicIdx);
+				game()->soundMNG()->playMusic(game()->songs()[CurNum].musicIdx);
 				PlayDemoMusic = false;
 			}
 			if (isPress(KEY_DOWN)) {

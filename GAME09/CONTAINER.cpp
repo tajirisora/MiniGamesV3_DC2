@@ -83,6 +83,6 @@ namespace GAME09
 		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
 	}
 	void CONTAINER::loadSounds() {
-
+		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");
 	}
 }

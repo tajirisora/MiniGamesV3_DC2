@@ -43,6 +43,7 @@ namespace GAME09
 		class BACKGROUND* BackGround;
 		class RHYTHM_GAME_CONTROLLER* RGCont;
 		class LANE* Lane;
+		class SOUNDMANAGER* SoundMNG;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -57,6 +58,7 @@ namespace GAME09
 		class BACKGROUND* backGround() { return BackGround; }
 		class RHYTHM_GAME_CONTROLLER* rgCont() { return RGCont; }
 		class LANE* lane() { return Lane; }
+		class SOUNDMANAGER* soundMNG() { return SoundMNG; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }
