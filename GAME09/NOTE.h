@@ -1,6 +1,7 @@
 #pragma once
 #include "GAME_OBJECT.h"
 #include "../../libOne/inc/VECTOR2.h"
+#include "../../libOne/inc/COLOR.h"
 
 namespace GAME09 {
     class NOTE :
@@ -15,6 +16,10 @@ namespace GAME09 {
             float rectOfst; //ノーツの真ん中の四角形の端っこの座標
             float rectHeight; //ノーツの真ん中の四角形の高さ
             float imgSize;
+            float highlightHeightRatio;
+            COLOR highlightColor;
+            COLOR upColor;
+            COLOR downColor;
         };
         struct NOTE_DATA {
             int laneNum;

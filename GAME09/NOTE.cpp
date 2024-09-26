@@ -38,9 +38,17 @@ namespace GAME09 {
 	void NOTE::draw() {
 		rectMode(CENTER);
 		noStroke();
-		fill(0, 255, 255);
-		//image(Img, Pos.x, Pos.y, 0, Note.imgSize);
+		fill(Note.upColor);
 		rect(Pos.x, Pos.y, RectSize.x, RectSize.y);
+		fill(Note.downColor);
+		rect(Pos.x, Pos.y + RectSize.y / 4, RectSize.x, RectSize.y / 2);
+		fill(Note.highlightColor);
+		float ratio = Note.highlightHeightRatio;
+		rect(Pos.x, Pos.y - RectSize.y / 2 + RectSize.y * ratio / 2, RectSize.x, RectSize.y * ratio);
+
+		image(Note.centerImg, Pos.x, Pos.y, 0, Note.imgSize);
+		image(Note.rightImg, Pos.x + EdgeImgDist, Pos.y, 0, Note.imgSize);
+		image(Note.leftImg, Pos.x - EdgeImgDist, Pos.y, 0, Note.imgSize);
 	}
 
 	void NOTE::setData(NOTE_DATA data) {

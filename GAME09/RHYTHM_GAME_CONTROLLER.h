@@ -40,7 +40,7 @@ namespace GAME09 {
         bool Finish = false;
         float AnimeTime;
 
-        float Speed = 11.3f;
+        float Speed = 11.0f;
 
         bool Auto = true;
     public:

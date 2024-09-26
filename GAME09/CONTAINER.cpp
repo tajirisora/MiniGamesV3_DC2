@@ -50,10 +50,14 @@ namespace GAME09
 
 		Data.back.area = VECTOR2(width, height);
 
-		Data.note.imgSize = 1;
-		Data.note.edgeOfst = 25;
-		Data.note.rectOfst = 30;
+		Data.note.imgSize = 0.13f;
+		Data.note.edgeOfst = 10;
+		Data.note.rectOfst = 14;
 		Data.note.rectHeight = 30;
+		Data.note.highlightHeightRatio = 0.2f;
+		Data.note.highlightColor = COLOR(101, 244, 255);
+		Data.note.upColor = COLOR(0, 203, 255);
+		Data.note.downColor = COLOR(0, 171, 229);
 
 		Data.rgCont.rawSpeed = 10000;
 		Data.rgCont.detailViewTime = 3;
@@ -76,11 +80,14 @@ namespace GAME09
 		Data.loadChart.msgPos = VECTOR2(100, 960);
 		Data.loadChart.percentPos = VECTOR2(1820 - Data.loadSongs.msgSize * 2.5f, 960);
 
-		Data.longBelt.color = COLOR(0, 255, 255);
+		Data.longBelt.color = COLOR(0, 203, 255);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
 		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
+		Data.note.centerImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center.png");
+		Data.note.rightImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Right.png");
+		Data.note.leftImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Left.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

@@ -58,7 +58,6 @@ namespace GAME09 {
 		game()->lane()->draw();
 		for (auto it = game()->notes().begin(); it != game()->notes().end();) {
 			(*it)->draw();
-			print((*it)->getTime());
 			++it;
 		}
 
