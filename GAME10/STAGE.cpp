@@ -10,6 +10,7 @@ STAGE::~STAGE() {
 void STAGE::init() {
 	Stage = game()->container()->stage();
 	game()->player()->init();
+	game()->time()->init();
 }
 void STAGE::goalStage() {
 	Stage.bworldX = NULL;
@@ -24,6 +25,7 @@ void STAGE::update() {
 		if (game()->player()->playerData().speed >= Stage.backMx) {
 			Stage.bworldX += game()->player()->playerData().speed - Stage.backMx;
 		}
+		game()->time()->timeCount();//強制スクロール中のみ時間が進む
 	}
 	//ゴールテープが画面の中央に来た時、プレイヤーだけ動くようにするために少しだけプレイヤーを動かす。
 	else if(game()->player()->playerData().Opos.x == game()->player()->playerData().Pos.x){
@@ -39,6 +41,7 @@ void STAGE::update() {
 void STAGE::create() {
 	Stage = game()->container()->stage();
 	game()->player()->create();
+	game()->PlayerHp_gauge()->create();
 }
 void STAGE::draw() {
 	clear(255);
@@ -57,6 +60,7 @@ void STAGE::draw() {
 	}
 	image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
 	game()->player()->draw();
+	game()->time()->draw();
 	fill(255);
 }
 void STAGE::nextScene() {

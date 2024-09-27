@@ -4,6 +4,7 @@
 #include"RESULT.h"
 #include"PLAYER.h"
 #include"CONTAINER.h"
+#include"TIME.h"
 #include"HP_GAUGE.h"
 #include"HANDGUN.h"
 GAME10_GAME::GAME10_GAME(){
@@ -14,6 +15,7 @@ GAME10_GAME::GAME10_GAME(){
 
 	Player = new PLAYER(this);
 	PlayerHpGauge = new HP_GAUGE(this);
+	Time = new TIME(this);
 
 	Weapons[HANDGUN_ID] = new HANDGUN(this);
 
@@ -23,7 +25,7 @@ GAME10_GAME::GAME10_GAME(){
 	Scenes[STAGE_ID]->create();
 	Scenes[RESULT_ID]->create();
 	Weapons[HANDGUN_ID]->create();
-	PlayerHpGauge->create();
+	//PlayerHpGauge->create();
 }
 GAME10_GAME::~GAME10_GAME(){
 	for (int i = 0; i < NUM_SCENES; i++) {
@@ -35,6 +37,7 @@ GAME10_GAME::~GAME10_GAME(){
 	delete Container;
 	delete Player;
 	delete PlayerHpGauge;
+	delete Time;
 }
 void GAME10_GAME::run(){
 	Scenes[CurSceneId]->proc();

@@ -117,4 +117,11 @@ void CONTAINER::setData(){
 	Data.handgun.ctIntervalTime = 250;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
+
+	//ŽžŠÔ
+	Data.time.time = 3600;
+	Data.time.frame = 60;
+	Data.time.rewindTime = 480;
+	Data.time.Pos.x = 1000;
+	Data.time.Pos.y = 90;
 }
