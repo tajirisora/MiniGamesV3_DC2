@@ -3,11 +3,13 @@
 #include"CONTAINER.h"
 #include "../../libOne/inc/libOne.h"
 #include"GAME10_GAME.h"
+#include"WEAPONS.h"
 STAGE::STAGE(GAME10_GAME* game) :SCENE(game) {}
 STAGE::~STAGE() {
 }
 void STAGE::init() {
 	Stage = game()->container()->stage();
+	game()->player()->init();
 }
 void STAGE::goalStage() {
 	Stage.bworldX = NULL;
@@ -56,7 +58,6 @@ void STAGE::draw() {
 	image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
 	game()->player()->draw();
 	fill(255);
-	text(game()->player()->playerData().Pos.x, 100, 100);
 }
 void STAGE::nextScene() {
 	if (isTrigger(KEY_SPACE)) {

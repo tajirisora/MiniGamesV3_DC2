@@ -31,6 +31,16 @@
     <ClCompile Include="PLAYER.cpp">
       <Filter>sauce</Filter>
     </ClCompile>
+    <ClCompile Include="WEAPONS.cpp">
+      <Filter>item\base</Filter>
+    </ClCompile>
+    <ClCompile Include="HANDGUN.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="BULLETS.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="TIME.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME10.h">
@@ -63,6 +73,16 @@
     <ClInclude Include="HP_GAUGE.h">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="WEAPONS.h">
+      <Filter>item\base</Filter>
+    </ClInclude>
+    <ClInclude Include="HANDGUN.h">
+      <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="BULLETS.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="TIME.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />
@@ -82,6 +102,18 @@
     </Filter>
     <Filter Include="header\scene">
       <UniqueIdentifier>{b120df26-5d89-4c89-b41d-a0aacf5fcd82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item">
+      <UniqueIdentifier>{e3b29e19-d712-4846-b62b-beaa1f17a788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\header">
+      <UniqueIdentifier>{bcb12f8e-3f89-46c2-8d8b-3b6c49b77d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\sauce">
+      <UniqueIdentifier>{8ba3d522-92ca-4812-9a94-25c38a873d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\base">
+      <UniqueIdentifier>{ace68862-fc88-43d7-b7d6-55676f94f7c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

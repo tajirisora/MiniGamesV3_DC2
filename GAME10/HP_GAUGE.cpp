@@ -8,8 +8,17 @@ HP_GAUGE::~HP_GAUGE() {}
 void HP_GAUGE::create() {
 	Gauge = game()->container()->gauge();
 }
-void HP_GAUGE::draw(int playerHp) {
-	for (int i = 0; i < playerHp; i++) {
+
+void HP_GAUGE::setHp(int Hp) { 
+	Gauge.CurHp = Hp;
+}
+
+void HP_GAUGE::getDamage(int damage) {
+	Gauge.CurHp -= damage;
+}
+
+void HP_GAUGE::draw() {
+	for (int i = 0; i < Gauge.CurHp; i++) {
 		fill(255);
 		rect(Gauge.gaugePos.x + Gauge.gaugeMx * i, Gauge.gaugePos.y, Gauge.hpWidth, Gauge.hpHeight);
 		image(Gauge.gaugeImg, Gauge.imgPos.x, Gauge.imgPos.y);

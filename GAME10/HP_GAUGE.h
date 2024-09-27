@@ -8,6 +8,7 @@ public:
 		int gaugeImg = 0;
 		VECTOR2 imgPos = 0;
 		VECTOR2 gaugePos = 0;
+		int CurHp = 0;
 		float gaugeMx = 0;
 		float hpWidth = 0;
 		float hpHeight = 0;
@@ -17,7 +18,10 @@ private:
 public:
 	HP_GAUGE(class GAME10_GAME* game);
 	~HP_GAUGE();
+	void setHp(int Hp);//セッター
 	void create();
-	void draw(int playerHp);
+	void getDamage(int damage);
+	void draw();
+	DATA& hp_gauge() { return Gauge; }
 };
 

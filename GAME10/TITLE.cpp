@@ -17,7 +17,7 @@ void TITLE::draw(){
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE)) {
-		game()->scene()->init();
 		game()->changeScene(GAME10_GAME::STAGE_ID);
+		game()->scenes(GAME10_GAME::STAGE_ID)->init();
 	}
 }

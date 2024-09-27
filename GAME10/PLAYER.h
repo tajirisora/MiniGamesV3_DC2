@@ -16,7 +16,13 @@ public:
 		float hp = 0;
 		int nowLane = 0;
 		int LaneMax = 0;
-
+		VECTOR2 Tpos = 0;
+		int timeImage = 0;
+		int timeLimit = 0;
+		//ïêäÌ
+		int weaponHaveNum = 0;
+		int weaponNum = 0;
+		int* weaponKind = nullptr;
 	};
 private:
 	DATA Player;
@@ -29,6 +35,6 @@ public:
 	void update();
 	void draw();
 	void playerMove();
-	DATA playerData(){ return Player; }
+	DATA const playerData(){ return Player; }
 };
 

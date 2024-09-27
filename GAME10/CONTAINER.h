@@ -4,6 +4,7 @@
 #include"RESULT.h"
 #include"PLAYER.h"
 #include"HP_GAUGE.h"
+#include"HANDGUN.h"
 class CONTAINER
 {
 private:
@@ -13,6 +14,7 @@ private:
 		RESULT::DATA result;
 		PLAYER::DATA player;
 		HP_GAUGE::DATA hp_gause;
+		HANDGUN::DATA handgun;
 	};
 	DATA Data;
 public:
@@ -26,5 +28,6 @@ public:
 	const RESULT::DATA& result() { return Data.result; }
 	const PLAYER::DATA& player() { return Data.player; }
 	const HP_GAUGE::DATA& gauge() { return Data.hp_gause; }
+	const HANDGUN::DATA& handgun() { return Data.handgun; }
 };
 
