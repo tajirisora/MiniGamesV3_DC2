@@ -114,6 +114,8 @@ namespace GAME09 {
 			x += (*it).laneWidth / laneWidth * Lane.laneWidth;
 			line(x, 0, x, height);
 		}
+
+		line(Lane.pos.x - Lane.laneWidth / 2, Lane.pos.y, Lane.pos.x + Lane.laneWidth / 2, Lane.pos.y);
 	}
 
 	void LANE::LANEDATA::setWidth(float ratio) {
