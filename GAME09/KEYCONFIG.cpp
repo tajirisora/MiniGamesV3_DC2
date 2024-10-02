@@ -2,6 +2,7 @@
 #include "GAME09.h"
 #include "CONTAINER.h"
 #include "../../libOne/inc/graphic.h"
+#include "../../libOne/inc/input.h"
 #include <algorithm>
 
 namespace GAME09 {
@@ -76,5 +77,34 @@ namespace GAME09 {
 
 	void KEYCONFIG::draw() {
 		
+	}
+
+	INPUT_CODE KEYCONFIG::getKeyConfig(int numLane, int lane){
+		return KeyConfig[6 - numLane][lane];
+	}
+
+	bool KEYCONFIG::keyTrigger(INPUT_CODE key){
+		for (auto it = Triggers.begin(); it != Triggers.end(); it++) {
+			if (it->Key == key) {
+				return it->trigger;
+			}
+		}
+		return false;
+	}
+	bool KEYCONFIG::keyPress(INPUT_CODE key){
+		for (auto it = Triggers.begin(); it != Triggers.end(); it++) {
+			if (it->Key == key) {
+				return it->press;
+			}
+		}
+		return false;
+	}
+	void KEYCONFIG::setTrigger(INPUT_CODE key, bool value){
+		for (auto it = Triggers.begin(); it != Triggers.end(); it++) {
+			if (it->Key == key) {
+				it->trigger = value;
+				return;
+			}
+		}
 	}
 }

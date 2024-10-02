@@ -46,11 +46,10 @@ namespace GAME09 {
         float AnimeTime = 0;
         JUDGE Judge;
         ACCURACY Acc;
-        std::vector<bool> IsTrigger;
-        std::vector<bool> IsPress;
 
         class RHYTHM_GAME_CONTROLLER* Cont;
         class SOUNDMANAGER* Sound;
+        class KEYCONFIG* KeyCon;
 
         int JudgeResult[NUM_JUDGE];
         int Combo;
@@ -66,7 +65,7 @@ namespace GAME09 {
         void update();
         void draw();
 
-        void judgeNotes(std::vector<NOTE*>& notes);
+        void judgeNotes();
         void autoPlay();
         int* judgeResult() { return JudgeResult; }
         JUDGE_DATA* judgeImgs() { return JudgeMNG.judge; }

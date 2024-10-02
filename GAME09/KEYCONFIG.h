@@ -32,5 +32,9 @@ namespace GAME09 {
         void draw();
 
         std::vector<KEY_TRIGGER>& triggers() { return Triggers; }
+        INPUT_CODE getKeyConfig(int numLane, int lane);
+        bool keyTrigger(INPUT_CODE key);
+        bool keyPress(INPUT_CODE key);
+        void setTrigger(INPUT_CODE key, bool value);
     };
 }

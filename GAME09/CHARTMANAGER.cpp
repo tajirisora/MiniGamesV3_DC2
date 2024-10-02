@@ -213,6 +213,7 @@ namespace GAME09 {
 									notes.back()->create();
 									data.laneNum = curLane;
 									data.lane = i;
+									data.key = game()->keyConfig()->getKeyConfig(curLane, i);
 									data.speed = speed;
 									data.time = curTime;
 									data.visualBeat = visualBeat;
@@ -225,6 +226,7 @@ namespace GAME09 {
 										longData[i] = new NOTE::NOTE_DATA;
 										longData[i]->laneNum = curLane;
 										longData[i]->lane = i;
+										longData[i]->key = game()->keyConfig()->getKeyConfig(curLane, i);
 										longData[i]->speed = speed;
 										longData[i]->time = curTime;
 										longData[i]->visualBeat = visualBeat;
@@ -232,6 +234,7 @@ namespace GAME09 {
 										longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
 										longBeltData[i]->back()->laneNum = curLane;
 										longBeltData[i]->back()->lane = i;
+										longBeltData[i]->back()->key = game()->keyConfig()->getKeyConfig(curLane, i);
 										longBeltData[i]->back()->speed = speed;
 										longBeltData[i]->back()->time = curTime;
 										longBeltData[i]->back()->visualBeat = visualBeat;

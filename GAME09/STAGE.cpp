@@ -22,6 +22,7 @@ namespace GAME09 {
 
 		game()->rgCont()->init();
 		game()->lane()->init();
+		game()->judgeMNG()->init();
 		//Pause = false;
 		Choices = RETRY;
 	}

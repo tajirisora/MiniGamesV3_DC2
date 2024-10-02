@@ -54,6 +54,7 @@ namespace GAME09 {
 	void NOTE::setData(NOTE_DATA data) {
 		LaneNum = data.laneNum;
 		Lane = data.lane;
+		Key = data.key;
 		Speed = data.speed;
 		Time = data.time;
 		VisualBeat = data.visualBeat;

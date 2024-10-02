@@ -22,6 +22,7 @@ namespace GAME09 {
 		JudgeMNG = game()->container()->data().judge;
 		Cont = game()->rgCont();
 		Sound = game()->soundMNG();
+		KeyCon = game()->keyConfig();
 	}
 
 	void JUDGEMANAGER::init() {
@@ -42,7 +43,8 @@ namespace GAME09 {
 		}
 		game()->keyConfig()->update();
 
-		autoPlay();
+		//autoPlay();
+		judgeNotes();
 	}
 
 	void JUDGEMANAGER::draw() {
@@ -64,6 +66,12 @@ namespace GAME09 {
 			}
 		}
 
+		//debug
+		fill(0);
+		print(JudgeResult[0]);
+		print(JudgeResult[1]);
+		print(JudgeResult[2]);
+
 		//コンボ
 		//if (Combo >= 5) {
 		//	float comboAnimeRatio = JudgeMNG.comboSizeMinRate + (1 - JudgeMNG.comboSizeMinRate) * ratio;
@@ -83,14 +91,15 @@ namespace GAME09 {
 		Accuracy[acc] ++;
 	}
 
-	/*
-	void JUDGEMANAGER::judgeNotes(std::vector<NOTE*>& notes) {
+	
+	void JUDGEMANAGER::judgeNotes() {
+		std::vector<NOTE*>& notes = game()->notes();
 		//ノーツすべてをループ
 		for (auto it = notes.begin(); it != notes.end();) {
 			//タップノーツなら
-			if (typeid(**it).name() == JudgeMNG.noteName[TAP]) {
+			if ((*it)->noteName() == NOTE::TAP) {
 				//そのノーツが置かれてるレーンが押された瞬間なら
-				if (IsTrigger[(*it)->getLane()]) {
+				if (KeyCon->keyTrigger((*it)->getKey())) {
 					bool isJudge = false;
 					//上位の判定から順番に判定の範囲内か確認
 					for (int i = 0; i < NUM_JUDGE; i++) {
@@ -112,13 +121,12 @@ namespace GAME09 {
 							}
 							else {
 								Combo++;
-								Beam->appearEffect((*it)->getLane());
 							}
 							JudgeResult[i]++;
 							Sound->tapSound();
 							AnimeTime = 0;
 							//同じレーンの2個以上のノーツが同時に反応しないように一回判定したら押してないことにする
-							IsTrigger[(*it)->getLane()] = false;
+							KeyCon->setTrigger((*it)->getKey(), false);
 							delete (*it);
 							it = notes.erase(it);
 							isJudge = true;
@@ -162,11 +170,11 @@ namespace GAME09 {
 				}
 			}
 			//ロングノーツなら
-			else if (typeid(**it).name() == JudgeMNG.noteName[LONG]) {
+			else if ((*it)->noteName() == NOTE::LONG) {
 				//始点が押されてなければ
 				if (!((LONGNOTE*)*it)->getPress()) {
 					//押された瞬間なら
-					if (IsTrigger[(*it)->getLane()]) {
+					if (KeyCon->keyTrigger((*it)->getKey())) {
 						bool isJudge = false;
 						//上位の判定から順番に判定の範囲内か確認
 						for (int i = 0; i < NUM_JUDGE; i++) {
@@ -184,7 +192,7 @@ namespace GAME09 {
 									AccCnt(NONE);
 								}
 								JudgeResult[i]++;
-								IsTrigger[(*it)->getLane()] = false;
+								KeyCon->setTrigger((*it)->getKey(), false);
 								isJudge = true;
 								AnimeTime = 0;
 								//判定がミスの場合
@@ -202,7 +210,6 @@ namespace GAME09 {
 									//始点は押されてますよフラグを立てる
 									((LONGNOTE*)*it)->setPress(true);
 									Sound->tapSound();
-									Beam->appearEffect((*it)->getLane());
 									break;
 								}
 							}
@@ -246,10 +253,7 @@ namespace GAME09 {
 				//始点が押されてるとき
 				else {
 					//長押しされてるとき
-					if (IsPress[(*it)->getLane()]) {
-						//長押しされてるときはずっとエフェクトを光らせる
-						Beam->appearEffect((*it)->getLane());
-
+					if (KeyCon->keyPress((*it)->getKey())) {
 						//終点を過ぎて押されていたらPERFECT
 						if ((*it)->getTimeE() - Cont->curTime() < 0) {
 							Judge = PERFECT;
@@ -305,15 +309,8 @@ namespace GAME09 {
 				it++;
 			}
 		}
-
-		//キービーム
-		for (int i = 0; i < Cont->numLane(); i++) {
-			if (IsTrigger[i]) {
-				Beam->appearBeam(i);
-			}
-		}
 	}
-	*/
+	
 
 	void JUDGEMANAGER::autoPlay() {
 		std::vector<NOTE*>& notes = game()->notes();
