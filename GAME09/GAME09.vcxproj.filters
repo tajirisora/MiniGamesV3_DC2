@@ -24,6 +24,8 @@
     <ClCompile Include="LONGNOTE.cpp" />
     <ClCompile Include="LONGBELT.cpp" />
     <ClCompile Include="SOUNDMANAGER.cpp" />
+    <ClCompile Include="JUDGEMANAGER.cpp" />
+    <ClCompile Include="KEYCONFIG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -53,6 +55,8 @@
     <ClInclude Include="LONGNOTE.h" />
     <ClInclude Include="LONGBELT.h" />
     <ClInclude Include="SOUNDMANAGER.h" />
+    <ClInclude Include="JUDGEMANAGER.h" />
+    <ClInclude Include="KEYCONFIG.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

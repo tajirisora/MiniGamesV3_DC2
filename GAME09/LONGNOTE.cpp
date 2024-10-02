@@ -18,6 +18,7 @@ namespace GAME09 {
 	void LONGNOTE::init() {
 		NOTE::init();
 		IsPress = false;
+		Name = LONG;
 	}
 
 	void LONGNOTE::update() {

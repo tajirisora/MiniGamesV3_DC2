@@ -81,6 +81,19 @@ namespace GAME09
 		Data.loadChart.percentPos = VECTOR2(1820 - Data.loadSongs.msgSize * 2.5f, 960);
 
 		Data.longBelt.color = COLOR(0, 203, 255);
+
+		Data.judge.judge[JUDGEMANAGER::PERFECT].time = 0.05;       //±3フレーム
+		Data.judge.judge[JUDGEMANAGER::GREAT].time = 0.08333333; //±5フレーム
+		Data.judge.judge[JUDGEMANAGER::MISS].time = 0.11666666; //＋7フレーム
+		Data.judge.appearAnimeTime = 0.07f;
+		Data.judge.activeTime = 2.0f;
+		Data.judge.pos = VECTOR2(width / 2, 750);
+		Data.judge.imgSize = 0.25f;
+		Data.judge.imgSizeMin = 0.15f;
+		Data.judge.accOfst = VECTOR2(0, -40);
+		Data.judge.accImgSizeRate = 0.8f;
+		Data.judge.comboPos = VECTOR2(1370, 650);
+		Data.judge.comboSizeMinRate = 0.8f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -88,6 +101,11 @@ namespace GAME09
 		Data.note.centerImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center.png");
 		Data.note.rightImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Right.png");
 		Data.note.leftImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Left.png");
+		Data.judge.judge[JUDGEMANAGER::PERFECT].img = loadImage("..\\main\\assets\\game09\\texture\\perfect.png");
+		Data.judge.judge[JUDGEMANAGER::GREAT].img = loadImage("..\\main\\assets\\game09\\texture\\great.png");
+		Data.judge.judge[JUDGEMANAGER::MISS].img = loadImage("..\\main\\assets\\game09\\texture\\miss.png");
+		Data.judge.fastImg = loadImage("..\\main\\assets\\game09\\texture\\fast.png");
+		Data.judge.slowImg = loadImage("..\\main\\assets\\game09\\texture\\slow.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

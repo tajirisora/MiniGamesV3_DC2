@@ -8,7 +8,7 @@
 #include "RHYTHM_GAME_CONTROLLER.h"
 #include "SOUNDMANAGER.h"
 #include "CHARTMANAGER.h"
-//#include "JUDGEMANAGER.h"
+#include "JUDGEMANAGER.h"
 //#include "BEAM.h"
 #include "BANNER.h"
 #include "BACKGROUND.h"
@@ -25,6 +25,7 @@
 #include "LANE.h"
 #include "LOADSONGS.h"
 #include "LOADCHART.h"
+#include "KEYCONFIG.h"
 
 namespace GAME09
 {
@@ -42,7 +43,7 @@ namespace GAME09
 			RHYTHM_GAME_CONTROLLER::DATA rgCont;
 			SOUNDMANAGER::DATA sound;
 			CHARTMANAGER::DATA chartMNG;
-			//JUDGEMANAGER::DATA judge;
+			JUDGEMANAGER::DATA judge;
 			//BEAM::DATA beam;
 			BANNER::DATA banner;
 			BACKGROUND::DATA back;
@@ -57,6 +58,7 @@ namespace GAME09
 			//SONGTITLE::DATA songTitle;
 			//ACHIEVEMENT::DATA achievement;
 			LANE::DATA lane;
+			KEYCONFIG::DATA keyConfig;
 		};
 		DATA Data;
 	public:

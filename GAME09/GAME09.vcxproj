@@ -144,6 +144,8 @@
     <ClCompile Include="GAME_CLEAR.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
     <ClCompile Include="JACKET.cpp" />
+    <ClCompile Include="JUDGEMANAGER.cpp" />
+    <ClCompile Include="KEYCONFIG.cpp" />
     <ClCompile Include="LANE.cpp" />
     <ClCompile Include="LOADCHART.cpp" />
     <ClCompile Include="LOADSONGS.cpp" />
@@ -170,6 +172,8 @@
     <ClInclude Include="GAME_CLEAR.h" />
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="JACKET.h" />
+    <ClInclude Include="JUDGEMANAGER.h" />
+    <ClInclude Include="KEYCONFIG.h" />
     <ClInclude Include="LANE.h" />
     <ClInclude Include="LOADCHART.h" />
     <ClInclude Include="LOADSONGS.h" />

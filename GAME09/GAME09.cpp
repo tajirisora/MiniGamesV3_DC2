@@ -22,6 +22,8 @@ namespace GAME09
 		RGCont = new RHYTHM_GAME_CONTROLLER(this);
 		Lane = new LANE(this);
 		SoundMNG = new SOUNDMANAGER(this);
+		KeyConfig = new KEYCONFIG(this);
+		JudgeMNG = new JUDGEMANAGER(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -38,6 +40,8 @@ namespace GAME09
 		RGCont->create();
 		Lane->create();
 		SoundMNG->create();
+		KeyConfig->create();
+		JudgeMNG->create();
 
 		changeScene(TITLE_ID);
 		return 0;
@@ -45,6 +49,8 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete JudgeMNG;
+		delete KeyConfig;
 		delete SoundMNG;
 		delete Lane;
 		delete RGCont;

@@ -19,6 +19,7 @@ namespace GAME09 {
 
 	void LONGBELT::init() {
 		NOTE::init();
+		Name = BELT;
 	}
 
 	void LONGBELT::update() {

@@ -30,8 +30,15 @@ namespace GAME09 {
             double timeE;
             double visualBeatE;
         };
+        enum NOTE_NAME {
+            TAP,
+            LONG,
+            BELT,
+            NUM_NAME
+        };
     protected:
         DATA Note;
+        NOTE_NAME Name = TAP;
 
         VECTOR2 Pos;
         VECTOR2 PosE;
@@ -62,5 +69,6 @@ namespace GAME09 {
         double getTime() { return Time; }
         double getTimeE() { return TimeE; }
         int getLane() { return Lane; }
+        NOTE_NAME noteName() { return Name; }
     };
 }

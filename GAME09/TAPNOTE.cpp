@@ -9,6 +9,7 @@ namespace GAME09 {
 
 	void TAPNOTE::init() {
 		NOTE::init();
+		Name = TAP;
 	}
 
 	void TAPNOTE::update() {

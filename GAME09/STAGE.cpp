@@ -35,6 +35,8 @@ namespace GAME09 {
 			++it;
 		}
 
+		game()->judgeMNG()->update();
+
 		//if (Pause) {
 		//	if (game()->fade()->inEndFlag()) {
 		//		if (isTrigger(KEY_UP) && Choices > 0) Choices = (CHOICES)(Choices - 1);
@@ -60,6 +62,7 @@ namespace GAME09 {
 			(*it)->draw();
 			++it;
 		}
+		game()->judgeMNG()->draw();
 
 		game()->rgCont()->draw();
 		

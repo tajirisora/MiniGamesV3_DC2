@@ -44,6 +44,8 @@ namespace GAME09
 		class RHYTHM_GAME_CONTROLLER* RGCont;
 		class LANE* Lane;
 		class SOUNDMANAGER* SoundMNG;
+		class KEYCONFIG* KeyConfig;
+		class JUDGEMANAGER* JudgeMNG;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -59,6 +61,8 @@ namespace GAME09
 		class RHYTHM_GAME_CONTROLLER* rgCont() { return RGCont; }
 		class LANE* lane() { return Lane; }
 		class SOUNDMANAGER* soundMNG() { return SoundMNG; }
+		class KEYCONFIG* keyConfig() { return KeyConfig; }
+		class JUDGEMANAGER* judgeMNG() { return JudgeMNG; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }
