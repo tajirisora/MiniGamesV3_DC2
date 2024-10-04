@@ -139,6 +139,7 @@
     <ClCompile Include="GAME10_GAME.cpp" />
     <ClCompile Include="GAME_OBJECT10.cpp" />
     <ClCompile Include="HANDGUN.cpp" />
+    <ClCompile Include="HANDGUN_BULLETS.cpp" />
     <ClCompile Include="HP_GAUGE.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="RESULT.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="GAME10_GAME.h" />
     <ClInclude Include="GAME_OBJECT10.h" />
     <ClInclude Include="HANDGUN.h" />
+    <ClInclude Include="HANDGUN_BULLETS.h" />
     <ClInclude Include="HP_GAUGE.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="RESULT.h" />

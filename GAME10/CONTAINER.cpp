@@ -35,6 +35,7 @@ void CONTAINER::setImage() {
 	Data.hp_gause.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
 
 	Data.handgun.GunsImg = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
+	Data.handgunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
 }
 void CONTAINER::setData(){
 	Data.title.imgPos.x = 0;
@@ -112,6 +113,7 @@ void CONTAINER::setData(){
 	//ïêäÌ
 	Data.handgun.Pos.x = 1000;
 	Data.handgun.Pos.y = 920;
+	Data.handgun.speed = 5;
 	Data.handgun.bulletNum = 1;
 	Data.handgun.damage = 100;
 	Data.handgun.ctIntervalTime = 250;
@@ -124,4 +126,10 @@ void CONTAINER::setData(){
 	Data.time.rewindTime = 480;
 	Data.time.Pos.x = 1000;
 	Data.time.Pos.y = 90;
+
+	Data.handgunBullet.totalNum = 20;
+	Data.handgunBullet.curNum = 0;
+	Data.handgunBullet.speed = 4.0f;
+	Data.handgunBullet.cRadius = 10;
+	Data.handgunBullet.ImgHalf = 25;
 }

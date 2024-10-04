@@ -33,6 +33,7 @@ public:
 	void stageGoal();
 	void create();
 	void update();
+	void launch();
 	void draw();
 	void playerMove();
 	DATA const playerData(){ return Player; }

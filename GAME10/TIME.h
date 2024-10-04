@@ -19,5 +19,6 @@ public:
 	void timeCount();
 	void rewind();//ƒAƒCƒeƒ€‚ğ“¾‚½‚Æ‚«‚ÉŠÔ‰ñ•œ
 	void draw();
+	int nowTime() { return Time.time; }
 };
 

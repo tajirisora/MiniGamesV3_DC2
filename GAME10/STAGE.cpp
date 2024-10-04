@@ -3,6 +3,7 @@
 #include"CONTAINER.h"
 #include "../../libOne/inc/libOne.h"
 #include"GAME10_GAME.h"
+#include"HANDGUN_BULLETS.h"
 #include"WEAPONS.h"
 STAGE::STAGE(GAME10_GAME* game) :SCENE(game) {}
 STAGE::~STAGE() {
@@ -11,10 +12,12 @@ void STAGE::init() {
 	Stage = game()->container()->stage();
 	game()->player()->init();
 	game()->time()->init();
+	game()->handgunBullets()->init();
 }
 void STAGE::goalStage() {
 	Stage.bworldX = NULL;
 	Stage.fworldX = NULL;
+	game()->handgunBullets()->AllKill();//’eŠÛ‚ð‘S•”Á‚·
 	game()->player()->stageGoal();
 }
 void STAGE::update() {
@@ -37,6 +40,7 @@ void STAGE::update() {
 		goalStage();
 	}
 	game()->player()->update();
+	game()->handgunBullets()->update();
 }
 void STAGE::create() {
 	Stage = game()->container()->stage();
@@ -61,10 +65,11 @@ void STAGE::draw() {
 	image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
 	game()->player()->draw();
 	game()->time()->draw();
+	game()->handgunBullets()->draw();
 	fill(255);
 }
 void STAGE::nextScene() {
-	if (isTrigger(KEY_SPACE)) {
+	if (game()->time()->nowTime() <= NULL) {
 		game()->changeScene(GAME10_GAME::RESULT_ID);
 	}
 }

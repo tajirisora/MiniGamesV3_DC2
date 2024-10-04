@@ -7,6 +7,7 @@ public:
 	struct DATA{
 		int GunsImg = 0;
 		VECTOR2 Pos = 0;
+		int speed = 0;
 		int bulletNum = 0;
 		int damage = 0;
 		int ctIntervalTime = 0;//É^ÉCÉÄÇÃê›íË
@@ -21,7 +22,7 @@ public:
 	void create();
 	void init();
 	void proc();
-	void update();
+	void launch(VECTOR2 pos);
 	void draw();
 };
 

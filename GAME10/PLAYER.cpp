@@ -44,10 +44,17 @@ void PLAYER::update() {
 		Player.nowLane++;
 		Player.Pos.y += Player.Pmy;
 	}
+	launch();
 }
 
 void PLAYER::playerMove() {
 	Player.Pos.x += Player.speed;
+}
+
+void PLAYER::launch(){
+	if (isTrigger(KEY_K)) {
+		game()->weapons(GAME10_GAME::HANDGUN_ID)->launch(Player.Pos);
+	}
 }
 
 void PLAYER::draw(){

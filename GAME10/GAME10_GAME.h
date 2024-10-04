@@ -25,11 +25,12 @@ public:
 private:
 	class SCENE* Scenes[NUM_SCENES];
 	SCENE_ID CurSceneId;
-
+	//ƒLƒƒƒ‰ŠÖ˜A
 	class PLAYER* Player;
 	class HP_GAUGE* PlayerHpGauge;
+	class HANDGUN_BULLETS* HandgunBullets;
+	
 	class TIME* Time;
-
 	class WEAPONS* Weapons[NUM_WEAPON];
 	WEAPON_ID CurWeaponId;
 public:
@@ -42,5 +43,6 @@ public:
 	class PLAYER* player() { return Player; }
 	class WEAPONS* weapons(int Weaponkind) { return Weapons[Weaponkind]; }
 	class TIME* time() { return Time; }
+	class HANDGUN_BULLETS* handgunBullets() { return HandgunBullets; };
 };
 
