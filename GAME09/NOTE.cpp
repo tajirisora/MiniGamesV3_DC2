@@ -19,11 +19,24 @@ namespace GAME09 {
 	}
 
 	void NOTE::init() {
-		float laneWidth = game()->lane()->laneWidth(); //あとでレーンクラスで定義したものに置き換える
+		float laneWidth = game()->lane()->laneWidth();
 		float oneLaneWidth = (laneWidth / LaneNum);
 		PosX = (Lane - (LaneNum - 1) / 2.0f) * oneLaneWidth + game()->lane()->lanePos().x;
 		EdgeImgDist = oneLaneWidth / 2 - Note.edgeOfst;
 		RectSize = VECTOR2(oneLaneWidth - Note.rectOfst * 2, Note.rectHeight);
+
+		Color = Note.color;
+		float r = Color.r;
+		float g = Color.g;
+		float b = Color.b;
+		r = 255 - (255 - r) * (1 - Note.highlightColorRatio);
+		g = 255 - (255 - g) * (1 - Note.highlightColorRatio);
+		b = 255 - (255 - b) * (1 - Note.highlightColorRatio);
+		HighlightColor = COLOR(r, g, b);
+		r = Color.r * Note.downColorRatio;
+		g = Color.g * Note.downColorRatio;
+		b = Color.b * Note.downColorRatio;
+		DownColor = COLOR(r, g, b);
 	}
 
 	void NOTE::update() {
@@ -38,17 +51,23 @@ namespace GAME09 {
 	void NOTE::draw() {
 		rectMode(CENTER);
 		noStroke();
-		fill(Note.upColor);
+		fill(Color);
 		rect(Pos.x, Pos.y, RectSize.x, RectSize.y);
-		fill(Note.downColor);
+		fill(DownColor);
 		rect(Pos.x, Pos.y + RectSize.y / 4, RectSize.x, RectSize.y / 2);
-		fill(Note.highlightColor);
+		fill(HighlightColor);
 		float ratio = Note.highlightHeightRatio;
 		rect(Pos.x, Pos.y - RectSize.y / 2 + RectSize.y * ratio / 2, RectSize.x, RectSize.y * ratio);
 
-		image(Note.centerImg, Pos.x, Pos.y, 0, Note.imgSize);
-		image(Note.rightImg, Pos.x + EdgeImgDist, Pos.y, 0, Note.imgSize);
-		image(Note.leftImg, Pos.x - EdgeImgDist, Pos.y, 0, Note.imgSize);
+		image(Note.centerUnderImg, Pos.x, Pos.y, 0, Note.imgSize);
+		imageColor(Color);
+		image(Note.rightUnderImg, Pos.x + EdgeImgDist, Pos.y, 0, Note.imgSize);
+		image(Note.leftUnderImg, Pos.x - EdgeImgDist, Pos.y, 0, Note.imgSize);
+		imageColor(HighlightColor);
+		image(Note.centerUpperImg, Pos.x, Pos.y, 0, Note.imgSize);
+		imageColor(255);
+		image(Note.rightUpperImg, Pos.x + EdgeImgDist, Pos.y, 0, Note.imgSize);
+		image(Note.leftUpperImg, Pos.x - EdgeImgDist, Pos.y, 0, Note.imgSize);
 	}
 
 	void NOTE::setData(NOTE_DATA data) {

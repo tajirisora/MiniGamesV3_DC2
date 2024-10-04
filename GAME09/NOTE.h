@@ -10,17 +10,20 @@ namespace GAME09 {
     {
     public:
         struct DATA {
-            int leftImg;
-            int centerImg;
-            int rightImg;
+            int leftUnderImg;
+            int leftUpperImg;
+            int centerUnderImg;
+            int centerUpperImg;
+            int rightUnderImg;
+            int rightUpperImg;
             float edgeOfst; //ノーツの端っこの座標から左右端の画像表示位置までのオフセット
             float rectOfst; //ノーツの真ん中の四角形の端っこの座標
             float rectHeight; //ノーツの真ん中の四角形の高さ
             float imgSize;
             float highlightHeightRatio;
-            COLOR highlightColor;
-            COLOR upColor;
-            COLOR downColor;
+            COLOR color;
+            float highlightColorRatio;
+            float downColorRatio;
         };
         struct NOTE_DATA {
             int laneNum;
@@ -47,6 +50,10 @@ namespace GAME09 {
         float PosX;
         float EdgeImgDist;
         VECTOR2 RectSize;
+
+        COLOR Color;
+        COLOR HighlightColor;
+        COLOR DownColor;
 
         int LaneNum = 0;
         int Lane = 0;

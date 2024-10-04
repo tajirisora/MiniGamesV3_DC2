@@ -54,10 +54,10 @@ namespace GAME09
 		Data.note.edgeOfst = 10;
 		Data.note.rectOfst = 14;
 		Data.note.rectHeight = 30;
-		Data.note.highlightHeightRatio = 0.2f;
-		Data.note.highlightColor = COLOR(101, 244, 255);
-		Data.note.upColor = COLOR(0, 203, 255);
-		Data.note.downColor = COLOR(0, 171, 229);
+		Data.note.highlightHeightRatio = 0.15f;
+		Data.note.color = COLOR(255, 0, 255);
+		Data.note.highlightColorRatio = 0.7f;
+		Data.note.downColorRatio = 0.9f;
 
 		Data.rgCont.rawSpeed = 10000;
 		Data.rgCont.detailViewTime = 3;
@@ -98,9 +98,12 @@ namespace GAME09
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
 		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
-		Data.note.centerImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center.png");
-		Data.note.rightImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Right.png");
-		Data.note.leftImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Left.png");
+		Data.note.centerUnderImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center_Under.png");
+		Data.note.centerUpperImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center_Upper.png");
+		Data.note.rightUnderImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Right_Under.png");
+		Data.note.rightUpperImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Right_Upper.png");
+		Data.note.leftUnderImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Left_Under.png");
+		Data.note.leftUpperImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Left_Upper.png");
 		Data.judge.judge[JUDGEMANAGER::PERFECT].img = loadImage("..\\main\\assets\\game09\\texture\\perfect.png");
 		Data.judge.judge[JUDGEMANAGER::GREAT].img = loadImage("..\\main\\assets\\game09\\texture\\great.png");
 		Data.judge.judge[JUDGEMANAGER::MISS].img = loadImage("..\\main\\assets\\game09\\texture\\miss.png");
