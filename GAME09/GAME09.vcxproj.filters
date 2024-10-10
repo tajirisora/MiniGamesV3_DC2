@@ -26,6 +26,7 @@
     <ClCompile Include="SOUNDMANAGER.cpp" />
     <ClCompile Include="JUDGEMANAGER.cpp" />
     <ClCompile Include="KEYCONFIG.cpp" />
+    <ClCompile Include="OPTION.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="SOUNDMANAGER.h" />
     <ClInclude Include="JUDGEMANAGER.h" />
     <ClInclude Include="KEYCONFIG.h" />
+    <ClInclude Include="OPTION.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

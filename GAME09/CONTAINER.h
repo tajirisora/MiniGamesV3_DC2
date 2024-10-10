@@ -19,7 +19,7 @@
 //#include "SCORE.h"
 //#include "AUTOBUTTON.h"
 //#include "OPTIONBUTTON.h"
-//#include "OPTION.h"
+#include "OPTION.h"
 //#include "SONGTITLE.h"
 //#include "ACHIEVEMENT.h"
 #include "LANE.h"
@@ -54,7 +54,7 @@ namespace GAME09
 			//SCORE::DATA score;
 			//AUTOBUTTON::DATA autoButton;
 			//OPTIONBUTTON::DATA optionButton;
-			//OPTION::DATA option;
+			OPTION::DATA option;
 			//SONGTITLE::DATA songTitle;
 			//ACHIEVEMENT::DATA achievement;
 			LANE::DATA lane;

@@ -29,9 +29,9 @@ namespace GAME09 {
 		std::thread msg(&LOADSONGS::loadingMsg, this, std::ref(stopFlag));
 
 		//譜面ファイルの読み込み処理
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		//std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		game()->chartMNG()->loadCharts(CurLoad);
-		std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 		//スレッドを止める
 		stopFlag = true;
