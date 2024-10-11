@@ -34,7 +34,7 @@ namespace GAME09 {
 			AnimeNum = CurNum + MoveNum * ratio;
 			AnimeTime += delta;
 			if (AnimeTime > Banner.moveAnimeTime) {
-				CurNum = (CurNum + MoveNum + game()->songs().size()) % game()->songs().size();
+				CurNum = (CurNum + MoveNum + game()->songs().size()) % (int)game()->songs().size();
 				if (isPress(KEY_DOWN)) {
 					AnimeTime -= Banner.moveAnimeTime;
 					MoveNum = 1;
@@ -46,7 +46,7 @@ namespace GAME09 {
 				else {
 					AnimeFlag = false;
 					PlayDemoMusic = true;
-					AnimeNum = CurNum;
+					AnimeNum = (float)CurNum;
 					BackGroundImageNum = CurNum;
 				}
 			}
@@ -73,11 +73,11 @@ namespace GAME09 {
 		rectMode(CENTER);
 		//image(Banner.backImg, Banner.centerPos.x, Banner.centerPos.y, 0, Banner.imgSize);
 		const int drawBannerNum = 9;
-		const int startBannerIdx = Round(AnimeNum) - (drawBannerNum / 2);
+		const int startBannerIdx = (int)Round(AnimeNum) - (drawBannerNum / 2);
 		for (int i = 0; i < drawBannerNum; i++) {
 			float dist = startBannerIdx + i - AnimeNum;
 			int bannerNum = (startBannerIdx + i) % (int)game()->songs().size();
-			if (bannerNum < 0) bannerNum += game()->songs().size();
+			if (bannerNum < 0) bannerNum += (int)game()->songs().size();
 
 			VECTOR2 pos = Banner.centerPos;
 			if (dist < 0) {

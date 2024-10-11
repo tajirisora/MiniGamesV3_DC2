@@ -61,7 +61,7 @@ namespace GAME09 {
 				BeatE = (*it).beatE;
 				//レーンステートを設定
 				std::vector<int>& data = (*it).lane;
-				int size = data.size();
+				int size = (int)data.size();
 				int index = 0;
 				for (int i = 0; i < size; i++) {
 					index = SearchLaneNum(data[i]);
@@ -85,7 +85,7 @@ namespace GAME09 {
 				ratio = 1;
 			}
 			else {
-				ratio = (beat - BeatS) / (BeatE - BeatS);
+				ratio = (float)((beat - BeatS) / (BeatE - BeatS));
 			}
 		}
 		for (auto it = Lanes.begin(); it != Lanes.end();) {

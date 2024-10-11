@@ -103,7 +103,7 @@ namespace GAME09 {
 					bool isJudge = false;
 					//上位の判定から順番に判定の範囲内か確認
 					for (int i = 0; i < NUM_JUDGE; i++) {
-						if (Abs((*it)->getTime() - Cont->curTime()) < JudgeMNG.judge[i].time) {
+						if (Abs((float)((*it)->getTime() - Cont->curTime())) < JudgeMNG.judge[i].time) {
 							Judge = (JUDGE)i;
 							if (Judge == GREAT) {
 								if ((*it)->getTime() - Cont->curTime() > 0) {
@@ -178,7 +178,7 @@ namespace GAME09 {
 						bool isJudge = false;
 						//上位の判定から順番に判定の範囲内か確認
 						for (int i = 0; i < NUM_JUDGE; i++) {
-							if (Abs((*it)->getTime() - Cont->curTime()) < JudgeMNG.judge[i].time) {
+							if (Abs((float)((*it)->getTime() - Cont->curTime())) < JudgeMNG.judge[i].time) {
 								Judge = (JUDGE)i;
 								if (Judge == GREAT) {
 									if ((*it)->getTime() - Cont->curTime() > 0) {
@@ -273,7 +273,7 @@ namespace GAME09 {
 						bool isJudge = false;
 						//上位から判定
 						for (int i = 0; i < NUM_JUDGE; i++) {
-							if (Abs((*it)->getTimeE() - Cont->curTime()) < JudgeMNG.judge[i].time) {
+							if (Abs((float)((*it)->getTimeE() - Cont->curTime())) < JudgeMNG.judge[i].time) {
 								Judge = (JUDGE)i;
 								AccCnt(NONE);
 								if (Judge == MISS) {

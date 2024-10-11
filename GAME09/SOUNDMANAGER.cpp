@@ -24,7 +24,7 @@ namespace GAME09 {
 
 	int SOUNDMANAGER::loadMusic(const char* fileName, float volume) {
 		int m = loadSound(fileName);
-		setVolume(m, volume);
+		setVolume(m, (long)volume);
 		return m;
 	}
 	void SOUNDMANAGER::playMusic(int idx) {

@@ -87,7 +87,7 @@ namespace GAME09 {
 
 		}
 
-		float beatTime = 60.0f / BPM;// / (Measure.y / 4);
+		float beatTime = 60.0f / (float)BPM;// / (Measure.y / 4);
 		VisualBeat = TempVisualBeat + (CurTime - TempTime) / beatTime;
 	}
 

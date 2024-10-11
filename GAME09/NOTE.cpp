@@ -44,7 +44,7 @@ namespace GAME09 {
 	}
 
 	VECTOR2 NOTE::SetPos(double beat) {
-		float y = game()->lane()->lanePos().y - (beat - game()->rgCont()->visualBeat()) * Speed;
+		float y = game()->lane()->lanePos().y - (float)(beat - game()->rgCont()->visualBeat()) * Speed;
 		return VECTOR2(PosX, y);
 	}
 

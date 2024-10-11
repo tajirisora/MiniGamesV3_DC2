@@ -80,8 +80,8 @@ namespace GAME09 {
 			longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
 		}
 		//LaneChangeコマンドは、その次読み込む行のレーン数は変更しない
-		int nextLane = songInfo.lanes.size(); //次の行を読み込んだ後にレーン数が何になるか
-		int curLane = songInfo.lanes.size();
+		int nextLane = (int)songInfo.lanes.size(); //次の行を読み込んだ後にレーン数が何になるか
+		int curLane = (int)songInfo.lanes.size();
 
 		std::ifstream file;
 		file.open(songInfo.fileName, std::ios::in);
@@ -124,8 +124,8 @@ namespace GAME09 {
 					tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
 					curBar = 0;
 
-					int conS = buffer.find(':') + 1;
-					int conE = buffer.find_last_of(';');
+					int conS = (int)buffer.find(':') + 1;
+					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					bpm = std::stof(content);
 
@@ -140,12 +140,12 @@ namespace GAME09 {
 					tempVisualBeat += (measure.x * 4 / measure.y) * curBar;
 					curBar = 0;
 
-					int conS = buffer.find(':') + 1;
-					int conE = buffer.find_last_of(';');
+					int conS = (int)buffer.find(':') + 1;
+					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					int n = std::stoi(content.substr(0, content.find('/')));
 					int d = std::stoi(content.substr(content.find('/') + 1));
-					measure = VECTOR2(n, d);
+					measure = VECTOR2((float)n, (float)d);
 
 					changeData.time = tempTime - offset;
 					changeData.visualBeat = tempVisualBeat + offsetB;
@@ -180,11 +180,11 @@ namespace GAME09 {
 					for (auto it = bar.begin(); it != bar.end(); ++it) {
 						visualBeat = tempVisualBeat + (measure.x * 4 / measure.y) * (curBar + (float)j / divisionNum) + offsetB;
 						curTime = tempTime + (60.0 / bpm / (measure.y / 4) * measure.x) * (curBar + (float)j / divisionNum) - offset;
-						speed = game()->rgCont()->speed() * (game()->rgCont()->rawSpeed() / songInfo.bpm);
+						speed = game()->rgCont()->speed() * (game()->rgCont()->rawSpeed() / (float)songInfo.bpm);
 
 						if ((*it).find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) { //LANEコマンド
-							int conS = (*it).find(':') + 1;
-							int conE = (*it).find_last_of(';');
+							int conS = (int)(*it).find(':') + 1;
+							int conE = (int)(*it).find_last_of(';');
 							std::string content = (*it).substr(conS, conE - conS);
 							std::string lanes = content.substr(0, content.find('/'));
 							double beat = std::stof(content.substr(content.find('/') + 1));
@@ -339,8 +339,8 @@ namespace GAME09 {
 				std::string t = ChartMNG.infoStartStr[i];
 				if (buffer.size() >= t.size() &&
 					buffer.find(t) != std::string::npos) {
-					int conS = buffer.find(':') + 1;
-					int conE = buffer.find_last_of(';');
+					int conS = (int)buffer.find(':') + 1;
+					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					switch (i) {
 					case TITLE:
@@ -370,7 +370,7 @@ namespace GAME09 {
 					case MEASURE: {
 						int n = std::stoi(content.substr(0, content.find('/')));
 						int d = std::stoi(content.substr(content.find('/') + 1));
-						songInfo.measure = VECTOR2(n, d);
+						songInfo.measure = VECTOR2((float)n, (float)d);
 					}
 						break;
 					case VOLUME:
@@ -412,8 +412,8 @@ namespace GAME09 {
 				std::string t = ChartMNG.scoreDataStr[i];
 				if (buffer.size() >= t.size() &&
 					buffer.find(t) != std::string::npos) {
-					int conS = buffer.find(':') + 1;
-					int conE = buffer.find_last_of(';');
+					int conS = (int)buffer.find(':') + 1;
+					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					switch (i) {
 					case SCORE:
@@ -441,7 +441,7 @@ namespace GAME09 {
 			int w, h, p;
 			unsigned char* pixels = 0;
 			pixels = stbi_load(imageFile.c_str(), &w, &h, &p, 4); //使い方違うけどこれで高さと幅を取得
-			size = VECTOR2(w, h);
+			size = VECTOR2((float)w, (float)h);
 			stbi_image_free(pixels);
 		}
 	}

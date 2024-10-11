@@ -46,7 +46,7 @@ namespace GAME09 {
 			char str[128];
 			sprintf_s(str, 128, "%3dÅì", percent);
 
-			textSize(LoadSongs.msgSize);
+			textSize((float)LoadSongs.msgSize);
 			fill(255);
 			text("NowLoding...", LoadSongs.msgPos.x, LoadSongs.msgPos.y);
 			text(str, LoadSongs.percentPos.x, LoadSongs.percentPos.y);

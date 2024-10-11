@@ -47,7 +47,7 @@ namespace GAME09 {
 			char str[128];
 			sprintf_s(str, 128, "%3dÅì", percent);
 
-			textSize(LoadChart.msgSize);
+			textSize((float)LoadChart.msgSize);
 			fill(255);
 			text("NowLoding...", LoadChart.msgPos.x, LoadChart.msgPos.y);
 			text(str, LoadChart.percentPos.x, LoadChart.percentPos.y);
