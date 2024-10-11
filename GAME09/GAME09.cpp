@@ -10,6 +10,7 @@ namespace GAME09
 		Container = new CONTAINER;
 		Scenes[TITLE_ID] = new TITLE(this);
 		Scenes[SELECT_ID] = new MUSICSELECT(this);
+		Scenes[OPTION_ID] = new OPTION(this);
 		Scenes[STAGE_ID] = new STAGE(this);
 		Scenes[GAME_CLEAR_ID] = new GAME_CLEAR(this);
 		Scenes[LOADSONGS_ID] = new LOADSONGS(this);
@@ -44,6 +45,7 @@ namespace GAME09
 		JudgeMNG->create();
 
 		changeScene(TITLE_ID);
+		EscapeKeyValid = false;
 		return 0;
 	}
 
@@ -63,6 +65,8 @@ namespace GAME09
 			delete Scenes[i];
 		}
 		delete Container;
+
+		EscapeKeyValid = true;
 	}
 
 	void GAME::proc()
@@ -81,5 +85,9 @@ namespace GAME09
 		else {
 			Fade->inStart();
 		}
+	}
+
+	void GAME::exit() {
+		main()->backToMenu();
 	}
 }

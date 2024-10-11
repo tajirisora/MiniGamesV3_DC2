@@ -27,6 +27,9 @@ namespace GAME09 {
 		print("title");
 	}
 	void TITLE::nextScene() {
+		if (isTrigger(KEY_ESCAPE)) {
+			game()->exit();
+		}
 		if (isTrigger(KEY_ENTER)) {
 			game()->fade()->outStart();
 		}

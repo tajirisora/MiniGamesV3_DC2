@@ -48,10 +48,17 @@ namespace GAME09 {
 			if (!game()->banner()->animeFlag()) {
 				game()->fade()->outStart();
 			}
+			NextScene = GAME::LOADCHART_ID;
+		}
+		if (isTrigger(KEY_O)) {
+			if (!game()->banner()->animeFlag()) {
+				game()->fade()->outStart();
+			}
+			NextScene = GAME::OPTION_ID;
 		}
 		if (game()->fade()->outEndFlag()) {
 			game()->soundMNG()->stopMusic();
-			game()->changeScene(GAME::LOADCHART_ID);
+			game()->changeScene(NextScene);
 		}
 	}
 }

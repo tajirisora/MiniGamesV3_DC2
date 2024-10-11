@@ -4,7 +4,7 @@
 #include "CHANGEDATA.h"
 #include "NOTE.h"
 #include <vector>
-
+extern bool EscapeKeyValid;
 namespace GAME09
 {
 	class GAME :
@@ -27,6 +27,7 @@ namespace GAME09
 		enum SCENE_ID {
 			TITLE_ID,
 			SELECT_ID,
+			OPTION_ID,
 			STAGE_ID,
 			GAME_CLEAR_ID,
 			LOADSONGS_ID,
@@ -52,6 +53,7 @@ namespace GAME09
 		std::vector<CHANGEDATA> ChangeDatas;
 	public:
 		void changeScene(SCENE_ID sceneId);
+		void exit();
 		class SCENE* scene(SCENE_ID sceneId) { return Scenes[sceneId]; }
 		class FADE* fade() { return Fade; }
 		class CHARTMANAGER* chartMNG() { return ChartMNG; }
