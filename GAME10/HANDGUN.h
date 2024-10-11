@@ -22,7 +22,7 @@ public:
 	void create();
 	void init();
 	void proc();
-	void launch(VECTOR2 pos);
+	void launch(VECTOR2 pos,int lane);
 	void draw();
 };
 

@@ -11,5 +11,6 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void nextScene();
+	virtual int speed();
 };
 

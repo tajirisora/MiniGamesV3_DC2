@@ -4,6 +4,7 @@
 #include "../../libOne/inc/libOne.h"
 #include"GAME10_GAME.h"
 #include"HANDGUN_BULLETS.h"
+#include"ENEMYS.h"
 #include"WEAPONS.h"
 STAGE::STAGE(GAME10_GAME* game) :SCENE(game) {}
 STAGE::~STAGE() {
@@ -18,13 +19,15 @@ void STAGE::goalStage() {
 	Stage.bworldX = NULL;
 	Stage.fworldX = NULL;
 	game()->handgunBullets()->AllKill();//弾丸を全部消す
+	game()->enemies()->AllKill();//敵を全部消す
 	game()->player()->stageGoal();
 }
 void STAGE::update() {
 	//ステージの強制スクロール（スピードはプレイヤーのスピードの依存する）
 	if (Stage.gPos.x - Stage.fworldX > width / 2 
 		&& (int)game()->player()->playerData().Opos.x == (int)game()->player()->playerData().Pos.x) {
-		Stage.fworldX += game()->player()->playerData().speed;
+		Stage.frontMx = game()->player()->playerData().speed;
+		Stage.fworldX += Stage.frontMx;
 		if (game()->player()->playerData().speed >= Stage.backMx) {
 			Stage.bworldX += game()->player()->playerData().speed - Stage.backMx;
 		}
@@ -39,12 +42,15 @@ void STAGE::update() {
 	if (game()->player()->playerData().Pos.x > width) {
 		goalStage();
 	}
+	//エネミーのスピードを変える（プレイヤーの速度依存のため）
 	game()->player()->update();
+	game()->enemies()->update();
 	game()->handgunBullets()->update();
 }
 void STAGE::create() {
 	Stage = game()->container()->stage();
 	game()->player()->create();
+	game()->enemies()->create();
 	game()->PlayerHp_gauge()->create();
 }
 void STAGE::draw() {
@@ -63,6 +69,7 @@ void STAGE::draw() {
 		}
 	}
 	image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
+	game()->enemies()->draw();
 	game()->player()->draw();
 	game()->time()->draw();
 	game()->handgunBullets()->draw();

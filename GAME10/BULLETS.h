@@ -20,13 +20,14 @@ private:
 	struct BULLET {
 		VECTOR2 pos;
 		VECTOR2 vec;
+		int Lane;
 	};
 	BULLET* Bullets;
 public:
 	BULLETS(class GAME10_GAME* game);
 	~BULLETS();
 	void init();
-	void launch(const VECTOR2& pos,int speed);
+	void launch(const VECTOR2& pos,int speed,int lane);
 	void update();
 	void kill(int i);
 	void AllKill();

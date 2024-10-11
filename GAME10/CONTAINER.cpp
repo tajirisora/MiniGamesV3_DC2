@@ -32,6 +32,10 @@ void CONTAINER::setImage() {
 	Data.player.playerImg = loadImage("..\\main\\assets\\game10\\playerImg.png");
 	Data.player.timeImage = loadImage("..\\main\\assets\\game10\\timeImg.png");
 
+	Data.enemy.Img[0] = loadImage("..\\main\\assets\\game10\\enemyImg00.png");
+	Data.enemy.Img[1] = loadImage("..\\main\\assets\\game10\\enemyImg10.png");
+	Data.enemy.Img[2] = loadImage("..\\main\\assets\\game10\\enemyImg20.png");
+
 	Data.hp_gause.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
 
 	Data.handgun.GunsImg = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
@@ -100,6 +104,19 @@ void CONTAINER::setData(){
 		}
 	}
 
+	//敵データ
+	Data.enemy.opos.x = width;
+	Data.enemy.opos.y = 520;
+	Data.enemy.my = Data.player.Pmy;
+	Data.enemy.ohp = 200;
+	Data.enemy.totalNum = 50;
+	Data.enemy.nowNum = 0;
+	Data.enemy.speed = 0;
+	Data.enemy.level = 1;
+	Data.enemy.initIntervalDist = 1000;
+	Data.enemy.callIntervalDist = Data.enemy.initIntervalDist;
+	Data.enemy.shortTime = 20;
+
 	//HPゲージ
 	Data.hp_gause.imgPos.x = 70;
 	Data.hp_gause.imgPos.y = 920;
@@ -113,10 +130,10 @@ void CONTAINER::setData(){
 	//武器
 	Data.handgun.Pos.x = 1000;
 	Data.handgun.Pos.y = 920;
-	Data.handgun.speed = 5;
+	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
 	Data.handgun.damage = 100;
-	Data.handgun.ctIntervalTime = 250;
+	Data.handgun.ctIntervalTime = 90;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
 

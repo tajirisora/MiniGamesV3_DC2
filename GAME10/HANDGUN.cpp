@@ -15,8 +15,14 @@ void HANDGUN::init(){
 }
 void HANDGUN::proc(){
 }
-void HANDGUN::launch(VECTOR2 pos){
-	game()->handgunBullets()->launch(pos,Handgun.speed);
+void HANDGUN::launch(VECTOR2 pos,int lane){
+	if(Handgun.intervalTime <= NULL){
+		game()->handgunBullets()->launch(pos,Handgun.speed,lane);
+		Handgun.intervalTime = Handgun.ctIntervalTime;
+	}
+	else {
+		Handgun.intervalTime--;
+	}
 }
 void HANDGUN::draw(){
 	image(Handgun.GunsImg, Handgun.Pos.x, Handgun.Pos.y);

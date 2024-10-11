@@ -49,6 +49,6 @@ public:
 	void create();
 	void draw();
 	void nextScene();
-	
+	int speed() { return Stage.frontMx; }
 };
 

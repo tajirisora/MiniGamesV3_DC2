@@ -7,6 +7,7 @@
 #include"HANDGUN.h"
 #include"BULLETS.h"
 #include"TIME.h"
+#include"ENEMYS.h"
 class CONTAINER
 {
 private:
@@ -19,6 +20,7 @@ private:
 		HANDGUN::DATA handgun;
 		TIME::DATA time;
 		BULLETS::DATA handgunBullet;
+		ENEMYS::DATA enemy;
 	};
 	DATA Data;
 public:
@@ -35,5 +37,6 @@ public:
 	const HANDGUN::DATA& handgun() { return Data.handgun; }
 	const TIME::DATA& time() { return Data.time; }
 	const BULLETS::DATA& handgunBullet() { return Data.handgunBullet; }
+	const ENEMYS::DATA& enemy() { return Data.enemy; }
 };
 

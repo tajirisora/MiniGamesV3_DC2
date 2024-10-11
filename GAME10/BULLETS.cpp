@@ -11,11 +11,12 @@ void BULLETS::SetBullets(const BULLETS::DATA& data){
 void BULLETS::init(){
 	Bullet.curNum = 0;
 }
-void BULLETS::launch(const VECTOR2& pos,int speed) {
+void BULLETS::launch(const VECTOR2& pos,int speed,int lane) {
 	if (Bullet.curNum < Bullet.totalNum) {
 		int i = Bullet.curNum;
 		Bullets[i].pos.x = pos.x + Bullet.ImgHalf;
 		Bullets[i].pos.y = pos.y + Bullet.ImgHalf;
+		Bullets[i].Lane = lane;
 		Bullet.speed = speed;
 		Bullet.curNum++;
 	}

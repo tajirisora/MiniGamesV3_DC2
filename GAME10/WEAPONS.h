@@ -8,7 +8,7 @@ public:
 	virtual ~WEAPONS();
 	virtual void create();
 	virtual void init();
-	virtual void launch(VECTOR2 pos);
+	virtual void launch(VECTOR2 pos,int lane);
 	virtual void proc();
 	virtual void update();
 	virtual void draw();

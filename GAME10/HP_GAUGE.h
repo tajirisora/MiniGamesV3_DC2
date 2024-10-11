@@ -18,10 +18,9 @@ private:
 public:
 	HP_GAUGE(class GAME10_GAME* game);
 	~HP_GAUGE();
-	void setHp(int Hp);//セッター
-	void create();
-	void getDamage(int damage);
-	void draw();
-	DATA& hp_gauge() { return Gauge; }
+	virtual void setHp(int Hp);//セッター
+	virtual void create();
+	virtual void getDamage(int damage);
+	virtual void draw();
 };
 

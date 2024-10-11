@@ -29,6 +29,8 @@ private:
 	class PLAYER* Player;
 	class HP_GAUGE* PlayerHpGauge;
 	class HANDGUN_BULLETS* HandgunBullets;
+
+	class ENEMYS* Enemies;
 	
 	class TIME* Time;
 	class WEAPONS* Weapons[NUM_WEAPON];
@@ -44,5 +46,6 @@ public:
 	class WEAPONS* weapons(int Weaponkind) { return Weapons[Weaponkind]; }
 	class TIME* time() { return Time; }
 	class HANDGUN_BULLETS* handgunBullets() { return HandgunBullets; };
+	class ENEMYS* enemies() { return Enemies; }
 };
 

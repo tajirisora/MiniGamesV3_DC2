@@ -7,6 +7,7 @@
 #include"HANDGUN_BULLETS.h"
 #include"TIME.h"
 #include"HP_GAUGE.h"
+#include"ENEMYS.h"
 #include"HANDGUN.h"
 GAME10_GAME::GAME10_GAME(){
 	Container = new CONTAINER;
@@ -18,6 +19,8 @@ GAME10_GAME::GAME10_GAME(){
 	PlayerHpGauge = new HP_GAUGE(this);
 	HandgunBullets = new HANDGUN_BULLETS(this);
 	
+	Enemies = new ENEMYS(this);
+
 	Time = new TIME(this);
 	Weapons[HANDGUN_ID] = new HANDGUN(this);
 
@@ -42,6 +45,7 @@ GAME10_GAME::~GAME10_GAME(){
 	delete PlayerHpGauge;
 	delete Time;
 	delete HandgunBullets;
+	delete Enemies;
 }
 void GAME10_GAME::run(){
 	Scenes[CurSceneId]->proc();

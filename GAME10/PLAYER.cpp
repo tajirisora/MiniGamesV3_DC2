@@ -52,9 +52,7 @@ void PLAYER::playerMove() {
 }
 
 void PLAYER::launch(){
-	if (isTrigger(KEY_K)) {
-		game()->weapons(GAME10_GAME::HANDGUN_ID)->launch(Player.Pos);
-	}
+	game()->weapons(GAME10_GAME::HANDGUN_ID)->launch(Player.Pos,Player.nowLane);
 }
 
 void PLAYER::draw(){
@@ -63,6 +61,7 @@ void PLAYER::draw(){
 	fill(255);
 	textSize(40);
 	game()->PlayerHp_gauge()->draw();
+	text(Player.Pos.y, 0, 40);
 	for (int i = 0; i < Player.weaponNum; i++) {
 		if (Player.weaponKind[i] >= NULL) {
 			game()->weapons(i)->draw();

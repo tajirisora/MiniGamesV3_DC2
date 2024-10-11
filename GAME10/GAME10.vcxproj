@@ -135,6 +135,8 @@
   <ItemGroup>
     <ClCompile Include="BULLETS.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="ENEMYS.cpp" />
+    <ClCompile Include="ENEMY_HPGAUGE.cpp" />
     <ClCompile Include="GAME10.cpp" />
     <ClCompile Include="GAME10_GAME.cpp" />
     <ClCompile Include="GAME_OBJECT10.cpp" />
@@ -142,6 +144,7 @@
     <ClCompile Include="HANDGUN_BULLETS.cpp" />
     <ClCompile Include="HP_GAUGE.cpp" />
     <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="PLAYER_HP.cpp" />
     <ClCompile Include="RESULT.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="STAGE.cpp" />
@@ -152,6 +155,8 @@
   <ItemGroup>
     <ClInclude Include="BULLETS.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="ENEMYS.h" />
+    <ClInclude Include="ENEMY_HPGAUGE.h" />
     <ClInclude Include="GAME10.h" />
     <ClInclude Include="GAME10_GAME.h" />
     <ClInclude Include="GAME_OBJECT10.h" />
@@ -159,6 +164,7 @@
     <ClInclude Include="HANDGUN_BULLETS.h" />
     <ClInclude Include="HP_GAUGE.h" />
     <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="PLAYER_HP.h" />
     <ClInclude Include="RESULT.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="STAGE.h" />
