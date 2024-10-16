@@ -29,6 +29,7 @@ namespace GAME09
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[SELECT_ID]->create();
+		Scenes[OPTION_ID]->create();
 		Scenes[STAGE_ID]->create();
 		Scenes[GAME_CLEAR_ID]->create();
 		Scenes[LOADSONGS_ID]->create();
@@ -45,7 +46,7 @@ namespace GAME09
 		JudgeMNG->create();
 
 		changeScene(TITLE_ID);
-		EscapeKeyValid = false;
+		//EscapeKeyValid = false;
 		return 0;
 	}
 

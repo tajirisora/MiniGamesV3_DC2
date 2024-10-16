@@ -24,7 +24,11 @@ namespace GAME09 {
 	void OPTION::draw() {
 		clear(255);
 		fill(0);
-		print("option");
+		stroke(0);
+		textSize(Option.optionStrSize);
+		text("ê›íË", Option.optionStrPos.x, Option.optionStrPos.y);
+		strokeWeight(5);
+		line(0, Option.optionUnderBar, width, Option.optionUnderBar);
 	}
 	void OPTION::nextScene() {
 		if (isTrigger(KEY_ENTER)) {

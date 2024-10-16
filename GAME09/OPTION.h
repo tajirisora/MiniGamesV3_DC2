@@ -8,6 +8,9 @@ namespace GAME09 {
     {
     public:
         struct DATA {
+            VECTOR2 optionStrPos;
+            float optionStrSize;
+            float optionUnderBar;
         };
     private:
         DATA Option;

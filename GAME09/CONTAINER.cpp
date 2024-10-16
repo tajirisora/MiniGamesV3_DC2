@@ -94,6 +94,10 @@ namespace GAME09
 		Data.judge.accImgSizeRate = 0.8f;
 		Data.judge.comboPos = VECTOR2(1370, 650);
 		Data.judge.comboSizeMinRate = 0.8f;
+
+		Data.option.optionStrPos = VECTOR2(70, 70);
+		Data.option.optionStrSize = 60;
+		Data.option.optionUnderBar = 80;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
