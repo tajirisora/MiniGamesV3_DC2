@@ -27,6 +27,7 @@
     <ClCompile Include="JUDGEMANAGER.cpp" />
     <ClCompile Include="KEYCONFIG.cpp" />
     <ClCompile Include="OPTION.cpp" />
+    <ClCompile Include="BUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -59,6 +60,7 @@
     <ClInclude Include="JUDGEMANAGER.h" />
     <ClInclude Include="KEYCONFIG.h" />
     <ClInclude Include="OPTION.h" />
+    <ClInclude Include="BUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
