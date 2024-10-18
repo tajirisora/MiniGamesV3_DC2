@@ -1,6 +1,7 @@
 #pragma once
 #include "GAME_OBJECT.h"
 #include "../../libOne/inc/VECTOR2.h"
+#include "../../libOne/inc/input.h"
 
 namespace GAME09 {
     class BUTTON :
@@ -14,13 +15,14 @@ namespace GAME09 {
         };
 
         struct DATA {
-            int img;
+            int img = -1;
             float imgSize;
             VECTOR2 pos;
             ColliType colliType;
             VECTOR2 ofst;
             float radius;
             VECTOR2 size;
+            INPUT_CODE key = KEY_NONE;
             bool debugFlag = true;
         };
     protected:

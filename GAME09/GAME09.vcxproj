@@ -155,6 +155,7 @@
     <ClCompile Include="MUSICSELECT.cpp" />
     <ClCompile Include="NOTE.cpp" />
     <ClCompile Include="OPTION.cpp" />
+    <ClCompile Include="OPTIONBUTTON.cpp" />
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="SOUNDMANAGER.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="NOTE.h" />
     <ClInclude Include="OPTION.h" />
+    <ClInclude Include="OPTIONBUTTON.h" />
     <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SONGINFO.h" />

@@ -28,6 +28,7 @@
     <ClCompile Include="KEYCONFIG.cpp" />
     <ClCompile Include="OPTION.cpp" />
     <ClCompile Include="BUTTON.cpp" />
+    <ClCompile Include="OPTIONBUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="KEYCONFIG.h" />
     <ClInclude Include="OPTION.h" />
     <ClInclude Include="BUTTON.h" />
+    <ClInclude Include="OPTIONBUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

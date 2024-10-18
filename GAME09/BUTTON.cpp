@@ -1,5 +1,4 @@
 #include "../../libOne/inc/graphic.h"
-#include "../../libOne/inc/input.h"
 #include "../../libOne/inc/mathUtil.h"
 #include "CONTAINER.h"
 #include "GAME09.h"
@@ -21,17 +20,23 @@ namespace GAME09 {
     }
     void BUTTON::update() {
         IsClick = false;
-        if (collision()) {
-            if (isTrigger(MOUSE_LBUTTON)) {
-                IsClick = true;
-            }
+        if (collision() && isTrigger(MOUSE_LBUTTON) || isTrigger(Button.key)) {
+            IsClick = true;
         }
     }
     void BUTTON::draw() {
         rectMode(CENTER);
-        image(Button.img, Button.pos.x, Button.pos.y, 0, Button.imgSize);
+        angleMode(DEGREES);
+        if (Button.img != -1) {
+            image(Button.img, Button.pos.x, Button.pos.y, 0, Button.imgSize);
+        }
         if (Button.debugFlag) {
-            fill(255, 0, 0, 100);
+            if (collision()) {
+                fill(0, 255, 0, 100);
+            }
+            else {
+                fill(255, 0, 0, 100);
+            }
             noStroke();
             if (Button.colliType == CIRCLE) {
                 circle(Button.pos.x + Button.ofst.x, Button.pos.y + Button.ofst.y, Button.radius * 2);
@@ -43,7 +48,7 @@ namespace GAME09 {
             else {
                 float len = Button.radius / Sqrt(2.0f) * 2;
                 rect(Button.pos.x + Button.ofst.x, Button.pos.y + Button.ofst.y,
-                    len, len);
+                    len, len, 45);
             }
         }
     }

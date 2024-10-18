@@ -22,7 +22,7 @@ namespace GAME09 {
 		if (game()->fade()->inEndFlag()) {
 			game()->banner()->update();
 			//game()->autoButton()->update();
-			//game()->optionButton()->update();
+			game()->optionButton()->update();
 		}
 	}
 	void MUSICSELECT::draw() {
@@ -32,13 +32,14 @@ namespace GAME09 {
 		game()->backGround()->draw(songInfo);
 		game()->banner()->draw();
 		game()->jacket()->draw(songInfo, Select.jacketTf);
+		game()->optionButton()->draw();
 
 		rectMode(CORNER);
+		fill(0);
 		rect(0, 1020, 1920, 60);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
 		//game()->autoButton()->draw();
-		//game()->optionButton()->draw();
 		//game()->score()->draw(Select.scorePos, Select.scoreSize, songInfo.highScore);
 		//game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement, Select.achievementPos, Select.achievementSize);
 		//if (Option) game()->option()->draw();
@@ -50,7 +51,7 @@ namespace GAME09 {
 			}
 			NextScene = GAME::LOADCHART_ID;
 		}
-		if (isTrigger(KEY_O)) {
+		if (game()->optionButton()->isClick()) {
 			if (!game()->banner()->animeFlag()) {
 				game()->fade()->outStart();
 			}

@@ -25,6 +25,7 @@ namespace GAME09
 		SoundMNG = new SOUNDMANAGER(this);
 		KeyConfig = new KEYCONFIG(this);
 		JudgeMNG = new JUDGEMANAGER(this);
+		OptionButton = new OPTIONBUTTON(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -44,6 +45,7 @@ namespace GAME09
 		SoundMNG->create();
 		KeyConfig->create();
 		JudgeMNG->create();
+		OptionButton->create();
 
 		changeScene(TITLE_ID);
 		//EscapeKeyValid = false;
@@ -52,6 +54,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete OptionButton;
 		delete JudgeMNG;
 		delete KeyConfig;
 		delete SoundMNG;

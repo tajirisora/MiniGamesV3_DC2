@@ -47,6 +47,7 @@ namespace GAME09
 		class SOUNDMANAGER* SoundMNG;
 		class KEYCONFIG* KeyConfig;
 		class JUDGEMANAGER* JudgeMNG;
+		class OPTIONBUTTON* OptionButton;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -65,6 +66,7 @@ namespace GAME09
 		class SOUNDMANAGER* soundMNG() { return SoundMNG; }
 		class KEYCONFIG* keyConfig() { return KeyConfig; }
 		class JUDGEMANAGER* judgeMNG() { return JudgeMNG; }
+		class OPTIONBUTTON* optionButton() { return OptionButton; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

@@ -18,7 +18,7 @@
 //#include "COMBO.h"
 //#include "SCORE.h"
 //#include "AUTOBUTTON.h"
-//#include "OPTIONBUTTON.h"
+#include "OPTIONBUTTON.h"
 #include "OPTION.h"
 //#include "SONGTITLE.h"
 //#include "ACHIEVEMENT.h"
@@ -53,7 +53,7 @@ namespace GAME09
 			//COMBO::DATA combo;
 			//SCORE::DATA score;
 			//AUTOBUTTON::DATA autoButton;
-			//OPTIONBUTTON::DATA optionButton;
+			BUTTON::DATA optionButton;
 			OPTION::DATA option;
 			//SONGTITLE::DATA songTitle;
 			//ACHIEVEMENT::DATA achievement;

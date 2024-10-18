@@ -98,6 +98,11 @@ namespace GAME09
 		Data.option.optionStrPos = VECTOR2(70, 70);
 		Data.option.optionStrSize = 60;
 		Data.option.optionUnderBar = 80;
+
+		Data.optionButton.colliType = BUTTON::DIAMOND;
+		Data.optionButton.key = KEY_O;
+		Data.optionButton.pos = VECTOR2(1810, 110);
+		Data.optionButton.radius = 80;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
