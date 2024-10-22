@@ -18,16 +18,23 @@ public:
 		RESULT_ID,
 		NUM_SCENES
 	};
+	//ïêäÌÇÃID
 	enum WEAPON_ID {
 		HANDGUN_ID,
 		NUM_WEAPON
+	};
+	//HPÇÃID
+	enum HP_ID {
+		PLAYERHP_ID,
+		ENEMYHP_ID,
+		NUM_HP
 	};
 private:
 	class SCENE* Scenes[NUM_SCENES];
 	SCENE_ID CurSceneId;
 	//ÉLÉÉÉâä÷òA
 	class PLAYER* Player;
-	class HP_GAUGE* PlayerHpGauge;
+	class HP_GAUGE* HpGauge[NUM_HP];
 	class HANDGUN_BULLETS* HandgunBullets;
 
 	class ENEMYS* Enemies;
@@ -41,7 +48,7 @@ public:
 	void run();
 	void changeScene(SCENE_ID SceneId);
 	class SCENE* scenes(int i) { return Scenes[i]; }
-	class HP_GAUGE* PlayerHp_gauge() { return PlayerHpGauge; }
+	class HP_GAUGE* Hp_gauge(int i) { return HpGauge[i]; }
 	class PLAYER* player() { return Player; }
 	class WEAPONS* weapons(int Weaponkind) { return Weapons[Weaponkind]; }
 	class TIME* time() { return Time; }

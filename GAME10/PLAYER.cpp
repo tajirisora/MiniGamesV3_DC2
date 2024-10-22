@@ -7,7 +7,7 @@ PLAYER::PLAYER(class GAME10_GAME* game):GAME_OBJECT10(game){
 PLAYER::~PLAYER(){}
 void PLAYER::init(){
 	Player = game()->container()->player();
-	game()->PlayerHp_gauge()->setHp(Player.hp);
+	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->setHp(Player.hp);
 }
 
 void PLAYER::stageGoal() {
@@ -21,7 +21,7 @@ void PLAYER::create(){
 
 void PLAYER::update() {
 	if (isTrigger(KEY_D)) {
-		game()->PlayerHp_gauge()->getDamage(2);
+		game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->getDamage(2);
 	}
 	if ((int)Player.Pos.x != (int)Player.Opos.x) {
 		playerMove();
@@ -47,6 +47,11 @@ void PLAYER::update() {
 	launch();
 }
 
+void PLAYER::collision() {
+
+
+}
+
 void PLAYER::playerMove() {
 	Player.Pos.x += Player.speed;
 }
@@ -60,8 +65,8 @@ void PLAYER::draw(){
 	image(Player.timeImage, Player.Tpos.x, Player.Tpos.y);
 	fill(255);
 	textSize(40);
-	game()->PlayerHp_gauge()->draw();
-	text(Player.Pos.y, 0, 40);
+	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->draw();
+	//text(Player.Pos.y, 0, 40);
 	for (int i = 0; i < Player.weaponNum; i++) {
 		if (Player.weaponKind[i] >= NULL) {
 			game()->weapons(i)->draw();

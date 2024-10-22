@@ -16,7 +16,8 @@ GAME10_GAME::GAME10_GAME(){
 	Scenes[RESULT_ID] = new RESULT(this);
 
 	Player = new PLAYER(this);
-	PlayerHpGauge = new HP_GAUGE(this);
+	HpGauge[PLAYERHP_ID] = new PLAYER_HP(this);
+	HpGauge[ENEMYHP_ID] = new ENEMY_HPGAUGE(this);
 	HandgunBullets = new HANDGUN_BULLETS(this);
 	
 	Enemies = new ENEMYS(this);
@@ -34,18 +35,20 @@ GAME10_GAME::GAME10_GAME(){
 	HandgunBullets->create();
 }
 GAME10_GAME::~GAME10_GAME(){
+	delete Container;
 	for (int i = 0; i < NUM_SCENES; i++) {
 		delete Scenes[i];
 	}
+	delete Player;
+	for (int i = 0; i < NUM_HP; i++) {
+		delete HpGauge[i];
+	}
+	delete HandgunBullets;
+	delete Enemies;
+	delete Time;
 	for (int i = 0; i < NUM_WEAPON; i++) {
 		delete Weapons[i];
 	}
-	delete Container;
-	delete Player;
-	delete PlayerHpGauge;
-	delete Time;
-	delete HandgunBullets;
-	delete Enemies;
 }
 void GAME10_GAME::run(){
 	Scenes[CurSceneId]->proc();

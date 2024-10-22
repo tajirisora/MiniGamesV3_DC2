@@ -36,7 +36,7 @@ void CONTAINER::setImage() {
 	Data.enemy.Img[1] = loadImage("..\\main\\assets\\game10\\enemyImg10.png");
 	Data.enemy.Img[2] = loadImage("..\\main\\assets\\game10\\enemyImg20.png");
 
-	Data.hp_gause.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
+	Data.playerGauge.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
 
 	Data.handgun.GunsImg = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
 	Data.handgunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
@@ -50,7 +50,7 @@ void CONTAINER::setData(){
 	Data.stage.imgPos.y = 0;
 	Data.stage.frontPos.x = 0;
 	Data.stage.frontPos.y = 100;
-	Data.stage.frontMx = 5.0f;
+	Data.stage.frontMx = 4.5f;
 	Data.stage.fImgNum = 6;
 
 	Data.stage.backPos.x = 0;
@@ -111,21 +111,28 @@ void CONTAINER::setData(){
 	Data.enemy.ohp = 200;
 	Data.enemy.totalNum = 50;
 	Data.enemy.nowNum = 0;
-	Data.enemy.speed = 0;
+	Data.enemy.speed = 6;
 	Data.enemy.level = 1;
 	Data.enemy.initIntervalDist = 1000;
 	Data.enemy.callIntervalDist = Data.enemy.initIntervalDist;
+	Data.enemy.sumTime = 500;
 	Data.enemy.shortTime = 20;
 
 	//HPÉQÅ[ÉW
-	Data.hp_gause.imgPos.x = 70;
-	Data.hp_gause.imgPos.y = 920;
-	Data.hp_gause.gaugePos.x = 200;
-	Data.hp_gause.gaugePos.y = 930;
-	Data.hp_gause.CurHp = 0;
-	Data.hp_gause.gaugeMx = 40;
-	Data.hp_gause.hpWidth = 20;
-	Data.hp_gause.hpHeight = 90;
+	Data.playerGauge.imgPos.x = 70;
+	Data.playerGauge.imgPos.y = 920;
+	Data.playerGauge.gaugePos.x = 200;
+	Data.playerGauge.gaugePos.y = 930;
+	Data.playerGauge.CurHp = 0;
+	Data.playerGauge.gaugeMx = 40;
+	Data.playerGauge.hpWidth = 20;
+	Data.playerGauge.hpHeight = 90;
+
+	Data.enemyGauge.curHp = 0;
+	Data.enemyGauge.hpHeight = 15;
+	Data.enemyGauge.MaxNumHp = Data.enemy.totalNum;
+	Data.enemyGauge.hpWidth = 100;
+	Data.enemyGauge.My = 155;
 
 	//ïêäÌ
 	Data.handgun.Pos.x = 1000;

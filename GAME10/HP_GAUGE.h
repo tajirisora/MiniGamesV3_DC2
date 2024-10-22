@@ -4,23 +4,15 @@
 class HP_GAUGE :public GAME_OBJECT10
 {
 public:
-	struct DATA {
-		int gaugeImg = 0;
-		VECTOR2 imgPos = 0;
-		VECTOR2 gaugePos = 0;
-		int CurHp = 0;
-		float gaugeMx = 0;
-		float hpWidth = 0;
-		float hpHeight = 0;
-	};
-private:
-	DATA Gauge;
-public:
 	HP_GAUGE(class GAME10_GAME* game);
-	~HP_GAUGE();
+	virtual ~HP_GAUGE();
 	virtual void setHp(int Hp);//セッター
 	virtual void create();
+	virtual void appear(int hp, int Level);//
 	virtual void getDamage(int damage);
+	virtual void getDamage(float damage, int EnemyKind);
+	virtual void death(int i);//敵・プレイヤーがやられたとき
 	virtual void draw();
+	virtual void draw(VECTOR2 pos, int EnemyKind);
 };
 

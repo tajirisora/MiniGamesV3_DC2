@@ -15,6 +15,7 @@ public:
 		int my;//oŒ»ˆÊ’u‚ğŒˆ‚ß‚é‚½‚ß‚ÌY²ˆÚ“®—Ê
 		int callIntervalDist;
 		int initIntervalDist;//‰Šú’l
+		int sumTime;
 		int shortTime;//’Z‚­‚·‚éŠÔ
 		int level;
 		VECTOR2 opos;
@@ -44,5 +45,6 @@ public:
 	void kill(int i);
 	void AllKill();
 	void draw();
+	DATA& uniEnemy() { return Enemy; }
 };
 

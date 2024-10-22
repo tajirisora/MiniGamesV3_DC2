@@ -13,6 +13,7 @@ void STAGE::init() {
 	Stage = game()->container()->stage();
 	game()->player()->init();
 	game()->time()->init();
+	game()->enemies()->init();
 	game()->handgunBullets()->init();
 }
 void STAGE::goalStage() {
@@ -51,7 +52,8 @@ void STAGE::create() {
 	Stage = game()->container()->stage();
 	game()->player()->create();
 	game()->enemies()->create();
-	game()->PlayerHp_gauge()->create();
+	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->create();
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->create();
 }
 void STAGE::draw() {
 	clear(255);

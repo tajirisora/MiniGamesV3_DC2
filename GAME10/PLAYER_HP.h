@@ -16,7 +16,7 @@ private:
 	DATA PlayerGauge;
 public:
 	PLAYER_HP(class GAME10_GAME* game);
-	PLAYER_HP();
+	~PLAYER_HP();
 	void setHp(int Hp);//セッター
 	void create();
 	void getDamage(int damage);

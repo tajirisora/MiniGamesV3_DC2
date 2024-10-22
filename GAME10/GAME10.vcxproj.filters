@@ -46,9 +46,15 @@
     <ClCompile Include="BULLETS.cpp">
       <Filter>bullet\base</Filter>
     </ClCompile>
-    <ClCompile Include="ENEMYS.cpp" />
-    <ClCompile Include="ENEMY_HPGAUGE.cpp" />
-    <ClCompile Include="PLAYER_HP.cpp" />
+    <ClCompile Include="ENEMYS.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER_HP.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="ENEMY_HPGAUGE.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME10.h">
@@ -96,9 +102,15 @@
     <ClInclude Include="BULLETS.h">
       <Filter>bullet\base</Filter>
     </ClInclude>
-    <ClInclude Include="ENEMYS.h" />
-    <ClInclude Include="ENEMY_HPGAUGE.h" />
-    <ClInclude Include="PLAYER_HP.h" />
+    <ClInclude Include="ENEMYS.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="ENEMY_HPGAUGE.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER_HP.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />
@@ -142,6 +154,15 @@
     </Filter>
     <Filter Include="bullet\header">
       <UniqueIdentifier>{9e2d1f33-f340-421c-9059-06809db55623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP">
+      <UniqueIdentifier>{18b74d7e-727b-4b59-91d3-e3f46f04139c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\sauce">
+      <UniqueIdentifier>{8f393dca-1baf-4471-9ee3-de04ee40b620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\header">
+      <UniqueIdentifier>{6eae2f7a-0cda-4747-9b6d-b1ff801225f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

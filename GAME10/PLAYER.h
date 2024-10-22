@@ -34,6 +34,7 @@ public:
 	void create();
 	void update();
 	void launch();
+	void collision();
 	void draw();
 	void playerMove();
 	DATA const playerData(){ return Player; }
