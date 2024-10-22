@@ -19,15 +19,16 @@ namespace GAME09 {
 
 	}
 	void TITLE::update() {
-
+		game()->backButton()->update();
 	}
 	void TITLE::draw() {
 		clear(255);
 		fill(0);
 		print("title");
+		game()->backButton()->draw();
 	}
 	void TITLE::nextScene() {
-		if (isTrigger(KEY_ESCAPE)) {
+		if (game()->backButton()->isClick()) {
 			game()->exit();
 		}
 		if (isTrigger(KEY_ENTER)) {

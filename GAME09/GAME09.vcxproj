@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BACKBUTTON.cpp" />
     <ClCompile Include="BACKGROUND.cpp" />
     <ClCompile Include="BANNER.cpp" />
     <ClCompile Include="BUTTON.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BACKBUTTON.h" />
     <ClInclude Include="BACKGROUND.h" />
     <ClInclude Include="BANNER.h" />
     <ClInclude Include="BUTTON.h" />

@@ -95,14 +95,19 @@ namespace GAME09
 		Data.judge.comboPos = VECTOR2(1370, 650);
 		Data.judge.comboSizeMinRate = 0.8f;
 
-		Data.option.optionStrPos = VECTOR2(70, 70);
-		Data.option.optionStrSize = 60;
-		Data.option.optionUnderBar = 80;
+		Data.option.optionStrPos = VECTOR2(160, 140);
+		Data.option.optionStrSize = 120;
+		Data.option.optionUnderBar = 160;
 
 		Data.optionButton.colliType = BUTTON::DIAMOND;
 		Data.optionButton.key = KEY_O;
 		Data.optionButton.pos = VECTOR2(1810, 110);
 		Data.optionButton.radius = 80;
+
+		Data.backButton.colliType = BUTTON::DIAMOND;
+		Data.backButton.key = KEY_ESCAPE;
+		Data.backButton.pos = VECTOR2(80, 80);
+		Data.backButton.radius = 60;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

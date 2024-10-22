@@ -26,6 +26,7 @@ namespace GAME09
 		KeyConfig = new KEYCONFIG(this);
 		JudgeMNG = new JUDGEMANAGER(this);
 		OptionButton = new OPTIONBUTTON(this);
+		BackButton = new BACKBUTTON(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -46,14 +47,16 @@ namespace GAME09
 		KeyConfig->create();
 		JudgeMNG->create();
 		OptionButton->create();
+		BackButton->create();
 
 		changeScene(TITLE_ID);
-		//EscapeKeyValid = false;
+		EscapeKeyValid = false;
 		return 0;
 	}
 
 	void GAME::destroy()
 	{
+		delete BackButton;
 		delete OptionButton;
 		delete JudgeMNG;
 		delete KeyConfig;

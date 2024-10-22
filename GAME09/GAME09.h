@@ -48,6 +48,7 @@ namespace GAME09
 		class KEYCONFIG* KeyConfig;
 		class JUDGEMANAGER* JudgeMNG;
 		class OPTIONBUTTON* OptionButton;
+		class BACKBUTTON* BackButton;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -67,6 +68,7 @@ namespace GAME09
 		class KEYCONFIG* keyConfig() { return KeyConfig; }
 		class JUDGEMANAGER* judgeMNG() { return JudgeMNG; }
 		class OPTIONBUTTON* optionButton() { return OptionButton; }
+		class BACKBUTTON* backButton() { return BackButton; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

@@ -19,7 +19,7 @@ namespace GAME09 {
 
 	}
 	void OPTION::update() {
-
+		game()->backButton()->update();
 	}
 	void OPTION::draw() {
 		clear(255);
@@ -29,13 +29,15 @@ namespace GAME09 {
 		text("Ý’è", Option.optionStrPos.x, Option.optionStrPos.y);
 		strokeWeight(5);
 		line(0, Option.optionUnderBar, width, Option.optionUnderBar);
+
+		game()->backButton()->draw();
 	}
 	void OPTION::nextScene() {
-		if (isTrigger(KEY_ENTER)) {
+		if (game()->backButton()->isClick()) {
 			game()->fade()->outStart();
 		}
 		if (game()->fade()->outEndFlag()) {
-			game()->changeScene(GAME::LOADSONGS_ID);
+			game()->changeScene(GAME::SELECT_ID);
 		}
 	}
 }
