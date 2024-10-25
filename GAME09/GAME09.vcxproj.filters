@@ -30,6 +30,7 @@
     <ClCompile Include="BUTTON.cpp" />
     <ClCompile Include="OPTIONBUTTON.cpp" />
     <ClCompile Include="BACKBUTTON.cpp" />
+    <ClCompile Include="OPTION_RELATED_BUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -65,6 +66,7 @@
     <ClInclude Include="BUTTON.h" />
     <ClInclude Include="OPTIONBUTTON.h" />
     <ClInclude Include="BACKBUTTON.h" />
+    <ClInclude Include="OPTION_RELATED_BUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

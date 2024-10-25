@@ -10,5 +10,5 @@ namespace GAME09 {
 	};
 	void textfMode(TEXTF_MODE mode);
 
-	void textf(std::string str, VECTOR2& pos, VECTOR2& size);
+	void textf(std::string str, VECTOR2 pos, VECTOR2 size);
 }

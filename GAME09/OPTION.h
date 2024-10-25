@@ -7,6 +7,12 @@ namespace GAME09 {
         public SCENE
     {
     public:
+        enum OPTION_KINDS {
+            GENERAL,
+            KEY_BIND,
+            COLOR,
+            NUM_KINDS
+        };
         struct DATA {
             VECTOR2 optionStrPos;
             float optionStrSize;
@@ -14,6 +20,9 @@ namespace GAME09 {
         };
     private:
         DATA Option;
+        void DrawGeneral();
+        void DrawKeyBind();
+        void DrawColor();
     public:
         OPTION(class GAME* game);
         ~OPTION();

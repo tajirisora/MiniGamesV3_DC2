@@ -20,7 +20,7 @@ namespace GAME09 {
     }
     void BUTTON::update() {
         IsClick = false;
-        if (collision() && isTrigger(MOUSE_LBUTTON) || isTrigger(Button.key)) {
+        if (collision() && isTrigger(MOUSE_LBUTTON) || Button.key != KEY_NONE && isTrigger(Button.key)) {
             IsClick = true;
         }
     }
@@ -51,6 +51,9 @@ namespace GAME09 {
                     len, len, 45);
             }
         }
+    }
+    void BUTTON::setData(DATA& data) {
+        Button = data;
     }
     bool BUTTON::collision() {
         VECTOR2 mousePos(mouseX, mouseY);

@@ -35,6 +35,7 @@ namespace GAME09 {
         virtual void init();
         virtual void update();
         virtual void draw();
+        virtual void setData(DATA& data);
         virtual bool isClick() { return IsClick; }
     protected:
         virtual bool collision();

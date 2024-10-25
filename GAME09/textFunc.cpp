@@ -8,7 +8,7 @@ namespace GAME09 {
 		TextMode = mode;
 	}
 
-	void textf(std::string str, VECTOR2& pos, VECTOR2& size) {
+	void textf(std::string str, VECTOR2 pos, VECTOR2 size) {
 		textMode(BOTTOM);
 		VECTOR2 strPos = pos;
 		float strSize = size.x / str.size() * 2.0f;
