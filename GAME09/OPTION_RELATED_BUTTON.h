@@ -1,5 +1,6 @@
 #pragma once
 #include "BUTTON.h"
+#include "KC_MAINSUB.h"
 #include "../../libOne/inc/COLOR.h"
 #include <string>
 
@@ -9,7 +10,7 @@ namespace GAME09 {
     {
     private:
         COLOR MainColor = { 0,0,0,0 };
-        std::string Str = "";
+        KC_MAINSUB Key;
     public:
         OPTION_RELATED_BUTTON(class GAME* game);
         ~OPTION_RELATED_BUTTON();
@@ -17,6 +18,6 @@ namespace GAME09 {
         void init();
         void draw();
         void setColor(COLOR color) { MainColor = color; }
-        void setStr(std::string str) { Str = str; }
+        void setKey(KC_MAINSUB key) { Key = key; }
     };
 }

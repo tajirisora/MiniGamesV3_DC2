@@ -139,7 +139,12 @@ namespace GAME09 {
 		text("êF", 20, 400);
 	}
 	void OPTION::UpdateKeyButtons() {
-
+		for (int y = 0; y < 6; y++) {
+			for (int x = 0; x < 6 - y; x++) {
+				KeyButtons[y][x]->update();
+				KeyButtons[y][x]->setKey(game()->keyConfig()->getKeyConfig(6 - y, x));
+			}
+		}
 	}
 	void OPTION::UpdateGeneral() {
 		
@@ -153,6 +158,7 @@ namespace GAME09 {
 			}
 			buttonNum++;
 		}
+		UpdateKeyButtons();
 	}
 	void OPTION::UpdateColor() {
 		
