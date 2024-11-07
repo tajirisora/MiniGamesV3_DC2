@@ -98,6 +98,14 @@ namespace GAME09
 		Data.option.optionStrPos = VECTOR2(160, 140);
 		Data.option.optionStrSize = 120;
 		Data.option.optionUnderBar = 160;
+		Data.option.kindButtonY = 210;
+		Data.option.kindButtonOfstX = 400;
+		Data.option.kindUnderBar = 260;
+		Data.option.typeButtonY = 310;
+		Data.option.typeButtonOfstX = 400;
+		Data.option.typeUnderBar = 360;
+		Data.option.keyButtonPos = VECTOR2(width / 2, 420);
+		Data.option.keyButtonOfst = VECTOR2(120, 120);
 
 		Data.optionButton.colliType = BUTTON::DIAMOND;
 		Data.optionButton.key = KEY_O;
