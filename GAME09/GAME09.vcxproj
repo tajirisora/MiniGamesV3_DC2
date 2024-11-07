@@ -180,6 +180,7 @@
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="JACKET.h" />
     <ClInclude Include="JUDGEMANAGER.h" />
+    <ClInclude Include="KC_MAINSUB.h" />
     <ClInclude Include="KEYCONFIG.h" />
     <ClInclude Include="LANE.h" />
     <ClInclude Include="LOADCHART.h" />

@@ -1,6 +1,6 @@
 #pragma once
 #include "GAME_OBJECT.h"
-#include "../../libOne/inc/input.h"
+#include "KC_MAINSUB.h"
 #include <vector>
 
 namespace GAME09 {
@@ -18,7 +18,7 @@ namespace GAME09 {
         };
     private:
         DATA Data;
-        INPUT_CODE KeyConfig[6][6];
+        KC_MAINSUB KeyConfig[6][6];
 
         std::vector<KEY_TRIGGER> Triggers;
 
@@ -32,7 +32,7 @@ namespace GAME09 {
         void draw();
 
         std::vector<KEY_TRIGGER>& triggers() { return Triggers; }
-        INPUT_CODE getKeyConfig(int numLane, int lane);
+        KC_MAINSUB getKeyConfig(int numLane, int lane);
         bool keyTrigger(INPUT_CODE key);
         bool keyPress(INPUT_CODE key);
         void setTrigger(INPUT_CODE key, bool value);

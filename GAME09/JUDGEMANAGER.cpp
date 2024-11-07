@@ -99,7 +99,8 @@ namespace GAME09 {
 			//タップノーツなら
 			if ((*it)->noteName() == NOTE::TAP) {
 				//そのノーツが置かれてるレーンが押された瞬間なら
-				if (KeyCon->keyTrigger((*it)->getKey())) {
+				if (KeyCon->keyTrigger((*it)->getKey().main) ||
+					KeyCon->keyTrigger((*it)->getKey().sub)) {
 					bool isJudge = false;
 					//上位の判定から順番に判定の範囲内か確認
 					for (int i = 0; i < NUM_JUDGE; i++) {
@@ -126,7 +127,12 @@ namespace GAME09 {
 							Sound->tapSound();
 							AnimeTime = 0;
 							//同じレーンの2個以上のノーツが同時に反応しないように一回判定したら押してないことにする
-							KeyCon->setTrigger((*it)->getKey(), false);
+							if (KeyCon->keyTrigger((*it)->getKey().main)) {
+								KeyCon->setTrigger((*it)->getKey().main, false);
+							}
+							else {
+								KeyCon->setTrigger((*it)->getKey().sub, false);
+							}
 							delete (*it);
 							it = notes.erase(it);
 							isJudge = true;
@@ -174,7 +180,8 @@ namespace GAME09 {
 				//始点が押されてなければ
 				if (!((LONGNOTE*)*it)->getPress()) {
 					//押された瞬間なら
-					if (KeyCon->keyTrigger((*it)->getKey())) {
+					if (KeyCon->keyTrigger((*it)->getKey().main) ||
+						KeyCon->keyTrigger((*it)->getKey().sub)) {
 						bool isJudge = false;
 						//上位の判定から順番に判定の範囲内か確認
 						for (int i = 0; i < NUM_JUDGE; i++) {
@@ -192,7 +199,13 @@ namespace GAME09 {
 									AccCnt(NONE);
 								}
 								JudgeResult[i]++;
-								KeyCon->setTrigger((*it)->getKey(), false);
+								//同じレーンの2個以上のノーツが同時に反応しないように一回判定したら押してないことにする
+								if (KeyCon->keyTrigger((*it)->getKey().main)) {
+									KeyCon->setTrigger((*it)->getKey().main, false);
+								}
+								else {
+									KeyCon->setTrigger((*it)->getKey().sub, false);
+								}
 								isJudge = true;
 								AnimeTime = 0;
 								//判定がミスの場合
@@ -253,7 +266,8 @@ namespace GAME09 {
 				//始点が押されてるとき
 				else {
 					//長押しされてるとき
-					if (KeyCon->keyPress((*it)->getKey())) {
+					if (KeyCon->keyPress((*it)->getKey().main) ||
+						KeyCon->keyPress((*it)->getKey().sub)) {
 						//終点を過ぎて押されていたらPERFECT
 						if ((*it)->getTimeE() - Cont->curTime() < 0) {
 							Judge = PERFECT;

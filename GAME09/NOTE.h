@@ -1,8 +1,8 @@
 #pragma once
 #include "GAME_OBJECT.h"
+#include "KC_MAINSUB.h"
 #include "../../libOne/inc/VECTOR2.h"
 #include "../../libOne/inc/COLOR.h"
-#include "../../libOne/inc/input.h"
 
 namespace GAME09 {
     class NOTE :
@@ -28,7 +28,7 @@ namespace GAME09 {
         struct NOTE_DATA {
             int laneNum;
             int lane;
-            INPUT_CODE key;
+            KC_MAINSUB key;
             float speed;
             double time;
             double visualBeat;
@@ -57,7 +57,7 @@ namespace GAME09 {
 
         int LaneNum = 0;
         int Lane = 0;
-        INPUT_CODE Key = KEY_NONE;
+        KC_MAINSUB Key;
         float Speed = 0;
         double Time = 0;
         double VisualBeat = 0;
@@ -79,7 +79,7 @@ namespace GAME09 {
         double getTime() { return Time; }
         double getTimeE() { return TimeE; }
         int getLane() { return Lane; }
-        INPUT_CODE getKey() { return Key; }
+        KC_MAINSUB& getKey() { return Key; }
         NOTE_NAME noteName() { return Name; }
     };
 }
