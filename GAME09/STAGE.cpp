@@ -89,30 +89,13 @@ namespace GAME09 {
 		//}
 	}
 	void STAGE::nextScene() {
-		//if (game()->rgCont()->isChangeScene()) {
-		//	game()->fade()->outStart();
-		//}
-		//if (Pause && isTrigger(KEY_ENTER)) {
-		//	game()->fade()->outStart();
-		//}
-		//if (game()->fade()->outEndFlag()) {
-		//	if (Pause) {
-		//		switch (Choices)
-		//		{
-		//		case RETRY:
-		//			game()->changeScene(GAME::STAGE_ID);
-		//			break;
-		//		case SELECT:
-		//			game()->changeScene(GAME::SELECT_ID);
-		//			break;
-		//		default:
-		//			break;
-		//		}
-		//	}
-		//	else {
-		//		game()->rgCont()->judgeMNG()->resetCombo();
-		//		game()->changeScene(GAME::GAME_CLEAR_ID);
-		//	}
-		//}
+		if (isTrigger(KEY_ESCAPE)) {
+			game()->fade()->outStart();
+			NextScene = GAME::SELECT_ID;
+		}
+		if (game()->fade()->outEndFlag()) {
+			game()->soundMNG()->stopMusic();
+			game()->changeScene(NextScene);
+		}
 	}
 }
