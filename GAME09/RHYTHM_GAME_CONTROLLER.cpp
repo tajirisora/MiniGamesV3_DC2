@@ -61,18 +61,18 @@ namespace GAME09 {
 			}
 		}
 		else if (State == PLAY) {
-			//for (auto it = ChangeDatas.begin(); it != ChangeDatas.end();) {
-			//	if ((*it).time < CurTime) {
-			//		TempTime = (*it).time;
-			//		TempVisualBeat = (*it).visualBeat;
-			//		BPM = (*it).bpm;
-			//		Measure = (*it).measure;
-			//		it = ChangeDatas.erase(it);
-			//	}
-			//	else {
-			//		it++;
-			//	}
-			//}
+			for (auto it = game()->changeDatas().begin(); it != game()->changeDatas().end();) {
+				if ((*it).time < CurTime) {
+					TempTime = (*it).time;
+					TempVisualBeat = (*it).visualBeat;
+					BPM = (*it).bpm;
+					Measure = (*it).measure;
+					it = game()->changeDatas().erase(it);
+				}
+				else {
+					it++;
+				}
+			}
 			if (CurTime > EndTime) {
 				State = AFTER_PLAY;
 			}

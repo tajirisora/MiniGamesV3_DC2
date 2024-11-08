@@ -274,6 +274,8 @@ namespace GAME09 {
 
 		//音声オフセットの値が毎回足されるのを防ぐためにここで減らす
 		songInfo.offset -= AudioOffset / 1000.0f;
+
+		game()->rgCont()->setEndTime(endTime);
 	}
 
 	void CHARTMANAGER::loadCharts(int& curLoad) {
