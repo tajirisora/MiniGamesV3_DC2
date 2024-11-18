@@ -23,6 +23,19 @@ namespace GAME14
         SCENE_ID CurSceneId = TITLE_ID;
     public:
         void changeScene(SCENE_ID sceneId);
+    private://ƒLƒƒƒ‰ƒNƒ^
+        class BUTTON* StopButton = nullptr;
+        class LEVER* Lever = nullptr;
+        class REEL_MANAGER* ReelManager = nullptr;
+        class LOTTERY* Lottery = nullptr;
+    public:
+        class BUTTON* stopButton() { return StopButton; }
+        class LEVER* lever() { return Lever; }
+        class REEL_MANAGER* reelManager() { return ReelManager; }
+        class LOTTERY* lottery() { return Lottery; }
+        void charaInit();
+        void charaUpdate();
+        void charaDraw();
     public:
         GAME(class MAIN* main) :GAME_BASE(main) {};
         ~GAME() {};

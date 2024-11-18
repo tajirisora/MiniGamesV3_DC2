@@ -4,6 +4,9 @@ namespace GAME14 {
     class STAGE :
         public SCENE
     {
+    private:
+        VECTOR2 pos = 0;
+        int img = loadImage("../MAIN\\assets\\game14\\テンプレート.png");
     public:
         STAGE(GAME* game) :SCENE(game) {}
         ~STAGE();
