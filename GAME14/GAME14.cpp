@@ -9,6 +9,7 @@
 #include"LEVER.h"
 #include"LEFT_REEL.h"
 #include"REEL_MANAGER.h"
+#include"REEL_CONTROL.h"
 #include"LOTTERY.h"
 #include"CONTAINER.h"
 #include "GAME14.h"
@@ -31,8 +32,11 @@ namespace GAME14
 		Lever = new LEVER(this);
 		StopButton = new STOP_BUTTON(this);
 		ReelManager = new REEL_MANAGER(this);
+		ReelControl = new REEL_CONTROL(this);
 		Lottery = new LOTTERY(this);
 		Lottery->create();
+		ReelControl->create();
+		ReelControl->proc();
 		ReelManager->create();
 		StopButton->create();
 		Lever->create();
@@ -42,9 +46,10 @@ namespace GAME14
 	void GAME::destroy()
 	{
 		delete Lottery;
+		delete ReelControl;
 		delete ReelManager;
-		delete Lever;
 		delete StopButton;
+		delete Lever;
 		for (int i = 0; i < NUM_SCENES; i++) {
 			delete Scenes[i];
 		}

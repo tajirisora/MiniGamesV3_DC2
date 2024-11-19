@@ -3,6 +3,7 @@
 #include"../../libOne/inc/input.h"
 #include"../../libOne/inc/graphic.h"
 #include"../../libOne/inc/mathUtil.h"
+#include"CONTAINER.h"
 #include"GAME14.h"
 #include"LEVER.h"
 #include"BUTTON.h"
@@ -11,7 +12,9 @@
 namespace GAME14 {
     REEL::~REEL(){}
     void REEL::create(){
+
     }
+
     void REEL::init(int reelId){
         ReelId = reelId;
         NeedTime = (60.0f/ RPM) / MaxNum;
@@ -48,6 +51,10 @@ namespace GAME14 {
     void REEL::draw(){
         fill(0);
         textSize(50);
+        fill(Reel.color);
+        print(brank);
+        fill(0);
+      //  image(Reel.img[0], 0, 1);
         rectMode(CENTER);
         int startIdx = round(CurNum) - (DrawNum / 2);//表示し始めるコマ番号
         for (int i = 0; i < DrawNum; i++) {

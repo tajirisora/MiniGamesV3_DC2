@@ -27,11 +27,13 @@ namespace GAME14
         class BUTTON* StopButton = nullptr;
         class LEVER* Lever = nullptr;
         class REEL_MANAGER* ReelManager = nullptr;
+        class REEL_CONTROL* ReelControl = nullptr;
         class LOTTERY* Lottery = nullptr;
     public:
         class BUTTON* stopButton() { return StopButton; }
         class LEVER* lever() { return Lever; }
         class REEL_MANAGER* reelManager() { return ReelManager; }
+        class REEL_CONTROL* reelControl() { return ReelControl; }
         class LOTTERY* lottery() { return Lottery; }
         void charaInit();
         void charaUpdate();

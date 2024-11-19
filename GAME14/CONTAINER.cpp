@@ -29,6 +29,7 @@ namespace GAME14 {
 		Data.left.pos = VECTOR2((width - reelW * 3) / 2,kyoutaiY+reeloffset);
 		Data.middle.pos = VECTOR2(Data.left.pos.x + reelW, Data.left.pos.y);
 		Data.right.pos = VECTOR2(Data.left.pos.x + reelW*2, Data.left.pos.y);
+		Data.left.color = COLOR(255, 0, 0);
 
 		Data.stop.numButton = 3;
 		Data.stop.offset = 150.0f;
@@ -55,5 +56,17 @@ namespace GAME14 {
 	}
 	void CONTAINER::setImage(){
 		Data.stopButton.img = 0;
+		/*Data.control.img[0] = loadImage("../MAIN\\assets\\game14\\bonus.1.png");
+		Data.control.img[1] = loadImage("../MAIN\\assets\\game14\\bonus.2.png");
+		Data.control.img[2] = loadImage("../MAIN\\assets\\game14\\bar.3.png");
+		Data.control.img[3] = loadImage("../MAIN\\assets\\game14\\replay.4.png");
+		Data.control.img[4] = loadImage("../MAIN\\assets\\game14\\watermelonA.5.png");
+		Data.control.img[5] = loadImage("../MAIN\\assets\\game14\\watermelonB.6.png");
+		Data.control.img[6] = loadImage("../MAIN\\assets\\game14\\cherry.7.png");
+		Data.control.img[7] = loadImage("../MAIN\\assets\\game14\\bellA.8.png");
+		Data.control.img[8] = loadImage("../MAIN\\assets\\game14\\bellB.9.png");
+		*/
+
+
 	}
 }

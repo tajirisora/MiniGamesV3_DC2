@@ -9,12 +9,13 @@ namespace GAME14 {
         struct DATA {
             VECTOR2 pos = 0.0f;
             VECTOR2 cellSize = 0.0f;
-            COLOR color = 0;
-            int img[10] = { 0 };
+            COLOR color = COLOR(0, 0, 0);
             int cellId[21] = { 0 };
+
         };
     protected:
         int ReelId = -1;//停止ボタンとの参照
+        int brank = -1;
         int MaxNum = 21;//コマ数
         int DrawNum = 5;//表示コマ数
         float RPM = 78.0f;//RotateParMinits

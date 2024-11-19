@@ -10,6 +10,7 @@
 #include"STOP_BUTTON.h"
 #include"REEL.h"
 #include"LOTTERY.h"
+#include"REEL_CONTROL.h"
 #include"GAME14.h"
 namespace GAME14 {
 	class CONTAINER{
@@ -24,6 +25,7 @@ namespace GAME14 {
 			GAME14::REEL::DATA middle;
 			GAME14::REEL::DATA right;
 			GAME14::LOTTERY::DATA lottery;
+			GAME14::REEL_CONTROL::DATA control;
 		};
 		DATA Data;
 		void setData();
