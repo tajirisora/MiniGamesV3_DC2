@@ -150,6 +150,7 @@
     <ClCompile Include="KEYCONFIG.cpp" />
     <ClCompile Include="LANE.cpp" />
     <ClCompile Include="LOADCHART.cpp" />
+    <ClCompile Include="LOADOPTION.cpp" />
     <ClCompile Include="LOADSONGS.cpp" />
     <ClCompile Include="LONGBELT.cpp" />
     <ClCompile Include="LONGNOTE.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="KEYCONFIG.h" />
     <ClInclude Include="LANE.h" />
     <ClInclude Include="LOADCHART.h" />
+    <ClInclude Include="LOADOPTION.h" />
     <ClInclude Include="LOADSONGS.h" />
     <ClInclude Include="LONGBELT.h" />
     <ClInclude Include="LONGNOTE.h" />

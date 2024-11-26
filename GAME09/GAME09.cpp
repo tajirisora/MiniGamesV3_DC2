@@ -27,6 +27,7 @@ namespace GAME09
 		JudgeMNG = new JUDGEMANAGER(this);
 		OptionButton = new OPTIONBUTTON(this);
 		BackButton = new BACKBUTTON(this);
+		LoadOption = new LOADOPTION(this);
 
 		Container->load();
 		Scenes[TITLE_ID]->create();
@@ -48,6 +49,7 @@ namespace GAME09
 		JudgeMNG->create();
 		OptionButton->create();
 		BackButton->create();
+		LoadOption->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -56,6 +58,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete LoadOption;
 		delete BackButton;
 		delete OptionButton;
 		delete JudgeMNG;

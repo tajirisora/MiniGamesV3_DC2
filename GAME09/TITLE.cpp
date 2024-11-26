@@ -16,7 +16,7 @@ namespace GAME09 {
 		Title = game()->container()->data().title;
 	}
 	void TITLE::init() {
-
+		game()->loadOption()->init();
 	}
 	void TITLE::update() {
 		game()->backButton()->update();

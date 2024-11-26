@@ -17,7 +17,7 @@ namespace GAME09 {
             B_TYPE1,
             B_TYPE2,
             B_TYPE3,
-            //B_CUSTOM,
+            B_CUSTOM,
             NUM_KEY_BIND_TYPE
         };
         struct DATA {

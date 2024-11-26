@@ -27,6 +27,7 @@
 #include "LANE.h"
 #include "LOADSONGS.h"
 #include "LOADCHART.h"
+#include "LOADOPTION.h"
 #include "KEYCONFIG.h"
 
 namespace GAME09
@@ -62,6 +63,7 @@ namespace GAME09
 			//ACHIEVEMENT::DATA achievement;
 			LANE::DATA lane;
 			KEYCONFIG::DATA keyConfig;
+			LOADOPTION::DATA loadOption;
 		};
 		DATA Data;
 	public:

@@ -116,6 +116,14 @@ namespace GAME09
 		Data.backButton.key = KEY_ESCAPE;
 		Data.backButton.pos = VECTOR2(80, 80);
 		Data.backButton.radius = 60;
+
+		Data.loadOption.fileName = "..\\main\\assets\\game09\\saves\\Config.txt";
+		Data.loadOption.optionStr[LOADOPTION::SPEED] = "#SPEED";
+		Data.loadOption.optionStr[LOADOPTION::SOUND_EFFECT] = "#SOUND_EFFECT";
+		Data.loadOption.optionStr[LOADOPTION::AUDIO_OFFSET] = "#AUDIO_OFFSET";
+		Data.loadOption.optionStr[LOADOPTION::VISUAL_OFFSET] = "#VISUAL_OFFSET";
+		Data.loadOption.optionStr[LOADOPTION::KEY_BIND_TYPE] = "#KEY_BIND_TYPE";
+		Data.loadOption.optionStr[LOADOPTION::KEY_CONFIG] = "#KEY_CONFIG";
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
