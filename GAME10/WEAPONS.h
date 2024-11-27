@@ -12,5 +12,6 @@ public:
 	virtual void proc();
 	virtual void update();
 	virtual void draw();
+	virtual int damage() { return 0; };
 };
 

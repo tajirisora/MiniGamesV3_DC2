@@ -20,8 +20,9 @@ public:
 	~ENEMY_HPGAUGE();
 	void appear(int hp, int Level);
 	void create();
-	void getDamage(float damage, int enemyKind);
+	void getDamage(float damage, int enemyKind,int weaponKind);
 	void death(int i);
 	void draw(VECTOR2 pos,int enemyKind);
+	int GetHp(int i) { return NowHp[i]; }
 };
 

@@ -21,13 +21,21 @@ public:
 	//ïêäÌÇÃID
 	enum WEAPON_ID {
 		HANDGUN_ID,
+		SHOTGUN_ID,
 		NUM_WEAPON
 	};
 	//HPÇÃID
 	enum HP_ID {
 		PLAYERHP_ID,
 		ENEMYHP_ID,
+		OBJECTHP_ID,
 		NUM_HP
+	};
+	enum BULLET_ID {
+		HANDGUNBULLET_ID,
+		SHOTGUNBULLET_ID,
+		MISSILEBULLET_ID,
+		BULLET_NUM
 	};
 private:
 	class SCENE* Scenes[NUM_SCENES];
@@ -35,10 +43,15 @@ private:
 	//ÉLÉÉÉâä÷òA
 	class PLAYER* Player;
 	class HP_GAUGE* HpGauge[NUM_HP];
+	class BULLETS* Bullets[BULLET_NUM];
 	class HANDGUN_BULLETS* HandgunBullets;
+	class SHOTGUN_BULLETS* ShotgunBullets;
+	BULLET_ID CurBulletId;
 
 	class ENEMYS* Enemies;
 	
+	class OBJECT* Objects;
+
 	class TIME* Time;
 	class WEAPONS* Weapons[NUM_WEAPON];
 	WEAPON_ID CurWeaponId;
@@ -52,7 +65,8 @@ public:
 	class PLAYER* player() { return Player; }
 	class WEAPONS* weapons(int Weaponkind) { return Weapons[Weaponkind]; }
 	class TIME* time() { return Time; }
-	class HANDGUN_BULLETS* handgunBullets() { return HandgunBullets; };
+	class BULLETS* bullets(int i) { return Bullets[i]; }
 	class ENEMYS* enemies() { return Enemies; }
+	class OBJECT* objects() { return Objects; }
 };
 

@@ -25,9 +25,6 @@
     <ClCompile Include="RESULT.cpp">
       <Filter>sauce\scene</Filter>
     </ClCompile>
-    <ClCompile Include="HP_GAUGE.cpp">
-      <Filter>sauce</Filter>
-    </ClCompile>
     <ClCompile Include="PLAYER.cpp">
       <Filter>sauce</Filter>
     </ClCompile>
@@ -53,6 +50,19 @@
       <Filter>HP\sauce</Filter>
     </ClCompile>
     <ClCompile Include="ENEMY_HPGAUGE.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SHOTGUN_BULLET.cpp">
+      <Filter>bullet\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SHOTGUN.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT.cpp" />
+    <ClCompile Include="HP_GAUGE.cpp">
+      <Filter>HP\base</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT_HP.cpp">
       <Filter>HP\sauce</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,9 +94,6 @@
     <ClInclude Include="TITLE.h">
       <Filter>header\scene</Filter>
     </ClInclude>
-    <ClInclude Include="HP_GAUGE.h">
-      <Filter>header</Filter>
-    </ClInclude>
     <ClInclude Include="WEAPONS.h">
       <Filter>item\base</Filter>
     </ClInclude>
@@ -109,6 +116,19 @@
       <Filter>HP\header</Filter>
     </ClInclude>
     <ClInclude Include="PLAYER_HP.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SHOTGUN_BULLET.h">
+      <Filter>bullet\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SHOTGUN.h">
+      <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT.h" />
+    <ClInclude Include="HP_GAUGE.h">
+      <Filter>HP\base</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT_HP.h">
       <Filter>HP\header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -163,6 +183,9 @@
     </Filter>
     <Filter Include="HP\header">
       <UniqueIdentifier>{6eae2f7a-0cda-4747-9b6d-b1ff801225f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\base">
+      <UniqueIdentifier>{8a6c3698-1655-4204-943b-5214a5f3a49b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

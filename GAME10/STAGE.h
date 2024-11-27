@@ -21,6 +21,8 @@ public:
 		float bworldX = 0;
 		float fworldX = 0;
 		float stopFlag = false;
+		int frontImgNumber;//画像の前後
+		int NofrontImg;
 
 		//lane関連
 		int opy = 0;
@@ -36,7 +38,9 @@ public:
 		int My = 0;
 		//goaltape関連
 		int GoalImg = 0;
-		VECTOR2 gPos = 0;
+		int GoalBoardImg = 0;
+		VECTOR2 gPos = 0;//goalの位置
+		VECTOR2 bPos = 0;
 	};
 private:
 	DATA Stage;
@@ -45,9 +49,11 @@ public:
 	~STAGE();
 	void init();
 	void goalStage();
+	void appear();
 	void update();
 	void create();
 	void draw();
+	void layer(int drawLane);
 	void nextScene();
 	int speed() { return Stage.frontMx; }
 };

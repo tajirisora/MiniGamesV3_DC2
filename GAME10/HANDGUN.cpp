@@ -17,7 +17,7 @@ void HANDGUN::proc(){
 }
 void HANDGUN::launch(VECTOR2 pos,int lane){
 	if(Handgun.intervalTime <= NULL){
-		game()->handgunBullets()->launch(pos,Handgun.speed,lane);
+		game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->launch(pos, Handgun.speed, lane);
 		Handgun.intervalTime = Handgun.ctIntervalTime;
 	}
 	else {

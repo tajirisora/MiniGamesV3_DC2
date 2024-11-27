@@ -5,6 +5,7 @@
 ENEMY_HPGAUGE::ENEMY_HPGAUGE(class GAME10_GAME* game) :HP_GAUGE(game) {}
 ENEMY_HPGAUGE::~ENEMY_HPGAUGE() {
 	delete[] NowHp;
+	delete[] baseHp;
 }
 void ENEMY_HPGAUGE::create() {
 	EnemyGauge = game()->container()->EnemyHpGauge();
@@ -16,7 +17,7 @@ void ENEMY_HPGAUGE::appear(int hp, int level) {
 	baseHp[EnemyGauge.curHp] = NowHp[EnemyGauge.curHp];
 	EnemyGauge.curHp++;
 }
-void ENEMY_HPGAUGE::getDamage(float damage,int enemyKind) {
+void ENEMY_HPGAUGE::getDamage(float damage,int enemyKind,int weaponKind) {
 	NowHp[enemyKind] -= damage;
 }
 
@@ -31,7 +32,5 @@ void ENEMY_HPGAUGE::draw(VECTOR2 pos,int enemyKind) {
 		rect(pos.x, pos.y + EnemyGauge.My, EnemyGauge.hpWidth, EnemyGauge.hpHeight);
 		fill(0, 255, 0);
 		rect(pos.x, pos.y + EnemyGauge.My, EnemyGauge.hpWidth * (NowHp[enemyKind] / baseHp[enemyKind]), EnemyGauge.hpHeight);
-		text(NowHp[enemyKind], 0, 25 * (enemyKind + 1));
-		text(baseHp[enemyKind], 70, 25 * (enemyKind + 1));
 }
 

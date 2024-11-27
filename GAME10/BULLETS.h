@@ -7,9 +7,14 @@ public:
 		int totalNum;
 		int curNum;
 		int img;
+		int imgShadow;
+		int Bmy;//’eŠÛ‚ÌˆÊ’u
+		int RightX;//‰æ‘œ‚Ì‰E‘¤
+		int LaneMax;
 		float speed;
 		float cRadius;
 		int ImgHalf;
+		int BulletNum;
 	};
 protected:
 	void SetBullets(const BULLETS::DATA& data);
@@ -27,10 +32,15 @@ public:
 	BULLETS(class GAME10_GAME* game);
 	~BULLETS();
 	void init();
-	void launch(const VECTOR2& pos,int speed,int lane);
+	virtual void create() {};
+	virtual void launch(const VECTOR2& pos,int speed,int lane);
 	void update();
 	void kill(int i);
 	void AllKill();
-	void draw();
+	virtual void draw(int bulletKind);
+	int BulletNum() { return Bullet.curNum; }
+	float bulletLeft(int i) { return Bullets[i].pos.x; }
+	float BulletRight(int i) { return Bullets[i].pos.x + Bullet.RightX; }
+	int bulletLane(int i) { return Bullets[i].Lane; }
 };
 

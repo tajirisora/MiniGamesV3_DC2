@@ -15,7 +15,7 @@ void HP_GAUGE::setHp(int Hp) {
 void HP_GAUGE::getDamage(int damage) {
 }
 
-void HP_GAUGE::getDamage(float damage,int EnemyKind) {
+void HP_GAUGE::getDamage(float damage,int EnemyKind,int weaponKind) {
 }
 
 void HP_GAUGE::death(int i) {}

@@ -13,12 +13,26 @@ void BULLETS::init(){
 }
 void BULLETS::launch(const VECTOR2& pos,int speed,int lane) {
 	if (Bullet.curNum < Bullet.totalNum) {
-		int i = Bullet.curNum;
-		Bullets[i].pos.x = pos.x + Bullet.ImgHalf;
-		Bullets[i].pos.y = pos.y + Bullet.ImgHalf;
-		Bullets[i].Lane = lane;
-		Bullet.speed = speed;
-		Bullet.curNum++;
+		if (Bullet.BulletNum < 2 ) {
+			int i = Bullet.curNum;
+			Bullets[i].pos.x = pos.x + Bullet.ImgHalf;
+			Bullets[i].pos.y = pos.y + Bullet.ImgHalf;
+			Bullets[i].Lane = lane;
+			Bullet.speed = speed;
+			Bullet.curNum++;
+		}
+		else {
+			for (int Bnum = 0; Bnum < Bullet.BulletNum; Bnum++) {
+				if (lane + (Bnum - 1) > -1 && lane + (Bnum - 1) < Bullet.LaneMax) {
+					int i = Bullet.curNum;
+					Bullets[i].pos.x = pos.x + Bullet.ImgHalf;
+					Bullets[i].pos.y = pos.y + Bullet.ImgHalf + ((Bnum - 1) * Bullet.Bmy);
+					Bullets[i].Lane = lane + (Bnum - 1);
+					Bullet.speed = speed;
+					Bullet.curNum++;
+				}
+			}
+		}
 	}
 }
 void BULLETS::update(){
@@ -39,8 +53,7 @@ void BULLETS::AllKill() {
 	}
 	Bullet.curNum = NULL;
 }
-void BULLETS::draw(){
-	for (int i = 0; i < Bullet.curNum; i++) {
-		image(Bullet.img, Bullets[i].pos.x, Bullets[i].pos.y);
-	}
+void BULLETS::draw(int bulletKind){
+	image(Bullet.imgShadow, Bullets[bulletKind].pos.x, Bullets[bulletKind].pos.y + 100);
+	image(Bullet.img, Bullets[bulletKind].pos.x, Bullets[bulletKind].pos.y);
 }

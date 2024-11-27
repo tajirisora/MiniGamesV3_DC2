@@ -1,10 +1,9 @@
 #pragma once
 #include "WEAPONS.h"
-#include "../../libOne/inc/libOne.h"
-class HANDGUN :public WEAPONS
+class SHOTGUN :public WEAPONS
 {
 public:
-	struct DATA{
+	struct DATA {
 		VECTOR2 Pos;
 		int GunsImg = 0;
 		int speed = 0;
@@ -15,15 +14,15 @@ public:
 		int Level = 0;
 	};
 private:
-	DATA Handgun;
+	DATA ShotGun;
 public:
-	HANDGUN(class GAME10_GAME* game);
-	~HANDGUN();
+	SHOTGUN(class GAME10_GAME* game);
+	~SHOTGUN();
 	void create();
 	void init();
 	void proc();
-	void launch(VECTOR2 pos,int lane);
+	void launch(VECTOR2 pos, int lane);
 	void draw();
-	int damage() { return Handgun.damage; }
+	int damage() { return ShotGun.damage; }
 };
 

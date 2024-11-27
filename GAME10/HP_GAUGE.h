@@ -10,9 +10,10 @@ public:
 	virtual void create();
 	virtual void appear(int hp, int Level);//
 	virtual void getDamage(int damage);
-	virtual void getDamage(float damage, int EnemyKind);
+	virtual void getDamage(float damage, int EnemyKind,int weaponKind);
 	virtual void death(int i);//敵・プレイヤーがやられたとき
 	virtual void draw();
 	virtual void draw(VECTOR2 pos, int EnemyKind);
+	virtual int GetHp(int i) { return 0; };
 };
 
