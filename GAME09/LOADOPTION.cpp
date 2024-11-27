@@ -12,10 +12,11 @@ namespace GAME09 {
 
 	void LOADOPTION::create() {
 		LoadOption = game()->container()->data().loadOption;
+		loadOption();
 	}
 
 	void LOADOPTION::init() {
-		OptionData.keyConfig[0][0].main = KEY_D;
+		/*OptionData.keyConfig[0][0].main = KEY_D;
 		OptionData.keyConfig[0][1].main = KEY_F;
 		OptionData.keyConfig[0][2].main = KEY_G;
 		OptionData.keyConfig[0][3].main = KEY_H;
@@ -39,11 +40,74 @@ namespace GAME09 {
 		OptionData.keyConfig[4][1].main = KEY_H;
 		OptionData.keyConfig[5][0].main = KEY_G;
 		OptionData.keyConfig[5][0].sub = KEY_H;
-		writeOption();
+		writeOption();*/
 	}
-
+	
 	void LOADOPTION::loadOption() {
+		std::ifstream file;
+		file.open(LoadOption.fileName, std::ios::in);
+		std::string buffer;
 
+		while (std::getline(file, buffer)) {
+			for (int i = 0; i < NUM_OPTIONS; i++) {
+				std::string t = LoadOption.optionStr[i];
+				if (buffer.size() >= t.size() &&
+					buffer.find(t) != std::string::npos) {
+					int conS = buffer.find(':') + 1;
+					int conE = buffer.find_last_of(';');
+					std::string content = buffer.substr(conS, conE - conS);
+					switch (i) {
+					case SPEED:
+						OptionData.speed = std::stof(content);
+						break;
+					case SOUND_EFFECT:
+						if (content == "1") {
+							OptionData.soundEffect = true;
+						}
+						else {
+							OptionData.soundEffect = false;
+						}
+						break;
+					case AUDIO_OFFSET:
+						OptionData.audioOffset = std::stof(content);
+						break;
+					case VISUAL_OFFSET:
+						OptionData.visualOffset = std::stof(content);
+						break;
+					case KEY_BIND_TYPE:
+						OptionData.keyBindType = (OPTION::KEY_BIND_TYPE)std::stoi(content);
+						break;
+					case KEY_CONFIG: {
+						auto offset = std::string::size_type(0);
+						std::string temp;
+						for (int j = 0; j < 2; j++) {
+							for (int y = 0; y < 6; y++) {
+								for (int x = 0; x < 6; x++) {
+									auto pos = content.find(",", offset);
+									if (pos == std::string::npos) {
+										temp = content.substr(offset);
+									}
+									else {
+										temp = content.substr(offset, pos - offset);
+									}
+									if (j == 0) {
+										OptionData.keyConfig[y][x].main = (INPUT_CODE)std::stoi(temp);
+									}
+									else {
+										OptionData.keyConfig[y][x].sub = (INPUT_CODE)std::stoi(temp);
+									}
+									offset = pos + 1;
+								}
+							}
+						}
+					}
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	void LOADOPTION::writeOption() {
@@ -78,7 +142,6 @@ namespace GAME09 {
 			case KEY_CONFIG:
 				for (int j = 0; j < 2; j++) {
 					for (int y = 0; y < 6; y++) {
-						text += "\n";
 						for (int x = 0; x < 6; x++) {
 							int d = 0;
 							if (j == 0) {
@@ -88,13 +151,11 @@ namespace GAME09 {
 								d = (int)OptionData.keyConfig[y][x].sub;
 							}
 							text += std::to_string(d);
-							if (x < 5) {
-								text += ",";
-							}
+							text += ",";
 						}
 					}
 				}
-				text += "\n";
+				text.pop_back();
 				break;
 			default:
 				break;
