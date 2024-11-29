@@ -30,7 +30,6 @@ namespace GAME09 {
     private:
         DATA Option;
         OPTION_KINDS OptionKind;
-        //KEYCONFIG::KEY_BIND_TYPE KeyBindType;
         class OPTION_RELATED_BUTTON* KindButtons[NUM_KINDS];
         class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];

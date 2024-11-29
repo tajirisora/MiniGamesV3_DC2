@@ -60,14 +60,18 @@ namespace GAME09 {
 						}
 					}
 					else {
-						if (x < 3 - y / 2) {
+						if (x < 2 - y / 2) {
 							KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2];
 						}
-						else if (x == 3 - y / 2) {
-							KeyConfig[y][x - 1].sub = CustomKeyConfig[0][x + y / 2].main;
+						else if (x == 2 - y / 2) {
+							KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2];
+							KeyConfig[y][x].sub = CustomKeyConfig[0][x + y / 2 + 1].main;
+						}
+						else if (x < 6 - y){
+							KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2 + 1];
 						}
 						else {
-							KeyConfig[y][x - 1] = CustomKeyConfig[0][x + y / 2];
+							KeyConfig[y][x] = CustomKeyConfig[y][x];
 						}
 					}
 				}
