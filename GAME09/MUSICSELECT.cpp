@@ -17,6 +17,7 @@ namespace GAME09 {
 	}
 	void MUSICSELECT::init() {
 		game()->banner()->init();
+		game()->keyConfig()->init();
 	}
 	void MUSICSELECT::update() {
 		if (game()->fade()->inEndFlag()) {

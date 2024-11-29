@@ -16,9 +16,18 @@ namespace GAME09 {
         struct DATA {
             
         };
+        enum KEY_BIND_TYPE {
+            B_TYPE1,
+            B_TYPE2,
+            B_TYPE3,
+            B_CUSTOM,
+            NUM_KEY_BIND_TYPE
+        };
     private:
         DATA Data;
+        KC_MAINSUB** CustomKeyConfig = nullptr;
         KC_MAINSUB KeyConfig[6][6];
+        const KEY_BIND_TYPE* KeyBindType;
 
         std::vector<KEY_TRIGGER> Triggers;
 
@@ -35,6 +44,7 @@ namespace GAME09 {
         KC_MAINSUB getKeyConfig(int numLane, int lane);
         bool keyTrigger(INPUT_CODE key);
         bool keyPress(INPUT_CODE key);
+        void setKeyConfig();
         void setTrigger(INPUT_CODE key, bool value);
     };
 }

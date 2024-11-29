@@ -8,10 +8,19 @@ namespace GAME09 {
 		GAME_OBJECT(game) {
 	}
 	LOADOPTION::~LOADOPTION() {
+		for (int i = 0; i < 6; i++) {
+			delete[] OptionData.keyConfig[i];
+		}
+		delete[] OptionData.keyConfig;
 	}
 
 	void LOADOPTION::create() {
 		LoadOption = game()->container()->data().loadOption;
+
+		OptionData.keyConfig = new KC_MAINSUB*[6];
+		for (int i = 0; i < 6; i++) {
+			OptionData.keyConfig[i] = new KC_MAINSUB[6];
+		}
 		loadOption();
 	}
 
@@ -75,7 +84,7 @@ namespace GAME09 {
 						OptionData.visualOffset = std::stof(content);
 						break;
 					case KEY_BIND_TYPE:
-						OptionData.keyBindType = (OPTION::KEY_BIND_TYPE)std::stoi(content);
+						OptionData.keyBindType = (KEYCONFIG::KEY_BIND_TYPE)std::stoi(content);
 						break;
 					case KEY_CONFIG: {
 						auto offset = std::string::size_type(0);

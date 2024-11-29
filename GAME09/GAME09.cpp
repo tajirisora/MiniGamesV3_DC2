@@ -30,6 +30,8 @@ namespace GAME09
 		LoadOption = new LOADOPTION(this);
 
 		Container->load();
+		LoadOption->create();
+
 		Scenes[TITLE_ID]->create();
 		Scenes[SELECT_ID]->create();
 		Scenes[OPTION_ID]->create();
@@ -49,7 +51,6 @@ namespace GAME09
 		JudgeMNG->create();
 		OptionButton->create();
 		BackButton->create();
-		LoadOption->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;

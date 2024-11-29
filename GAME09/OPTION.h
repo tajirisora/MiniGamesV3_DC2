@@ -1,5 +1,6 @@
 #pragma once
 #include "SCENE.h"
+#include "KEYCONFIG.h"
 #include "../../libOne/inc/VECTOR2.h"
 
 namespace GAME09 {
@@ -12,13 +13,6 @@ namespace GAME09 {
             KEY_BIND,
             COLOR,
             NUM_KINDS
-        };
-        enum KEY_BIND_TYPE {
-            B_TYPE1,
-            B_TYPE2,
-            B_TYPE3,
-            B_CUSTOM,
-            NUM_KEY_BIND_TYPE
         };
         struct DATA {
             VECTOR2 optionStrPos;
@@ -36,9 +30,9 @@ namespace GAME09 {
     private:
         DATA Option;
         OPTION_KINDS OptionKind;
-        KEY_BIND_TYPE KeyBindType;
+        //KEYCONFIG::KEY_BIND_TYPE KeyBindType;
         class OPTION_RELATED_BUTTON* KindButtons[NUM_KINDS];
-        class OPTION_RELATED_BUTTON* BindTypeButtons[NUM_KEY_BIND_TYPE];
+        class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];
         void UpdateGeneral();
         void UpdateKeyBind();

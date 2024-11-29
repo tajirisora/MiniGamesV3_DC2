@@ -25,11 +25,11 @@ namespace GAME09 {
 			Data.size = VECTOR2(250, 80);
 			KindButtons[i]->setData(Data);
 		}
-		for (int i = 0; i < NUM_KEY_BIND_TYPE; i++) {
+		for (int i = 0; i < KEYCONFIG::NUM_KEY_BIND_TYPE; i++) {
 			BindTypeButtons[i] = new OPTION_RELATED_BUTTON(game());
 			BUTTON::DATA Data;
 			Data.colliType = BUTTON::RECT;
-			Data.pos = VECTOR2(width / 2 + (i - (NUM_KEY_BIND_TYPE - 1) / 2.0f) * Option.typeButtonOfstX, Option.typeButtonY);
+			Data.pos = VECTOR2(width / 2 + (i - (KEYCONFIG::NUM_KEY_BIND_TYPE - 1) / 2.0f) * Option.typeButtonOfstX, Option.typeButtonY);
 			Data.size = VECTOR2(250, 80);
 			BindTypeButtons[i]->setData(Data);
 		}
@@ -154,7 +154,8 @@ namespace GAME09 {
 		for (auto e : BindTypeButtons) {
 			e->update();
 			if (e->isClick()) {
-				KeyBindType = (KEY_BIND_TYPE)buttonNum;
+				game()->loadOption()->optionData().keyBindType = (KEYCONFIG::KEY_BIND_TYPE)buttonNum;
+				game()->keyConfig()->setKeyConfig();
 			}
 			buttonNum++;
 		}

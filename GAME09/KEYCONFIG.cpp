@@ -15,36 +15,98 @@ namespace GAME09 {
 	}
 
 	void KEYCONFIG::create() {
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 6; j++) {
-				KeyConfig[i][j] = KC_MAINSUB();
-			}
-		}
-		KeyConfig[0][0].main = KEY_A;
-		KeyConfig[0][1].main = KEY_S;
-		KeyConfig[0][2].main = KEY_C;
-		KeyConfig[0][3].main = KEY_N;
-		KeyConfig[0][4].main = KEY_K;
-		KeyConfig[0][5].main = KEY_L;
-		KeyConfig[1][0].main = KEY_A;
-		KeyConfig[1][1].main = KEY_S;
-		KeyConfig[1][2].main = KEY_C;
-		KeyConfig[1][2].sub  = KEY_N;
-		KeyConfig[1][3].main = KEY_K;
-		KeyConfig[1][4].main = KEY_L;
-		KeyConfig[2][0].main = KEY_S;
-		KeyConfig[2][1].main = KEY_C;
-		KeyConfig[2][2].main = KEY_N;
-		KeyConfig[2][3].main = KEY_K;
-		KeyConfig[3][0].main = KEY_S;
-		KeyConfig[3][1].main = KEY_C;
-		KeyConfig[3][1].sub  = KEY_N;
-		KeyConfig[3][2].main = KEY_K;
-		KeyConfig[4][0].main = KEY_C;
-		KeyConfig[4][1].main = KEY_N;
-		KeyConfig[5][0].main = KEY_C;
-		KeyConfig[5][0].sub  = KEY_N;
+		//KeyConfig[0][0].main = KEY_A;
+		//KeyConfig[0][1].main = KEY_S;
+		//KeyConfig[0][2].main = KEY_C;
+		//KeyConfig[0][3].main = KEY_N;
+		//KeyConfig[0][4].main = KEY_K;
+		//KeyConfig[0][5].main = KEY_L;
+		//KeyConfig[1][0].main = KEY_A;
+		//KeyConfig[1][1].main = KEY_S;
+		//KeyConfig[1][2].main = KEY_C;
+		//KeyConfig[1][2].sub  = KEY_N;
+		//KeyConfig[1][3].main = KEY_K;
+		//KeyConfig[1][4].main = KEY_L;
+		//KeyConfig[2][0].main = KEY_S;
+		//KeyConfig[2][1].main = KEY_C;
+		//KeyConfig[2][2].main = KEY_N;
+		//KeyConfig[2][3].main = KEY_K;
+		//KeyConfig[3][0].main = KEY_S;
+		//KeyConfig[3][1].main = KEY_C;
+		//KeyConfig[3][1].sub  = KEY_N;
+		//KeyConfig[3][2].main = KEY_K;
+		//KeyConfig[4][0].main = KEY_C;
+		//KeyConfig[4][1].main = KEY_N;
+		//KeyConfig[5][0].main = KEY_C;
+		//KeyConfig[5][0].sub  = KEY_N;
 
+		CustomKeyConfig = game()->loadOption()->optionData().keyConfig;
+		KeyBindType = &game()->loadOption()->optionData().keyBindType;
+		setKeyConfig();
+	}
+
+	void KEYCONFIG::setKeyConfig() {
+		switch (*KeyBindType)
+		{
+		case B_TYPE1:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					if (y % 2 == 0) {
+						if (x < 6 - y) {
+							KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2];
+						}
+						else {
+							KeyConfig[y][x] = CustomKeyConfig[y][x];
+						}
+					}
+					else {
+						if (x < 3 - y / 2) {
+							KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2];
+						}
+						else if (x == 3 - y / 2) {
+							KeyConfig[y][x - 1].sub = CustomKeyConfig[0][x + y / 2].main;
+						}
+						else {
+							KeyConfig[y][x - 1] = CustomKeyConfig[0][x + y / 2];
+						}
+					}
+				}
+			}
+			break;
+		case B_TYPE2:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					if (x < 6 - y) {
+						KeyConfig[y][x] = CustomKeyConfig[0][x + (y + 1) / 2];
+					}
+					else {
+						KeyConfig[y][x] = CustomKeyConfig[y][x];
+					}
+				}
+			}
+			break;
+		case B_TYPE3:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					if (x < 6 - y) {
+						KeyConfig[y][x] = CustomKeyConfig[0][x + y / 2];
+					}
+					else {
+						KeyConfig[y][x] = CustomKeyConfig[y][x];
+					}
+				}
+			}
+			break;
+		case B_CUSTOM:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					KeyConfig[y][x] = CustomKeyConfig[y][x];
+				}
+			}
+			break;
+		default:
+			break;
+		}
 		SetTriggers();
 	}
 
@@ -72,7 +134,7 @@ namespace GAME09 {
 	}
 
 	void KEYCONFIG::init() {
-		
+		SetTriggers();
 	}
 
 	void KEYCONFIG::update() {

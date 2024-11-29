@@ -27,8 +27,8 @@ namespace GAME09 {
             bool soundEffect = true;
             float audioOffset = 0;
             float visualOffset = 0;
-            OPTION::KEY_BIND_TYPE keyBindType = OPTION::B_TYPE1;
-            KC_MAINSUB keyConfig[6][6];
+            KEYCONFIG::KEY_BIND_TYPE keyBindType = KEYCONFIG::B_TYPE1;
+            KC_MAINSUB** keyConfig = nullptr;
         };
     private:
         DATA LoadOption;
@@ -43,6 +43,6 @@ namespace GAME09 {
         void loadOption();
         void writeOption();
 
-        const OPTION_DATA& optionData() { return OptionData; }
+        OPTION_DATA& optionData() { return OptionData; }
     };
 }
