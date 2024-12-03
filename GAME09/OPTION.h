@@ -18,14 +18,22 @@ namespace GAME09 {
             VECTOR2 optionStrPos;
             float optionStrSize;
             float optionUnderBar;
-            float kindButtonY;
-            float kindButtonOfstX;
-            float kindUnderBar;
-            float typeButtonY;
-            float typeButtonOfstX;
-            float typeUnderBar;
+            VECTOR2 kindButtonPos;
+            VECTOR2 kindButtonOfst;
+            VECTOR2 kindButtonSize;
+            float kindBarX;
+            VECTOR2 typeButtonPos;
+            VECTOR2 typeButtonOfst;
+            VECTOR2 typeButtonSize;
             VECTOR2 keyButtonPos;
             VECTOR2 keyButtonOfst;
+            VECTOR2 keyButtonSize;
+
+            int keyButtonImg;
+            float keyButtonImgSize;
+            int optionButtonImgs[NUM_KINDS];
+            int optionTypeImgs[KEYCONFIG::NUM_KEY_BIND_TYPE];
+            float optionButtonSize;
         };
     private:
         DATA Option;

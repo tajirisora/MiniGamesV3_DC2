@@ -21,16 +21,23 @@ namespace GAME09 {
 			KindButtons[i] = new OPTION_RELATED_BUTTON(game());
 			BUTTON::DATA Data;
 			Data.colliType = BUTTON::RECT;
-			Data.pos = VECTOR2(width / 2 + (i - (NUM_KINDS - 1) / 2.0f) * Option.kindButtonOfstX, Option.kindButtonY);
-			Data.size = VECTOR2(250, 80);
+			Data.pos = Option.kindButtonPos + Option.kindButtonOfst * i;
+			Data.size = Option.kindButtonSize;
+			Data.img = Option.optionButtonImgs[i];
+			Data.imgSize = Option.optionButtonSize;
+			//Data.debugFlag = false;
+
 			KindButtons[i]->setData(Data);
 		}
 		for (int i = 0; i < KEYCONFIG::NUM_KEY_BIND_TYPE; i++) {
 			BindTypeButtons[i] = new OPTION_RELATED_BUTTON(game());
 			BUTTON::DATA Data;
 			Data.colliType = BUTTON::RECT;
-			Data.pos = VECTOR2(width / 2 + (i - (KEYCONFIG::NUM_KEY_BIND_TYPE - 1) / 2.0f) * Option.typeButtonOfstX, Option.typeButtonY);
-			Data.size = VECTOR2(250, 80);
+			Data.pos = Option.typeButtonPos + Option.typeButtonOfst * i;
+			Data.size = Option.typeButtonSize;
+			Data.img = Option.optionTypeImgs[i];
+			Data.imgSize = Option.optionButtonSize;
+			//Data.debugFlag = false;
 			BindTypeButtons[i]->setData(Data);
 		}
 		for (int y = 0; y < 6; y++) {
@@ -41,7 +48,10 @@ namespace GAME09 {
 					Data.colliType = BUTTON::RECT;
 					Data.pos = VECTOR2(Option.keyButtonPos.x + (x - (5 - y) / 2.0f) * Option.keyButtonOfst.x,
 						Option.keyButtonPos.y + Option.keyButtonOfst.y * y);
-					Data.size = VECTOR2(100, 100);
+					Data.size = Option.keyButtonSize;
+					Data.img = Option.keyButtonImg;
+					Data.imgSize = Option.keyButtonImgSize;
+					//Data.debugFlag = false;
 					KeyButtons[y][x]->setData(Data);
 				}
 				else {
@@ -87,14 +97,14 @@ namespace GAME09 {
 		strokeWeight(5);
 		textSize(Option.optionStrSize);
 		text("Ý’è", Option.optionStrPos.x, Option.optionStrPos.y);
-		line(0, Option.optionUnderBar, width, Option.optionUnderBar);
+		//line(0, Option.optionUnderBar, width, Option.optionUnderBar);
 		//€–ÚØ‚è‘Ö‚¦ƒ{ƒ^ƒ“
 		for (auto e : KindButtons) {
 			e->draw();
 		}
 		stroke(0);
 		strokeWeight(5);
-		line(0, Option.kindUnderBar, width, Option.kindUnderBar);
+		line(Option.kindBarX, Option.optionUnderBar, Option.kindBarX, height);
 
 		switch (OptionKind)
 		{
@@ -131,7 +141,6 @@ namespace GAME09 {
 		}
 		stroke(0);
 		strokeWeight(5);
-		line(0, Option.kindUnderBar, width, Option.kindUnderBar);
 		DrawKeyButtons();
 	}
 	void OPTION::DrawColor() {

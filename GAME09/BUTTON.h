@@ -16,7 +16,7 @@ namespace GAME09 {
 
         struct DATA {
             int img = -1;
-            float imgSize;
+            float imgSize = 1;
             VECTOR2 pos;
             ColliType colliType;
             VECTOR2 ofst;
