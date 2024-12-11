@@ -25,7 +25,7 @@ namespace GAME09 {
 			Data.size = Option.kindButtonSize;
 			Data.img = Option.optionButtonImgs[i];
 			Data.imgSize = Option.optionButtonSize;
-			//Data.debugFlag = false;
+			Data.debugFlag = false;
 
 			KindButtons[i]->setData(Data);
 		}
@@ -37,7 +37,7 @@ namespace GAME09 {
 			Data.size = Option.typeButtonSize;
 			Data.img = Option.optionTypeImgs[i];
 			Data.imgSize = Option.optionButtonSize;
-			//Data.debugFlag = false;
+			Data.debugFlag = false;
 			BindTypeButtons[i]->setData(Data);
 		}
 		for (int y = 0; y < 6; y++) {
@@ -51,7 +51,7 @@ namespace GAME09 {
 					Data.size = Option.keyButtonSize;
 					Data.img = Option.keyButtonImg;
 					Data.imgSize = Option.keyButtonImgSize;
-					//Data.debugFlag = false;
+					Data.debugFlag = false;
 					KeyButtons[y][x]->setData(Data);
 				}
 				else {
@@ -62,9 +62,12 @@ namespace GAME09 {
 	}
 	void OPTION::init() {
 		OptionKind = GENERAL;
+		KeyWait = NO;
 	}
 	void OPTION::update() {
+		//戻るボタン
 		game()->backButton()->update();
+		//設定項目切り替えボタン
 		int buttonNum = 0;
 		for (auto e : KindButtons) {
 			e->update();
@@ -73,7 +76,7 @@ namespace GAME09 {
 			}
 			buttonNum++;
 		}
-
+		//それぞれの設定項目ごとのアップデート
 		switch (OptionKind)
 		{
 		case GENERAL:
@@ -95,8 +98,8 @@ namespace GAME09 {
 		fill(0);
 		stroke(0);
 		strokeWeight(5);
-		textSize(Option.optionStrSize);
-		text("設定", Option.optionStrPos.x, Option.optionStrPos.y);
+		rectMode(CORNER);
+		image(Option.optionImg, Option.optionImgPos.x, Option.optionImgPos.y, 0, Option.optionImgSize);
 		//line(0, Option.optionUnderBar, width, Option.optionUnderBar);
 		//項目切り替えボタン
 		for (auto e : KindButtons) {
@@ -105,7 +108,7 @@ namespace GAME09 {
 		stroke(0);
 		strokeWeight(5);
 		line(Option.kindBarX, Option.optionUnderBar, Option.kindBarX, height);
-
+		//それぞれの設定項目ごとのdraw
 		switch (OptionKind)
 		{
 		case GENERAL:
@@ -120,7 +123,7 @@ namespace GAME09 {
 		default:
 			break;
 		}
-
+		//戻るボタン
 		game()->backButton()->draw();
 	}
 	void OPTION::DrawKeyButtons() {
@@ -142,6 +145,14 @@ namespace GAME09 {
 		stroke(0);
 		strokeWeight(5);
 		DrawKeyButtons();
+		//キー入力待ち
+		rectMode(CORNER);
+		if (KeyWait == MAIN) {
+			image(Option.keyWait1Img, 0, 0);
+		}
+		else if (KeyWait == SUB) {
+			image(Option.keyWait2Img, 0, 0);
+		}
 	}
 	void OPTION::DrawColor() {
 		fill(0);
@@ -159,25 +170,73 @@ namespace GAME09 {
 		
 	}
 	void OPTION::UpdateKeyBind() {
-		int buttonNum = 0;
-		for (auto e : BindTypeButtons) {
-			e->update();
-			if (e->isClick()) {
-				game()->loadOption()->optionData().keyBindType = (KEYCONFIG::KEY_BIND_TYPE)buttonNum;
-				game()->keyConfig()->setKeyConfig();
+		//通常時
+		if (KeyWait == NO) {
+			//キーバインドタイプ更新
+			int buttonNum = 0;
+			for (auto e : BindTypeButtons) {
+				e->update();
+				if (e->isClick()) {
+					game()->loadOption()->optionData().keyBindType = (KEYCONFIG::KEY_BIND_TYPE)buttonNum;
+					game()->keyConfig()->setKeyConfig();
+				}
+				buttonNum++;
 			}
-			buttonNum++;
+			UpdateKeyButtons();
+			//キーが押されたとき
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6 - y; x++) {
+					if (KeyButtons[y][x]->isClick()) {
+						WaitKeyIdx = VECTOR2(y, x);
+						KeyWait = MAIN;
+						break;
+					}
+				}
+				if (game()->loadOption()->optionData().keyBindType != KEYCONFIG::B_CUSTOM) {
+					break;
+				}
+			}
 		}
-		UpdateKeyButtons();
+		if (KeyWait == MAIN) {
+			if (game()->backButton()->isClick()) {
+				KeyWait = NO;
+				game()->backButton()->resetClick();
+			}
+			else {
+				auto key = getPressedKeyCode();
+				if (key != KEY_NONE) {
+					game()->loadOption()->optionData().keyConfig[(int)WaitKeyIdx.x][(int)WaitKeyIdx.y].main = key;
+					game()->loadOption()->optionData().keyConfig[(int)WaitKeyIdx.x][(int)WaitKeyIdx.y].sub = KEY_NONE;
+					KeyWait = SUB;
+					game()->keyConfig()->setKeyConfig();
+					UpdateKeyButtons();
+				}
+			}
+		}
+		else if (KeyWait == SUB) {
+			if (game()->backButton()->isClick()) {
+				KeyWait = NO;
+				game()->backButton()->resetClick();
+			}
+			else {
+				auto key = getPressedKeyCode();
+				if (key != KEY_NONE && key != game()->loadOption()->optionData().keyConfig[(int)WaitKeyIdx.x][(int)WaitKeyIdx.y].main) {
+					game()->loadOption()->optionData().keyConfig[(int)WaitKeyIdx.x][(int)WaitKeyIdx.y].sub = key;
+					KeyWait = NO;
+					game()->keyConfig()->setKeyConfig();
+				}
+			}
+		}
 	}
 	void OPTION::UpdateColor() {
 		
 	}
 	void OPTION::nextScene() {
-		if (game()->backButton()->isClick()) {
+		if (game()->backButton()->isClick() && KeyWait == NO) {
 			game()->fade()->outStart();
 		}
 		if (game()->fade()->outEndFlag()) {
+			game()->loadOption()->writeOption();
 			game()->changeScene(GAME::SELECT_ID);
 		}
 	}

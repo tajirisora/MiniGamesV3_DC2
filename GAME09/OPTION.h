@@ -14,9 +14,13 @@ namespace GAME09 {
             COLOR,
             NUM_KINDS
         };
+        enum KEY_WAIT {
+            NO,
+            MAIN,
+            SUB
+        };
         struct DATA {
-            VECTOR2 optionStrPos;
-            float optionStrSize;
+            VECTOR2 optionImgPos;
             float optionUnderBar;
             VECTOR2 kindButtonPos;
             VECTOR2 kindButtonOfst;
@@ -29,15 +33,21 @@ namespace GAME09 {
             VECTOR2 keyButtonOfst;
             VECTOR2 keyButtonSize;
 
+            int optionImg;
+            float optionImgSize;
             int keyButtonImg;
             float keyButtonImgSize;
             int optionButtonImgs[NUM_KINDS];
             int optionTypeImgs[KEYCONFIG::NUM_KEY_BIND_TYPE];
             float optionButtonSize;
+            int keyWait1Img;
+            int keyWait2Img;
         };
     private:
         DATA Option;
         OPTION_KINDS OptionKind;
+        KEY_WAIT KeyWait;
+        VECTOR2 WaitKeyIdx;
         class OPTION_RELATED_BUTTON* KindButtons[NUM_KINDS];
         class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];

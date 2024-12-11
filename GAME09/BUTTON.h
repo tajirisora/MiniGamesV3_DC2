@@ -37,6 +37,7 @@ namespace GAME09 {
         virtual void draw();
         virtual void setData(DATA& data);
         virtual bool isClick() { return IsClick; }
+        virtual void resetClick() { IsClick = false; }
     protected:
         virtual bool collision();
     };

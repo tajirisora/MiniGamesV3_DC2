@@ -95,8 +95,8 @@ namespace GAME09
 		Data.judge.comboPos = VECTOR2(1370, 650);
 		Data.judge.comboSizeMinRate = 0.8f;
 
-		Data.option.optionStrPos = VECTOR2(160, 140);
-		Data.option.optionStrSize = 120;
+		Data.option.optionImgPos = VECTOR2(0, 0);
+		Data.option.optionImgSize = 0.4f;
 		Data.option.optionUnderBar = 160;
 		Data.option.kindButtonPos = VECTOR2(130, 230);
 		Data.option.kindButtonOfst = VECTOR2(0, 120);
@@ -105,7 +105,7 @@ namespace GAME09
 		Data.option.typeButtonPos = VECTOR2(440, 650);
 		Data.option.typeButtonOfst = VECTOR2(0, 120);
 		Data.option.typeButtonSize = VECTOR2(225, 100);
-		Data.option.keyButtonPos = VECTOR2(1100, 100);
+		Data.option.keyButtonPos = VECTOR2(1150, 100);
 		Data.option.keyButtonOfst = VECTOR2(176, 176);
 		Data.option.keyButtonSize = VECTOR2(150, 150);
 		Data.option.keyButtonImgSize = 0.225f;
@@ -143,6 +143,7 @@ namespace GAME09
 		Data.judge.judge[JUDGEMANAGER::MISS].img = loadImage("..\\main\\assets\\game09\\texture\\miss.png");
 		Data.judge.fastImg = loadImage("..\\main\\assets\\game09\\texture\\fast.png");
 		Data.judge.slowImg = loadImage("..\\main\\assets\\game09\\texture\\slow.png");
+		Data.option.optionImg = loadImage("..\\main\\assets\\game09\\texture\\Option_Str_img.png");
 		Data.option.keyButtonImg = loadImage("..\\main\\assets\\game09\\texture\\Key_Config_Button.png");
 		Data.option.optionButtonImgs[0] = loadImage("..\\main\\assets\\game09\\texture\\Option_General.png");
 		Data.option.optionButtonImgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Option_Key_Bind.png");
@@ -151,6 +152,8 @@ namespace GAME09
 		Data.option.optionTypeImgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Option_Type2.png");
 		Data.option.optionTypeImgs[2] = loadImage("..\\main\\assets\\game09\\texture\\Option_Type3.png");
 		Data.option.optionTypeImgs[3] = loadImage("..\\main\\assets\\game09\\texture\\Option_Custom.png");
+		Data.option.keyWait1Img = loadImage("..\\main\\assets\\game09\\texture\\Set_Key_1.png");
+		Data.option.keyWait2Img = loadImage("..\\main\\assets\\game09\\texture\\Set_Key_2.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");
