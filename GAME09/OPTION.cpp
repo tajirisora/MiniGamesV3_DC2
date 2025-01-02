@@ -53,6 +53,7 @@ namespace GAME09 {
 					Data.imgSize = Option.keyButtonImgSize;
 					Data.debugFlag = false;
 					KeyButtons[y][x]->setData(Data);
+					KeyButtons[y][x]->setChoice(true);
 				}
 				else {
 					KeyButtons[y][x] = nullptr;
@@ -75,6 +76,9 @@ namespace GAME09 {
 				OptionKind = (OPTION_KINDS)buttonNum;
 			}
 			buttonNum++;
+		}
+		for (int i = 0; i < NUM_KINDS; i++) {
+			KindButtons[i]->setChoice(i == (int)OptionKind);
 		}
 		//それぞれの設定項目ごとのアップデート
 		switch (OptionKind)
@@ -181,6 +185,9 @@ namespace GAME09 {
 					game()->keyConfig()->setKeyConfig();
 				}
 				buttonNum++;
+			}
+			for (int i = 0; i < KEYCONFIG::NUM_KEY_BIND_TYPE; i++) {
+				BindTypeButtons[i]->setChoice(i == (int)game()->loadOption()->optionData().keyBindType);
 			}
 			UpdateKeyButtons();
 			//キーが押されたとき

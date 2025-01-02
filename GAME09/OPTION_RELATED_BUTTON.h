@@ -11,6 +11,7 @@ namespace GAME09 {
     private:
         COLOR MainColor = { 0,0,0,0 };
         KC_MAINSUB Key;
+        bool Choice = false;
     public:
         OPTION_RELATED_BUTTON(class GAME* game);
         ~OPTION_RELATED_BUTTON();
@@ -19,5 +20,6 @@ namespace GAME09 {
         void draw();
         void setColor(COLOR color) { MainColor = color; }
         void setKey(KC_MAINSUB key) { Key = key; }
+        void setChoice(bool value) { Choice = value; }
     };
 }

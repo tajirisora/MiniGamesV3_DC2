@@ -16,6 +16,11 @@ namespace GAME09 {
             VISUAL_OFFSET,
             KEY_BIND_TYPE,
             KEY_CONFIG,
+            COLOR_TYPE,
+            COLOR_1_CONFIG,
+            COLOR_2_CONFIG,
+            COLOR_DIFFERENT_CONFIG,
+            COLOR_CUSTOM_CONFIG,
             NUM_OPTIONS
         };
         struct DATA {

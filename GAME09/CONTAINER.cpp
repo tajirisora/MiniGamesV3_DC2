@@ -128,6 +128,11 @@ namespace GAME09
 		Data.loadOption.optionStr[LOADOPTION::VISUAL_OFFSET] = "#VISUAL_OFFSET";
 		Data.loadOption.optionStr[LOADOPTION::KEY_BIND_TYPE] = "#KEY_BIND_TYPE";
 		Data.loadOption.optionStr[LOADOPTION::KEY_CONFIG] = "#KEY_CONFIG";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_TYPE] = "#COLOR_TYPE";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_1_CONFIG] = "#COLOR_1_CONFIG";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_2_CONFIG] = "#COLOR_2_CONFIG";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_DIFFERENT_CONFIG] = "#COLOR_DIFFERENT_CONFIG";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_CUSTOM_CONFIG] = "#COLOR_CUSTOM_CONFIG";
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

@@ -19,7 +19,9 @@ namespace GAME09 {
 
 	}
 	void OPTION_RELATED_BUTTON::draw() {
+		if (!Choice) imageColor(230);
 		BUTTON::draw();
+		imageColor(255);
 		if (Button.colliType == RECT) {
 			rectMode(CENTER);
 			noStroke();
