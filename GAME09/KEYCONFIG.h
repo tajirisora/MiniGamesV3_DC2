@@ -1,6 +1,7 @@
 #pragma once
 #include "GAME_OBJECT.h"
 #include "KC_MAINSUB.h"
+#include "../../libOne/inc/COLOR.h"
 #include <vector>
 
 namespace GAME09 {
@@ -23,11 +24,23 @@ namespace GAME09 {
             B_CUSTOM,
             NUM_KEY_BIND_TYPE
         };
+        enum COLOR_TYPE {
+            C_TYPE1,
+            C_TYPE2,
+            C_CUSTOM,
+            NUM_COLOR_TYPE
+        };
     private:
         DATA Data;
         KC_MAINSUB** CustomKeyConfig = nullptr;
         KC_MAINSUB KeyConfig[6][6];
         const KEY_BIND_TYPE* KeyBindType;
+        COLOR* Color1Config = nullptr;
+        COLOR* Color2Config = nullptr;
+        bool** ColorDifferentConfig = nullptr;
+        COLOR** ColorCustomConfig = nullptr;
+        COLOR ColorConfig[6][6];
+        const COLOR_TYPE* ColorType;
 
         std::vector<KEY_TRIGGER> Triggers;
 

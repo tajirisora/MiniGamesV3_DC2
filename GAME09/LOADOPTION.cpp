@@ -17,9 +17,20 @@ namespace GAME09 {
 	void LOADOPTION::create() {
 		LoadOption = game()->container()->data().loadOption;
 
+		//“®“IŠm•Û
 		OptionData.keyConfig = new KC_MAINSUB*[6];
 		for (int i = 0; i < 6; i++) {
 			OptionData.keyConfig[i] = new KC_MAINSUB[6];
+		}
+		OptionData.color1Config = new COLOR[6];
+		OptionData.color2Config = new COLOR[2];
+		OptionData.colorDifferentConfig = new bool*[6];
+		for (int i = 0; i < 6; i++) {
+			OptionData.colorDifferentConfig[i] = new bool[6];
+		}
+		OptionData.colorCustomConfig = new COLOR* [6];
+		for (int i = 0; i < 6; i++) {
+			OptionData.colorCustomConfig[i] = new COLOR[6];
 		}
 		loadOption();
 	}
@@ -162,6 +173,52 @@ namespace GAME09 {
 							text += std::to_string(d);
 							text += ",";
 						}
+					}
+				}
+				text.pop_back();
+				break;
+			case COLOR_TYPE:
+				text += std::to_string((int)OptionData.colorType);
+				break;
+			case COLOR_1_CONFIG:
+				for (int i = 0; i < 6; i++) {
+					text += std::to_string((int)OptionData.color1Config[i].r);
+					text += ",";
+					text += std::to_string((int)OptionData.color1Config[i].g);
+					text += ",";
+					text += std::to_string((int)OptionData.color1Config[i].b);
+					text += "/";
+				}
+				text.pop_back();
+				break;
+			case COLOR_2_CONFIG:
+				for (int i = 0; i < 2; i++) {
+					text += std::to_string((int)OptionData.color2Config[i].r);
+					text += ",";
+					text += std::to_string((int)OptionData.color2Config[i].g);
+					text += ",";
+					text += std::to_string((int)OptionData.color2Config[i].b);
+					text += "/";
+				}
+				text.pop_back();
+				break;
+			case COLOR_DIFFERENT_CONFIG:
+				for (int y = 0; y < 6; y++) {
+					for (int x = 0; x < 6; x++) {
+						text += OptionData.colorDifferentConfig[y][x] ? "1," : "0,";
+					}
+				}
+				text.pop_back();
+				break;
+			case COLOR_CUSTOM_CONFIG:
+				for (int y = 0; y < 6; y++) {
+					for (int x = 0; x < 6; x++) {
+						text += std::to_string((int)OptionData.colorCustomConfig[y][x].r);
+						text += ",";
+						text += std::to_string((int)OptionData.colorCustomConfig[y][x].g);
+						text += ",";
+						text += std::to_string((int)OptionData.colorCustomConfig[y][x].b);
+						text += "/";
 					}
 				}
 				text.pop_back();

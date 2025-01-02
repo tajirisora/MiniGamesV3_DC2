@@ -34,6 +34,11 @@ namespace GAME09 {
             float visualOffset = 0;
             KEYCONFIG::KEY_BIND_TYPE keyBindType = KEYCONFIG::B_TYPE1;
             KC_MAINSUB** keyConfig = nullptr;
+            KEYCONFIG::COLOR_TYPE colorType = KEYCONFIG::C_TYPE1;
+            COLOR* color1Config = nullptr;
+            COLOR* color2Config = nullptr;
+            bool** colorDifferentConfig = nullptr;
+            COLOR** colorCustomConfig = nullptr;
         };
     private:
         DATA LoadOption;
