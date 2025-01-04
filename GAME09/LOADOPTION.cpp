@@ -63,6 +63,37 @@ namespace GAME09 {
 		writeOption();*/
 	}
 	
+	COLOR LOADOPTION::StoColor(std::string str) {
+		COLOR c;
+		auto offset = std::string::size_type(0);
+		std::string temp;
+		for (int i = 0; i < 3; i++) {
+			auto pos = str.find(",", offset);
+			if (pos == std::string::npos) {
+				temp = str.substr(offset);
+			}
+			else {
+				temp = str.substr(offset, pos - offset);
+			}
+			switch (i)
+			{
+			case 0:
+				c.r = std::stof(temp);
+				break;
+			case 1:
+				c.g = std::stof(temp);
+				break;
+			case 2:
+				c.b = std::stof(temp);
+				break;
+			default:
+				break;
+			}
+			offset = pos + 1;
+		}
+		return c;
+	}
+
 	void LOADOPTION::loadOption() {
 		std::ifstream file;
 		file.open(LoadOption.fileName, std::ios::in);
@@ -118,6 +149,77 @@ namespace GAME09 {
 									}
 									offset = pos + 1;
 								}
+							}
+						}
+					}
+						break;
+					case COLOR_TYPE:
+						OptionData.colorType = (KEYCONFIG::COLOR_TYPE)std::stoi(content);
+						break;
+					case COLOR_1_CONFIG: {
+						auto offset = std::string::size_type(0);
+						std::string temp;
+						for (int j = 0; j < 6; j++) {
+							auto pos = content.find("/", offset);
+							if (pos == std::string::npos) {
+								temp = content.substr(offset);
+							}
+							else {
+								temp = content.substr(offset, pos - offset);
+							}
+							OptionData.color1Config[j] = StoColor(temp);
+							offset = pos + 1;
+						}
+					}
+						break;
+					case COLOR_2_CONFIG: {
+						auto offset = std::string::size_type(0);
+						std::string temp;
+						for (int j = 0; j < 2; j++) {
+							auto pos = content.find("/", offset);
+							if (pos == std::string::npos) {
+								temp = content.substr(offset);
+							}
+							else {
+								temp = content.substr(offset, pos - offset);
+							}
+							OptionData.color2Config[j] = StoColor(temp);
+							offset = pos + 1;
+						}
+					}
+						break;
+					case COLOR_DIFFERENT_CONFIG: {
+						auto offset = std::string::size_type(0);
+						std::string temp;
+						for (int y = 0; y < 6; y++) {
+							for (int x = 0; x < 6; x++) {
+								auto pos = content.find(",", offset);
+								if (pos == std::string::npos) {
+									temp = content.substr(offset);
+								}
+								else {
+									temp = content.substr(offset, pos - offset);
+								}
+								OptionData.colorDifferentConfig[y][x] = temp == "1";
+								offset = pos + 1;
+							}
+						}
+					}
+						break;
+					case COLOR_CUSTOM_CONFIG: {
+						auto offset = std::string::size_type(0);
+						std::string temp;
+						for (int y = 0; y < 6; y++) {
+							for (int x = 0; x < 6; x++) {
+								auto pos = content.find("/", offset);
+								if (pos == std::string::npos) {
+									temp = content.substr(offset);
+								}
+								else {
+									temp = content.substr(offset, pos - offset);
+								}
+								OptionData.colorCustomConfig[y][x] = StoColor(temp);
+								offset = pos + 1;
 							}
 						}
 					}

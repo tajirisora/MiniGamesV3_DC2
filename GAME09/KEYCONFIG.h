@@ -59,5 +59,6 @@ namespace GAME09 {
         bool keyPress(INPUT_CODE key);
         void setKeyConfig();
         void setTrigger(INPUT_CODE key, bool value);
+        void setColorConfig();
     };
 }

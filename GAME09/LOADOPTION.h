@@ -44,6 +44,7 @@ namespace GAME09 {
         DATA LoadOption;
         OPTION_DATA OptionData;
 
+        COLOR StoColor(std::string str);
     public:
         LOADOPTION(class GAME* game);
         ~LOADOPTION();

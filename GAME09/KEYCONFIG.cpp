@@ -43,6 +43,11 @@ namespace GAME09 {
 		CustomKeyConfig = game()->loadOption()->optionData().keyConfig;
 		KeyBindType = &game()->loadOption()->optionData().keyBindType;
 		setKeyConfig();
+		Color1Config = game()->loadOption()->optionData().color1Config;
+		Color2Config = game()->loadOption()->optionData().color2Config;
+		ColorDifferentConfig = game()->loadOption()->optionData().colorDifferentConfig;
+		ColorCustomConfig = game()->loadOption()->optionData().colorCustomConfig;
+		ColorType = &game()->loadOption()->optionData().colorType;
 	}
 
 	void KEYCONFIG::setKeyConfig() {
@@ -112,6 +117,10 @@ namespace GAME09 {
 			break;
 		}
 		SetTriggers();
+	}
+
+	void KEYCONFIG::setColorConfig() {
+
 	}
 
 	void KEYCONFIG::SetTriggers() {
