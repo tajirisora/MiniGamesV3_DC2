@@ -21,6 +21,7 @@ namespace GAME09 {
             COLOR_2_CONFIG,
             COLOR_DIFFERENT_CONFIG,
             COLOR_CUSTOM_CONFIG,
+            COLOR_FADING_RATIO,
             NUM_OPTIONS
         };
         struct DATA {
@@ -39,6 +40,7 @@ namespace GAME09 {
             COLOR* color2Config = nullptr;
             bool** colorDifferentConfig = nullptr;
             COLOR** colorCustomConfig = nullptr;
+            float colorFadingRatio = 0;
         };
     private:
         DATA LoadOption;

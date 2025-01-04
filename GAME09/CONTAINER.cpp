@@ -133,6 +133,7 @@ namespace GAME09
 		Data.loadOption.optionStr[LOADOPTION::COLOR_2_CONFIG] = "#COLOR_2_CONFIG";
 		Data.loadOption.optionStr[LOADOPTION::COLOR_DIFFERENT_CONFIG] = "#COLOR_DIFFERENT_CONFIG";
 		Data.loadOption.optionStr[LOADOPTION::COLOR_CUSTOM_CONFIG] = "#COLOR_CUSTOM_CONFIG";
+		Data.loadOption.optionStr[LOADOPTION::COLOR_FADING_RATIO] = "#COLOR_FADING_RATIO";
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

@@ -224,6 +224,9 @@ namespace GAME09 {
 						}
 					}
 						break;
+					case COLOR_FADING_RATIO:
+						OptionData.colorFadingRatio = std::stof(content);
+						break;
 					default:
 						break;
 					}
@@ -324,6 +327,9 @@ namespace GAME09 {
 					}
 				}
 				text.pop_back();
+				break;
+			case COLOR_FADING_RATIO:
+				text += std::to_string(OptionData.colorFadingRatio);
 				break;
 			default:
 				break;

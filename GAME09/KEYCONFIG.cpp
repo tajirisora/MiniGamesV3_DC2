@@ -120,7 +120,17 @@ namespace GAME09 {
 	}
 
 	void KEYCONFIG::setColorConfig() {
-
+		switch (*ColorType)
+		{
+		case C_TYPE1:
+			break;
+		case C_TYPE2:
+			break;
+		case C_CUSTOM:
+			break;
+		default:
+			break;
+		}
 	}
 
 	void KEYCONFIG::SetTriggers() {
