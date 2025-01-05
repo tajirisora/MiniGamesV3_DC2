@@ -70,6 +70,7 @@
     <ClInclude Include="OPTION_RELATED_BUTTON.h" />
     <ClInclude Include="KC_MAINSUB.h" />
     <ClInclude Include="LOADOPTION.h" />
+    <ClInclude Include="BUTTON_TF.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

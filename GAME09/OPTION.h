@@ -1,6 +1,7 @@
 #pragma once
 #include "SCENE.h"
 #include "KEYCONFIG.h"
+#include "BUTTON_TF.h"
 #include "../../libOne/inc/VECTOR2.h"
 
 namespace GAME09 {
@@ -22,16 +23,10 @@ namespace GAME09 {
         struct DATA {
             VECTOR2 optionImgPos;
             float optionUnderBar;
-            VECTOR2 kindButtonPos;
-            VECTOR2 kindButtonOfst;
-            VECTOR2 kindButtonSize;
+            BUTTON_TF kindButtonTF;
             float kindBarX;
-            VECTOR2 typeButtonPos;
-            VECTOR2 typeButtonOfst;
-            VECTOR2 typeButtonSize;
-            VECTOR2 keyButtonPos;
-            VECTOR2 keyButtonOfst;
-            VECTOR2 keyButtonSize;
+            BUTTON_TF typeButtonTF;
+            BUTTON_TF keyButtonTF;
 
             int optionImg;
             float optionImgSize;

@@ -98,16 +98,16 @@ namespace GAME09
 		Data.option.optionImgPos = VECTOR2(0, 0);
 		Data.option.optionImgSize = 0.4f;
 		Data.option.optionUnderBar = 160;
-		Data.option.kindButtonPos = VECTOR2(130, 230);
-		Data.option.kindButtonOfst = VECTOR2(0, 120);
-		Data.option.kindButtonSize = VECTOR2(225, 100);
+		Data.option.kindButtonTF.pos = VECTOR2(130, 230);
+		Data.option.kindButtonTF.ofst = VECTOR2(0, 120);
+		Data.option.kindButtonTF.size = VECTOR2(225, 100);
 		Data.option.kindBarX = 260;
-		Data.option.typeButtonPos = VECTOR2(440, 650);
-		Data.option.typeButtonOfst = VECTOR2(0, 120);
-		Data.option.typeButtonSize = VECTOR2(225, 100);
-		Data.option.keyButtonPos = VECTOR2(1150, 100);
-		Data.option.keyButtonOfst = VECTOR2(176, 176);
-		Data.option.keyButtonSize = VECTOR2(150, 150);
+		Data.option.typeButtonTF.pos = VECTOR2(440, 650);
+		Data.option.typeButtonTF.ofst = VECTOR2(0, 120);
+		Data.option.typeButtonTF.size = VECTOR2(225, 100);
+		Data.option.keyButtonTF.pos = VECTOR2(1150, 100);
+		Data.option.keyButtonTF.ofst = VECTOR2(176, 176);
+		Data.option.keyButtonTF.size = VECTOR2(150, 150);
 		Data.option.keyButtonImgSize = 0.225f;
 		Data.option.optionButtonSize = 0.155f;
 

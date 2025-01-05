@@ -172,6 +172,7 @@
     <ClInclude Include="BACKGROUND.h" />
     <ClInclude Include="BANNER.h" />
     <ClInclude Include="BUTTON.h" />
+    <ClInclude Include="BUTTON_TF.h" />
     <ClInclude Include="CHANGEDATA.h" />
     <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="CONTAINER.h" />

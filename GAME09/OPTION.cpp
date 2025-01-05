@@ -22,8 +22,8 @@ namespace GAME09 {
 			KindButtons[i] = new OPTION_RELATED_BUTTON(game());
 			BUTTON::DATA Data;
 			Data.colliType = BUTTON::RECT;
-			Data.pos = Option.kindButtonPos + Option.kindButtonOfst * i;
-			Data.size = Option.kindButtonSize;
+			Data.pos = Option.kindButtonTF.pos + Option.kindButtonTF.ofst * i;
+			Data.size = Option.kindButtonTF.size;
 			Data.img = Option.optionButtonImgs[i];
 			Data.imgSize = Option.optionButtonSize;
 			Data.debugFlag = false;
@@ -34,8 +34,8 @@ namespace GAME09 {
 			BindTypeButtons[i] = new OPTION_RELATED_BUTTON(game());
 			BUTTON::DATA Data;
 			Data.colliType = BUTTON::RECT;
-			Data.pos = Option.typeButtonPos + Option.typeButtonOfst * i;
-			Data.size = Option.typeButtonSize;
+			Data.pos = Option.typeButtonTF.pos + Option.typeButtonTF.ofst * i;
+			Data.size = Option.typeButtonTF.size;
 			Data.img = Option.optionTypeImgs[i];
 			Data.imgSize = Option.optionButtonSize;
 			Data.debugFlag = false;
@@ -47,9 +47,9 @@ namespace GAME09 {
 					KeyButtons[y][x] = new OPTION_RELATED_BUTTON(game());
 					BUTTON::DATA Data;
 					Data.colliType = BUTTON::RECT;
-					Data.pos = VECTOR2(Option.keyButtonPos.x + (x - (5 - y) / 2.0f) * Option.keyButtonOfst.x,
-						Option.keyButtonPos.y + Option.keyButtonOfst.y * y);
-					Data.size = Option.keyButtonSize;
+					Data.pos = VECTOR2(Option.keyButtonTF.pos.x + (x - (5 - y) / 2.0f) * Option.keyButtonTF.ofst.x,
+						Option.keyButtonTF.pos.y + Option.keyButtonTF.ofst.y * y);
+					Data.size = Option.keyButtonTF.size;
 					Data.img = Option.keyButtonImg;
 					Data.imgSize = Option.keyButtonImgSize;
 					Data.debugFlag = false;
