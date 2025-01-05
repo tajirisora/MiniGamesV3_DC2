@@ -39,6 +39,7 @@ namespace GAME09 {
         COLOR* Color2Config = nullptr;
         bool** ColorDifferentConfig = nullptr;
         COLOR** ColorCustomConfig = nullptr;
+        float* ColorFadingRatio = nullptr;
         COLOR ColorConfig[6][6];
         const COLOR_TYPE* ColorType;
 
@@ -55,6 +56,7 @@ namespace GAME09 {
 
         std::vector<KEY_TRIGGER>& triggers() { return Triggers; }
         KC_MAINSUB getKeyConfig(int numLane, int lane);
+        COLOR getColorConfig(int numLane, int lane);
         bool keyTrigger(INPUT_CODE key);
         bool keyPress(INPUT_CODE key);
         void setKeyConfig();

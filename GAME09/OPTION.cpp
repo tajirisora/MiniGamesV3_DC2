@@ -1,5 +1,6 @@
 #include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/input.h"
+#include "../../libOne/inc/COLOR.h"
 #include "CONTAINER.h"
 #include "GAME09.h"
 #include "OPTION.h"
@@ -159,14 +160,25 @@ namespace GAME09 {
 		}
 	}
 	void OPTION::DrawColor() {
-		fill(0);
-		text("色", 20, 400);
+		//タイプ切り替えボタン
+		//for (auto e : BindTypeButtons) {
+		//	e->draw();
+		//}
+		stroke(0);
+		strokeWeight(5);
+		DrawKeyButtons();
 	}
 	void OPTION::UpdateKeyButtons() {
 		for (int y = 0; y < 6; y++) {
 			for (int x = 0; x < 6 - y; x++) {
 				KeyButtons[y][x]->update();
 				KeyButtons[y][x]->setKey(game()->keyConfig()->getKeyConfig(6 - y, x));
+				if (OptionKind == COLOR) {
+					KeyButtons[y][x]->setColor(game()->keyConfig()->getColorConfig(6 - y, x));
+				}
+				else {
+					KeyButtons[y][x]->setColor({255,255,255});
+				}
 			}
 		}
 	}
@@ -236,7 +248,33 @@ namespace GAME09 {
 		}
 	}
 	void OPTION::UpdateColor() {
-		
+		//カラータイプ更新
+		//int buttonNum = 0;
+		//for (auto e : BindTypeButtons) {
+		//	e->update();
+		//	if (e->isClick()) {
+		//		game()->loadOption()->optionData().keyBindType = (KEYCONFIG::KEY_BIND_TYPE)buttonNum;
+		//		game()->keyConfig()->setKeyConfig();
+		//	}
+		//	buttonNum++;
+		//}
+		//for (int i = 0; i < KEYCONFIG::NUM_KEY_BIND_TYPE; i++) {
+		//	BindTypeButtons[i]->setChoice(i == (int)game()->loadOption()->optionData().keyBindType);
+		//}
+		UpdateKeyButtons();
+		////キーが押されたとき
+		//for (int y = 0; y < 6; y++) {
+		//	for (int x = 0; x < 6 - y; x++) {
+		//		if (KeyButtons[y][x]->isClick()) {
+		//			WaitKeyIdx = VECTOR2(y, x);
+		//			KeyWait = MAIN;
+		//			break;
+		//		}
+		//	}
+		//	if (game()->loadOption()->optionData().keyBindType != KEYCONFIG::B_CUSTOM) {
+		//		break;
+		//	}
+		//}
 	}
 	void OPTION::nextScene() {
 		if (game()->backButton()->isClick() && KeyWait == NO) {

@@ -19,14 +19,19 @@ namespace GAME09 {
 
 	}
 	void OPTION_RELATED_BUTTON::draw() {
-		if (!Choice) imageColor(230);
+		if (Choice) {
+			imageColor(MainColor);
+		}
+		else {
+			imageColor(MainColor * 0.9f);
+		}
 		BUTTON::draw();
 		imageColor(255);
 		if (Button.colliType == RECT) {
 			rectMode(CENTER);
 			noStroke();
-			fill(MainColor);
-			rect(Button.pos.x + Button.ofst.x, Button.pos.y + Button.ofst.y, Button.size.x, Button.size.y);
+			//fill(MainColor);
+			//rect(Button.pos.x + Button.ofst.x, Button.pos.y + Button.ofst.y, Button.size.x, Button.size.y);
 			fill(0);
 			if (Key.main != KEY_NONE) {
 				if (Key.sub == KEY_NONE) {

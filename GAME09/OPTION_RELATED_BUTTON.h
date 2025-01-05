@@ -9,7 +9,7 @@ namespace GAME09 {
         public BUTTON
     {
     private:
-        COLOR MainColor = { 0,0,0,0 };
+        COLOR MainColor = { 255,255,255 };
         KC_MAINSUB Key;
         bool Choice = false;
     public:

@@ -47,7 +47,9 @@ namespace GAME09 {
 		Color2Config = game()->loadOption()->optionData().color2Config;
 		ColorDifferentConfig = game()->loadOption()->optionData().colorDifferentConfig;
 		ColorCustomConfig = game()->loadOption()->optionData().colorCustomConfig;
+		ColorFadingRatio = &game()->loadOption()->optionData().colorFadingRatio;
 		ColorType = &game()->loadOption()->optionData().colorType;
+		setColorConfig();
 	}
 
 	void KEYCONFIG::setKeyConfig() {
@@ -123,10 +125,37 @@ namespace GAME09 {
 		switch (*ColorType)
 		{
 		case C_TYPE1:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					if (ColorDifferentConfig[y][x]) {
+						ColorConfig[y][x].r = Color1Config[y].r + (255 - Color1Config[y].r) * (*ColorFadingRatio);
+						ColorConfig[y][x].g = Color1Config[y].g + (255 - Color1Config[y].g) * (*ColorFadingRatio);
+						ColorConfig[y][x].b = Color1Config[y].b + (255 - Color1Config[y].b) * (*ColorFadingRatio);
+					}
+					else {
+						ColorConfig[y][x] = Color1Config[y];
+					}
+				}
+			}
 			break;
 		case C_TYPE2:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					if (ColorDifferentConfig[y][x]) {
+						ColorConfig[y][x] = Color2Config[1];
+					}
+					else {
+						ColorConfig[y][x] = Color2Config[0];
+					}
+				}
+			}
 			break;
 		case C_CUSTOM:
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					ColorConfig[y][x] = ColorCustomConfig[y][x];
+				}
+			}
 			break;
 		default:
 			break;
@@ -173,6 +202,10 @@ namespace GAME09 {
 
 	KC_MAINSUB KEYCONFIG::getKeyConfig(int numLane, int lane){
 		return KeyConfig[6 - numLane][lane];
+	}
+	
+	COLOR KEYCONFIG::getColorConfig(int numLane, int lane) {
+		return ColorConfig[6 - numLane][lane];
 	}
 
 	bool KEYCONFIG::keyTrigger(INPUT_CODE key){

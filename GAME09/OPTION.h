@@ -51,6 +51,7 @@ namespace GAME09 {
         class OPTION_RELATED_BUTTON* KindButtons[NUM_KINDS];
         class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];
+        class OPTION_RELATED_BUTTON* ColorTypeButtons[KEYCONFIG::NUM_COLOR_TYPE];
         void UpdateGeneral();
         void UpdateKeyBind();
         void UpdateColor();
