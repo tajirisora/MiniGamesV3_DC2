@@ -355,15 +355,19 @@ namespace GAME09 {
 		}
 		//ƒL[‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
 		UpdateKeyButtons();
-		if (!game()->colorPicker()->isApper()) {
-			if (game()->loadOption()->optionData().colorType != KEYCONFIG::C_CUSTOM) {
-				for (int y = 0; y < 6; y++) {
-					for (int x = 0; x < 6 - y; x++) {
-						if (KeyButtons[y][x]->isClick()) {
+		for (int y = 0; y < 6; y++) {
+			for (int x = 0; x < 6 - y; x++) {
+				if (KeyButtons[y][x]->isClick()) {
+					if (!game()->colorPicker()->isApper()) {
+						if (game()->loadOption()->optionData().colorType != KEYCONFIG::C_CUSTOM) {
 							game()->loadOption()->optionData().colorDifferentConfig[y][x] ^= 1;
 							game()->keyConfig()->setColorConfig();
 							UpdateKeyButtons();
 							break;
+						}
+						else {
+							game()->colorPicker()->apper(VECTOR2(mouseX, mouseY), game()->loadOption()->optionData().colorCustomConfig[y][x]);
+							WaitColor = &game()->loadOption()->optionData().colorCustomConfig[y][x];
 						}
 					}
 				}
