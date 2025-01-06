@@ -124,6 +124,7 @@ namespace GAME09 {
 		default:
 			break;
 		}
+		game()->colorPicker()->update();
 	}
 	void OPTION::draw() {
 		clear(255);
@@ -156,6 +157,7 @@ namespace GAME09 {
 		default:
 			break;
 		}
+		game()->colorPicker()->draw();
 		//–ß‚éƒ{ƒ^ƒ“
 		game()->backButton()->draw();
 	}

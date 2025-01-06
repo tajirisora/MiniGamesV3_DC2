@@ -29,6 +29,7 @@
 #include "LOADCHART.h"
 #include "LOADOPTION.h"
 #include "KEYCONFIG.h"
+#include "COLOR_PICKER.h"
 
 namespace GAME09
 {
@@ -64,6 +65,7 @@ namespace GAME09
 			LANE::DATA lane;
 			KEYCONFIG::DATA keyConfig;
 			LOADOPTION::DATA loadOption;
+			COLOR_PICKER::DATA colorPicker;
 		};
 		DATA Data;
 	public:

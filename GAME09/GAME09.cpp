@@ -28,6 +28,7 @@ namespace GAME09
 		OptionButton = new OPTIONBUTTON(this);
 		BackButton = new BACKBUTTON(this);
 		LoadOption = new LOADOPTION(this);
+		ColorPicker = new COLOR_PICKER(this);
 
 		Container->load();
 		LoadOption->create();
@@ -51,6 +52,7 @@ namespace GAME09
 		JudgeMNG->create();
 		OptionButton->create();
 		BackButton->create();
+		ColorPicker->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -59,6 +61,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete ColorPicker;
 		delete LoadOption;
 		delete BackButton;
 		delete OptionButton;

@@ -140,6 +140,7 @@
     <ClCompile Include="BANNER.cpp" />
     <ClCompile Include="BUTTON.cpp" />
     <ClCompile Include="CHARTMANAGER.cpp" />
+    <ClCompile Include="COLOR_PICKER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME09.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="BUTTON_TF.h" />
     <ClInclude Include="CHANGEDATA.h" />
     <ClInclude Include="CHARTMANAGER.h" />
+    <ClInclude Include="COLOR_PICKER.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME09.h" />

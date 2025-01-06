@@ -140,6 +140,14 @@ namespace GAME09
 		Data.loadOption.optionStr[LOADOPTION::COLOR_DIFFERENT_CONFIG] = "#COLOR_DIFFERENT_CONFIG";
 		Data.loadOption.optionStr[LOADOPTION::COLOR_CUSTOM_CONFIG] = "#COLOR_CUSTOM_CONFIG";
 		Data.loadOption.optionStr[LOADOPTION::COLOR_FADING_RATIO] = "#COLOR_FADING_RATIO";
+
+		Data.colorPicker.areaSize = VECTOR2(300, 300);
+		Data.colorPicker.size = 130;
+		Data.colorPicker.swRate = 0.02f;
+		Data.colorPicker.innerSize = 0.7f;
+		Data.colorPicker.rectSize = 0.45f;
+		Data.colorPicker.hPointerSize = 0.15f;
+		Data.colorPicker.svPointerSize = 0.1f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

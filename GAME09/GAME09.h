@@ -50,6 +50,7 @@ namespace GAME09
 		class OPTIONBUTTON* OptionButton;
 		class BACKBUTTON* BackButton;
 		class LOADOPTION* LoadOption;
+		class COLOR_PICKER* ColorPicker;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -71,6 +72,7 @@ namespace GAME09
 		class OPTIONBUTTON* optionButton() { return OptionButton; }
 		class BACKBUTTON* backButton() { return BackButton; }
 		class LOADOPTION* loadOption() { return LoadOption; }
+		class COLOR_PICKER* colorPicker() { return ColorPicker; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }
