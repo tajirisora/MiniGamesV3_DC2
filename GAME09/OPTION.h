@@ -3,6 +3,7 @@
 #include "KEYCONFIG.h"
 #include "BUTTON_TF.h"
 #include "../../libOne/inc/VECTOR2.h"
+#include "../../libOne/inc/COLOR.h"
 
 namespace GAME09 {
     class OPTION :
@@ -45,6 +46,7 @@ namespace GAME09 {
         OPTION_KINDS OptionKind;
         KEY_WAIT KeyWait;
         VECTOR2 WaitKeyIdx;
+        struct COLOR* WaitColor;
         class OPTION_RELATED_BUTTON* KindButtons[NUM_KINDS];
         class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];

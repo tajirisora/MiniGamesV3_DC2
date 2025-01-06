@@ -116,6 +116,9 @@ namespace GAME09
 		Data.option.colorType1ButtonTF.pos = VECTOR2(1810, 100);
 		Data.option.colorType1ButtonTF.ofst = VECTOR2(0, 176);
 		Data.option.colorType1ButtonTF.size = VECTOR2(150, 150);
+		Data.option.colorType2ButtonTF.pos = VECTOR2(1810, 300);
+		Data.option.colorType2ButtonTF.ofst = VECTOR2(0, 300);
+		Data.option.colorType2ButtonTF.size = VECTOR2(150, 150);
 
 		Data.optionButton.colliType = BUTTON::DIAMOND;
 		Data.optionButton.key = KEY_O;

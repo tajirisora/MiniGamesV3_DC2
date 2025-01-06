@@ -95,19 +95,21 @@ namespace GAME09 {
 		KeyWait = NO;
 	}
 	void OPTION::update() {
-		//戻るボタン
-		game()->backButton()->update();
-		//設定項目切り替えボタン
-		int buttonNum = 0;
-		for (auto e : KindButtons) {
-			e->update();
-			if (e->isClick()) {
-				OptionKind = (OPTION_KINDS)buttonNum;
+		if (!game()->colorPicker()->isApper()) {
+			//戻るボタン
+			game()->backButton()->update();
+			//設定項目切り替えボタン
+			int buttonNum = 0;
+			for (auto e : KindButtons) {
+				e->update();
+				if (e->isClick()) {
+					OptionKind = (OPTION_KINDS)buttonNum;
+				}
+				buttonNum++;
 			}
-			buttonNum++;
-		}
-		for (int i = 0; i < NUM_KINDS; i++) {
-			KindButtons[i]->setChoice(i == (int)OptionKind);
+			for (int i = 0; i < NUM_KINDS; i++) {
+				KindButtons[i]->setChoice(i == (int)OptionKind);
+			}
 		}
 		//それぞれの設定項目ごとのアップデート
 		switch (OptionKind)
@@ -124,7 +126,6 @@ namespace GAME09 {
 		default:
 			break;
 		}
-		game()->colorPicker()->update();
 	}
 	void OPTION::draw() {
 		clear(255);
@@ -157,7 +158,6 @@ namespace GAME09 {
 		default:
 			break;
 		}
-		game()->colorPicker()->draw();
 		//戻るボタン
 		game()->backButton()->draw();
 	}
@@ -213,7 +213,10 @@ namespace GAME09 {
 		default:
 			break;
 		}
-		
+		//カラーピッカー
+		if (game()->colorPicker()->isApper()) {
+			game()->colorPicker()->draw();
+		}
 	}
 	void OPTION::UpdateKeyButtons() {
 		for (int y = 0; y < 6; y++) {
@@ -299,7 +302,7 @@ namespace GAME09 {
 		int buttonNum = 0;
 		for (auto e : ColorTypeButtons) {
 			e->update();
-			if (e->isClick()) {
+			if (e->isClick() && !game()->colorPicker()->isApper()) {
 				game()->loadOption()->optionData().colorType = (KEYCONFIG::COLOR_TYPE)buttonNum;
 				game()->keyConfig()->setColorConfig();
 			}
@@ -314,6 +317,12 @@ namespace GAME09 {
 		case KEYCONFIG::C_TYPE1:
 			for (int i = 0; i < 6; i++) {
 				ColorType1Buttons[i]->update();
+				if (ColorType1Buttons[i]->isClick()) {
+					if (!game()->colorPicker()->isApper()) {
+						game()->colorPicker()->apper(VECTOR2(mouseX, mouseY), game()->loadOption()->optionData().color1Config[i]);
+						WaitColor = &game()->loadOption()->optionData().color1Config[i];
+					}
+				}
 				ColorType1Buttons[i]->setColor(game()->loadOption()->optionData().color1Config[i]);
 			}
 			break;
@@ -327,17 +336,25 @@ namespace GAME09 {
 		}
 		//キーが押されたとき
 		UpdateKeyButtons();
-		if (game()->loadOption()->optionData().colorType != KEYCONFIG::C_CUSTOM) {
-			for (int y = 0; y < 6; y++) {
-				for (int x = 0; x < 6 - y; x++) {
-					if (KeyButtons[y][x]->isClick()) {
-						game()->loadOption()->optionData().colorDifferentConfig[y][x] ^= 1;
-						game()->keyConfig()->setColorConfig();
-						UpdateKeyButtons();
-						break;
+		if (!game()->colorPicker()->isApper()) {
+			if (game()->loadOption()->optionData().colorType != KEYCONFIG::C_CUSTOM) {
+				for (int y = 0; y < 6; y++) {
+					for (int x = 0; x < 6 - y; x++) {
+						if (KeyButtons[y][x]->isClick()) {
+							game()->loadOption()->optionData().colorDifferentConfig[y][x] ^= 1;
+							game()->keyConfig()->setColorConfig();
+							UpdateKeyButtons();
+							break;
+						}
 					}
 				}
 			}
+		}
+		//カラーピッカー
+		if (game()->colorPicker()->isApper()) {
+			game()->colorPicker()->update();
+			*WaitColor = game()->colorPicker()->getColor();
+			game()->keyConfig()->setColorConfig();
 		}
 	}
 	void OPTION::nextScene() {
