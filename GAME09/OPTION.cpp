@@ -89,6 +89,18 @@ namespace GAME09 {
 			ColorType1Buttons[i]->setData(Data);
 			ColorType1Buttons[i]->setChoice(true);
 		}
+		for (int i = 0; i < 2; i++) {
+			ColorType2Buttons[i] = new OPTION_RELATED_BUTTON(game());
+			BUTTON::DATA Data;
+			Data.colliType = BUTTON::RECT;
+			Data.pos = Option.colorType2ButtonTF.pos + Option.colorType2ButtonTF.ofst * i;
+			Data.size = Option.colorType2ButtonTF.size;
+			Data.img = Option.keyButtonImg;
+			Data.imgSize = Option.keyButtonImgSize;
+			Data.debugFlag = false;
+			ColorType2Buttons[i]->setData(Data);
+			ColorType2Buttons[i]->setChoice(true);
+		}
 	}
 	void OPTION::init() {
 		OptionKind = GENERAL;
@@ -206,9 +218,9 @@ namespace GAME09 {
 			}
 			break;
 		case KEYCONFIG::C_TYPE2:
-			//for (auto e : ColorType1Buttons) {
-			//	e->draw();
-			//}
+			for (auto e : ColorType2Buttons) {
+				e->draw();
+			}
 			break;
 		default:
 			break;
@@ -327,9 +339,16 @@ namespace GAME09 {
 			}
 			break;
 		case KEYCONFIG::C_TYPE2:
-			//for (auto e : ColorType1Buttons) {
-			//	e->draw();
-			//}
+			for (int i = 0; i < 2; i++) {
+				ColorType2Buttons[i]->update();
+				if (ColorType2Buttons[i]->isClick()) {
+					if (!game()->colorPicker()->isApper()) {
+						game()->colorPicker()->apper(VECTOR2(mouseX, mouseY), game()->loadOption()->optionData().color2Config[i]);
+						WaitColor = &game()->loadOption()->optionData().color2Config[i];
+					}
+				}
+				ColorType2Buttons[i]->setColor(game()->loadOption()->optionData().color2Config[i]);
+			}
 			break;
 		default:
 			break;

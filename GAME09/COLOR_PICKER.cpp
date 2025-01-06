@@ -81,8 +81,6 @@ namespace GAME09 {
 		noStroke();
 		float PI = 3.14159265f;
 		int detailLevel = 360;
-		Pos.x = CornerPos.x - ColorPicker.areaSize.x / 2;
-		Pos.y = CornerPos.y + ColorPicker.areaSize.y / 2;
 		float theta = 0;
 		float w = PI * ColorPicker.size * 2 / detailLevel;
 		float h = ColorPicker.size * (1 - ColorPicker.innerSize);
@@ -125,6 +123,8 @@ namespace GAME09 {
 		if (CornerPos.y + ColorPicker.areaSize.y + 50 >= height) {
 			CornerPos.y -= ColorPicker.areaSize.y;
 		}
+		Pos.x = CornerPos.x - ColorPicker.areaSize.x / 2;
+		Pos.y = CornerPos.y + ColorPicker.areaSize.y / 2;
 		//RGB‚©‚çHSV‚Ö‚Ì•ÏŠ·
 		//Å‘åÅ¬’l‚ğ‹‚ß‚é
 		COLOR_TAG maxTag = R;
