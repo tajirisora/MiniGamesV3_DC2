@@ -41,6 +41,22 @@ namespace GAME09 {
 			Data.debugFlag = false;
 			BindTypeButtons[i]->setData(Data);
 		}
+		for (int i = 0; i < KEYCONFIG::NUM_COLOR_TYPE; i++) {
+			ColorTypeButtons[i] = new OPTION_RELATED_BUTTON(game());
+			BUTTON::DATA Data;
+			Data.colliType = BUTTON::RECT;
+			Data.pos = Option.colorTypeButtonTF.pos + Option.colorTypeButtonTF.ofst * i;
+			Data.size = Option.colorTypeButtonTF.size;
+			if (i == KEYCONFIG::NUM_COLOR_TYPE - 1) {
+				Data.img = Option.optionTypeImgs[i+1];
+			}
+			else {
+				Data.img = Option.optionTypeImgs[i];
+			}
+			Data.imgSize = Option.optionButtonSize;
+			Data.debugFlag = false;
+			ColorTypeButtons[i]->setData(Data);
+		}
 		for (int y = 0; y < 6; y++) {
 			for (int x = 0; x < 6; x++) {
 				if (x < 6 - y) {
@@ -60,6 +76,18 @@ namespace GAME09 {
 					KeyButtons[y][x] = nullptr;
 				}
 			}
+		}
+		for (int i = 0; i < 6; i++) {
+			ColorType1Buttons[i] = new OPTION_RELATED_BUTTON(game());
+			BUTTON::DATA Data;
+			Data.colliType = BUTTON::RECT;
+			Data.pos = Option.colorType1ButtonTF.pos + Option.colorType1ButtonTF.ofst * i;
+			Data.size = Option.colorType1ButtonTF.size;
+			Data.img = Option.keyButtonImg;
+			Data.imgSize = Option.keyButtonImgSize;
+			Data.debugFlag = false;
+			ColorType1Buttons[i]->setData(Data);
+			ColorType1Buttons[i]->setChoice(true);
 		}
 	}
 	void OPTION::init() {
@@ -161,12 +189,29 @@ namespace GAME09 {
 	}
 	void OPTION::DrawColor() {
 		//タイプ切り替えボタン
-		//for (auto e : BindTypeButtons) {
-		//	e->draw();
-		//}
+		for (auto e : ColorTypeButtons) {
+			e->draw();
+		}
 		stroke(0);
 		strokeWeight(5);
 		DrawKeyButtons();
+		//タイプごとの色変更ボタン
+		switch (game()->loadOption()->optionData().colorType)
+		{
+		case KEYCONFIG::C_TYPE1:
+			for (auto e : ColorType1Buttons) {
+				e->draw();
+			}
+			break;
+		case KEYCONFIG::C_TYPE2:
+			//for (auto e : ColorType1Buttons) {
+			//	e->draw();
+			//}
+			break;
+		default:
+			break;
+		}
+		
 	}
 	void OPTION::UpdateKeyButtons() {
 		for (int y = 0; y < 6; y++) {
@@ -249,32 +294,49 @@ namespace GAME09 {
 	}
 	void OPTION::UpdateColor() {
 		//カラータイプ更新
-		//int buttonNum = 0;
-		//for (auto e : BindTypeButtons) {
-		//	e->update();
-		//	if (e->isClick()) {
-		//		game()->loadOption()->optionData().keyBindType = (KEYCONFIG::KEY_BIND_TYPE)buttonNum;
-		//		game()->keyConfig()->setKeyConfig();
-		//	}
-		//	buttonNum++;
-		//}
-		//for (int i = 0; i < KEYCONFIG::NUM_KEY_BIND_TYPE; i++) {
-		//	BindTypeButtons[i]->setChoice(i == (int)game()->loadOption()->optionData().keyBindType);
-		//}
+		int buttonNum = 0;
+		for (auto e : ColorTypeButtons) {
+			e->update();
+			if (e->isClick()) {
+				game()->loadOption()->optionData().colorType = (KEYCONFIG::COLOR_TYPE)buttonNum;
+				game()->keyConfig()->setColorConfig();
+			}
+			buttonNum++;
+		}
+		for (int i = 0; i < KEYCONFIG::NUM_COLOR_TYPE; i++) {
+			ColorTypeButtons[i]->setChoice(i == (int)game()->loadOption()->optionData().colorType);
+		}
+		//タイプごとの色変更ボタン
+		switch (game()->loadOption()->optionData().colorType)
+		{
+		case KEYCONFIG::C_TYPE1:
+			for (int i = 0; i < 6; i++) {
+				ColorType1Buttons[i]->update();
+				ColorType1Buttons[i]->setColor(game()->loadOption()->optionData().color1Config[i]);
+			}
+			break;
+		case KEYCONFIG::C_TYPE2:
+			//for (auto e : ColorType1Buttons) {
+			//	e->draw();
+			//}
+			break;
+		default:
+			break;
+		}
+		//キーが押されたとき
 		UpdateKeyButtons();
-		////キーが押されたとき
-		//for (int y = 0; y < 6; y++) {
-		//	for (int x = 0; x < 6 - y; x++) {
-		//		if (KeyButtons[y][x]->isClick()) {
-		//			WaitKeyIdx = VECTOR2(y, x);
-		//			KeyWait = MAIN;
-		//			break;
-		//		}
-		//	}
-		//	if (game()->loadOption()->optionData().keyBindType != KEYCONFIG::B_CUSTOM) {
-		//		break;
-		//	}
-		//}
+		if (game()->loadOption()->optionData().colorType != KEYCONFIG::C_CUSTOM) {
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6 - y; x++) {
+					if (KeyButtons[y][x]->isClick()) {
+						game()->loadOption()->optionData().colorDifferentConfig[y][x] ^= 1;
+						game()->keyConfig()->setColorConfig();
+						UpdateKeyButtons();
+						break;
+					}
+				}
+			}
+		}
 	}
 	void OPTION::nextScene() {
 		if (game()->backButton()->isClick() && KeyWait == NO) {

@@ -27,6 +27,8 @@ namespace GAME09 {
             float kindBarX;
             BUTTON_TF typeButtonTF;
             BUTTON_TF keyButtonTF;
+            BUTTON_TF colorTypeButtonTF;
+            BUTTON_TF colorType1ButtonTF;
 
             int optionImg;
             float optionImgSize;
@@ -47,6 +49,7 @@ namespace GAME09 {
         class OPTION_RELATED_BUTTON* BindTypeButtons[KEYCONFIG::NUM_KEY_BIND_TYPE];
         class OPTION_RELATED_BUTTON* KeyButtons[6][6];
         class OPTION_RELATED_BUTTON* ColorTypeButtons[KEYCONFIG::NUM_COLOR_TYPE];
+        class OPTION_RELATED_BUTTON* ColorType1Buttons[6];
         void UpdateGeneral();
         void UpdateKeyBind();
         void UpdateColor();
