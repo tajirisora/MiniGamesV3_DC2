@@ -34,6 +34,7 @@ namespace GAME09 {
             double visualBeat;
             double timeE;
             double visualBeatE;
+            COLOR color;
         };
         enum NOTE_NAME {
             TAP,

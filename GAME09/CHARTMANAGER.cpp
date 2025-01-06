@@ -217,6 +217,7 @@ namespace GAME09 {
 									data.speed = speed;
 									data.time = curTime;
 									data.visualBeat = visualBeat;
+									data.color = game()->keyConfig()->getColorConfig(curLane, i);
 									notes.back()->setData(data);
 									notes.back()->init();
 									endTime = curTime;
@@ -230,6 +231,7 @@ namespace GAME09 {
 										longData[i]->speed = speed;
 										longData[i]->time = curTime;
 										longData[i]->visualBeat = visualBeat;
+										longData[i]->color = game()->keyConfig()->getColorConfig(curLane, i);
 
 										longBeltData[i]->emplace_back(new NOTE::NOTE_DATA);
 										longBeltData[i]->back()->laneNum = curLane;
@@ -238,6 +240,7 @@ namespace GAME09 {
 										longBeltData[i]->back()->speed = speed;
 										longBeltData[i]->back()->time = curTime;
 										longBeltData[i]->back()->visualBeat = visualBeat;
+										longBeltData[i]->back()->color = game()->keyConfig()->getColorConfig(curLane, i);
 									}
 								}
 								else if (std::toupper((*it)[i]) == 'C') {

@@ -25,7 +25,7 @@ namespace GAME09 {
 		EdgeImgDist = oneLaneWidth / 2 - Note.edgeOfst;
 		RectSize = VECTOR2(oneLaneWidth - Note.rectOfst * 2, Note.rectHeight);
 
-		Color = Note.color;
+		//Color = Note.color;
 		float r = Color.r;
 		float g = Color.g;
 		float b = Color.b;
@@ -79,5 +79,6 @@ namespace GAME09 {
 		VisualBeat = data.visualBeat;
 		TimeE = data.timeE;
 		VisualBeatE = data.visualBeatE;
+		Color = data.color;
 	}
 }
