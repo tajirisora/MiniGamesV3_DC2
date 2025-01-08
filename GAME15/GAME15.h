@@ -14,7 +14,5 @@ namespace GAME15
         void play();
         void move();
         void draw();
-    private:
-        class PLAYER* Player{};
     };
 }
