@@ -53,6 +53,7 @@ namespace GAME09
 		class COLOR_PICKER* ColorPicker;
 		class DETAIL_VIEW* Detail;
 		class COMBO* Combo;
+		class SCORE* Score;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -77,6 +78,7 @@ namespace GAME09
 		class COLOR_PICKER* colorPicker() { return ColorPicker; }
 		class DETAIL_VIEW* detail() { return Detail; }
 		class COMBO* combo() { return Combo; }
+		class SCORE* score() { return Score; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

@@ -37,6 +37,7 @@ namespace GAME09 {
 		}
 
 		game()->judgeMNG()->update();
+		game()->score()->update();
 
 		//if (Pause) {
 		//	if (game()->fade()->inEndFlag()) {
@@ -64,6 +65,7 @@ namespace GAME09 {
 			++it;
 		}
 		game()->judgeMNG()->draw();
+		game()->score()->draw();
 
 		game()->rgCont()->draw();
 		

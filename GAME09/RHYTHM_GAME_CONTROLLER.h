@@ -25,7 +25,6 @@ namespace GAME09 {
     private:
         DATA RGCont;
         SONGINFO SongInfo;
-        int AllNotesNum;
 
         double BPM;
         VECTOR2 Measure;

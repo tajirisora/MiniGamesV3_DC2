@@ -51,6 +51,7 @@ namespace GAME09 {
         int Score = 0;
         int Achievement = -1;
 
+        int AllNotesNum = 0;
     public:
         CHARTMANAGER(class GAME* game);
         ~CHARTMANAGER();
@@ -64,6 +65,7 @@ namespace GAME09 {
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);
         void loadChart(struct SONGINFO& songInfo, int& curRow);
+        int allNotesNum() { return AllNotesNum; }
 
         float* audioOffsetPtr() { return &AudioOffset; }
         float* visualOffsetPtr() { return &VisualOffset; }

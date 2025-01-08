@@ -43,8 +43,8 @@ namespace GAME09 {
 		}
 		game()->keyConfig()->update();
 
-		autoPlay();
-		//judgeNotes();
+		//autoPlay();
+		judgeNotes();
 	}
 
 	void JUDGEMANAGER::draw() {

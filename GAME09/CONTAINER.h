@@ -16,7 +16,7 @@
 #include "FADE.h"
 #include "DETAIL_VIEW.h"
 #include "COMBO.h"
-//#include "SCORE.h"
+#include "SCORE.h"
 #include "BUTTON.h"
 //#include "AUTOBUTTON.h"
 #include "OPTIONBUTTON.h"
@@ -55,7 +55,7 @@ namespace GAME09
 			FADE::DATA fade;
 			DETAIL_VIEW::DATA detail;
 			COMBO::DATA combo;
-			//SCORE::DATA score;
+			SCORE::DATA score;
 			//AUTOBUTTON::DATA autoButton;
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;

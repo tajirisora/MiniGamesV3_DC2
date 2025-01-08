@@ -168,6 +168,12 @@ namespace GAME09
 		Data.combo.numSize = 0.31f;
 		Data.combo.strSize = 0.12f;
 		Data.combo.digitSpace = 80;
+
+		Data.score.backImgPos = VECTOR2(1618, 990);
+		Data.score.backImgSize = 0.65f;
+		Data.score.scoreNumPosOfst = VECTOR2(250, 62);
+		Data.score.scoreNumSize = VECTOR2(500, 100);
+		Data.score.scoreAnimeTime = 0.3f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -197,6 +203,7 @@ namespace GAME09
 		Data.combo.numImg = loadImage("..\\main\\assets\\game09\\texture\\combo_num.png");
 		divideImage(Data.combo.numImg, 10, 1, 260, 512, Data.combo.numImgs);
 		Data.combo.strImg = loadImage("..\\main\\assets\\game09\\texture\\combo_str.png");
+		Data.score.backImg = loadImage("..\\main\\assets\\game09\\texture\\score_back.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

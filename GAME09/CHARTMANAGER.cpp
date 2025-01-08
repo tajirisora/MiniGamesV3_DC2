@@ -218,6 +218,7 @@ namespace GAME09 {
 									data.time = curTime;
 									data.visualBeat = visualBeat;
 									data.color = game()->keyConfig()->getColorConfig(curLane, i);
+									AllNotesNum++;
 									notes.back()->setData(data);
 									notes.back()->init();
 									endTime = curTime;
@@ -256,6 +257,8 @@ namespace GAME09 {
 										notes.back()->setData(*longData[i]);
 										notes.back()->init();
 										((LONGNOTE*)notes.back())->setBelts(*longBeltData[i]);
+
+										AllNotesNum += 2;
 
 										delete longData[i];
 										longData[i] = nullptr;
