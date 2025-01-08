@@ -141,6 +141,7 @@
     <ClCompile Include="BUTTON.cpp" />
     <ClCompile Include="CHARTMANAGER.cpp" />
     <ClCompile Include="COLOR_PICKER.cpp" />
+    <ClCompile Include="COMBO.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="DETAIL_VIEW.cpp" />
     <ClCompile Include="FADE.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="CHANGEDATA.h" />
     <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="COLOR_PICKER.h" />
+    <ClInclude Include="COMBO.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="DETAIL_VIEW.h" />
     <ClInclude Include="FADE.h" />

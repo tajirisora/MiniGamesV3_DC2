@@ -162,6 +162,12 @@ namespace GAME09
 		Data.detail.chartPos = VECTOR2(600, 920);
 		Data.detail.otherStrOfst = VECTOR2(0, -100);
 		Data.detail.backColor = COLOR(0, 0, 0, 180);
+
+		Data.combo.numOfst = VECTOR2(0, -50);
+		Data.combo.strOfst = VECTOR2(0, 30);
+		Data.combo.numSize = 0.31f;
+		Data.combo.strSize = 0.12f;
+		Data.combo.digitSpace = 80;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -188,6 +194,9 @@ namespace GAME09
 		Data.option.optionTypeImgs[3] = loadImage("..\\main\\assets\\game09\\texture\\Option_Custom.png");
 		Data.option.keyWait1Img = loadImage("..\\main\\assets\\game09\\texture\\Set_Key_1.png");
 		Data.option.keyWait2Img = loadImage("..\\main\\assets\\game09\\texture\\Set_Key_2.png");
+		Data.combo.numImg = loadImage("..\\main\\assets\\game09\\texture\\combo_num.png");
+		divideImage(Data.combo.numImg, 10, 1, 260, 512, Data.combo.numImgs);
+		Data.combo.strImg = loadImage("..\\main\\assets\\game09\\texture\\combo_str.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

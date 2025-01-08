@@ -43,8 +43,8 @@ namespace GAME09 {
 		}
 		game()->keyConfig()->update();
 
-		//autoPlay();
-		judgeNotes();
+		autoPlay();
+		//judgeNotes();
 	}
 
 	void JUDGEMANAGER::draw() {
@@ -67,16 +67,16 @@ namespace GAME09 {
 		}
 
 		//debug
-		fill(0);
-		print(JudgeResult[0]);
-		print(JudgeResult[1]);
-		print(JudgeResult[2]);
+		//fill(0);
+		//print(JudgeResult[0]);
+		//print(JudgeResult[1]);
+		//print(JudgeResult[2]);
 
 		//ƒRƒ“ƒ{
-		//if (Combo >= 5) {
-		//	float comboAnimeRatio = JudgeMNG.comboSizeMinRate + (1 - JudgeMNG.comboSizeMinRate) * ratio;
-		//	game()->combo()->draw(Combo, JudgeMNG.comboPos, comboAnimeRatio);
-		//}
+		if (Combo >= 5) {
+			float comboAnimeRatio = JudgeMNG.comboSizeMinRate + (1 - JudgeMNG.comboSizeMinRate) * ratio;
+			game()->combo()->draw(Combo, JudgeMNG.comboPos, comboAnimeRatio);
+		}
 	}
 
 	void JUDGEMANAGER::resetCombo() {

@@ -30,6 +30,7 @@ namespace GAME09
 		LoadOption = new LOADOPTION(this);
 		ColorPicker = new COLOR_PICKER(this);
 		Detail = new DETAIL_VIEW(this);
+		Combo = new COMBO(this);
 
 		Container->load();
 		LoadOption->create();
@@ -55,6 +56,7 @@ namespace GAME09
 		BackButton->create();
 		ColorPicker->create();
 		Detail->create();
+		Combo->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -63,6 +65,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete Combo;
 		delete Detail;
 		delete ColorPicker;
 		delete LoadOption;
