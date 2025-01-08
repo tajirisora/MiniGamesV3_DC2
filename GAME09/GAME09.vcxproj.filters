@@ -33,6 +33,7 @@
     <ClCompile Include="OPTION_RELATED_BUTTON.cpp" />
     <ClCompile Include="LOADOPTION.cpp" />
     <ClCompile Include="COLOR_PICKER.cpp" />
+    <ClCompile Include="DETAIL_VIEW.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -73,6 +74,7 @@
     <ClInclude Include="LOADOPTION.h" />
     <ClInclude Include="BUTTON_TF.h" />
     <ClInclude Include="COLOR_PICKER.h" />
+    <ClInclude Include="DETAIL_VIEW.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

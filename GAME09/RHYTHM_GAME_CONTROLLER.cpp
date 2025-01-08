@@ -94,12 +94,12 @@ namespace GAME09 {
 	void RHYTHM_GAME_CONTROLLER::draw() {
 
 		//‹È‚ÌÚ×‚ð•\Ž¦
-		//if (State == DETAIL_VIEW) {
-		//	game()->detail()->draw();
-		//}
-		//else if (State == BEFORE_PLAY) {
-		//	float ratio = 1.0f - AnimeTime / RGCont.detailViewDisappearTime;
-		//	game()->detail()->draw(ratio);
-		//}
+		if (State == DETAIL_VIEW) {
+			game()->detail()->draw();
+		}
+		else if (State == BEFORE_PLAY) {
+			float ratio = 1.0f - AnimeTime / RGCont.detailViewDisappearTime;
+			game()->detail()->draw(ratio);
+		}
 	}
 }

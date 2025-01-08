@@ -14,7 +14,7 @@
 #include "BACKGROUND.h"
 #include "JACKET.h"
 #include "FADE.h"
-//#include "DETAIL_VIEW.h"
+#include "DETAIL_VIEW.h"
 //#include "COMBO.h"
 //#include "SCORE.h"
 #include "BUTTON.h"
@@ -53,7 +53,7 @@ namespace GAME09
 			BACKGROUND::DATA back;
 			JACKET::DATA jacket;
 			FADE::DATA fade;
-			//DETAIL_VIEW::DATA detail;
+			DETAIL_VIEW::DATA detail;
 			//COMBO::DATA combo;
 			//SCORE::DATA score;
 			//AUTOBUTTON::DATA autoButton;

@@ -142,6 +142,7 @@
     <ClCompile Include="CHARTMANAGER.cpp" />
     <ClCompile Include="COLOR_PICKER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="DETAIL_VIEW.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME09.cpp" />
     <ClCompile Include="GAME_CLEAR.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="CHARTMANAGER.h" />
     <ClInclude Include="COLOR_PICKER.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="DETAIL_VIEW.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME09.h" />
     <ClInclude Include="GAME_CLEAR.h" />

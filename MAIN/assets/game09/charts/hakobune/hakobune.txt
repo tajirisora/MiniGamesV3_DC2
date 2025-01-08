@@ -4,8 +4,8 @@
 #DESCRIPTION:;
 #CREDIT:Matsusen;
 #MUSIC:hakobune.wav;
-#BANNER:;
-#BACKGROUND:;
+#BANNER:jacket.jpg;
+#BACKGROUND:background.jpg;
 #ILLUST:;
 #DIFFICULTIES:0,0,0,0,14;
 #SAMPLESTART:0;

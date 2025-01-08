@@ -151,6 +151,17 @@ namespace GAME09
 		Data.colorPicker.rectSize = 0.45f;
 		Data.colorPicker.hPointerSize = 0.15f;
 		Data.colorPicker.svPointerSize = 0.1f;
+
+		Data.detail.jacketPos = VECTOR2(1300, 650);
+		Data.detail.jacketSize = 0.8f;
+		Data.detail.titleSize = VECTOR2(1500, 150);
+		Data.detail.otherSize = VECTOR2(700, 80);
+		Data.detail.otherStrSize = 40;
+		Data.detail.titlePos = VECTOR2(width / 2, 300);
+		Data.detail.artistPos = VECTOR2(600, 500);
+		Data.detail.chartPos = VECTOR2(600, 920);
+		Data.detail.otherStrOfst = VECTOR2(0, -100);
+		Data.detail.backColor = COLOR(0, 0, 0, 180);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

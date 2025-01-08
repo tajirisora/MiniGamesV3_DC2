@@ -29,6 +29,7 @@ namespace GAME09
 		BackButton = new BACKBUTTON(this);
 		LoadOption = new LOADOPTION(this);
 		ColorPicker = new COLOR_PICKER(this);
+		Detail = new DETAIL_VIEW(this);
 
 		Container->load();
 		LoadOption->create();
@@ -53,6 +54,7 @@ namespace GAME09
 		OptionButton->create();
 		BackButton->create();
 		ColorPicker->create();
+		Detail->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -61,6 +63,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete Detail;
 		delete ColorPicker;
 		delete LoadOption;
 		delete BackButton;
