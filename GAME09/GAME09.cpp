@@ -32,6 +32,7 @@ namespace GAME09
 		Detail = new DETAIL_VIEW(this);
 		Combo = new COMBO(this);
 		Score = new SCORE(this);
+		Achievement = new ACHIEVEMENT(this);
 
 		Container->load();
 		LoadOption->create();
@@ -59,6 +60,7 @@ namespace GAME09
 		Detail->create();
 		Combo->create();
 		Score->create();
+		Achievement->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -67,6 +69,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete Achievement;
 		delete Score;
 		delete Combo;
 		delete Detail;

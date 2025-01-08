@@ -174,6 +174,41 @@ namespace GAME09
 		Data.score.scoreNumPosOfst = VECTOR2(250, 62);
 		Data.score.scoreNumSize = VECTOR2(500, 100);
 		Data.score.scoreAnimeTime = 0.3f;
+
+		Data.achievement.pos = VECTOR2(550, 200);
+		Data.achievement.size = 0.70f;
+
+		Data.gameClear.jacketTF.pos = VECTOR2(1450, 650);
+		Data.gameClear.jacketTF.size = 1.0f;
+		Data.gameClear.framePos = VECTOR2(550, 540);
+		Data.gameClear.frameSize = 1.5f;
+		Data.gameClear.judgeImgPos = VECTOR2(280, 620);
+		Data.gameClear.judgeImgSize = 0.3f;
+		Data.gameClear.judgeNumPos = VECTOR2(600, 652);
+		Data.gameClear.judgeNumSize = 65;
+		Data.gameClear.judgeNextOfst = VECTOR2(0, 105);
+		Data.gameClear.maxComboPos = VECTOR2(810, 760);
+		Data.gameClear.maxComboSize = 1.1f;
+		Data.gameClear.scorePos = VECTOR2(550, 380);
+		Data.gameClear.scoreSize = 1.25f;
+		Data.gameClear.highScoreStrPos = VECTOR2(170, 535);
+		Data.gameClear.highScoreOfst = VECTOR2(460, 10);
+		Data.gameClear.highScoreDiffOfst = VECTOR2(30, 0);
+		Data.gameClear.highScoreStrSize = VECTOR2(width, 40);
+		Data.gameClear.highScoreSize = VECTOR2(width, 60);
+		Data.gameClear.titlePos = VECTOR2(1450, 170);
+		Data.gameClear.titleSize = 1.092f;
+		Data.gameClear.operationPos = VECTOR2(1542, 1033);
+		Data.gameClear.operationSize = 0.6f;
+		Data.gameClear.fastSlowPos = VECTOR2(550, 940);
+		Data.gameClear.fastSlowSize = 0.6f;
+		Data.gameClear.fastSlowGaugeOfst = VECTOR2(-209, -32);
+		Data.gameClear.fastSlowGaugeSize = VECTOR2(418, 64);
+		Data.gameClear.fastSlowNumSize = VECTOR2(200, 50);
+		Data.gameClear.fastNumOfst = VECTOR2(-205, 30);
+		Data.gameClear.slowNumOfst = VECTOR2(205, 30);
+		Data.gameClear.fastColor = COLOR(117, 149, 255);
+		Data.gameClear.slowColor = COLOR(255, 65, 116);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -204,6 +239,9 @@ namespace GAME09
 		divideImage(Data.combo.numImg, 10, 1, 260, 512, Data.combo.numImgs);
 		Data.combo.strImg = loadImage("..\\main\\assets\\game09\\texture\\combo_str.png");
 		Data.score.backImg = loadImage("..\\main\\assets\\game09\\texture\\score_back.png");
+		Data.achievement.imgs[ACHIEVEMENT::CLEAR] = loadImage("..\\main\\assets\\game09\\texture\\clear.png");
+		Data.achievement.imgs[ACHIEVEMENT::FULLCOMBO] = loadImage("..\\main\\assets\\game09\\texture\\fullcombo.png");
+		Data.achievement.imgs[ACHIEVEMENT::ALLPERFECT] = loadImage("..\\main\\assets\\game09\\texture\\allperfect.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

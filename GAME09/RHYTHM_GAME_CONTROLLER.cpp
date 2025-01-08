@@ -80,7 +80,7 @@ namespace GAME09 {
 		else if (State == AFTER_PLAY) {
 			if (CurTime > EndTime + 2) {
 				Finish = true;
-				//Sound->stopMusic();
+				game()->soundMNG()->stopMusic();
 			}
 		}
 		else {

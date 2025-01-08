@@ -23,7 +23,7 @@
 #include "BACKBUTTON.h"
 #include "OPTION.h"
 //#include "SONGTITLE.h"
-//#include "ACHIEVEMENT.h"
+#include "ACHIEVEMENT.h"
 #include "LANE.h"
 #include "LOADSONGS.h"
 #include "LOADCHART.h"
@@ -61,7 +61,7 @@ namespace GAME09
 			BUTTON::DATA backButton;
 			OPTION::DATA option;
 			//SONGTITLE::DATA songTitle;
-			//ACHIEVEMENT::DATA achievement;
+			ACHIEVEMENT::DATA achievement;
 			LANE::DATA lane;
 			KEYCONFIG::DATA keyConfig;
 			LOADOPTION::DATA loadOption;

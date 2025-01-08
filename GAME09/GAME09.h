@@ -54,6 +54,7 @@ namespace GAME09
 		class DETAIL_VIEW* Detail;
 		class COMBO* Combo;
 		class SCORE* Score;
+		class ACHIEVEMENT* Achievement;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -79,6 +80,7 @@ namespace GAME09
 		class DETAIL_VIEW* detail() { return Detail; }
 		class COMBO* combo() { return Combo; }
 		class SCORE* score() { return Score; }
+		class ACHIEVEMENT* achievement() { return Achievement; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

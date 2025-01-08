@@ -453,4 +453,30 @@ namespace GAME09 {
 			stbi_image_free(pixels);
 		}
 	}
+
+	void CHARTMANAGER::updateHighScore(int highScore, int achievement) {
+		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
+		std::ofstream file;
+		file.open(songInfo.scorePath, std::ios::out);
+		std::string text = "";
+
+		for (int i = 0; i < NUM_SCORE_DATAS; i++) {
+			text += ChartMNG.scoreDataStr[i];
+			text += ":";
+			switch (i) {
+			case SCORE:
+				text += std::to_string(highScore);
+				break;
+			case ACHIEVEMENT:
+				text += std::to_string(achievement);
+				break;
+			default:
+				break;
+			}
+			text += ";\n";
+		}
+
+		file << text.c_str();
+		file.close();
+	}
 }

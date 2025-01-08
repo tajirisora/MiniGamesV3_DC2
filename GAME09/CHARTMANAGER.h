@@ -65,6 +65,7 @@ namespace GAME09 {
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);
         void loadChart(struct SONGINFO& songInfo, int& curRow);
+        void updateHighScore(int highScore, int achievement);
         int allNotesNum() { return AllNotesNum; }
 
         float* audioOffsetPtr() { return &AudioOffset; }

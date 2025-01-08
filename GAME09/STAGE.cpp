@@ -95,6 +95,10 @@ namespace GAME09 {
 			game()->fade()->outStart();
 			NextScene = GAME::SELECT_ID;
 		}
+		if (game()->rgCont()->isChangeScene()) {
+			game()->fade()->outStart();
+			NextScene = GAME::GAME_CLEAR_ID;
+		}
 		if (game()->fade()->outEndFlag()) {
 			game()->soundMNG()->stopMusic();
 			game()->changeScene(NextScene);
