@@ -7,6 +7,7 @@
 #include"HANDGUN_BULLETS.h"
 #include"SHOTGUN_BULLET.h"
 #include"TIME.h"
+#include"DISTANCE.h"
 #include"HP_GAUGE.h"
 #include"ENEMYS.h"
 #include"HANDGUN.h"
@@ -29,6 +30,7 @@ GAME10_GAME::GAME10_GAME(){
 	Objects = new OBJECT(this);
 
 	Time = new TIME(this);
+	Distance = new DISTANCE(this);
 	Weapons[HANDGUN_ID] = new HANDGUN(this);
 	Weapons[SHOTGUN_ID] = new SHOTGUN(this);
 
@@ -55,6 +57,7 @@ GAME10_GAME::~GAME10_GAME(){
 	delete Enemies;
 	delete Objects;
 	delete Time;
+	delete Distance;
 	for (int i = 0; i < NUM_WEAPON; i++) {
 		delete Weapons[i];
 	}

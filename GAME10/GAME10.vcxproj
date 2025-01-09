@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="BULLETS.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="DISTANCE.cpp" />
     <ClCompile Include="ENEMYS.cpp" />
     <ClCompile Include="ENEMY_HPGAUGE.cpp" />
     <ClCompile Include="GAME10.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="BULLETS.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="DISTANCE.h" />
     <ClInclude Include="ENEMYS.h" />
     <ClInclude Include="ENEMY_HPGAUGE.h" />
     <ClInclude Include="GAME10.h" />

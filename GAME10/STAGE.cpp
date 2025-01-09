@@ -85,29 +85,6 @@ void STAGE::draw() {
 		image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
 	}
 
-	//game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->draw();
-	//game()->bullets(GAME10_GAME::SHOTGUN_ID)->draw();
-	//for (int i = 0; i < game()->enemies()->uniEnemy().nowNum; i++) {
-	//	if (game()->player()->playerRight() > game()->enemies()->EnemiesLeft(i)) {//“G‚ÆƒvƒŒƒCƒ„[‚ª‚©‚Ô‚Á‚½uŠÔ‚¾‚¯‘OŒã‚Ìˆ—‚ð‚·‚é
-	//		if (game()->player()->playerData().nowLane < game()->enemies()->EnemiesLane(i)) {//“G‚ªŽè‘O‚¾‚Á‚½ê‡Œã‚Å•`‰æ‚·‚é
-	//			game()->player()->draw();
-	//			Stage.frontImgNumber = i;
-	//		}
-	//		else {
-	//			game()->enemies()->draw(i);
-	//			game()->player()->draw();
-	//		}
-	//	
-	//	else {
-	//		game()->enemies()->draw(i);
-	//		game()->player()->draw();
-	//	}
-	//}
-	//if (Stage.frontImgNumber != Stage.NofrontImg) {
-	//	game()->enemies()->draw(Stage.frontImgNumber);
-	//	Stage.frontImgNumber = Stage.NofrontImg;
-	//}
-
 	for (int LNum = 0; Stage.LaneNum > LNum; LNum++) {
 		layer(LNum);
 	}
@@ -116,6 +93,7 @@ void STAGE::draw() {
 		game()->player()->draw();//“G‚ª‚¢‚È‚©‚Á‚½ê‡‚ÍƒvƒŒƒCƒ„[‚Ì‚Ý•`‰æ‚³‚ê‚é
 	}
 	game()->time()->draw();
+	game()->distance()->draw();
 	fill(255);
 }
 void STAGE::layer(int drawLane) {

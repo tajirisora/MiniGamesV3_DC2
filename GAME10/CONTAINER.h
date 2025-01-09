@@ -11,6 +11,7 @@
 #include"SHOTGUN.h"
 #include"BULLETS.h"
 #include"TIME.h"
+#include"DISTANCE.h"
 #include"ENEMYS.h"
 #include"OBJECT.h"
 class CONTAINER
@@ -27,6 +28,7 @@ private:
 		HANDGUN::DATA handgun;
 		SHOTGUN::DATA shotgun;
 		TIME::DATA time;
+		DISTANCE::DATA distance;
 		BULLETS::DATA handgunBullet;
 		BULLETS::DATA shotGunBullet;
 		ENEMYS::DATA enemy;
@@ -49,6 +51,7 @@ public:
 	const HANDGUN::DATA& handgun() { return Data.handgun; }
 	const SHOTGUN::DATA& shotgun() { return Data.shotgun; }
 	const TIME::DATA& time() { return Data.time; }
+	const DISTANCE::DATA& distance(){ return Data.distance; }
 	const BULLETS::DATA& handgunBullet() { return Data.handgunBullet; }
 	const BULLETS::DATA& shotgunBullet() { return Data.shotGunBullet; }
 	const ENEMYS::DATA& enemy() { return Data.enemy; }

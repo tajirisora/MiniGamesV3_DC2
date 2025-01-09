@@ -58,12 +58,17 @@
     <ClCompile Include="SHOTGUN.cpp">
       <Filter>item\sauce</Filter>
     </ClCompile>
-    <ClCompile Include="OBJECT.cpp" />
     <ClCompile Include="HP_GAUGE.cpp">
       <Filter>HP\base</Filter>
     </ClCompile>
     <ClCompile Include="OBJECT_HP.cpp">
       <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="DISTANCE.cpp">
+      <Filter>sauce</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,12 +129,17 @@
     <ClInclude Include="SHOTGUN.h">
       <Filter>item\header</Filter>
     </ClInclude>
-    <ClInclude Include="OBJECT.h" />
     <ClInclude Include="HP_GAUGE.h">
       <Filter>HP\base</Filter>
     </ClInclude>
     <ClInclude Include="OBJECT_HP.h">
       <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="DISTANCE.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT.h">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

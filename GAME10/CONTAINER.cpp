@@ -53,7 +53,13 @@ void CONTAINER::setImage() {
 void CONTAINER::setData(){
 	Data.title.imgPos.x = 0;
 	Data.title.imgPos.y = 0;
-
+	Data.title.selectMy = 120;
+	Data.title.textSize = 80;
+	Data.title.selectX = 900;
+	Data.title.selectY = 600;
+	Data.title.crPos.x = 850;
+	Data.title.crPos.y = 560;
+	Data.title.rad = 50;
 //ステージ
 	Data.stage.imgPos.x = 0;
 	Data.stage.imgPos.y = 0;
@@ -202,6 +208,14 @@ void CONTAINER::setData(){
 	Data.time.rewindTime = 480;
 	Data.time.Pos.x = 1000;
 	Data.time.Pos.y = 90;
+
+	//距離
+	Data.distance.standardDist = 1000.0;
+	Data.distance.cntDist = Data.distance.standardDist /(Data.stage.gPos.x - Data.player.Opos.x);
+	Data.distance.sumDist = 0;
+	Data.distance.clearDist = 0;
+	Data.distance.distPos.x = 400;
+	Data.distance.distPos.y = 30;
 
 	Data.handgunBullet.totalNum = 20;
 	Data.handgunBullet.curNum = 0;

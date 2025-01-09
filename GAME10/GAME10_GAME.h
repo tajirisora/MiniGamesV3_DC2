@@ -53,6 +53,7 @@ private:
 	class OBJECT* Objects;
 
 	class TIME* Time;
+	class DISTANCE* Distance;
 	class WEAPONS* Weapons[NUM_WEAPON];
 	WEAPON_ID CurWeaponId;
 public:
@@ -65,6 +66,7 @@ public:
 	class PLAYER* player() { return Player; }
 	class WEAPONS* weapons(int Weaponkind) { return Weapons[Weaponkind]; }
 	class TIME* time() { return Time; }
+	class DISTANCE* distance(){ return Distance; }
 	class BULLETS* bullets(int i) { return Bullets[i]; }
 	class ENEMYS* enemies() { return Enemies; }
 	class OBJECT* objects() { return Objects; }
