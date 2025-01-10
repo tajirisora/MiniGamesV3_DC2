@@ -1,12 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GAME14.cpp" />
+    <ClCompile Include="GAME14.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME_OBJECT.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE.cpp">
+      <Filter>scene\bace</Filter>
+    </ClCompile>
+    <ClCompile Include="CONTAINER.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="HOME.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RESULT.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="STAGE.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TITLE.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="STOP_BUTTON.cpp">
+      <Filter>character\button</Filter>
+    </ClCompile>
+    <ClCompile Include="BUTTON.cpp">
+      <Filter>character\button\bace</Filter>
+    </ClCompile>
+    <ClCompile Include="LEVER.cpp">
+      <Filter>character\lever</Filter>
+    </ClCompile>
+    <ClCompile Include="LOTTERY.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="REEL.cpp">
+      <Filter>character\reel</Filter>
+    </ClCompile>
+    <ClCompile Include="REEL_MAP.cpp">
+      <Filter>character\reel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GAME14.h" />
+    <ClInclude Include="GAME14.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME_OBJECT.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE.h">
+      <Filter>scene\bace</Filter>
+    </ClInclude>
+    <ClInclude Include="CONTAINER.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="HOME.h">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RESULT.h">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="STAGE.h">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="STOP_BUTTON.h">
+      <Filter>character\button</Filter>
+    </ClInclude>
+    <ClInclude Include="BUTTON.h">
+      <Filter>character\button\bace</Filter>
+    </ClInclude>
+    <ClInclude Include="LEVER.h">
+      <Filter>character\lever</Filter>
+    </ClInclude>
+    <ClInclude Include="LOTTERY.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="REEL.h">
+      <Filter>character\reel</Filter>
+    </ClInclude>
+    <ClInclude Include="REEL_MAP.h">
+      <Filter>character\reel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game14\title.txt" />
+    <Text Include="..\MAIN\assets\game14\reel_map.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\flag_prob.txt">
+      <Filter>character</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="scene">
+      <UniqueIdentifier>{b50000ea-7bed-4fe4-88be-94d3760a04f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{ae62c833-4371-471c-80d7-04f75876b8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\bace">
+      <UniqueIdentifier>{c3add2d4-8546-4566-b3bd-7145f683b617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{4d6174b9-2459-4082-af8b-284138b4f64f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character">
+      <UniqueIdentifier>{8cf0ae56-cf65-4cff-af15-2ba5a7fb720d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\button">
+      <UniqueIdentifier>{4e9f7d5f-8a43-4061-b316-9a5ba7ecc01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\button\bace">
+      <UniqueIdentifier>{c777554b-e379-46f0-b7d6-e8fd104c0128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\button\stopbutton">
+      <UniqueIdentifier>{34b992d6-56bd-4c5e-9608-a00061ee4ded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\lever">
+      <UniqueIdentifier>{0b85e658-95da-44ba-b472-b346ed05146e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\reel">
+      <UniqueIdentifier>{09c4d1a6-994a-44c1-9892-6b9393272aaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
