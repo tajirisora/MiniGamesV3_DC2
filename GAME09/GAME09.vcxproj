@@ -107,6 +107,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -123,6 +124,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -133,10 +135,88 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ACHIEVEMENT.cpp" />
+    <ClCompile Include="AUTOBUTTON.cpp" />
+    <ClCompile Include="BACKBUTTON.cpp" />
+    <ClCompile Include="BACKGROUND.cpp" />
+    <ClCompile Include="BANNER.cpp" />
+    <ClCompile Include="BUTTON.cpp" />
+    <ClCompile Include="CHARTMANAGER.cpp" />
+    <ClCompile Include="COLOR_PICKER.cpp" />
+    <ClCompile Include="COMBO.cpp" />
+    <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="DETAIL_VIEW.cpp" />
+    <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME09.cpp" />
+    <ClCompile Include="GAME_CLEAR.cpp" />
+    <ClCompile Include="GAME_OBJECT.cpp" />
+    <ClCompile Include="JACKET.cpp" />
+    <ClCompile Include="JUDGEMANAGER.cpp" />
+    <ClCompile Include="KEYCONFIG.cpp" />
+    <ClCompile Include="LANE.cpp" />
+    <ClCompile Include="LOADCHART.cpp" />
+    <ClCompile Include="LOADOPTION.cpp" />
+    <ClCompile Include="LOADSONGS.cpp" />
+    <ClCompile Include="LONGBELT.cpp" />
+    <ClCompile Include="LONGNOTE.cpp" />
+    <ClCompile Include="MUSICSELECT.cpp" />
+    <ClCompile Include="NOTE.cpp" />
+    <ClCompile Include="OPTION.cpp" />
+    <ClCompile Include="OPTIONBUTTON.cpp" />
+    <ClCompile Include="OPTION_RELATED_BUTTON.cpp" />
+    <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
+    <ClCompile Include="SCENE.cpp" />
+    <ClCompile Include="SCORE.cpp" />
+    <ClCompile Include="SOUNDMANAGER.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TAPNOTE.cpp" />
+    <ClCompile Include="textFunc.cpp" />
+    <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ACHIEVEMENT.h" />
+    <ClInclude Include="AUTOBUTTON.h" />
+    <ClInclude Include="BACKBUTTON.h" />
+    <ClInclude Include="BACKGROUND.h" />
+    <ClInclude Include="BANNER.h" />
+    <ClInclude Include="BUTTON.h" />
+    <ClInclude Include="BUTTON_TF.h" />
+    <ClInclude Include="CHANGEDATA.h" />
+    <ClInclude Include="CHARTMANAGER.h" />
+    <ClInclude Include="COLOR_PICKER.h" />
+    <ClInclude Include="COMBO.h" />
+    <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="DETAIL_VIEW.h" />
+    <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME09.h" />
+    <ClInclude Include="GAME_CLEAR.h" />
+    <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="JACKET.h" />
+    <ClInclude Include="JUDGEMANAGER.h" />
+    <ClInclude Include="KC_MAINSUB.h" />
+    <ClInclude Include="KEYCONFIG.h" />
+    <ClInclude Include="LANE.h" />
+    <ClInclude Include="LOADCHART.h" />
+    <ClInclude Include="LOADOPTION.h" />
+    <ClInclude Include="LOADSONGS.h" />
+    <ClInclude Include="LONGBELT.h" />
+    <ClInclude Include="LONGNOTE.h" />
+    <ClInclude Include="MUSICSELECT.h" />
+    <ClInclude Include="myFunc.h" />
+    <ClInclude Include="NOTE.h" />
+    <ClInclude Include="OPTION.h" />
+    <ClInclude Include="OPTIONBUTTON.h" />
+    <ClInclude Include="OPTION_RELATED_BUTTON.h" />
+    <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
+    <ClInclude Include="SCENE.h" />
+    <ClInclude Include="SCORE.h" />
+    <ClInclude Include="SONGINFO.h" />
+    <ClInclude Include="SOUNDMANAGER.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TAPNOTE.h" />
+    <ClInclude Include="textFunc.h" />
+    <ClInclude Include="TITLE.h" />
+    <ClInclude Include="TRANSFORM.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
