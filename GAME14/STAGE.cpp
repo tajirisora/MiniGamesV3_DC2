@@ -1,7 +1,7 @@
 #include"STOP_BUTTON.h"
 #include"LEVER.h"
-#include"REEL_MANAGER.h"
 #include "STAGE.h"
+#include"LOTTERY.h"
 namespace GAME14 {
     STAGE::~STAGE(){}
     void STAGE::create(){}

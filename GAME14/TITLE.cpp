@@ -5,7 +5,8 @@ namespace GAME14 {
     void TITLE::create(){
         Title = game()->container()->data().title;
     }
-    void TITLE::init(){}
+    void TITLE::init(){
+    }
     void TITLE::update(){}
     void TITLE::draw(){
         clear(Title.backColor);

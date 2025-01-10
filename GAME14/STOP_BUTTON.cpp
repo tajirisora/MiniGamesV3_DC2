@@ -1,9 +1,6 @@
 #include"CONTAINER.h"
 #include"GAME14.h"
-#include"REEL_MANAGER.h"
-#include"LEFT_REEL.h"
-#include"MIDDLE_REEL.h"
-#include"RIGHT_REEL.h"
+#include"REEL.h"
 #include "STOP_BUTTON.h"
 namespace GAME14 {
     STOP_BUTTON::~STOP_BUTTON(){
@@ -38,8 +35,8 @@ namespace GAME14 {
             for (int i = 0; i < StopButtons.numButton; i++) {
                 if (collisionCheck(StopButton[i].pos, Button.r)) {
                     if (isTrigger(MOUSE_LBUTTON)) {
+                        game()->reel()->stop(i);
                         StopButton[i].sistemFlag = true;
-                        game()->reelManager()->reel(i)->stop();
                     }
                     if (isPress(MOUSE_LBUTTON)) {
                         StopButton[i].drawFlag = true;

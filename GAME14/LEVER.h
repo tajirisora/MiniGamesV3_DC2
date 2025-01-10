@@ -8,12 +8,15 @@ namespace GAME14 {
     public:
         struct DATA {
             float moveDis;//ˆÚ“®‹——£
+            float waitTime = 0.0f;
 
 
         };
     private:
         DATA Lever;
         float MoveDis;
+        float CurTime;
+        int i = 0;
     public:
         LEVER(GAME* game):
             BUTTON(game){}

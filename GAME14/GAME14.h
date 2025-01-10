@@ -26,15 +26,15 @@ namespace GAME14
     private://ƒLƒƒƒ‰ƒNƒ^
         class BUTTON* StopButton = nullptr;
         class LEVER* Lever = nullptr;
-        class REEL_MANAGER* ReelManager = nullptr;
-        class REEL_CONTROL* ReelControl = nullptr;
         class LOTTERY* Lottery = nullptr;
+        class REEL* Reel = nullptr;
+        class REEL_MAP* ReelMap = nullptr;
     public:
         class BUTTON* stopButton() { return StopButton; }
         class LEVER* lever() { return Lever; }
-        class REEL_MANAGER* reelManager() { return ReelManager; }
-        class REEL_CONTROL* reelControl() { return ReelControl; }
         class LOTTERY* lottery() { return Lottery; }
+        class REEL* reel() { return Reel; }
+        class REEL_MAP* reelMap() { return ReelMap; }
         void charaInit();
         void charaUpdate();
         void charaDraw();

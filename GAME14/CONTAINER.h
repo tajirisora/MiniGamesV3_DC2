@@ -8,9 +8,9 @@
 #include"BUTTON.h"
 #include"LEVER.h"
 #include"STOP_BUTTON.h"
-#include"REEL.h"
 #include"LOTTERY.h"
-#include"REEL_CONTROL.h"
+#include"REEL.h"
+#include"REEL_MAP.h"
 #include"GAME14.h"
 namespace GAME14 {
 	class CONTAINER{
@@ -21,11 +21,9 @@ namespace GAME14 {
 			GAME14::LEVER::DATA lever;
 			GAME14::BUTTON::DATA stopButton;
 			GAME14::STOP_BUTTON::DATA stop;
-			GAME14::REEL::DATA left;
-			GAME14::REEL::DATA middle;
-			GAME14::REEL::DATA right;
 			GAME14::LOTTERY::DATA lottery;
-			GAME14::REEL_CONTROL::DATA control;
+			GAME14::REEL::DATA reel;
+			GAME14::REEL_MAP::DATA map;
 		};
 		DATA Data;
 		void setData();

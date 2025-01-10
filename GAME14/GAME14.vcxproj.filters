@@ -34,26 +34,14 @@
     <ClCompile Include="LEVER.cpp">
       <Filter>character\lever</Filter>
     </ClCompile>
-    <ClCompile Include="RIGHT_REEL.cpp">
-      <Filter>character\reel</Filter>
-    </ClCompile>
-    <ClCompile Include="MIDDLE_REEL.cpp">
-      <Filter>character\reel</Filter>
-    </ClCompile>
-    <ClCompile Include="LEFT_REEL.cpp">
-      <Filter>character\reel</Filter>
-    </ClCompile>
-    <ClCompile Include="REEL.cpp">
-      <Filter>character\reel\bace</Filter>
-    </ClCompile>
-    <ClCompile Include="REEL_MANAGER.cpp">
-      <Filter>character\reel\bace</Filter>
-    </ClCompile>
     <ClCompile Include="LOTTERY.cpp">
       <Filter>character</Filter>
     </ClCompile>
-    <ClCompile Include="REEL_CONTROL.cpp">
-      <Filter>character\reel\bace</Filter>
+    <ClCompile Include="REEL.cpp">
+      <Filter>character\reel</Filter>
+    </ClCompile>
+    <ClCompile Include="REEL_MAP.cpp">
+      <Filter>character\reel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,30 +78,60 @@
     <ClInclude Include="LEVER.h">
       <Filter>character\lever</Filter>
     </ClInclude>
-    <ClInclude Include="RIGHT_REEL.h">
-      <Filter>character\reel</Filter>
-    </ClInclude>
-    <ClInclude Include="MIDDLE_REEL.h">
-      <Filter>character\reel</Filter>
-    </ClInclude>
-    <ClInclude Include="LEFT_REEL.h">
-      <Filter>character\reel</Filter>
-    </ClInclude>
-    <ClInclude Include="REEL.h">
-      <Filter>character\reel\bace</Filter>
-    </ClInclude>
-    <ClInclude Include="REEL_MANAGER.h">
-      <Filter>character\reel\bace</Filter>
-    </ClInclude>
     <ClInclude Include="LOTTERY.h">
       <Filter>character</Filter>
     </ClInclude>
-    <ClInclude Include="REEL_CONTROL.h">
-      <Filter>character\reel\bace</Filter>
+    <ClInclude Include="REEL.h">
+      <Filter>character\reel</Filter>
+    </ClInclude>
+    <ClInclude Include="REEL_MAP.h">
+      <Filter>character\reel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game14\title.txt" />
+    <Text Include="..\MAIN\assets\game14\reel_map.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\flag_prob.txt">
+      <Filter>character</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Blue_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_NO_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Red_BB.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_REG.txt">
+      <Filter>character\reel</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="scene">
@@ -145,9 +163,6 @@
     </Filter>
     <Filter Include="character\reel">
       <UniqueIdentifier>{09c4d1a6-994a-44c1-9892-6b9393272aaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="character\reel\bace">
-      <UniqueIdentifier>{3c02344a-b5f8-40b1-a42a-eb64408f45a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
