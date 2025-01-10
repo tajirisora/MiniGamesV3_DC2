@@ -16,7 +16,7 @@ namespace GAME08
 		//PlayGameImg[7] = loadImage("..\\main\\assets\\game08\\8.png");
 		//PlayGameImg[8] = loadImage("..\\main\\assets\\game08\\9.png");
 		PlayGameImg[9] = loadImage("..\\main\\assets\\game08\\10.png");
-		PlayGameImg[10] = loadImage("..\\main\\assets\\game08\\11.png"); //ˆÙ•Ï1 l
+		PlayGameImg[10] = loadImage("..\\main\\assets\\game08\\11.png"); //ˆÙ•Ï1 l‚Ì‚İ
 		//PlayGameImg[11] = loadImage("..\\main\\assets\\game08\\12.png");
 		PlayGameImg[12] = loadImage("..\\main\\assets\\game08\\13.png");
 
