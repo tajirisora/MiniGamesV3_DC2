@@ -33,6 +33,7 @@ namespace GAME09
 		Combo = new COMBO(this);
 		Score = new SCORE(this);
 		Achievement = new ACHIEVEMENT(this);
+		AutoButton = new AUTOBUTTON(this);
 
 		Container->load();
 		LoadOption->create();
@@ -61,6 +62,7 @@ namespace GAME09
 		Combo->create();
 		Score->create();
 		Achievement->create();
+		AutoButton->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -69,6 +71,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete AutoButton;
 		delete Achievement;
 		delete Score;
 		delete Combo;

@@ -24,6 +24,8 @@ namespace GAME09 {
 			game()->banner()->update();
 			//game()->autoButton()->update();
 			game()->optionButton()->update();
+			game()->autoButton()->update();
+			if (game()->autoButton()->isClick()) game()->judgeMNG()->autoRef() ^= 1;
 			game()->backButton()->update();
 		}
 	}
@@ -35,14 +37,18 @@ namespace GAME09 {
 		game()->banner()->draw();
 		game()->jacket()->draw(songInfo, Select.jacketTf);
 		game()->optionButton()->draw();
+		game()->autoButton()->draw();
 		game()->backButton()->draw();
+
+		//debug
+		fill(255);
+		print(game()->judgeMNG()->autoRef());
 
 		rectMode(CORNER);
 		fill(0);
 		rect(0, 1020, 1920, 60);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
-		//game()->autoButton()->draw();
 		//game()->score()->draw(Select.scorePos, Select.scoreSize, songInfo.highScore);
 		//game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement, Select.achievementPos, Select.achievementSize);
 		//if (Option) game()->option()->draw();

@@ -209,6 +209,11 @@ namespace GAME09
 		Data.gameClear.slowNumOfst = VECTOR2(205, 30);
 		Data.gameClear.fastColor = COLOR(117, 149, 255);
 		Data.gameClear.slowColor = COLOR(255, 65, 116);
+
+		Data.autoButton.colliType = BUTTON::DIAMOND;
+		Data.autoButton.key = KEY_A;
+		Data.autoButton.pos = VECTOR2(1810, 320);
+		Data.autoButton.radius = 80;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

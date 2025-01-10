@@ -40,8 +40,6 @@ namespace GAME09 {
         float AnimeTime;
 
         float Speed = 11.0f;
-
-        bool Auto = true;
     public:
         RHYTHM_GAME_CONTROLLER(class GAME* game);
         ~RHYTHM_GAME_CONTROLLER();
@@ -57,7 +55,6 @@ namespace GAME09 {
         bool isChangeScene() { return Finish; }
         bool isPlay() { return State == PLAY; }
         float* speedPtr() { return &Speed; }
-        bool* autoPtr() { return &Auto; }
 
         void setEndTime(double endTime) { EndTime = endTime; }
     };

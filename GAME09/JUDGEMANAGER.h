@@ -57,6 +57,7 @@ namespace GAME09 {
         int Accuracy[NUM_ACCURACY];
         void AccCnt(ACCURACY acc);
 
+        bool Auto = false;
     public:
         JUDGEMANAGER(class GAME* game);
         ~JUDGEMANAGER();
@@ -72,5 +73,6 @@ namespace GAME09 {
         void resetCombo();
         int maxCombo() { return MaxCombo; }
         int* accuracy() { return Accuracy; }
+        bool& autoRef() { return Auto; }
     };
 }

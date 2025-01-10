@@ -79,6 +79,7 @@ namespace GAME09 {
 			longData.emplace_back(nullptr);
 			longBeltData.emplace_back(new std::vector<NOTE::NOTE_DATA*>);
 		}
+		AllNotesNum = 0;
 		//LaneChangeコマンドは、その次読み込む行のレーン数は変更しない
 		int nextLane = (int)songInfo.lanes.size(); //次の行を読み込んだ後にレーン数が何になるか
 		int curLane = (int)songInfo.lanes.size();

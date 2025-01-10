@@ -55,6 +55,7 @@ namespace GAME09
 		class COMBO* Combo;
 		class SCORE* Score;
 		class ACHIEVEMENT* Achievement;
+		class AUTOBUTTON* AutoButton;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -81,6 +82,7 @@ namespace GAME09
 		class COMBO* combo() { return Combo; }
 		class SCORE* score() { return Score; }
 		class ACHIEVEMENT* achievement() { return Achievement; }
+		class AUTOBUTTON* autoButton() { return AutoButton; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

@@ -18,7 +18,7 @@
 #include "COMBO.h"
 #include "SCORE.h"
 #include "BUTTON.h"
-//#include "AUTOBUTTON.h"
+#include "AUTOBUTTON.h"
 #include "OPTIONBUTTON.h"
 #include "BACKBUTTON.h"
 #include "OPTION.h"
@@ -56,7 +56,7 @@ namespace GAME09
 			DETAIL_VIEW::DATA detail;
 			COMBO::DATA combo;
 			SCORE::DATA score;
-			//AUTOBUTTON::DATA autoButton;
+			AUTOBUTTON::DATA autoButton;
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;
 			OPTION::DATA option;
