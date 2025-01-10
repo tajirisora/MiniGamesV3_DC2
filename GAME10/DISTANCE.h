@@ -4,6 +4,7 @@ class DISTANCE :public GAME_OBJECT10
 {
 public:
 	struct DATA {
+		int loopNum = 0;
 		float cntDist = 0;
 		float sumDist = 0;
 		float standardDist = 0;
@@ -18,8 +19,12 @@ public:
 	void init();
 	void create();
 	void setClearDist(int setClear);
+	void loopCnt();
+	void errorCorrection();//”­¶‚·‚éŒë·‚ÌC³
 	void distcnt();
 	void draw();
 	float sumDist() { return Dist.sumDist; }
+	int NSCDist() { return (int)Dist.standardDist + Dist.loopNum * Dist.standardDist; }//Œ»İ‚ÌƒV[ƒ“‚Å‚Ìclear‹——£
+	float clearDist() { return Dist.clearDist; }
 };
 

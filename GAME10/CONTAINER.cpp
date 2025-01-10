@@ -113,7 +113,7 @@ void CONTAINER::setData(){
 	Data.player.Pos.x = Data.player.Opos.x;
 	Data.player.Pos.y = Data.stage.opy - Data.player.Pmy * Data.player.nowLane;
 	Data.player.LaneMax = Data.stage.LaneNum;
-	Data.player.initInvisibleTime = 240;
+	Data.player.initInvisibleTime = 150;
 	Data.player.invisibleTime = 0;
 	Data.player.Tpos.x = 900;
 	Data.player.Tpos.y = 0;
@@ -188,7 +188,7 @@ void CONTAINER::setData(){
 	Data.handgun.Pos.y = 920;
 	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
-	Data.handgun.damage = 100;
+	Data.handgun.damage = 50;
 	Data.handgun.ctIntervalTime = 60;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
@@ -210,12 +210,13 @@ void CONTAINER::setData(){
 	Data.time.Pos.y = 90;
 
 	//‹——£
+	Data.distance.loopNum = 0;
 	Data.distance.standardDist = 1000.0;
 	Data.distance.cntDist = Data.distance.standardDist /(Data.stage.gPos.x - Data.player.Opos.x);
 	Data.distance.sumDist = 0;
 	Data.distance.clearDist = 0;
 	Data.distance.distPos.x = 400;
-	Data.distance.distPos.y = 30;
+	Data.distance.distPos.y = 100;
 
 	Data.handgunBullet.totalNum = 20;
 	Data.handgunBullet.curNum = 0;

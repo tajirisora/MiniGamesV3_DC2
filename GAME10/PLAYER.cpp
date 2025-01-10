@@ -22,15 +22,25 @@ void PLAYER::create(){
 }
 
 void PLAYER::update() {
-	if (isTrigger(KEY_D)) {
-		game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->getDamage(2);
-	}
 	if ((int)Player.Pos.x != (int)Player.Opos.x) {
 		playerMove();
 	}
-	else if(Player.Pos.x > Player.Opos.x){
+	else if (Player.Pos.x > Player.Opos.x) {
 		Player.Pos.x = Player.Opos.x;
 	}
+	Player.hp = game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->GetHp(NULL);
+
+	//プレイヤーの進んだ距離
+	if (game()->distance()->sumDist() < game()->distance()->NSCDist()) {
+		game()->distance()->distcnt();
+	}
+	else {
+		if ((int)Player.Pos.x == (int)Player.Opos.x) {
+			game()->distance()->loopCnt();
+		}
+		game()->distance()->errorCorrection();
+	}
+
 	//操作関連
 	if (isPress(KEY_A) && Player.speed >= Player.minSpeed && Player.Pos.x == Player.Opos.x) {
 		Player.speed -= Player.gearSpeed;
@@ -49,6 +59,7 @@ void PLAYER::update() {
 	for (int i = 0; Player.weaponHaveNum> i; i++) {
 		game()->bullets(Player.weaponKind[i])->update();
 	}
+
 	launch();
 	collision();
 }

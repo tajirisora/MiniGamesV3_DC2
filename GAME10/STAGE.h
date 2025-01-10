@@ -40,7 +40,7 @@ public:
 		int GoalImg = 0;
 		int GoalBoardImg = 0;
 		VECTOR2 gPos = 0;//goal�̈ʒu
-		VECTOR2 bPos = 0;
+		VECTOR2 bPos = 0;//�Ŕ̈ʒu
 	};
 private:
 	DATA Stage;

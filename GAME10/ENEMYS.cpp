@@ -59,6 +59,7 @@ void ENEMYS::collision() {
 
 		if (game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->GetHp(i) <= 0) {
 			kill(i);
+			game()->time()->rewind();
 		}
 	}
 }

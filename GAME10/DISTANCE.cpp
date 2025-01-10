@@ -12,10 +12,20 @@ void DISTANCE::create(){
 	Dist = game()->container()->distance();
 }
 void DISTANCE::setClearDist(int setClear) {
-	Dist.clearDist = Dist.standardDist + Dist.standardDist * setClear;
+	Dist.clearDist = (Dist.standardDist + Dist.standardDist) * ++setClear;
+}
+void DISTANCE::loopCnt() {
+	Dist.loopNum++;
 }
 void DISTANCE::distcnt(){
-	Dist.sumDist += Dist.cntDist;
+	Dist.sumDist += Dist.cntDist * game()->player()->playerData().speed;
+}
+void DISTANCE::errorCorrection() {
+	if ( NULL != (int)Dist.sumDist % (int)Dist.standardDist) {
+		Dist.sumDist = NULL;
+		loopCnt();
+		Dist.sumDist = Dist.standardDist * Dist.loopNum;
+	}
 }
 void DISTANCE::draw(){
 	text((int)Dist.sumDist, Dist.distPos.x, Dist.distPos.y);

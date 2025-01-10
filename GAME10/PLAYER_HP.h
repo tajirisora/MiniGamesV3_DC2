@@ -21,5 +21,6 @@ public:
 	void create();
 	void getDamage(int damage);
 	void draw();
+	int GetHp(int i) { return PlayerGauge.CurHp; };
 };
 

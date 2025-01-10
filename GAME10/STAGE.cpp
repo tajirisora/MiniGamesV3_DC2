@@ -13,7 +13,9 @@ void STAGE::init() {
 	Stage = game()->container()->stage();
 	game()->player()->init();
 	game()->time()->init();
+	game()->distance()->init();
 	game()->enemies()->init();
+	//game()->objects()->init();
 	game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->init();
 }
 void STAGE::goalStage() {
@@ -30,6 +32,7 @@ void STAGE::appear() {
 	//game()->objects()->appear();
 }
 void STAGE::update() {
+
 	//ステージの強制スクロール（スピードはプレイヤーのスピードの依存する）
 	if (Stage.gPos.x - Stage.fworldX > width / 2 
 		&& (int)game()->player()->playerData().Opos.x == (int)game()->player()->playerData().Pos.x) {
@@ -47,7 +50,7 @@ void STAGE::update() {
 	else if(game()->player()->playerData().Opos.x == game()->player()->playerData().Pos.x){
 		game()->player()->playerMove();
 	}
-
+	
 	//プレイヤーがgoalしたときの処理
 	if (game()->player()->playerData().Pos.x > width) {
 		goalStage();
@@ -62,6 +65,7 @@ void STAGE::create() {
 	game()->player()->create();
 	game()->enemies()->create();
 	//game()->objects()->create();
+	game()->distance()->create();
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->create();
 	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->create();
 	game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->create();
@@ -94,6 +98,7 @@ void STAGE::draw() {
 	}
 	game()->time()->draw();
 	game()->distance()->draw();
+	text(game()->player()->playerData().hp, 100, 200);
 	fill(255);
 }
 void STAGE::layer(int drawLane) {
@@ -120,7 +125,10 @@ void STAGE::layer(int drawLane) {
 	}
 }
 void STAGE::nextScene() {
-	if (game()->time()->nowTime() <= NULL) {
+	if (game()->time()->nowTime() <= NULL
+		|| game()->player()->playerData().hp<= NULL
+		|| (game()->distance()->clearDist() <= game()->distance()->sumDist()
+		&& game()->player()->playerData().Pos.x>=width)) {
 		game()->changeScene(GAME10_GAME::RESULT_ID);
 	}
 }

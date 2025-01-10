@@ -11,9 +11,17 @@ void RESULT::create() {
 	Result = game()->container()->result();
 }
 void RESULT::draw() {
-	clear(255);
 	printSize(200);
-	print("RESULT");
+	game()->scenes(GAME10_GAME::STAGE_ID)->draw();
+	if (game()->player()->playerData().hp <= NULL
+		|| game()->time()->nowTime() <= NULL) {
+		text("GAME OVER",width/2,height/2);
+		text("SPACEでタイトルに戻る", 300, height / 2 + 200);
+	}
+	else {
+		text("GAME CLEAR", width / 2, height / 2);
+		text("SPACEでタイトルに戻る", 300, height / 2 + 200);
+	}
 }
 void RESULT::nextScene() {
 	if (isTrigger(KEY_SPACE)) {

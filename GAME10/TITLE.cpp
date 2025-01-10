@@ -38,8 +38,8 @@ void TITLE::draw(){
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE)) {
-		game()->distance()->setClearDist(Title.SELECTSTATE);
 		game()->changeScene(GAME10_GAME::STAGE_ID);
 		game()->scenes(GAME10_GAME::STAGE_ID)->init();
+		game()->distance()->setClearDist(Title.SELECTSTATE);
 	}
 }
