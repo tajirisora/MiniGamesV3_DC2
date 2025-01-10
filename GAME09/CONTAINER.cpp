@@ -120,11 +120,13 @@ namespace GAME09
 		Data.option.colorType2ButtonTF.ofst = VECTOR2(0, 300);
 		Data.option.colorType2ButtonTF.size = VECTOR2(150, 150);
 
+		Data.optionButton.imgSize = 0.44f;
 		Data.optionButton.colliType = BUTTON::DIAMOND;
 		Data.optionButton.key = KEY_O;
 		Data.optionButton.pos = VECTOR2(1810, 110);
 		Data.optionButton.radius = 80;
 
+		Data.backButton.imgSize = 0.32f;
 		Data.backButton.colliType = BUTTON::DIAMOND;
 		Data.backButton.key = KEY_ESCAPE;
 		Data.backButton.pos = VECTOR2(80, 80);
@@ -210,6 +212,7 @@ namespace GAME09
 		Data.gameClear.fastColor = COLOR(117, 149, 255);
 		Data.gameClear.slowColor = COLOR(255, 65, 116);
 
+		Data.autoButton.imgSize = 0.44f;
 		Data.autoButton.colliType = BUTTON::DIAMOND;
 		Data.autoButton.key = KEY_A;
 		Data.autoButton.pos = VECTOR2(1810, 320);
@@ -247,6 +250,10 @@ namespace GAME09
 		Data.achievement.imgs[ACHIEVEMENT::CLEAR] = loadImage("..\\main\\assets\\game09\\texture\\clear.png");
 		Data.achievement.imgs[ACHIEVEMENT::FULLCOMBO] = loadImage("..\\main\\assets\\game09\\texture\\fullcombo.png");
 		Data.achievement.imgs[ACHIEVEMENT::ALLPERFECT] = loadImage("..\\main\\assets\\game09\\texture\\allperfect.png");
+		Data.backButton.img = loadImage("..\\main\\assets\\game09\\texture\\Back_Button.png");
+		Data.autoButtonImg.imgs[0] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_Off.png");
+		Data.autoButtonImg.imgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_On.png");
+		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

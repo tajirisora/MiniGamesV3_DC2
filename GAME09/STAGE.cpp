@@ -101,6 +101,7 @@ namespace GAME09 {
 		}
 		if (game()->fade()->outEndFlag()) {
 			game()->soundMNG()->stopMusic();
+			game()->judgeMNG()->resetCombo();
 			game()->changeScene(NextScene);
 		}
 	}

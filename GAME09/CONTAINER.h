@@ -56,7 +56,7 @@ namespace GAME09
 			DETAIL_VIEW::DATA detail;
 			COMBO::DATA combo;
 			SCORE::DATA score;
-			AUTOBUTTON::DATA autoButton;
+			BUTTON::DATA autoButton;
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;
 			OPTION::DATA option;
@@ -66,6 +66,7 @@ namespace GAME09
 			KEYCONFIG::DATA keyConfig;
 			LOADOPTION::DATA loadOption;
 			COLOR_PICKER::DATA colorPicker;
+			AUTOBUTTON::DATA autoButtonImg;
 		};
 		DATA Data;
 	public:

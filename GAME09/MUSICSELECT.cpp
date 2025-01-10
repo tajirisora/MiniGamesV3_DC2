@@ -40,10 +40,6 @@ namespace GAME09 {
 		game()->autoButton()->draw();
 		game()->backButton()->draw();
 
-		//debug
-		fill(255);
-		print(game()->judgeMNG()->autoRef());
-
 		rectMode(CORNER);
 		fill(0);
 		rect(0, 1020, 1920, 60);

@@ -38,7 +38,7 @@ namespace GAME09 {
 		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
 		BeforeHighScore = songInfo.highScore;
 
-		//if (!*game()->rgCont()->autoPtr()) {
+		if (!game()->judgeMNG()->autoRef()) {
 			if (songInfo.highScore < game()->score()->curScore()) {
 				songInfo.highScore = game()->score()->curScore();
 			}
@@ -47,7 +47,7 @@ namespace GAME09 {
 			}
 
 			game()->chartMNG()->updateHighScore(songInfo.highScore, songInfo.achievement);
-		//}
+		}
 	}
 
 	void GAME_CLEAR::update() {
@@ -91,7 +91,7 @@ namespace GAME09 {
 		textfMode(M_RIGHT);
 		scorePos += Result.highScoreOfst;
 		textf(std::to_string(BeforeHighScore), scorePos, Result.highScoreSize);
-		//if (!*game()->rgCont()->autoPtr()) {
+		if (!game()->judgeMNG()->autoRef()) {
 			textfMode(M_LEFT);
 			scorePos += Result.highScoreDiffOfst;
 			int difference = game()->score()->curScore() - BeforeHighScore;
@@ -105,7 +105,7 @@ namespace GAME09 {
 				temp += std::to_string(difference);
 				textf(temp, scorePos, Result.highScoreSize);
 			}
-		//}
+		}
 		//曲名、アーティスト
 		//game()->songTitle()->draw(Result.titlePos, Result.titleSize);
 		//操作方法

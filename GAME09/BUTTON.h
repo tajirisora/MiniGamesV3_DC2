@@ -23,7 +23,7 @@ namespace GAME09 {
             float radius;
             VECTOR2 size;
             INPUT_CODE key = KEY_NONE;
-            bool debugFlag = true;
+            bool debugFlag = false;
         };
     protected:
         DATA Button;
