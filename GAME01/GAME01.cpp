@@ -15,8 +15,6 @@ namespace GAME01
 
     void GAME::proc()
     {
-
-        //シーン切り替え
         if (State == TITLE)title();
         else if (State == INIT)init();
         else if (State == PLAY)play();
@@ -24,7 +22,6 @@ namespace GAME01
     }
     int bonus = 0;
     int Score = 0;
-    //ブロックパターンオフセット
     int Offsets[7][3][2] = {
         //■□■■...0
         -1,0,   1,0,  2,0,
