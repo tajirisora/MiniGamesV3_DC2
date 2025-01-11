@@ -87,11 +87,15 @@ namespace GAME09 {
 			else {
 				pos += Banner.nextPosOfst * dist;
 			}
-			//image(Banner.bannerImg, pos.x, pos.y, 0, Banner.imgSize);
-			fill(255);
-			rect(pos.x, pos.y, 600, 120);
-			fill(255,0,0);
-			rect(pos.x - 300, pos.y, 100, 100, 45);
+			image(Banner.bannerImg, pos.x, pos.y, 0, Banner.bannerImgSize);
+			imageColor({ 255,0,0 });
+			image(Banner.difficultyFrameImg, pos.x + Banner.difficultyFrameOfst.x, 
+				pos.y + Banner.difficultyFrameOfst.y, 0, Banner.difficultyFrameImgSize);
+			imageColor(255);
+			//fill(255);
+			//rect(pos.x, pos.y, 600, 120);
+			//fill(255,0,0);
+			//rect(pos.x - 300, pos.y, 100, 100, 45);
 			fill(0);
 			textfMode(M_LEFT);
 			VECTOR2 textPos = pos + Banner.titlePosOfst;

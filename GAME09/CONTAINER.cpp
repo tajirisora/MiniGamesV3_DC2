@@ -39,9 +39,11 @@ namespace GAME09
 
 		Data.banner.centerPos = VECTOR2(450, height / 2 - 30);
 		Data.banner.nextPosOfst = VECTOR2(45, 150);
-		Data.banner.imgSize = 2.0f;
+		Data.banner.difficultyFrameOfst = VECTOR2(-300, 0);
+		Data.banner.bannerImgSize = 0.37f;
+		Data.banner.difficultyFrameImgSize = 0.42f;
 		Data.banner.titlePosOfst = VECTOR2(-210, 5);
-		Data.banner.artistPosOfst = VECTOR2(-210, 60);
+		Data.banner.artistPosOfst = VECTOR2(-200, 55);
 		Data.banner.titleStrSize = VECTOR2(680, 50);
 		Data.banner.artistStrSize = VECTOR2(700, 35);
 		Data.banner.moveAnimeTime = 0.3f;
@@ -254,6 +256,8 @@ namespace GAME09
 		Data.autoButtonImg.imgs[0] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_Off.png");
 		Data.autoButtonImg.imgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_On.png");
 		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
+		Data.banner.bannerImg = loadImage("..\\main\\assets\\game09\\texture\\Banner.png");
+		Data.banner.difficultyFrameImg = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");
