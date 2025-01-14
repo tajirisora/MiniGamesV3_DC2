@@ -134,9 +134,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GAME11.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DICE.h" />
     <ClInclude Include="GAME11.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game11\title.txt" />
