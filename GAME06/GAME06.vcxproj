@@ -133,10 +133,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="GAME06.cpp" />
+    <ClCompile Include="GAME_CLEAR.cpp" />
+    <ClCompile Include="GAME_OVER.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="ENEMY.h" />
     <ClInclude Include="GAME06.h" />
+    <ClInclude Include="GAME_CLEAR.h" />
+    <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="GAME_OVER.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="SCENE.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TITLE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />
