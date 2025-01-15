@@ -9,6 +9,8 @@
 #include"OBJECT_HP.h"
 #include"HANDGUN.h"
 #include"SHOTGUN.h"
+#include"MISSILE.h"
+#include"MISSILE_BULLETS.h"
 #include"BULLETS.h"
 #include"TIME.h"
 #include"DISTANCE.h"
@@ -27,10 +29,12 @@ private:
 		OBJECT_HP::DATA objectGauge;
 		HANDGUN::DATA handgun;
 		SHOTGUN::DATA shotgun;
+		MISSILE::DATA missile;
 		TIME::DATA time;
 		DISTANCE::DATA distance;
 		BULLETS::DATA handgunBullet;
 		BULLETS::DATA shotGunBullet;
+		BULLETS::DATA missileBullet;
 		ENEMYS::DATA enemy;
 		OBJECT::DATA object;
 	};
@@ -50,10 +54,12 @@ public:
 	const OBJECT_HP::DATA& objectHpGauge() { return Data.objectGauge; }
 	const HANDGUN::DATA& handgun() { return Data.handgun; }
 	const SHOTGUN::DATA& shotgun() { return Data.shotgun; }
+	const MISSILE::DATA& missile() { return Data.missile; }
 	const TIME::DATA& time() { return Data.time; }
 	const DISTANCE::DATA& distance(){ return Data.distance; }
 	const BULLETS::DATA& handgunBullet() { return Data.handgunBullet; }
 	const BULLETS::DATA& shotgunBullet() { return Data.shotGunBullet; }
+	const MISSILE_BULLETS::DATA& missileBullet() { return Data.missileBullet; }
 	const ENEMYS::DATA& enemy() { return Data.enemy; }
 	const OBJECT::DATA& object() { return Data.object; }
 };

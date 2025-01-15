@@ -22,6 +22,7 @@ public:
 	enum WEAPON_ID {
 		HANDGUN_ID,
 		SHOTGUN_ID,
+		MISSILE_ID,
 		NUM_WEAPON
 	};
 	//HP‚ÌID

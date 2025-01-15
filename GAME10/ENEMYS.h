@@ -19,6 +19,7 @@ public:
 		int sumTime;
 		int hitDamage;
 		int shortTime;//短くする時間
+		int destroy;//倒された数
 		int level;
 		VECTOR2 opos;
 	};
@@ -47,11 +48,11 @@ public:
 	void kill(int i);
 	void AllKill();
 	void draw(int EnemyKind);
-	DATA& uniEnemy() { return Enemy; }//共通データ
-	int EnemiesHitDamage() { return Enemy.hitDamage; }
-	int EnemiesLaneKind(int i) { return Enemies[i].lane; }
-	float& EnemiesLeft(int i) { return Enemies[i].pos.x; }//敵ひとりひとりの位置データ(左)
-	float EnemiesRight(int i) { return Enemies[i].pos.x + (float)Enemy.rightMx; }//敵ひとりひとりの位置データ(左)
-	int& EnemiesLane(int i) { return Enemies[i].lane; }//敵ひとりひとりのlaneデータ
+	const DATA& uniEnemy() { return Enemy; }//共通データ
+	const int EnemiesHitDamage() { return Enemy.hitDamage; }
+	const int EnemiesLaneKind(int i) { return Enemies[i].lane; }
+	const float& EnemiesLeft(int i) { return Enemies[i].pos.x; }//敵ひとりひとりの位置データ(左)
+	const float EnemiesRight(int i) { return Enemies[i].pos.x + (float)Enemy.rightMx; }//敵ひとりひとりの位置データ(左)
+	const int& EnemiesLane(int i) { return Enemies[i].lane; }//敵ひとりひとりのlaneデータ
 };
 

@@ -8,9 +8,10 @@ PLAYER::~PLAYER(){}
 void PLAYER::init(){
 	Player = game()->container()->player();
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->setHp(Player.hp);
-	////とりあえずショットガンの追加をしたから動作確認をしなければならない
 	//Player.weaponKind[1] = GAME10_GAME::SHOTGUN_ID;
 	//Player.weaponHaveNum++;
+	Player.weaponKind[1] = GAME10_GAME::MISSILE_ID;
+	Player.weaponHaveNum++;
 }
 
 void PLAYER::stageGoal() {
@@ -64,6 +65,11 @@ void PLAYER::update() {
 	collision();
 }
 
+void PLAYER::getWeapons(int weaponKind) {
+	Player.weaponKind[Player.weaponHaveNum] = weaponKind;
+	Player.weaponHaveNum++;
+}
+
 void PLAYER::collision() {
 	if (Player.invisibleTime <= 0) {
 		for (int i = 0; game()->enemies()->uniEnemy().nowNum > i; i++) {
@@ -98,9 +104,12 @@ void PLAYER::draw(){
 	fill(255);
 	textSize(40);
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->draw();
-	for (int i = 0; i < Player.weaponNum; i++) {
-		if (Player.weaponKind[i] >= NULL) {
-			game()->weapons(i)->draw();
-		}
+	//for (int i = 0; i < Player.weaponNum; i++) {
+	//	if (Player.weaponKind[i] >= NULL) {
+	//		game()->weapons(i)->draw();
+	//	}
+	//}
+	for (int i = 0; i < Player.weaponHaveNum; i++) {
+		game()->weapons(Player.weaponKind[i])->draw();
 	}
 }

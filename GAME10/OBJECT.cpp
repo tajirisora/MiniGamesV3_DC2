@@ -9,6 +9,12 @@ OBJECT::~OBJECT() {
 	delete[] Objects;
 }
 void OBJECT::init() {
+	Object = game()->container()->object();
+	if (Objects != nullptr) {
+		delete[] Objects;
+		Objects = new OBJECTS[Object.totalNum];
+	}
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->init();
 }
 void OBJECT::create() {
 	Object = game()->container()->object();
@@ -56,6 +62,7 @@ void OBJECT::collision() {
 
 		if (game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->GetHp(i) <= 0) {
 			kill(i);
+			game()->time()->rewind();
 		}
 	}
 }
@@ -71,10 +78,7 @@ void OBJECT::AllKill() {
 	Object.nowNum = NULL;
 	Object.callIntervalDist = Object.initIntervalDist;
 }
-void OBJECT::draw() {
-	textSize(30);
-	for (int i = 0; Object.nowNum > i; i++) {
-		image(Objects[i].Img, Objects[i].pos.x, Objects[i].pos.y);
-		game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->draw(Objects[i].pos, i);
-	}
+void OBJECT::draw(int objectKind) {
+		image(Objects[objectKind].Img, Objects[objectKind].pos.x, Objects[objectKind].pos.y);
+		game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->draw(Objects[objectKind].pos, objectKind);
 }

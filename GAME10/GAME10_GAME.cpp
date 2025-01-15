@@ -24,6 +24,7 @@ GAME10_GAME::GAME10_GAME(){
 	HpGauge[OBJECTHP_ID] = new OBJECT_HP(this);
 	Bullets[HANDGUNBULLET_ID] = new HANDGUN_BULLETS(this);
 	Bullets[SHOTGUNBULLET_ID] = new SHOTGUN_BULLET(this);
+	Bullets[MISSILEBULLET_ID] = new MISSILE_BULLETS(this);
 
 	Enemies = new ENEMYS(this);
 
@@ -33,6 +34,7 @@ GAME10_GAME::GAME10_GAME(){
 	Distance = new DISTANCE(this);
 	Weapons[HANDGUN_ID] = new HANDGUN(this);
 	Weapons[SHOTGUN_ID] = new SHOTGUN(this);
+	Weapons[MISSILE_ID] = new MISSILE(this);
 
 	CurSceneId = TITLE_ID;
 	Container->load();
@@ -42,8 +44,10 @@ GAME10_GAME::GAME10_GAME(){
 
 	Weapons[HANDGUN_ID]->create();
 	Weapons[SHOTGUN_ID]->create();
+	Weapons[MISSILE_ID]->create();
 	Bullets[HANDGUNBULLET_ID]->create();
 	Bullets[SHOTGUNBULLET_ID]->create();
+	Bullets[MISSILEBULLET_ID]->create();
 }
 GAME10_GAME::~GAME10_GAME(){
 	delete Container;

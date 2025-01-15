@@ -15,7 +15,7 @@ void STAGE::init() {
 	game()->time()->init();
 	game()->distance()->init();
 	game()->enemies()->init();
-	//game()->objects()->init();
+	game()->objects()->init();
 	game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->init();
 }
 void STAGE::goalStage() {
@@ -24,12 +24,12 @@ void STAGE::goalStage() {
 	game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->AllKill();//弾丸を全部消す
 	game()->bullets(GAME10_GAME::SHOTGUN_ID)->AllKill();//弾丸を全部消す
 	game()->enemies()->AllKill();//敵を全部消す
-	//game()->objects()->AllKill();//オブジェクトを全部消す
+	game()->objects()->AllKill();//オブジェクトを全部消す
 	game()->player()->stageGoal();
 }
 void STAGE::appear() {
 	game()->enemies()->appear();
-	//game()->objects()->appear();
+	game()->objects()->appear();
 }
 void STAGE::update() {
 
@@ -58,13 +58,13 @@ void STAGE::update() {
 	//エネミーのスピードを変える（プレイヤーの速度依存のため）
 	game()->enemies()->update();
 	game()->player()->update();
-	//game()->objects()->update();
+	game()->objects()->update();
 }
 void STAGE::create() {
 	Stage = game()->container()->stage();
 	game()->player()->create();
 	game()->enemies()->create();
-	//game()->objects()->create();
+	game()->objects()->create();
 	game()->distance()->create();
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->create();
 	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->create();
@@ -89,7 +89,7 @@ void STAGE::draw() {
 		image(Stage.GoalImg, Stage.gPos.x - Stage.fworldX, Stage.gPos.y);
 	}
 
-	for (int LNum = 0; Stage.LaneNum > LNum; LNum++) {
+	for (int LNum = 0; Stage.LaneNum > LNum; LNum++) {//描画の前後
 		layer(LNum);
 	}
 
@@ -98,15 +98,21 @@ void STAGE::draw() {
 	}
 	game()->time()->draw();
 	game()->distance()->draw();
-	text(game()->player()->playerData().hp, 100, 200);
 	fill(255);
 }
+
 void STAGE::layer(int drawLane) {
 	for (int ENum = 0; ENum < game()->enemies()->uniEnemy().nowNum; ENum++) {
 		if (drawLane == game()->enemies()->EnemiesLane(ENum)) {
 			game()->enemies()->draw(ENum);
 		}
 	}	
+
+	for (int Onum = 0; Onum < game()->objects()->uniObject().nowNum; Onum++) {
+		if (drawLane == game()->objects()->ObjectsLane(Onum)) {
+			game()->objects()->draw(Onum);
+		}
+	}
 
 	for (int HBNum = 0; game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->BulletNum() > HBNum;HBNum++) {
 		if (drawLane == game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->bulletLane(HBNum)) {
@@ -117,6 +123,12 @@ void STAGE::layer(int drawLane) {
 	for (int SBNum = 0; game()->bullets(GAME10_GAME::SHOTGUNBULLET_ID)->BulletNum() > SBNum; SBNum++) {
 		if (drawLane == game()->bullets(GAME10_GAME::SHOTGUNBULLET_ID)->bulletLane(SBNum)) {
 			game()->bullets(GAME10_GAME::SHOTGUNBULLET_ID)->draw(SBNum);
+		}
+	}
+
+	for(int MBNum = 0;game()->bullets(GAME10_GAME::MISSILEBULLET_ID)->BulletNum()> MBNum;MBNum++){
+		if (drawLane == game()->bullets(GAME10_GAME::MISSILEBULLET_ID)->bulletLane(MBNum)) {
+			game()->bullets(GAME10_GAME::MISSILEBULLET_ID)->draw(MBNum);
 		}
 	}
 

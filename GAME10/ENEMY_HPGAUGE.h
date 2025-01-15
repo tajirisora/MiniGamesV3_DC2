@@ -18,6 +18,7 @@ private:
 public:
 	ENEMY_HPGAUGE(class GAME10_GAME* game);
 	~ENEMY_HPGAUGE();
+	void init();
 	void appear(int hp, int Level);
 	void create();
 	void getDamage(float damage, int enemyKind,int weaponKind);

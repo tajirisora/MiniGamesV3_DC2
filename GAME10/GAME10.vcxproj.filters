@@ -70,6 +70,12 @@
     <ClCompile Include="DISTANCE.cpp">
       <Filter>sauce</Filter>
     </ClCompile>
+    <ClCompile Include="MISSILE_BULLETS.cpp">
+      <Filter>bullet\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="MISSILE.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME10.h">
@@ -140,6 +146,12 @@
     </ClInclude>
     <ClInclude Include="OBJECT.h">
       <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="MISSILE_BULLETS.h">
+      <Filter>bullet\header</Filter>
+    </ClInclude>
+    <ClInclude Include="MISSILE.h">
+      <Filter>item\header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

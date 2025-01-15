@@ -37,6 +37,7 @@ public:
 	void create();
 	void update();
 	void launch();
+	void getWeapons(int weaponKind);
 	void collision();
 	void draw();
 	void playerMove();

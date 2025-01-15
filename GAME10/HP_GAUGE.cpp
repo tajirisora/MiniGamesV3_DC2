@@ -5,6 +5,7 @@
 HP_GAUGE::HP_GAUGE(class GAME10_GAME* game)
 	:GAME_OBJECT10(game){}
 HP_GAUGE::~HP_GAUGE() {}
+void HP_GAUGE::init() {}
 void HP_GAUGE::create() {
 }
 void HP_GAUGE::appear(int hp, int Level) {

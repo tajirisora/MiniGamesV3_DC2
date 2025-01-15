@@ -12,21 +12,24 @@ public:
 		int RightX;//画像の右側
 		int LaneMax;
 		float speed;
+		float upSpeed;//速度上昇
+		float maxSpeed;//最大スピード
 		float cRadius;
 		int ImgHalf;
 		int BulletNum;
 	};
 protected:
 	void SetBullets(const BULLETS::DATA& data);
-private:
 	//共通データ
 	DATA Bullet;
+private:
 	//単体データ配列
 	struct BULLET {
 		VECTOR2 pos;
 		VECTOR2 vec;
 		int Lane;
 	};
+protected:
 	BULLET* Bullets;
 public:
 	BULLETS(class GAME10_GAME* game);
@@ -34,7 +37,7 @@ public:
 	void init();
 	virtual void create() {};
 	virtual void launch(const VECTOR2& pos,int speed,int lane);
-	void update();
+	virtual void update();
 	void kill(int i);
 	void AllKill();
 	virtual void draw(int bulletKind);

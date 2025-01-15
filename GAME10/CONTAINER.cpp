@@ -45,10 +45,15 @@ void CONTAINER::setImage() {
 
 	Data.handgun.GunsImg = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
 	Data.shotgun.GunsImg = loadImage("..\\main\\assets\\game10\\shotgunImg.png");
+	Data.missile.GunsImg = loadImage("..\\main\\assets\\game10\\bombImg.png");
+
 	Data.handgunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
 	Data.shotGunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
+	Data.missileBullet.img = loadImage("..\\main\\assets\\game10\\missileBullet.png");
+
 	Data.handgunBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
 	Data.shotGunBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
+	Data.missileBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
 }
 void CONTAINER::setData(){
 	Data.title.imgPos.x = 0;
@@ -140,6 +145,7 @@ void CONTAINER::setData(){
 	Data.enemy.nowNum = 0;
 	Data.enemy.speed = 6;
 	Data.enemy.level = 1;
+	Data.enemy.destroy = 0;
 	Data.enemy.initIntervalDist = 1000;
 	Data.enemy.callIntervalDist = Data.enemy.initIntervalDist;
 	Data.enemy.sumTime = 500;
@@ -202,6 +208,15 @@ void CONTAINER::setData(){
 	Data.shotgun.intervalTime = Data.shotgun.ctIntervalTime;
 	Data.shotgun.Level = 1;
 
+	Data.missile.Pos.x = 1400;
+	Data.missile.Pos.y = 920;
+	Data.missile.speed = 4;
+	Data.missile.bulletNum = 1;
+	Data.missile.damage = 200;
+	Data.missile.ctIntervalTime = 150;
+	Data.missile.intervalTime = Data.missile.ctIntervalTime;
+	Data.missile.Level = 1;
+
 	//ŽžŠÔ
 	Data.time.time = 3600;
 	Data.time.frame = 60;
@@ -238,4 +253,16 @@ void CONTAINER::setData(){
 	Data.shotGunBullet.cRadius = 10;
 	Data.shotGunBullet.ImgHalf = 25;
 	Data.shotGunBullet.BulletNum = 3;
+
+	//ƒ~ƒTƒCƒ‹
+	Data.missileBullet.totalNum = 10;
+	Data.missileBullet.curNum = 0;
+	Data.missileBullet.speed = 0;
+	Data.missileBullet.maxSpeed = Data.missile.speed * 10;
+	Data.missileBullet.LaneMax = Data.stage.LaneNum;
+	Data.missileBullet.Bmy = Data.player.Pmy;
+	Data.missileBullet.RightX = 50;
+	Data.missileBullet.cRadius = 10;
+	Data.missileBullet.ImgHalf = 25;
+	Data.missileBullet.BulletNum = 1;
 }

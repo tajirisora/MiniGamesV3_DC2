@@ -8,9 +8,17 @@
 ENEMYS::ENEMYS(class GAME10_GAME* game) :GAME_OBJECT10(game) {
 }
 ENEMYS::~ENEMYS() {
-	delete[] Enemies;
+	if (Enemies != nullptr) {
+		delete[] Enemies;
+	}
 }
 void ENEMYS::init() {
+	Enemy = game()->container()->enemy();
+	if (Enemies != nullptr) {
+		delete[] Enemies;
+		Enemies = new ENEMY[Enemy.totalNum];
+	}
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->init();
 }
 void ENEMYS::create() {
 	Enemy = game()->container()->enemy();
@@ -60,6 +68,7 @@ void ENEMYS::collision() {
 		if (game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->GetHp(i) <= 0) {
 			kill(i);
 			game()->time()->rewind();
+			Enemy.destroy++;
 		}
 	}
 }
@@ -76,7 +85,6 @@ void ENEMYS::AllKill() {
 	Enemy.callIntervalDist = Enemy.initIntervalDist;
 }
 void ENEMYS::draw(int EnemyKind) {
-	textSize(30);
 	image(Enemies[EnemyKind].Img, Enemies[EnemyKind].pos.x, Enemies[EnemyKind].pos.y);
 	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->draw(Enemies[EnemyKind].pos, EnemyKind);
 }

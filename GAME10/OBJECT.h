@@ -19,6 +19,7 @@ public:
 		int sumTime;
 		int shortTime;//短くする時間
 		int level;
+		int sumDestroy;//倒した数
 		VECTOR2 opos;
 	};
 private:
@@ -45,8 +46,8 @@ public:
 	void collision();
 	void kill(int i);
 	void AllKill();
-	void draw();
-	DATA& uniEnemy() { return Object; }//共通データ
+	void draw(int ObjectKind);
+	DATA& uniObject() { return Object; }//共通データ
 	float& ObjectsLeft(int i) { return Objects[i].pos.x; }//敵ひとりひとりの位置データ(左)
 	float ObjectsRight(int i) { return Objects[i].pos.x + (float)Object.rightMx; }//敵ひとりひとりの位置データ(左)
 	int& ObjectsLane(int i) { return Objects[i].lane; }//敵ひとりひとりのlaneデータ
