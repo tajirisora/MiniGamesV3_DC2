@@ -9,9 +9,9 @@ namespace GAME06
 	public:
 		struct DATA {
 			VECTOR2 pos;
-			float radius;
+			float radius = 0.0f;
 			COLOR fillColor;
-			int hp;
+			int hp = 0;
 		};
 	private:
 		DATA Enemy;

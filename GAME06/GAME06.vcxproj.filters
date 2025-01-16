@@ -5,22 +5,26 @@
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="TITLE.cpp" />
     <ClCompile Include="STAGE.cpp" />
-    <ClCompile Include="GAME_CLEAR.cpp" />
-    <ClCompile Include="GAME_OVER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="ENEMY.cpp" />
+    <ClCompile Include="RESULT_C.cpp" />
+    <ClCompile Include="RESULT_B.cpp" />
+    <ClCompile Include="RESULT_A.cpp" />
+    <ClCompile Include="RESULT_S.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME06.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="TITLE.h" />
     <ClInclude Include="STAGE.h" />
-    <ClInclude Include="GAME_CLEAR.h" />
-    <ClInclude Include="GAME_OVER.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="ENEMY.h" />
+    <ClInclude Include="RESULT_C.h" />
+    <ClInclude Include="RESULT_B.h" />
+    <ClInclude Include="RESULT_A.h" />
+    <ClInclude Include="RESULT_S.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

@@ -9,10 +9,10 @@ namespace GAME06
 	public:
 		struct DATA {
 			VECTOR2 pos;
-			float radius;
-			float advSpeed;
+			float radius = 0.0f;
+			float advSpeed = 0.0f;
 			COLOR fillColor;
-			int hp;
+			int hp = 0;
 			//launchVec
 			/*VECTOR2 launchVec;
 			float triggerErapsedTime;

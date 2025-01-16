@@ -8,15 +8,15 @@ namespace GAME06
 		public SCENE{
 	public:
 		struct DATA {
-			COLOR bgColor;
-			float textSize;
-			COLOR textColor;
-			VECTOR2 pos;
-			const char* str;
-			float textSize2;
-			COLOR textColor2;
-			VECTOR2 pos2;
-			const char* str2;
+			COLOR backgroundColor;
+			float nameSize = 0.0f;
+			COLOR nameColor;
+			VECTOR2 namePos;
+			const char* name = nullptr;
+			float guidanceSize = 0.0f;
+			COLOR guidanceColor;
+			VECTOR2 guidancePos;
+			const char* guidance = nullptr;
 		};
 	private:
 		DATA Title;

@@ -1,8 +1,10 @@
 #pragma once
 #include"TITLE.h"
 #include"STAGE.h"
-#include"GAME_CLEAR.h"
-#include"GAME_OVER.h"
+#include"RESULT_C.h"
+#include"RESULT_B.h"
+#include"RESULT_A.h"
+#include"RESULT_S.h"
 #include"PLAYER.h"
 #include"ENEMY.h"
 namespace GAME06 
@@ -12,8 +14,10 @@ namespace GAME06
 		struct DATA {
 			TITLE::DATA title;
 			STAGE::DATA stage;
-			GAME_CLEAR::DATA gameClear;
-			GAME_OVER::DATA gameOver;
+			RESULT_C::DATA resultC;
+			RESULT_B::DATA resultB;
+			RESULT_A::DATA resultA;
+			RESULT_S::DATA resultS;
 			PLAYER::DATA player;
 			ENEMY::DATA enemy;
 		};

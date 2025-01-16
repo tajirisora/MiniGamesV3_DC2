@@ -15,13 +15,15 @@ namespace GAME06
         enum SCENE_ID {
             TITLE_ID,
             STAGE_ID,
-            GAME_CLEAR_ID,
-            GAME_OVER_ID,
+            RESULT_C_ID,
+            RESULT_B_ID,
+            RESULT_A_ID,
+            RESULT_S_ID,
             TOTAL_SCENES_ID
         };
     private:
         class SCENE* Scenes[TOTAL_SCENES_ID]{};
-        SCENE_ID CurSceneId;
+        SCENE_ID CurSceneId = TITLE_ID;
     public:
         void changeScene(SCENE_ID nextSceneId);
         class SCENE* stage() { return Scenes[STAGE_ID]; }

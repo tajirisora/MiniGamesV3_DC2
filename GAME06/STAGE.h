@@ -1,14 +1,16 @@
 #pragma once
 #include"SCENE.h"
 #include"../../libOne/inc/COLOR.h"
-#include"../../libOne/inc/VECTOR2.h"
 namespace GAME06 
 {
 	class STAGE :
 		public SCENE{
 	public:
 		struct DATA {
-			COLOR bgColor;
+			COLOR backgroundColor;
+			float curTimer = 0.0f;
+			float initTimer = 0.0f;
+			int hitCounter = 0;
 		};
 	private:
 		DATA Stage;

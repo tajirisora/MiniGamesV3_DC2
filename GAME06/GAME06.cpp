@@ -3,8 +3,10 @@
 #include "../MAIN//MAIN.h"
 #include"TITLE.h"
 #include"STAGE.h"
-#include"GAME_CLEAR.h"
-#include"GAME_OVER.h"
+#include"RESULT_C.h"
+#include"RESULT_B.h"
+#include"RESULT_A.h"
+#include"RESULT_S.h"
 #include"CONTAINER.h"
 #include"PLAYER.h"
 #include"ENEMY.h"
@@ -12,11 +14,11 @@
 //仕様
 //タイトル「射撃(仮)」
 //ステージ
-//＜
-//プレイヤー　「上下の移動」と「弾の発射」
-//敵(的) 　「上下の移動」と「速度の変化※1」と「方向の急な変更※2」※1は乱数で、※2はタイマーとif文で実現する
+//「
+//プレイヤー　「上下の移動」と「弾の発射」弾は連射不可で一発ずつ発射する　発射した弾が的に当たるか画面外に出たら消して次の弾を発射できるようにする
+//敵(的) 　「上下の移動」と「速度の変化※1」※1は乱数で実現する
 //制限時間　30秒
-//＞
+//　」
 //リザルト　的に当たった数に応じてC～Sランクを当たった数と一緒に表示する
 
 namespace GAME06
@@ -26,16 +28,20 @@ namespace GAME06
 		Container = new CONTAINER;
 		Scenes[TITLE_ID] = new TITLE(this);
 		Scenes[STAGE_ID] = new STAGE(this);
-		Scenes[GAME_CLEAR_ID] = new GAME_CLEAR(this);
-		Scenes[GAME_OVER_ID] = new GAME_OVER(this);
+		Scenes[RESULT_C_ID] = new RESULT_C(this);
+		Scenes[RESULT_B_ID] = new RESULT_B(this);
+		Scenes[RESULT_A_ID] = new RESULT_A(this);
+		Scenes[RESULT_S_ID] = new RESULT_S(this);
 		CurSceneId = TITLE_ID;
 		Player = new PLAYER(this);
 		Enemy = new ENEMY(this);
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[STAGE_ID]->create();
-		Scenes[GAME_CLEAR_ID]->create();
-		Scenes[GAME_OVER_ID]->create();
+		Scenes[RESULT_C_ID]->create();
+		Scenes[RESULT_B_ID]->create();
+		Scenes[RESULT_A_ID]->create();
+		Scenes[RESULT_S_ID]->create();
 		Player->create();
 		Enemy->create();
 		return 0;
