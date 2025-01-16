@@ -46,8 +46,8 @@ namespace GAME09 {
         };
     private:
         DATA ChartMNG;
-        float AudioOffset = 0;  //プラスにすると曲より早く流れる
-        float VisualOffset = 0; //プラスにすると手前、マイナスにすると奥に動く
+        int* AudioOffset = 0;  //プラスにすると曲より早く流れる
+        int* VisualOffset = 0; //プラスにすると手前、マイナスにすると奥に動く
         int Score = 0;
         int Achievement = -1;
 
@@ -67,8 +67,5 @@ namespace GAME09 {
         void loadChart(struct SONGINFO& songInfo, int& curRow);
         void updateHighScore(int highScore, int achievement);
         int allNotesNum() { return AllNotesNum; }
-
-        float* audioOffsetPtr() { return &AudioOffset; }
-        float* visualOffsetPtr() { return &VisualOffset; }
     };
 }

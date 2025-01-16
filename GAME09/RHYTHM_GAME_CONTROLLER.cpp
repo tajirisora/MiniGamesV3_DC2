@@ -20,6 +20,7 @@ namespace GAME09 {
 
 	void RHYTHM_GAME_CONTROLLER::create() {
 		RGCont = game()->container()->data().rgCont;
+		Speed = &game()->loadOption()->optionData().speed;
 	}
 
 	void RHYTHM_GAME_CONTROLLER::init() {

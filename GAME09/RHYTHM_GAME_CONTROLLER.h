@@ -39,7 +39,7 @@ namespace GAME09 {
         bool Finish = false;
         float AnimeTime;
 
-        float Speed = 11.0f;
+        float* Speed = nullptr;
     public:
         RHYTHM_GAME_CONTROLLER(class GAME* game);
         ~RHYTHM_GAME_CONTROLLER();
@@ -50,11 +50,10 @@ namespace GAME09 {
 
         double curTime() { return CurTime; }
         double visualBeat() { return VisualBeat; }
-        float speed() { return Speed; }
+        float speed() { return *Speed; }
         float rawSpeed() { return RGCont.rawSpeed; }
         bool isChangeScene() { return Finish; }
         bool isPlay() { return State == PLAY; }
-        float* speedPtr() { return &Speed; }
 
         void setEndTime(double endTime) { EndTime = endTime; }
     };

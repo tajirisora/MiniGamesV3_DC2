@@ -27,6 +27,8 @@ namespace GAME09 {
 
 	void CHARTMANAGER::create() {
 		ChartMNG = game()->container()->data().chartMNG;
+		AudioOffset = &game()->loadOption()->optionData().audioOffset;
+		VisualOffset = &game()->loadOption()->optionData().visualOffset;
 	}
 
 	void CHARTMANAGER::init() {
@@ -57,10 +59,10 @@ namespace GAME09 {
 	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo, int& curRow){
 
 		//音声オフセットを反映
-		songInfo.offset += AudioOffset / 1000.0f;
-		songInfo.offset += VisualOffset / 1000.0f;
+		songInfo.offset += *AudioOffset / 1000.0f;
+		songInfo.offset += *VisualOffset / 1000.0f;
 		songInfo.offsetB = -songInfo.offset / (60.0f / songInfo.bpm);
-		songInfo.offset -= VisualOffset / 1000.0f;
+		songInfo.offset -= *VisualOffset / 1000.0f;
 
 		std::vector<NOTE*>& notes = game()->notes();
 		std::vector<CHANGEDATA>& changeDatas = game()->changeDatas();
@@ -280,7 +282,7 @@ namespace GAME09 {
 		safe_clear(longBeltData);
 
 		//音声オフセットの値が毎回足されるのを防ぐためにここで減らす
-		songInfo.offset -= AudioOffset / 1000.0f;
+		songInfo.offset -= *AudioOffset / 1000.0f;
 
 		game()->rgCont()->setEndTime(endTime);
 	}
