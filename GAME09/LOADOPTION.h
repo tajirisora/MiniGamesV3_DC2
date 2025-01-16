@@ -1,7 +1,8 @@
 #pragma once
 #include "GAME_OBJECT.h"
 #include "KC_MAINSUB.h"
-#include "OPTION.h"
+#include "KEYCONFIG.h"
+//#include "OPTION.h"
 #include <string>
 
 namespace GAME09 {
@@ -31,8 +32,8 @@ namespace GAME09 {
         struct OPTION_DATA {
             float speed = 1;
             bool soundEffect = true;
-            float audioOffset = 0;
-            float visualOffset = 0;
+            int audioOffset = 0;
+            int visualOffset = 0;
             KEYCONFIG::KEY_BIND_TYPE keyBindType = KEYCONFIG::B_TYPE1;
             KC_MAINSUB** keyConfig = nullptr;
             KEYCONFIG::COLOR_TYPE colorType = KEYCONFIG::C_TYPE1;

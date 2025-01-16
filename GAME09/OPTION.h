@@ -2,8 +2,11 @@
 #include "SCENE.h"
 #include "KEYCONFIG.h"
 #include "BUTTON_TF.h"
+#include "LOADOPTION.h"
+#include "ADJUST.h"
 #include "../../libOne/inc/VECTOR2.h"
 #include "../../libOne/inc/COLOR.h"
+#include <string>
 
 namespace GAME09 {
     class OPTION :
@@ -31,6 +34,8 @@ namespace GAME09 {
             BUTTON_TF colorTypeButtonTF;
             BUTTON_TF colorType1ButtonTF;
             BUTTON_TF colorType2ButtonTF;
+            BUTTON_TF adjustTF;
+            ADJUST::SETDATA adjustData[LOADOPTION::KEY_BIND_TYPE];
 
             int optionImg;
             float optionImgSize;
@@ -54,6 +59,7 @@ namespace GAME09 {
         class OPTION_RELATED_BUTTON* ColorTypeButtons[KEYCONFIG::NUM_COLOR_TYPE];
         class OPTION_RELATED_BUTTON* ColorType1Buttons[6];
         class OPTION_RELATED_BUTTON* ColorType2Buttons[2];
+        class ADJUST* Adjust[LOADOPTION::KEY_BIND_TYPE];
         void UpdateGeneral();
         void UpdateKeyBind();
         void UpdateColor();

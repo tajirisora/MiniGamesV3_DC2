@@ -136,6 +136,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ACHIEVEMENT.cpp" />
+    <ClCompile Include="ADJUST.cpp" />
+    <ClCompile Include="ADJUSTBUTTON.cpp" />
     <ClCompile Include="AUTOBUTTON.cpp" />
     <ClCompile Include="BACKBUTTON.cpp" />
     <ClCompile Include="BACKGROUND.cpp" />
@@ -175,6 +177,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ACHIEVEMENT.h" />
+    <ClInclude Include="ADJUST.h" />
+    <ClInclude Include="ADJUSTBUTTON.h" />
     <ClInclude Include="AUTOBUTTON.h" />
     <ClInclude Include="BACKBUTTON.h" />
     <ClInclude Include="BACKGROUND.h" />

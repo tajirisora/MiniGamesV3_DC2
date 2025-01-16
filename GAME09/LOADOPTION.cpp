@@ -120,10 +120,10 @@ namespace GAME09 {
 						}
 						break;
 					case AUDIO_OFFSET:
-						OptionData.audioOffset = std::stof(content);
+						OptionData.audioOffset = std::stoi(content);
 						break;
 					case VISUAL_OFFSET:
-						OptionData.visualOffset = std::stof(content);
+						OptionData.visualOffset = std::stoi(content);
 						break;
 					case KEY_BIND_TYPE:
 						OptionData.keyBindType = (KEYCONFIG::KEY_BIND_TYPE)std::stoi(content);

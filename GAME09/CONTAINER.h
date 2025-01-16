@@ -30,6 +30,8 @@
 #include "LOADOPTION.h"
 #include "KEYCONFIG.h"
 #include "COLOR_PICKER.h"
+#include "ADJUST.h"
+#include "ADJUSTBUTTON.h"
 
 namespace GAME09
 {
@@ -59,6 +61,7 @@ namespace GAME09
 			BUTTON::DATA autoButton;
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;
+			BUTTON::DATA adjustButton;
 			OPTION::DATA option;
 			//SONGTITLE::DATA songTitle;
 			ACHIEVEMENT::DATA achievement;
@@ -67,6 +70,8 @@ namespace GAME09
 			LOADOPTION::DATA loadOption;
 			COLOR_PICKER::DATA colorPicker;
 			AUTOBUTTON::DATA autoButtonImg;
+			ADJUST::DATA adjust;
+			ADJUSTBUTTON::DATA adjustButtonImg;
 		};
 		DATA Data;
 	public:

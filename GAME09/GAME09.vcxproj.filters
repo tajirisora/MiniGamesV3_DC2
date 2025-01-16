@@ -38,6 +38,8 @@
     <ClCompile Include="SCORE.cpp" />
     <ClCompile Include="ACHIEVEMENT.cpp" />
     <ClCompile Include="AUTOBUTTON.cpp" />
+    <ClCompile Include="ADJUST.cpp" />
+    <ClCompile Include="ADJUSTBUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -83,6 +85,8 @@
     <ClInclude Include="SCORE.h" />
     <ClInclude Include="ACHIEVEMENT.h" />
     <ClInclude Include="AUTOBUTTON.h" />
+    <ClInclude Include="ADJUST.h" />
+    <ClInclude Include="ADJUSTBUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

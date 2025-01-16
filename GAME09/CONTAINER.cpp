@@ -121,6 +121,21 @@ namespace GAME09
 		Data.option.colorType2ButtonTF.pos = VECTOR2(1810, 300);
 		Data.option.colorType2ButtonTF.ofst = VECTOR2(0, 300);
 		Data.option.colorType2ButtonTF.size = VECTOR2(150, 150);
+		Data.option.adjustTF.pos = VECTOR2(720, 300);
+		Data.option.adjustTF.ofst = VECTOR2(0, 200);
+		Data.option.adjustData[LOADOPTION::SPEED].str = "譜面速度";
+		Data.option.adjustData[LOADOPTION::SPEED].valueMax = 20;
+		Data.option.adjustData[LOADOPTION::SPEED].valueMin = 1;
+		Data.option.adjustData[LOADOPTION::SPEED].changeValue = 0.1f;
+		Data.option.adjustData[LOADOPTION::SOUND_EFFECT].str = "タップ音";
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].str = "音声オフセット";
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].valueMax = 300;
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].valueMin = -300;
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].changeValue = 5;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].str = "判定オフセット";
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].valueMax = 300;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].valueMin = -300;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].changeValue = 5;
 
 		Data.optionButton.imgSize = 0.44f;
 		Data.optionButton.colliType = BUTTON::DIAMOND;
@@ -219,6 +234,21 @@ namespace GAME09
 		Data.autoButton.key = KEY_A;
 		Data.autoButton.pos = VECTOR2(1810, 320);
 		Data.autoButton.radius = 80;
+
+		Data.adjustButton.imgSize = 0.15f;
+		Data.adjustButton.colliType = BUTTON::RECT;
+		Data.adjustButton.key = KEY_NONE;
+		Data.adjustButton.pos = VECTOR2(0, 0);
+		Data.adjustButton.size = VECTOR2(100, 100);
+
+		Data.adjust.strSize = VECTOR2(700, 100);
+		Data.adjust.leftButtonOfst = VECTOR2(500, 0);
+		Data.adjust.rightButtonOfst = VECTOR2(1000, 0);
+		Data.adjust.valueOfst = VECTOR2(750, 0);
+		Data.adjust.valueSize = VECTOR2(400, 100);
+
+		Data.adjustButtonImg.repeatStartTime = 0.4f;
+		Data.adjustButtonImg.repeatInterval = 0.05f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -258,6 +288,10 @@ namespace GAME09
 		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
 		Data.banner.bannerImg = loadImage("..\\main\\assets\\game09\\texture\\Banner.png");
 		Data.banner.difficultyFrameImg = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::PLUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Plus.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::MINUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Minus.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::RIGHT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Right.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::LEFT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Left.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");
