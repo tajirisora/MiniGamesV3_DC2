@@ -189,8 +189,8 @@ namespace GAME09
 		Data.combo.digitSpace = 80;
 
 		Data.score.backImgPos = VECTOR2(1618, 990);
-		Data.score.backImgSize = 0.65f;
-		Data.score.scoreNumPosOfst = VECTOR2(250, 62);
+		Data.score.backImgSize = 0.5f;
+		Data.score.scoreNumPosOfst = VECTOR2(200, 62);
 		Data.score.scoreNumSize = VECTOR2(500, 100);
 		Data.score.scoreAnimeTime = 0.3f;
 
