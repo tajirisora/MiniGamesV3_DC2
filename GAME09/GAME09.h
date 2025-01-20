@@ -57,6 +57,7 @@ namespace GAME09
 		class ACHIEVEMENT* Achievement;
 		class AUTOBUTTON* AutoButton;
 		class SONGTITLE* SongTitle;
+		class STARTBUTTON* StartButton;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -85,6 +86,7 @@ namespace GAME09
 		class ACHIEVEMENT* achievement() { return Achievement; }
 		class AUTOBUTTON* autoButton() { return AutoButton; }
 		class SONGTITLE* songTitle() { return SongTitle; }
+		class STARTBUTTON* startButton() { return StartButton; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

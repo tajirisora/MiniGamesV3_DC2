@@ -172,6 +172,7 @@
     <ClCompile Include="SONGTITLE.cpp" />
     <ClCompile Include="SOUNDMANAGER.cpp" />
     <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="STARTBUTTON.cpp" />
     <ClCompile Include="TAPNOTE.cpp" />
     <ClCompile Include="textFunc.cpp" />
     <ClCompile Include="TITLE.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="SONGTITLE.h" />
     <ClInclude Include="SOUNDMANAGER.h" />
     <ClInclude Include="STAGE.h" />
+    <ClInclude Include="STARTBUTTON.h" />
     <ClInclude Include="TAPNOTE.h" />
     <ClInclude Include="textFunc.h" />
     <ClInclude Include="TITLE.h" />

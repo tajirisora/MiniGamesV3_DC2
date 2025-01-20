@@ -35,6 +35,7 @@ namespace GAME09
 		Achievement = new ACHIEVEMENT(this);
 		AutoButton = new AUTOBUTTON(this);
 		SongTitle = new SONGTITLE(this);
+		StartButton = new STARTBUTTON(this);
 
 		Container->load();
 		LoadOption->create();
@@ -65,6 +66,7 @@ namespace GAME09
 		Achievement->create();
 		AutoButton->create();
 		SongTitle->create();
+		StartButton->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -73,6 +75,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete StartButton;
 		delete SongTitle;
 		delete AutoButton;
 		delete Achievement;

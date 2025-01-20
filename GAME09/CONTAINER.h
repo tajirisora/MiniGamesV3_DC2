@@ -32,6 +32,7 @@
 #include "COLOR_PICKER.h"
 #include "ADJUST.h"
 #include "ADJUSTBUTTON.h"
+#include "STARTBUTTON.h"
 
 namespace GAME09
 {
@@ -62,6 +63,7 @@ namespace GAME09
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;
 			BUTTON::DATA adjustButton;
+			BUTTON::DATA startButton;
 			OPTION::DATA option;
 			SONGTITLE::DATA songTitle;
 			ACHIEVEMENT::DATA achievement;

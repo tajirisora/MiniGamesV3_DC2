@@ -255,6 +255,12 @@ namespace GAME09
 
 		Data.adjustButtonImg.repeatStartTime = 0.4f;
 		Data.adjustButtonImg.repeatInterval = 0.05f;
+
+		Data.startButton.imgSize = 0.9f;
+		Data.startButton.colliType = BUTTON::DIAMOND;
+		Data.startButton.key = KEY_ENTER;
+		Data.startButton.pos = VECTOR2(1730, 830);
+		Data.startButton.radius = 165;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -292,6 +298,7 @@ namespace GAME09
 		Data.autoButtonImg.imgs[0] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_Off.png");
 		Data.autoButtonImg.imgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_On.png");
 		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
+		Data.startButton.img = loadImage("..\\main\\assets\\game09\\texture\\Start_Button.png");
 		Data.songTitle.bannerImg = loadImage("..\\main\\assets\\game09\\texture\\Banner.png");
 		Data.songTitle.difficultyFrameImg = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::PLUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Plus.png");

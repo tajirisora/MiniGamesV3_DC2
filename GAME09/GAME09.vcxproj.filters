@@ -41,6 +41,7 @@
     <ClCompile Include="ADJUST.cpp" />
     <ClCompile Include="ADJUSTBUTTON.cpp" />
     <ClCompile Include="SONGTITLE.cpp" />
+    <ClCompile Include="STARTBUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -89,6 +90,7 @@
     <ClInclude Include="ADJUST.h" />
     <ClInclude Include="ADJUSTBUTTON.h" />
     <ClInclude Include="SONGTITLE.h" />
+    <ClInclude Include="STARTBUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

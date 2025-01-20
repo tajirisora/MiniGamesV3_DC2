@@ -26,6 +26,7 @@ namespace GAME09 {
 			game()->optionButton()->update();
 			game()->autoButton()->update();
 			if (game()->autoButton()->isClick()) game()->judgeMNG()->autoRef() ^= 1;
+			game()->startButton()->update();
 			game()->backButton()->update();
 		}
 	}
@@ -38,6 +39,7 @@ namespace GAME09 {
 		game()->jacket()->draw(songInfo, Select.jacketTf);
 		game()->optionButton()->draw();
 		game()->autoButton()->draw();
+		game()->startButton()->draw();
 		game()->backButton()->draw();
 
 		rectMode(CORNER);
@@ -50,7 +52,7 @@ namespace GAME09 {
 		//if (Option) game()->option()->draw();
 	}
 	void MUSICSELECT::nextScene() {
-		if (isTrigger(KEY_ENTER)) {
+		if (game()->startButton()->isClick()) {
 			if (!game()->banner()->animeFlag()) {
 				game()->fade()->outStart();
 			}
