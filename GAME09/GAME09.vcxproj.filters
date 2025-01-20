@@ -40,6 +40,7 @@
     <ClCompile Include="AUTOBUTTON.cpp" />
     <ClCompile Include="ADJUST.cpp" />
     <ClCompile Include="ADJUSTBUTTON.cpp" />
+    <ClCompile Include="SONGTITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -87,6 +88,7 @@
     <ClInclude Include="AUTOBUTTON.h" />
     <ClInclude Include="ADJUST.h" />
     <ClInclude Include="ADJUSTBUTTON.h" />
+    <ClInclude Include="SONGTITLE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />
