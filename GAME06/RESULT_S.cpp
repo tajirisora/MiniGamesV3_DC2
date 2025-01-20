@@ -11,6 +11,7 @@ namespace GAME06
 
 	void RESULT_S::draw() {
 		clear(ResultS.backgroundColor);
+		game()->judgeList()->draw();
 		fill(ResultS.nameColor);
 		textSize(ResultS.nameSize);
 		text(ResultS.name, ResultS.namePos.x, ResultS.namePos.y);

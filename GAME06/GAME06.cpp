@@ -1,25 +1,23 @@
-#include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/input.h"
 #include "../MAIN//MAIN.h"
-#include"TITLE.h"
-#include"STAGE.h"
-#include"RESULT_C.h"
-#include"RESULT_B.h"
-#include"RESULT_A.h"
-#include"RESULT_S.h"
-#include"CONTAINER.h"
-#include"PLAYER.h"
-#include"ENEMY.h"
+#include "TITLE.h"
+#include "STAGE.h"
+#include "RESULT_C.h"
+#include "RESULT_B.h"
+#include "RESULT_A.h"
+#include "RESULT_S.h"
+#include "JUDGE_LIST.h"
+#include "CONTAINER.h"
+#include "PLAYER.h"
+#include "ENEMY.h"
 #include "GAME06.h"
 //仕様
 //タイトル「射撃(仮)」
 //ステージ
-//「
-//プレイヤー　「上下の移動」と「弾の発射」弾は連射不可で一発ずつ発射する　発射した弾が的に当たるか画面外に出たら消して次の弾を発射できるようにする
-//敵(的) 　「上下の移動」と「速度の変化※1」※1は乱数で実現する
-//制限時間　30秒
-//　」
-//リザルト　的に当たった数に応じてC～Sランクを当たった数と一緒に表示する
+//　プレイヤー　「上下の移動」と「弾の発射」弾は一発発射したらその弾が消えるまで発射不可能にする　発射された弾は的に当たるか画面外に出たら消す
+//　敵(的) 　「上下の移動」と「速度の変化」
+//　制限時間　30秒
+//リザルト　的に当たった数に応じてC～Sランクを表示する　C～Sランクの判定基準を左上に表示する
 
 namespace GAME06
 {
@@ -32,6 +30,7 @@ namespace GAME06
 		Scenes[RESULT_B_ID] = new RESULT_B(this);
 		Scenes[RESULT_A_ID] = new RESULT_A(this);
 		Scenes[RESULT_S_ID] = new RESULT_S(this);
+		JudgeList = new JUDGE_LIST(this);
 		CurSceneId = TITLE_ID;
 		Player = new PLAYER(this);
 		Enemy = new ENEMY(this);
@@ -42,6 +41,7 @@ namespace GAME06
 		Scenes[RESULT_B_ID]->create();
 		Scenes[RESULT_A_ID]->create();
 		Scenes[RESULT_S_ID]->create();
+		JudgeList->create();
 		Player->create();
 		Enemy->create();
 		return 0;
@@ -51,6 +51,7 @@ namespace GAME06
 	{
 		delete Enemy;
 		delete Player;
+		delete JudgeList;
 		for (int i = 0; i < TOTAL_SCENES_ID; ++i) {
 			delete Scenes[i];
 		}

@@ -11,6 +11,7 @@
     <ClCompile Include="RESULT_B.cpp" />
     <ClCompile Include="RESULT_A.cpp" />
     <ClCompile Include="RESULT_S.cpp" />
+    <ClCompile Include="JUDGE_LIST.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME06.h" />
@@ -25,6 +26,7 @@
     <ClInclude Include="RESULT_B.h" />
     <ClInclude Include="RESULT_A.h" />
     <ClInclude Include="RESULT_S.h" />
+    <ClInclude Include="JUDGE_LIST.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

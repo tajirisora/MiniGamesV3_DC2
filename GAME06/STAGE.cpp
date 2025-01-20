@@ -39,13 +39,13 @@ namespace GAME06
 
 	void STAGE::nextScene() {
 		if (Stage.curTimer <= 0.0f) {
-			if (Stage.hitCounter < 5) {
+			if (Stage.hitCounter < judgeLineB) {
 				game()->changeScene(GAME::RESULT_C_ID);
 			}
-			else if (Stage.hitCounter < 10) {
+			else if (Stage.hitCounter < judgeLineA) {
 				game()->changeScene(GAME::RESULT_B_ID);
 			}
-			else if (Stage.hitCounter < 15) {
+			else if (Stage.hitCounter < judgeLineS) {
 				game()->changeScene(GAME::RESULT_A_ID);
 			}
 			else {

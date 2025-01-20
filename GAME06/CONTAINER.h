@@ -1,12 +1,13 @@
 #pragma once
-#include"TITLE.h"
-#include"STAGE.h"
-#include"RESULT_C.h"
-#include"RESULT_B.h"
-#include"RESULT_A.h"
-#include"RESULT_S.h"
-#include"PLAYER.h"
-#include"ENEMY.h"
+#include "TITLE.h"
+#include "STAGE.h"
+#include "RESULT_C.h"
+#include "RESULT_B.h"
+#include "RESULT_A.h"
+#include "RESULT_S.h"
+#include "JUDGE_LIST.h"
+#include "PLAYER.h"
+#include "ENEMY.h"
 namespace GAME06 
 {
 	class CONTAINER {
@@ -18,6 +19,7 @@ namespace GAME06
 			RESULT_B::DATA resultB;
 			RESULT_A::DATA resultA;
 			RESULT_S::DATA resultS;
+			JUDGE_LIST::DATA judgeList;
 			PLAYER::DATA player;
 			ENEMY::DATA enemy;
 		};
