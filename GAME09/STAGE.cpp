@@ -66,6 +66,8 @@ namespace GAME09 {
 		}
 		game()->judgeMNG()->draw();
 		game()->score()->draw();
+		game()->songTitle()->draw(SongInfo, Stage.songTitleTF.pos, Stage.songTitleTF.size);
+		game()->jacket()->draw(SongInfo, Stage.jacketTF);
 
 		game()->rgCont()->draw();
 		

@@ -14,6 +14,11 @@ namespace GAME09
 		Data.select.jacketTf.pos = VECTOR2(1340, 380);
 		Data.select.jacketTf.size = 0.93f;
 
+		Data.stage.songTitleTF.pos = VECTOR2(1620, 80);
+		Data.stage.songTitleTF.size = 0.8f;
+		Data.stage.jacketTF.pos = VECTOR2(302, 778);
+		Data.stage.jacketTF.size = 0.75f;
+
 		Data.fade.alpha = 0;
 		Data.fade.color = COLOR(0, 0, 0);
 		Data.fade.speed = 700;
