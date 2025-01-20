@@ -40,16 +40,16 @@ namespace GAME06
 	void STAGE::nextScene() {
 		if (Stage.curTimer <= 0.0f) {
 			if (Stage.hitCounter < judgeLineB) {
-				game()->changeScene(GAME::RESULT_C_ID);
+				game()->changeScene(GAME::RANK_C_ID);
 			}
 			else if (Stage.hitCounter < judgeLineA) {
-				game()->changeScene(GAME::RESULT_B_ID);
+				game()->changeScene(GAME::RANK_B_ID);
 			}
 			else if (Stage.hitCounter < judgeLineS) {
-				game()->changeScene(GAME::RESULT_A_ID);
+				game()->changeScene(GAME::RANK_A_ID);
 			}
 			else {
-				game()->changeScene(GAME::RESULT_S_ID);
+				game()->changeScene(GAME::RANK_S_ID);
 			}
 		}
 	}

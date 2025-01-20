@@ -2,9 +2,9 @@
 #include "SCENE.h"
 #include"../../libOne/inc/COLOR.h"
 #include"../../libOne/inc/VECTOR2.h"
-namespace GAME06 
+namespace GAME06
 {
-    class RESULT_C :
+    class RANK_B :
         public SCENE
     {
     public:
@@ -20,10 +20,10 @@ namespace GAME06
             const char* guidance = nullptr;
         };
     private:
-        DATA ResultC;
+        DATA Rank_B;
     public:
-        RESULT_C(class GAME* game):SCENE(game){}
-        ~RESULT_C(){}
+        RANK_B(class GAME* game) :SCENE(game) {}
+        ~RANK_B() {}
         void create();
         void draw();
         void nextScene();

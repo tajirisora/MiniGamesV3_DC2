@@ -7,11 +7,11 @@
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="ENEMY.cpp" />
-    <ClCompile Include="RESULT_C.cpp" />
-    <ClCompile Include="RESULT_B.cpp" />
-    <ClCompile Include="RESULT_A.cpp" />
-    <ClCompile Include="RESULT_S.cpp" />
     <ClCompile Include="JUDGE_LIST.cpp" />
+    <ClCompile Include="RANK_C.cpp" />
+    <ClCompile Include="RANK_B.cpp" />
+    <ClCompile Include="RANK_A.cpp" />
+    <ClCompile Include="RANK_S.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME06.h" />
@@ -22,11 +22,11 @@
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="ENEMY.h" />
-    <ClInclude Include="RESULT_C.h" />
-    <ClInclude Include="RESULT_B.h" />
-    <ClInclude Include="RESULT_A.h" />
-    <ClInclude Include="RESULT_S.h" />
     <ClInclude Include="JUDGE_LIST.h" />
+    <ClInclude Include="RANK_C.h" />
+    <ClInclude Include="RANK_B.h" />
+    <ClInclude Include="RANK_A.h" />
+    <ClInclude Include="RANK_S.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

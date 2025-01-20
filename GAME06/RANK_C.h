@@ -4,7 +4,7 @@
 #include"../../libOne/inc/VECTOR2.h"
 namespace GAME06
 {
-    class RESULT_B :
+    class RANK_C :
         public SCENE
     {
     public:
@@ -20,12 +20,13 @@ namespace GAME06
             const char* guidance = nullptr;
         };
     private:
-        DATA ResultB;
+        DATA Rank_C;
     public:
-        RESULT_B(class GAME* game):SCENE(game){}
-        ~RESULT_B(){}
+        RANK_C(class GAME* game) :SCENE(game) {}
+        ~RANK_C() {}
         void create();
         void draw();
         void nextScene();
     };
 }
+

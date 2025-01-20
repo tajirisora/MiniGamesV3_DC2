@@ -15,10 +15,10 @@ namespace GAME06
         enum SCENE_ID {
             TITLE_ID,
             STAGE_ID,
-            RESULT_C_ID,
-            RESULT_B_ID,
-            RESULT_A_ID,
-            RESULT_S_ID,
+            RANK_C_ID,
+            RANK_B_ID,
+            RANK_A_ID,
+            RANK_S_ID,
             TOTAL_SCENES_ID
         };
     private:

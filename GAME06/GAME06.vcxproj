@@ -138,10 +138,10 @@
     <ClCompile Include="GAME06.cpp" />
     <ClCompile Include="JUDGE_LIST.cpp" />
     <ClCompile Include="PLAYER.cpp" />
-    <ClCompile Include="RESULT_A.cpp" />
-    <ClCompile Include="RESULT_B.cpp" />
-    <ClCompile Include="RESULT_C.cpp" />
-    <ClCompile Include="RESULT_S.cpp" />
+    <ClCompile Include="RANK_A.cpp" />
+    <ClCompile Include="RANK_B.cpp" />
+    <ClCompile Include="RANK_C.cpp" />
+    <ClCompile Include="RANK_S.cpp" />
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
@@ -152,10 +152,10 @@
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="JUDGE_LIST.h" />
     <ClInclude Include="PLAYER.h" />
-    <ClInclude Include="RESULT_A.h" />
-    <ClInclude Include="RESULT_B.h" />
-    <ClInclude Include="RESULT_C.h" />
-    <ClInclude Include="RESULT_S.h" />
+    <ClInclude Include="RANK_A.h" />
+    <ClInclude Include="RANK_B.h" />
+    <ClInclude Include="RANK_C.h" />
+    <ClInclude Include="RANK_S.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="TITLE.h" />

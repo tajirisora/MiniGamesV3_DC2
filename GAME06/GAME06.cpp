@@ -2,17 +2,17 @@
 #include "../MAIN//MAIN.h"
 #include "TITLE.h"
 #include "STAGE.h"
-#include "RESULT_C.h"
-#include "RESULT_B.h"
-#include "RESULT_A.h"
-#include "RESULT_S.h"
+#include "RANK_C.h"
+#include "RANK_B.h"
+#include "RANK_A.h"
+#include "RANK_S.h"
 #include "JUDGE_LIST.h"
 #include "CONTAINER.h"
 #include "PLAYER.h"
 #include "ENEMY.h"
 #include "GAME06.h"
 //仕様
-//タイトル「射撃(仮)」
+//タイトル「スナイパー」
 //ステージ
 //　プレイヤー　「上下の移動」と「弾の発射」弾は一発発射したらその弾が消えるまで発射不可能にする　発射された弾は的に当たるか画面外に出たら消す
 //　敵(的) 　「上下の移動」と「速度の変化」
@@ -26,10 +26,10 @@ namespace GAME06
 		Container = new CONTAINER;
 		Scenes[TITLE_ID] = new TITLE(this);
 		Scenes[STAGE_ID] = new STAGE(this);
-		Scenes[RESULT_C_ID] = new RESULT_C(this);
-		Scenes[RESULT_B_ID] = new RESULT_B(this);
-		Scenes[RESULT_A_ID] = new RESULT_A(this);
-		Scenes[RESULT_S_ID] = new RESULT_S(this);
+		Scenes[RANK_C_ID] = new RANK_C(this);
+		Scenes[RANK_B_ID] = new RANK_B(this);
+		Scenes[RANK_A_ID] = new RANK_A(this);
+		Scenes[RANK_S_ID] = new RANK_S(this);
 		JudgeList = new JUDGE_LIST(this);
 		CurSceneId = TITLE_ID;
 		Player = new PLAYER(this);
@@ -37,10 +37,10 @@ namespace GAME06
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[STAGE_ID]->create();
-		Scenes[RESULT_C_ID]->create();
-		Scenes[RESULT_B_ID]->create();
-		Scenes[RESULT_A_ID]->create();
-		Scenes[RESULT_S_ID]->create();
+		Scenes[RANK_C_ID]->create();
+		Scenes[RANK_B_ID]->create();
+		Scenes[RANK_A_ID]->create();
+		Scenes[RANK_S_ID]->create();
 		JudgeList->create();
 		Player->create();
 		Enemy->create();
