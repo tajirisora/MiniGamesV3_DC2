@@ -15,10 +15,10 @@ namespace GAME06
 		struct DATA {
 			TITLE::DATA title;
 			STAGE::DATA stage;
-			RANK_C::DATA rank_C;
-			RANK_B::DATA rank_B;
-			RANK_A::DATA rank_A;
-			RANK_S::DATA rank_S;
+			RANK_C::DATA rankC;
+			RANK_B::DATA rankB;
+			RANK_A::DATA rankA;
+			RANK_S::DATA rankS;
 			JUDGE_LIST::DATA judgeList;
 			PLAYER::DATA player;
 			ENEMY::DATA enemy;

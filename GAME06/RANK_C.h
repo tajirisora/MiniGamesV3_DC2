@@ -18,9 +18,12 @@ namespace GAME06
             COLOR guidanceColor;
             VECTOR2 guidancePos;
             const char* guidance = nullptr;
+            float recodeSize = 0.0f;
+            COLOR recodeColor;
+            VECTOR2 recodePos;
         };
     private:
-        DATA Rank_C;
+        DATA RankC;
     public:
         RANK_C(class GAME* game) :SCENE(game) {}
         ~RANK_C() {}

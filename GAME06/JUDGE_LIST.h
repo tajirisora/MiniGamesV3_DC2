@@ -11,14 +11,14 @@ namespace GAME06
         struct DATA {
             COLOR textColor;
             float textSize = 0.0f;
-            VECTOR2 pos_S;
-            VECTOR2 pos_A;
-            VECTOR2 pos_B;
-            VECTOR2 pos_C;
-            const char* str_S = nullptr;
-            const char* str_A = nullptr;
-            const char* str_B = nullptr;
-            const char* str_C = nullptr;
+            VECTOR2 pos1;
+            VECTOR2 pos2;
+            VECTOR2 pos3;
+            VECTOR2 pos4;
+            const char* str1 = nullptr;
+            const char* str2 = nullptr;
+            const char* str3 = nullptr;
+            const char* str4 = nullptr;
         };
     private:
         DATA JudgeList;

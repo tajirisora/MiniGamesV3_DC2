@@ -31,6 +31,11 @@ namespace GAME06
         class JUDGE_LIST* JudgeList = nullptr;
     public:
         class JUDGE_LIST* judgeList() { return JudgeList; }
+    private:
+        int Recode = 0;
+    public:
+        void setRecode(int recode);
+        int& recode() { return Recode; }
     //ƒLƒƒƒ‰ƒNƒ^
     private:
         class PLAYER* Player = nullptr;

@@ -15,9 +15,9 @@ namespace GAME06
 	private:
 		DATA Stage;
 	private:
-		const int judgeLineB = 5;
-		const int judgeLineA = 10;
-		const int judgeLineS = 15;
+		const int Line1 = 4;
+		const int Line2 = 9;
+		const int Line3 = 14;
 	public:
 		STAGE(class GAME* game) :SCENE(game){}
 		~STAGE(){}

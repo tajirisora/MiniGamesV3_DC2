@@ -6,18 +6,21 @@
 namespace GAME06
 {
 	void RANK_S::create() {
-		Rank_S = game()->container()->data().rank_S;
+		RankS = game()->container()->data().rankS;
 	}
 
 	void RANK_S::draw() {
-		clear(Rank_S.backgroundColor);
+		clear(RankS.backgroundColor);
 		game()->judgeList()->draw();
-		fill(Rank_S.nameColor);
-		textSize(Rank_S.nameSize);
-		text(Rank_S.name, Rank_S.namePos.x, Rank_S.namePos.y);
-		fill(Rank_S.guidanceColor);
-		textSize(Rank_S.guidanceSize);
-		text(Rank_S.guidance, Rank_S.guidancePos.x, Rank_S.guidancePos.y);
+		fill(RankS.nameColor);
+		textSize(RankS.nameSize);
+		text(RankS.name, RankS.namePos.x, RankS.namePos.y);
+		fill(RankS.guidanceColor);
+		textSize(RankS.guidanceSize);
+		text(RankS.guidance, RankS.guidancePos.x, RankS.guidancePos.y);
+		fill(RankS.recodeColor);
+		textSize(RankS.recodeSize);
+		text((let)"‹L˜^F" + game()->recode() + "”­", RankS.recodePos.x, RankS.recodePos.y);
 	}
 
 	void RANK_S::nextScene() {

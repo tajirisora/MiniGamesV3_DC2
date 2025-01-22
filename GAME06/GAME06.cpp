@@ -17,7 +17,7 @@
 //　プレイヤー　「上下の移動」と「弾の発射」弾は一発発射したらその弾が消えるまで発射不可能にする　発射された弾は的に当たるか画面外に出たら消す
 //　敵(的) 　「上下の移動」と「速度の変化」
 //　制限時間　30秒
-//リザルト　的に当たった数に応じてC～Sランクを表示する　C～Sランクの判定基準を左上に表示する
+//リザルト　的に当たった数に応じてC～Sランクと記録を表示する　C～Sランクの判定表を左上に表示する
 
 namespace GAME06
 {
@@ -60,6 +60,10 @@ namespace GAME06
 
 	void GAME::changeScene(SCENE_ID nextSceneId) {
 		CurSceneId = nextSceneId;
+	}
+
+	void GAME::setRecode(int recode) {
+		Recode = recode;
 	}
 
 	void GAME::proc()

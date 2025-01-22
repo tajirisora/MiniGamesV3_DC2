@@ -39,13 +39,14 @@ namespace GAME06
 
 	void STAGE::nextScene() {
 		if (Stage.curTimer <= 0.0f) {
-			if (Stage.hitCounter < judgeLineB) {
+			game()->setRecode(Stage.hitCounter);
+			if (Stage.hitCounter <= Line1) {
 				game()->changeScene(GAME::RANK_C_ID);
 			}
-			else if (Stage.hitCounter < judgeLineA) {
+			else if (Stage.hitCounter <= Line2) {
 				game()->changeScene(GAME::RANK_B_ID);
 			}
-			else if (Stage.hitCounter < judgeLineS) {
+			else if (Stage.hitCounter <= Line3) {
 				game()->changeScene(GAME::RANK_A_ID);
 			}
 			else {
