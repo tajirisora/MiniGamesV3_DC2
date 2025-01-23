@@ -13,6 +13,10 @@ namespace GAME09
 
 		Data.select.jacketTf.pos = VECTOR2(1340, 380);
 		Data.select.jacketTf.size = 0.93f;
+		Data.select.scoreTf.pos = VECTOR2(1300, 940);
+		Data.select.scoreTf.size = 0.9f;
+		Data.select.achievementTf.pos = VECTOR2(1375, 880);
+		Data.select.achievementTf.size = 0.4f;
 
 		Data.stage.songTitleTF.pos = VECTOR2(1620, 80);
 		Data.stage.songTitleTF.size = 0.8f;

@@ -37,6 +37,9 @@ namespace GAME09 {
 		game()->backGround()->draw(songInfo);
 		game()->banner()->draw();
 		game()->jacket()->draw(songInfo, Select.jacketTf);
+		game()->score()->draw(Select.scoreTf.pos, Select.scoreTf.size, songInfo.highScore);
+		game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement,
+			Select.achievementTf.pos, Select.achievementTf.size);
 		game()->optionButton()->draw();
 		game()->autoButton()->draw();
 		game()->startButton()->draw();
@@ -47,8 +50,6 @@ namespace GAME09 {
 		rect(0, 1020, 1920, 60);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
-		//game()->score()->draw(Select.scorePos, Select.scoreSize, songInfo.highScore);
-		//game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement, Select.achievementPos, Select.achievementSize);
 		//if (Option) game()->option()->draw();
 	}
 	void MUSICSELECT::nextScene() {
