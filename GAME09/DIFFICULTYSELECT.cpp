@@ -3,6 +3,7 @@
 #include "CONTAINER.h"
 #include "DIFFICULTYBUTTON.h"
 #include "../../libOne/inc/graphic.h"
+#include "../../libOne/inc/input.h"
 
 namespace GAME09 {
 	DIFFICULTYSELECT::DIFFICULTYSELECT(GAME* game) :
@@ -32,6 +33,16 @@ namespace GAME09 {
 	}
 
 	void DIFFICULTYSELECT::update() {
+		if (isTrigger(KEY_LEFT)) {
+			if (CurDifficulty != CHARTMANAGER::EASY) {
+				CurDifficulty = (CHARTMANAGER::DIFFICULTY)((int)CurDifficulty - 1);
+			}
+		}
+		if (isTrigger(KEY_RIGHT)) {
+			if (CurDifficulty != CHARTMANAGER::EXPART) {
+				CurDifficulty = (CHARTMANAGER::DIFFICULTY)((int)CurDifficulty + 1);
+			}
+		}
 		for (auto e : Buttons) {
 			e->update();
 		}
@@ -44,6 +55,11 @@ namespace GAME09 {
 	}
 
 	COLOR DIFFICULTYSELECT::getColor(CHARTMANAGER::DIFFICULTY d) {
-		return DifficultySelect.Color[d];
+		if (d == CHARTMANAGER::NUM_DIFFICULTY) {
+			return DifficultySelect.Color[CurDifficulty];
+		}
+		else {
+			return DifficultySelect.Color[d];
+		}
 	}
 }

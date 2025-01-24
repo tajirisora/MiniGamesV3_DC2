@@ -25,7 +25,7 @@ namespace GAME09 {
 
 	void SONGTITLE::draw(SONGINFO& songInfo, VECTOR2 pos, float size) {
 		image(SongTitle.bannerImg, pos.x, pos.y, 0, SongTitle.bannerImgSize * size);
-		imageColor({ 255,0,0 });
+		imageColor(game()->difficultySelect()->getColor());
 		image(SongTitle.difficultyFrameImg, pos.x + SongTitle.difficultyFrameOfst.x * size,
 			pos.y + SongTitle.difficultyFrameOfst.y * size, 0, SongTitle.difficultyFrameImgSize * size);
 		imageColor(255);

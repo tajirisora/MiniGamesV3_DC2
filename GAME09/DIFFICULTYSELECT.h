@@ -25,7 +25,7 @@ namespace GAME09 {
         void update();
         void draw();
 
-        COLOR getColor(CHARTMANAGER::DIFFICULTY d);
+        COLOR getColor(CHARTMANAGER::DIFFICULTY d = CHARTMANAGER::NUM_DIFFICULTY);
         CHARTMANAGER::DIFFICULTY curDifficulty() { return CurDifficulty; }
         void setDifficulty(CHARTMANAGER::DIFFICULTY d) { CurDifficulty = d; }
     };
