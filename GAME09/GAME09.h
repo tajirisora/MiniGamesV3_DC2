@@ -58,6 +58,7 @@ namespace GAME09
 		class AUTOBUTTON* AutoButton;
 		class SONGTITLE* SongTitle;
 		class STARTBUTTON* StartButton;
+		class DIFFICULTYSELECT* DifficultySelect;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -87,6 +88,7 @@ namespace GAME09
 		class AUTOBUTTON* autoButton() { return AutoButton; }
 		class SONGTITLE* songTitle() { return SongTitle; }
 		class STARTBUTTON* startButton() { return StartButton; }
+		class DIFFICULTYSELECT* difficultySelect() { return DifficultySelect; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

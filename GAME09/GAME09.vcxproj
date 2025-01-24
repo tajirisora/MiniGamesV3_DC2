@@ -148,6 +148,8 @@
     <ClCompile Include="COMBO.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="DETAIL_VIEW.cpp" />
+    <ClCompile Include="DIFFICULTYBUTTON.cpp" />
+    <ClCompile Include="DIFFICULTYSELECT.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME09.cpp" />
     <ClCompile Include="GAME_CLEAR.cpp" />
@@ -193,6 +195,8 @@
     <ClInclude Include="COMBO.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="DETAIL_VIEW.h" />
+    <ClInclude Include="DIFFICULTYBUTTON.h" />
+    <ClInclude Include="DIFFICULTYSELECT.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME09.h" />
     <ClInclude Include="GAME_CLEAR.h" />

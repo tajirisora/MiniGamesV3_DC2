@@ -11,8 +11,8 @@ namespace GAME09
 	}
 	void CONTAINER::setData() {
 
-		Data.select.jacketTf.pos = VECTOR2(1340, 380);
-		Data.select.jacketTf.size = 0.93f;
+		Data.select.jacketTf.pos = VECTOR2(1360, 330);
+		Data.select.jacketTf.size = 0.88f;
 		Data.select.scoreTf.pos = VECTOR2(1300, 940);
 		Data.select.scoreTf.size = 0.9f;
 		Data.select.achievementTf.pos = VECTOR2(1375, 880);
@@ -44,6 +44,9 @@ namespace GAME09
 		Data.chartMNG.commandStr[CHARTMANAGER::LANECHANGE] = "#LANECHANGE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::SCORE] = "#SCORE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::ACHIEVEMENT] = "#ACHIEVEMENT";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::EASY] = "Hard";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::HARD] = "Extra";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::EXPART] = "Lunatic";
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";
 
 		Data.songTitle.difficultyFrameOfst = VECTOR2(-300, 0);
@@ -265,6 +268,17 @@ namespace GAME09
 		Data.startButton.key = KEY_ENTER;
 		Data.startButton.pos = VECTOR2(1730, 830);
 		Data.startButton.radius = 165;
+
+		Data.difficultyButton.imgSize = 0.44f;
+		Data.difficultyButton.colliType = BUTTON::DIAMOND;
+		Data.difficultyButton.key = KEY_NONE;
+		Data.difficultyButton.radius = 80;
+
+		Data.difficultySelect.buttonTf.pos = VECTOR2(1050, 750);
+		Data.difficultySelect.buttonTf.ofst = VECTOR2(200, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::EASY] = COLOR(0, 255, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::HARD] = COLOR(255, 128, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::EXPART] = COLOR(255, 0, 255);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
@@ -303,6 +317,7 @@ namespace GAME09
 		Data.autoButtonImg.imgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_On.png");
 		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
 		Data.startButton.img = loadImage("..\\main\\assets\\game09\\texture\\Start_Button.png");
+		Data.difficultyButton.img = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
 		Data.songTitle.bannerImg = loadImage("..\\main\\assets\\game09\\texture\\Banner.png");
 		Data.songTitle.difficultyFrameImg = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::PLUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Plus.png");

@@ -26,6 +26,7 @@ namespace GAME09 {
 			game()->optionButton()->update();
 			game()->autoButton()->update();
 			if (game()->autoButton()->isClick()) game()->judgeMNG()->autoRef() ^= 1;
+			game()->difficultySelect()->update();
 			game()->startButton()->update();
 			game()->backButton()->update();
 		}
@@ -42,6 +43,7 @@ namespace GAME09 {
 			Select.achievementTf.pos, Select.achievementTf.size);
 		game()->optionButton()->draw();
 		game()->autoButton()->draw();
+		game()->difficultySelect()->draw();
 		game()->startButton()->draw();
 		game()->backButton()->draw();
 

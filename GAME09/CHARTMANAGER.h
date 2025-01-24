@@ -37,10 +37,17 @@ namespace GAME09 {
             ACHIEVEMENT,
             NUM_SCORE_DATAS
         };
+        enum DIFFICULTY {
+            EASY,
+            HARD,
+            EXPART,
+            NUM_DIFFICULTY
+        };
         struct DATA {
             std::string infoStartStr[NUM_INFOS];
             std::string commandStr[NUM_COMMANDS];
             std::string scoreDataStr[NUM_SCORE_DATAS];
+            std::string difficultyStr[NUM_DIFFICULTY];
             std::string chartPath;
             int tempImage;
         };

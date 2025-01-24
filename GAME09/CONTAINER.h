@@ -33,6 +33,8 @@
 #include "ADJUST.h"
 #include "ADJUSTBUTTON.h"
 #include "STARTBUTTON.h"
+#include "DIFFICULTYSELECT.h"
+#include "DIFFICULTYBUTTON.h"
 
 namespace GAME09
 {
@@ -64,6 +66,7 @@ namespace GAME09
 			BUTTON::DATA backButton;
 			BUTTON::DATA adjustButton;
 			BUTTON::DATA startButton;
+			BUTTON::DATA difficultyButton;
 			OPTION::DATA option;
 			SONGTITLE::DATA songTitle;
 			ACHIEVEMENT::DATA achievement;
@@ -74,6 +77,7 @@ namespace GAME09
 			AUTOBUTTON::DATA autoButtonImg;
 			ADJUST::DATA adjust;
 			ADJUSTBUTTON::DATA adjustButtonImg;
+			DIFFICULTYSELECT::DATA difficultySelect;
 		};
 		DATA Data;
 	public:
