@@ -19,6 +19,7 @@ namespace GAME09 {
             VECTOR2 artistPosOfst;
             VECTOR2 titleStrSize;
             VECTOR2 artistStrSize;
+            VECTOR2 numStrSize;
         };
     private:
         DATA SongTitle;

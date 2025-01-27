@@ -38,8 +38,6 @@ namespace GAME09 {
 		textfMode(M_CENTER);
 		VECTOR2 pos(Button.pos + Button.ofst);
 		pos.y += DifficultyButton.numStrSize.y / 2;
-		//font("UD ƒfƒWƒ^ƒ‹ ‹³‰È‘‘Ì N-B");
-		//font("BIZ UD–¾’© Medium");
 		font("‚l‚r –¾’©");
 		textfStrokeSize(2);
 		fill(0);

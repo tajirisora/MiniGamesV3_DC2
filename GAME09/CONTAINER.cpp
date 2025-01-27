@@ -57,6 +57,7 @@ namespace GAME09
 		Data.songTitle.artistPosOfst = VECTOR2(-200, 55);
 		Data.songTitle.titleStrSize = VECTOR2(680, 50);
 		Data.songTitle.artistStrSize = VECTOR2(700, 35);
+		Data.songTitle.numStrSize = VECTOR2(60, 60);
 
 		Data.banner.centerPos = VECTOR2(450, height / 2 - 30);
 		Data.banner.nextPosOfst = VECTOR2(45, 150);
