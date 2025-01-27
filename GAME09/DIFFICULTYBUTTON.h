@@ -7,7 +7,12 @@ namespace GAME09 {
     class DIFFICULTYBUTTON :
         public BUTTON
     {
+    public:
+        struct DATA {
+            VECTOR2 numStrSize;
+        };
     private:
+        DATA DifficultyButton;
         CHARTMANAGER::DIFFICULTY Difficulty;
         COLOR Color;
     public:

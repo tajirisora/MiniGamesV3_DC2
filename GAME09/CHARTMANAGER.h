@@ -18,6 +18,7 @@ namespace GAME09 {
             MUSIC,
             BANNER,
             BACKGROUND,
+            DIFFICULTIES,
             OFFSET,
             BASEBPM,
             MEASURE,

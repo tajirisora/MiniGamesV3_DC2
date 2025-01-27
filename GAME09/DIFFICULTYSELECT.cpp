@@ -22,6 +22,7 @@ namespace GAME09 {
 			Data.pos = DifficultySelect.buttonTf.pos + DifficultySelect.buttonTf.ofst * i;
 			Data.debugFlag = false;
 
+			Buttons[i]->create();
 			Buttons[i]->setData(Data);
 			Buttons[i]->setDifficulty((CHARTMANAGER::DIFFICULTY)i);
 			Buttons[i]->init();

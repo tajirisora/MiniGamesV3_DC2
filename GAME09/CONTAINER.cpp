@@ -33,6 +33,7 @@ namespace GAME09
 		Data.chartMNG.infoStartStr[CHARTMANAGER::MUSIC] = "#MUSIC";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BANNER] = "#BANNER";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BACKGROUND] = "#BACKGROUND";
+		Data.chartMNG.infoStartStr[CHARTMANAGER::DIFFICULTIES] = "#DIFFICULTIES";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::OFFSET] = "#OFFSET";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BASEBPM] = "#BASEBPM";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::MEASURE] = "#MEASURE";
@@ -279,6 +280,8 @@ namespace GAME09
 		Data.difficultySelect.Color[CHARTMANAGER::EASY] = COLOR(0, 255, 0);
 		Data.difficultySelect.Color[CHARTMANAGER::HARD] = COLOR(255, 128, 0);
 		Data.difficultySelect.Color[CHARTMANAGER::EXPART] = COLOR(255, 0, 255);
+
+		Data.difficultyButtonData.numStrSize = VECTOR2(60, 60);
 	}
 	void CONTAINER::loadGraphic() {
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");

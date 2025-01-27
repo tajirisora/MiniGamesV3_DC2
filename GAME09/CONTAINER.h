@@ -78,6 +78,7 @@ namespace GAME09
 			ADJUST::DATA adjust;
 			ADJUSTBUTTON::DATA adjustButtonImg;
 			DIFFICULTYSELECT::DATA difficultySelect;
+			DIFFICULTYBUTTON::DATA difficultyButtonData;
 		};
 		DATA Data;
 	public:

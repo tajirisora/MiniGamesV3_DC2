@@ -372,6 +372,23 @@ namespace GAME09 {
 					case BACKGROUND:
 						songInfo.backGround = content;
 						break;
+					case DIFFICULTIES:{
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								songInfo.difficulty[cnt - 2] = std::stoi(content.substr(offset));
+								break;
+							}
+							if (cnt > 1) {
+								songInfo.difficulty[cnt - 2] = std::stoi(content.substr(offset, pos - offset));
+							}
+							offset = pos + 1;
+							cnt++;
+						}
+					}
+						break;
 					case OFFSET:
 						songInfo.offset = std::stof(content);
 						break;
