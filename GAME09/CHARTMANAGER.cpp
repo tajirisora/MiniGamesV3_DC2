@@ -114,10 +114,18 @@ namespace GAME09 {
 				std::string t = "#NOTES";
 				if (buffer.size() >= t.size() &&
 					buffer.find(t) != std::string::npos) {
-					notesTag = true;
-					for (int i = 0; i < 4; i++) {   //余計な情報4行分を飛ばす
+					for (int i = 0; i < 2; i++) {
 						std::getline(file, buffer);
 						curRow++;
+					}
+					std::string d = ChartMNG.difficultyStr[game()->difficultySelect()->curDifficulty()];
+					if (buffer.size() >= d.size() &&
+						buffer.find(d) != std::string::npos) {
+						for (int i = 0; i < 2; i++) {
+							std::getline(file, buffer);
+							curRow++;
+						}
+						notesTag = true;
 					}
 				}
 			}
@@ -170,9 +178,12 @@ namespace GAME09 {
 						if (buffer.find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) {
 							bar.emplace_back(buffer);
 						}
-						else if (buffer.find(',') != std::string::npos ||
-							buffer.find(';') != std::string::npos) {
-							end = true; //,か;が見つかったら小節の終了
+						else if (buffer.find(',') != std::string::npos) {
+							end = true; //,が見つかったら小節の終了
+						}
+						else if (buffer.find(';') != std::string::npos) {
+							end = true; //;が見つかったら譜面の終了
+							notesTag = false;
 						}
 						else {
 							bar.emplace_back(buffer);

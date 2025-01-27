@@ -33,16 +33,16 @@ namespace GAME09 {
 			framePos.y, 0, SongTitle.difficultyFrameImgSize * size);
 		imageColor(255);
 		//難易度
-		framePos.y += SongTitle.numStrSize.y / 2;
+		framePos.y += SongTitle.numStrSize.y * size / 2;
 		font("ＭＳ 明朝");
 		textfMode(M_CENTER);
-		textfStrokeSize(2);
+		textfStrokeSize(2 * size);
 		fill(0);
 		textfStroke(std::to_string(songInfo.difficulty[game()->difficultySelect()->curDifficulty()]),
-			framePos, SongTitle.numStrSize);
+			framePos, SongTitle.numStrSize * size);
 		fill(255);
 		textf(std::to_string(songInfo.difficulty[game()->difficultySelect()->curDifficulty()]),
-			framePos, SongTitle.numStrSize);
+			framePos, SongTitle.numStrSize * size);
 		font("Arial");
 		//タイトル
 		fill(0);
