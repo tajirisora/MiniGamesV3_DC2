@@ -1,6 +1,7 @@
 #include"CONTAINER.h"
 #include"../../libOne/inc/graphic.h"
-namespace GAME06{
+namespace GAME06
+{
 	void CONTAINER::load() {
 		setData();
 		loadGraphic();
@@ -8,76 +9,77 @@ namespace GAME06{
 
 	void CONTAINER::setData() {
 		//タイトルデータ
-		Data.title.backgroundColor = { 128,128,128 };
-		Data.title.nameSize = 150;
-		Data.title.nameColor = { 0,0,0 };
-		Data.title.namePos = { 650,550 };
-		Data.title.name = "スナイパー";
-		Data.title.guidanceSize = 50;
-		Data.title.guidanceColor = { 0,0,0 };
-		Data.title.guidancePos = { 550,750 };
-		Data.title.guidance = "SPACEキーでスタート";
+		Data.title.backScreenColor = { 128,128,128 };
+		Data.title.size1 = 150;
+		Data.title.color1 = { 0,0,0 };
+		Data.title.pos1 = { 500,550 };
+		Data.title.str1 = "スナイパー";
+		Data.title.size2 = 50;
+		Data.title.color2 = { 0,0,0 };
+		Data.title.pos2 = { 650,750 };
+		Data.title.str2 = "SPACEキーでスタート";
 		//ステージデータ
-		Data.stage.backgroundColor = { 128,128,128 };
-		Data.stage.curTimer = 0.0f;
-		Data.stage.initTimer = 30.0f;
-		Data.stage.hitCounter = 0;
+		Data.stage.backScreenColor = { 128,128,128 };
+		Data.stage.timer = 0.0f;
+		Data.stage.timeToInit = 30.0f;
+		Data.stage.collisionCounter = 0;
+		Data.stage.curState = STAGE::WAITING_ID;
 		//リザルトデータ
 		//CRank
-		Data.rankC.backgroundColor = { 128,128,128 };
-		Data.rankC.nameSize = 150;
-		Data.rankC.nameColor = { 0,225,225 };
-		Data.rankC.namePos = { width / 2 - 75,height / 2 + 75 };
-		Data.rankC.name = "C";
-		Data.rankC.guidanceSize = 50;
-		Data.rankC.guidanceColor = { 0,0,0 };
-		Data.rankC.guidancePos = { 550,750 };
-		Data.rankC.guidance = "SPACEキーでタイトルに戻る";
-		Data.rankC.recodeSize = 70;
-		Data.rankC.recodeColor = { 0,0,0 };
-		Data.rankC.recodePos = { width / 2 + 140,height / 2 + 35 };
+		Data.rankC.backScreenColor = { 128,128,128 };
+		Data.rankC.size1 = 150;
+		Data.rankC.color1 = { 0,225,225 };
+		Data.rankC.pos1 = { width / 2 - 75,height / 2 + 75 };
+		Data.rankC.str1 = "C";
+		Data.rankC.size2 = 50;
+		Data.rankC.color2 = { 0,0,0 };
+		Data.rankC.pos2 = { 550,750 };
+		Data.rankC.str2 = "SPACEキーでタイトルに戻る";
+		Data.rankC.size3 = 70;
+		Data.rankC.color3 = { 0,0,0 };
+		Data.rankC.pos3 = { width / 2 + 140,height / 2 + 35 };
 		//BRank
-		Data.rankB.backgroundColor = { 128,128,128 };
-		Data.rankB.nameSize = 150;
-		Data.rankB.nameColor = { 0,60,240 };
-		Data.rankB.namePos = { width / 2 - 75,height / 2 + 75 };
-		Data.rankB.name = "B";
-		Data.rankB.guidanceSize = 50;
-		Data.rankB.guidanceColor = { 0,0,0 };
-		Data.rankB.guidancePos = { 550,750 };
-		Data.rankB.guidance = "SPACEキーでタイトルに戻る";
-		Data.rankB.recodeSize = 70;
-		Data.rankB.recodeColor = { 0,0,0 };
-		Data.rankB.recodePos = { width / 2 + 140,height / 2 + 35 };
+		Data.rankB.backScreenColor = { 128,128,128 };
+		Data.rankB.size1 = 150;
+		Data.rankB.color1 = { 0,60,240 };
+		Data.rankB.pos1 = { width / 2 - 75,height / 2 + 75 };
+		Data.rankB.str1 = "B";
+		Data.rankB.size2 = 50;
+		Data.rankB.color2 = { 0,0,0 };
+		Data.rankB.pos2 = { 550,750 };
+		Data.rankB.str2 = "SPACEキーでタイトルに戻る";
+		Data.rankB.size3 = 70;
+		Data.rankB.color3 = { 0,0,0 };
+		Data.rankB.pos3 = { width / 2 + 140,height / 2 + 35 };
 		//ARank
-		Data.rankA.backgroundColor = { 128,128,128 };
-		Data.rankA.nameSize = 150;
-		Data.rankA.nameColor = { 235,0,0 };
-		Data.rankA.namePos = { width / 2 - 75,height / 2 + 75 };
-		Data.rankA.name = "A";
-		Data.rankA.guidanceSize = 50;
-		Data.rankA.guidanceColor = { 0,0,0 };
-		Data.rankA.guidancePos = { 550,750 };
-		Data.rankA.guidance = "SPACEキーでタイトルに戻る";
-		Data.rankA.recodeSize = 70;
-		Data.rankA.recodeColor = { 0,0,0 };
-		Data.rankA.recodePos = { width / 2 + 140,height / 2 + 35 };
+		Data.rankA.backScreenColor = { 128,128,128 };
+		Data.rankA.size1 = 150;
+		Data.rankA.color1 = { 235,0,0 };
+		Data.rankA.pos1 = { width / 2 - 75,height / 2 + 75 };
+		Data.rankA.str1 = "A";
+		Data.rankA.size2 = 50;
+		Data.rankA.color2 = { 0,0,0 };
+		Data.rankA.pos2 = { 550,750 };
+		Data.rankA.str2 = "SPACEキーでタイトルに戻る";
+		Data.rankA.size3 = 70;
+		Data.rankA.color3 = { 0,0,0 };
+		Data.rankA.pos3 = { width / 2 + 140,height / 2 + 35 };
 		//SRank
-		Data.rankS.backgroundColor = { 128,128,128 };
-		Data.rankS.nameSize = 150;
-		Data.rankS.nameColor = { 220,0,110 };
-		Data.rankS.namePos = { width / 2 - 75,height / 2 + 75 };
-		Data.rankS.name = "S";
-		Data.rankS.guidanceSize = 50;
-		Data.rankS.guidanceColor = { 0,0,0 };
-		Data.rankS.guidancePos = { 550,750 };
-		Data.rankS.guidance = "SPACEキーでタイトルに戻る";
-		Data.rankS.recodeSize = 70;
-		Data.rankS.recodeColor = { 0,0,0 };
-		Data.rankS.recodePos = { width / 2 + 140,height / 2 + 35 };
+		Data.rankS.backScreenColor = { 128,128,128 };
+		Data.rankS.size1 = 150;
+		Data.rankS.color1 = { 220,0,110 };
+		Data.rankS.pos1 = { width / 2 - 75,height / 2 + 75 };
+		Data.rankS.str1 = "S";
+		Data.rankS.size2 = 50;
+		Data.rankS.color2 = { 0,0,0 };
+		Data.rankS.pos2 = { 550,750 };
+		Data.rankS.str2 = "SPACEキーでタイトルに戻る";
+		Data.rankS.size3 = 70;
+		Data.rankS.color3 = { 0,0,0 };
+		Data.rankS.pos3 = { width / 2 + 140,height / 2 + 35 };
 		//判定表データ
-		Data.judgeList.textColor = { 0,0,0 };
-		Data.judgeList.textSize = 40;
+		Data.judgeList.color = { 0,0,0 };
+		Data.judgeList.size = 40;
 		Data.judgeList.pos1 = { 0,40 };
 		Data.judgeList.str1 = "S:15発以上";
 		Data.judgeList.pos2 = { 0,80 };
@@ -87,19 +89,26 @@ namespace GAME06{
 		Data.judgeList.pos4 = { 0,160 };
 		Data.judgeList.str4 = "C:0～4発";
 		//プレイヤーデータ
-		Data.player.pos = { 100,height / 2 };
-		Data.player.radius = 50;
-		Data.player.advSpeed = 120;
-		Data.player.fillColor = { 0,225,0 };
-		Data.player.hp = 100;
-		//エネミーデータ
-		Data.enemy.pos = { width - 150,height / 2 };
-		Data.enemy.radius = 100;
-		Data.enemy.fillColor = { 235,0,185 };
-		Data.enemy.hp = 150;
+		Data.player.img = 0;
+		Data.player.pos = { 180,height / 2 };
+		Data.player.angle = 0.0f;
+		Data.player.scale = 0.2f;//288*216
+		Data.player.advSpeed = height / 3;
+		Data.player.limmitH = 100.0f;
+		//ターゲットデータ
+		Data.target.img = 0;
+		Data.target.pos = { width - 300,height / 2 };
+		Data.target.angle = 0.0f;
+		Data.target.scale = 0.1f;
+		Data.target.advSpeed = height / 4;
+		Data.target.vec = 1;
+		Data.target.limmitH = 150.0f;
 	}
 
 	void CONTAINER::loadGraphic() {
-
+		Data.player.type1 = loadImage("../MAIN/assets/game06/player1.png");
+		Data.player.type2 = loadImage("../MAIN/assets/game06/player2.png");
+		Data.target.type1 = loadImage("../MAIN/assets/game06/target1.png");
+		Data.target.type2 = loadImage("../MAIN/assets/game06/target2.png");
 	}
 }

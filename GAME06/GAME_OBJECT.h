@@ -1,6 +1,8 @@
 #pragma once
-namespace GAME06 {
-	class GAME_OBJECT {
+namespace GAME06 
+{
+	class GAME_OBJECT 
+	{
 	private:
 		class GAME* Game = nullptr;
 	public:

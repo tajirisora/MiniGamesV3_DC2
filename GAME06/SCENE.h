@@ -3,7 +3,8 @@
 namespace GAME06 
 {
 	class SCENE :
-		public GAME_OBJECT{
+		public GAME_OBJECT
+	{
 	public:
 		SCENE(class GAME* game):GAME_OBJECT(game){}
 		virtual ~SCENE(){}

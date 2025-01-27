@@ -9,8 +9,8 @@ namespace GAME06
     {
     public:
         struct DATA {
-            COLOR textColor;
-            float textSize = 0.0f;
+            COLOR color;
+            float size = 0.0f;
             VECTOR2 pos1;
             VECTOR2 pos2;
             VECTOR2 pos3;

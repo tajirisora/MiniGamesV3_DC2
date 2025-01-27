@@ -10,13 +10,13 @@ namespace GAME06
 	}
 
 	void TITLE::draw() {
-		clear(Title.backgroundColor);
-		fill(Title.nameColor);
-		textSize(Title.nameSize);
-		text(Title.name, Title.namePos.x, Title.namePos.y);
-		fill(Title.guidanceColor);
-		textSize(Title.guidanceSize);
-		text(Title.guidance, Title.guidancePos.x, Title.guidancePos.y);
+		clear(Title.backScreenColor);
+		fill(Title.color1);
+		textSize(Title.size1);
+		text(Title.str1, Title.pos1.x, Title.pos1.y);
+		fill(Title.color2);
+		textSize(Title.size2);
+		text(Title.str2, Title.pos2.x, Title.pos2.y);
 	}
 
 	void TITLE::nextScene() {

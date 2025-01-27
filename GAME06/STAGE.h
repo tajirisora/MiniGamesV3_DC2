@@ -4,16 +4,23 @@
 namespace GAME06 
 {
 	class STAGE :
-		public SCENE{
+		public SCENE
+	{
 	public:
 		struct DATA {
-			COLOR backgroundColor;
-			float curTimer = 0.0f;
-			float initTimer = 0.0f;
-			int hitCounter = 0;
+			COLOR backScreenColor;
+			float timer = 0.0f;
+			float timeToInit = 0.0f;
+			int collisionCounter = 0;
+			int curState = 0;
 		};
 	private:
 		DATA Stage;
+	public:
+		enum STATE_ID {
+			WAITING_ID,
+			MAIN_ID
+		};
 	private:
 		const int Line1 = 4;
 		const int Line2 = 9;

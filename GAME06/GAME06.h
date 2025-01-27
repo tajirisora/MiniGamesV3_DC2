@@ -24,25 +24,21 @@ namespace GAME06
     private:
         class SCENE* Scenes[TOTAL_SCENES_ID]{};
         SCENE_ID CurSceneId = TITLE_ID;
-    public:
-        void changeScene(SCENE_ID nextSceneId);
-        class SCENE* stage() { return Scenes[STAGE_ID]; }
-    private:
         class JUDGE_LIST* JudgeList = nullptr;
-    public:
-        class JUDGE_LIST* judgeList() { return JudgeList; }
-    private:
         int Recode = 0;
     public:
+        void changeScene(SCENE_ID nextSceneId);
         void setRecode(int recode);
+        class SCENE* stage() { return Scenes[STAGE_ID]; }
+        class JUDGE_LIST* judgeList() { return JudgeList; }
         int& recode() { return Recode; }
     //ƒLƒƒƒ‰ƒNƒ^
     private:
         class PLAYER* Player = nullptr;
-        class ENEMY* Enemy = nullptr;
+        class TARGET* Target = nullptr;
     public:
         class PLAYER* player() { return Player; }
-        class ENEMY* enemy() { return Enemy; }
+        class TARGET* target() { return Target; }
     public:
         GAME(class MAIN* main) :GAME_BASE(main) {};
         ~GAME() {};

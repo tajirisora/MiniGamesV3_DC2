@@ -9,18 +9,18 @@ namespace GAME06
     {
     public:
         struct DATA {
-            COLOR backgroundColor;
-            float nameSize = 0.0f;
-            COLOR nameColor;
-            VECTOR2 namePos;
-            const char* name = nullptr;
-            float guidanceSize = 0.0f;
-            COLOR guidanceColor;
-            VECTOR2 guidancePos;
-            const char* guidance = nullptr;
-            float recodeSize = 0.0f;
-            COLOR recodeColor;
-            VECTOR2 recodePos;
+            COLOR backScreenColor;
+            float size1 = 0.0f;
+            COLOR color1;
+            VECTOR2 pos1;
+            const char* str1 = nullptr;
+            float size2 = 0.0f;
+            COLOR color2;
+            VECTOR2 pos2;
+            const char* str2 = nullptr;
+            float size3 = 0.0f;
+            COLOR color3;
+            VECTOR2 pos3;
         };
     private:
         DATA RankC;

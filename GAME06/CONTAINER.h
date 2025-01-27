@@ -7,10 +7,11 @@
 #include "RANK_S.h"
 #include "JUDGE_LIST.h"
 #include "PLAYER.h"
-#include "ENEMY.h"
+#include "TARGET.h"
 namespace GAME06 
 {
-	class CONTAINER {
+	class CONTAINER 
+	{
 	public:
 		struct DATA {
 			TITLE::DATA title;
@@ -21,7 +22,7 @@ namespace GAME06
 			RANK_S::DATA rankS;
 			JUDGE_LIST::DATA judgeList;
 			PLAYER::DATA player;
-			ENEMY::DATA enemy;
+			TARGET::DATA target;
 		};
 	private:
 		DATA Data;

@@ -134,7 +134,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CONTAINER.cpp" />
-    <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="GAME06.cpp" />
     <ClCompile Include="JUDGE_LIST.cpp" />
     <ClCompile Include="PLAYER.cpp" />
@@ -143,11 +142,11 @@
     <ClCompile Include="RANK_C.cpp" />
     <ClCompile Include="RANK_S.cpp" />
     <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TARGET.cpp" />
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CONTAINER.h" />
-    <ClInclude Include="ENEMY.h" />
     <ClInclude Include="GAME06.h" />
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="JUDGE_LIST.h" />
@@ -158,6 +157,7 @@
     <ClInclude Include="RANK_S.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TARGET.h" />
     <ClInclude Include="TITLE.h" />
   </ItemGroup>
   <ItemGroup>

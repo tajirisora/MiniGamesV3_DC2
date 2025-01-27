@@ -10,17 +10,17 @@ namespace GAME06
 	}
 
 	void RANK_C::draw() {
-		clear(RankC.backgroundColor);
+		clear(RankC.backScreenColor);
 		game()->judgeList()->draw();
-		fill(RankC.nameColor);
-		textSize(RankC.nameSize);
-		text(RankC.name, RankC.namePos.x, RankC.namePos.y);
-		fill(RankC.guidanceColor);
-		textSize(RankC.guidanceSize);
-		text(RankC.guidance, RankC.guidancePos.x, RankC.guidancePos.y);
-		fill(RankC.recodeColor);
-		textSize(RankC.recodeSize);
-		text((let)"‹L˜^F" + game()->recode() + "”­", RankC.recodePos.x, RankC.recodePos.y);
+		fill(RankC.color1);
+		textSize(RankC.size1);
+		text(RankC.str1, RankC.pos1.x, RankC.pos1.y);
+		fill(RankC.color2);
+		textSize(RankC.size2);
+		text(RankC.str2, RankC.pos2.x, RankC.pos2.y);
+		fill(RankC.color3);
+		textSize(RankC.size3);
+		text((let)"‹L˜^F" + game()->recode() + "”­", RankC.pos3.x, RankC.pos3.y);
 	}
 
 	void RANK_C::nextScene() {

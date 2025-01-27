@@ -5,14 +5,18 @@
 namespace GAME06 
 {
 	class PLAYER :
-		public GAME_OBJECT{
+		public GAME_OBJECT
+	{
 	public:
 		struct DATA {
+			int img = 0;
+			int type1 = 0;
+			int type2 = 0;
 			VECTOR2 pos;
-			float radius = 0.0f;
+			float angle = 0.0f;
+			float scale = 0.0f;
 			float advSpeed = 0.0f;
-			COLOR fillColor;
-			int hp = 0;
+			float limmitH = 0.0f;
 			//launchVec
 			/*VECTOR2 launchVec;
 			float triggerErapsedTime;
@@ -20,6 +24,10 @@ namespace GAME06
 		};
 	private:
 		DATA Player;
+	public:
+		int& img() { return Player.img; }
+		int& type1() { return Player.type1; }
+		int& type2() { return Player.type2; }
 	public:
 		PLAYER(class GAME* game):GAME_OBJECT(game){}
 		~PLAYER(){}

@@ -9,7 +9,7 @@
 #include "JUDGE_LIST.h"
 #include "CONTAINER.h"
 #include "PLAYER.h"
-#include "ENEMY.h"
+#include "TARGET.h"
 #include "GAME06.h"
 //仕様
 //タイトル「スナイパー」
@@ -33,7 +33,7 @@ namespace GAME06
 		JudgeList = new JUDGE_LIST(this);
 		CurSceneId = TITLE_ID;
 		Player = new PLAYER(this);
-		Enemy = new ENEMY(this);
+		Target = new TARGET(this);
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[STAGE_ID]->create();
@@ -43,13 +43,13 @@ namespace GAME06
 		Scenes[RANK_S_ID]->create();
 		JudgeList->create();
 		Player->create();
-		Enemy->create();
+		Target->create();
 		return 0;
 	}
 
 	void GAME::destroy()
 	{
-		delete Enemy;
+		delete Target;
 		delete Player;
 		delete JudgeList;
 		for (int i = 0; i < TOTAL_SCENES_ID; ++i) {

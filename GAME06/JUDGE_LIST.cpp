@@ -9,8 +9,8 @@ namespace GAME06
 	}
 
 	void JUDGE_LIST::draw() {
-		fill(JudgeList.textColor);
-		textSize(JudgeList.textSize);
+		fill(JudgeList.color);
+		textSize(JudgeList.size);
 		text(JudgeList.str1, JudgeList.pos1.x, JudgeList.pos1.y);
 		text(JudgeList.str2, JudgeList.pos2.x, JudgeList.pos2.y);
 		text(JudgeList.str3, JudgeList.pos3.x, JudgeList.pos3.y);
