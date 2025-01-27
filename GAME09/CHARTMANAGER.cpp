@@ -310,8 +310,11 @@ namespace GAME09 {
 			std::filesystem::directory_iterator chartDirectory = std::filesystem::directory_iterator(chartPath);
 			bool isLoadChart = false;
 			bool isLoadScore = false;
-			Score = 0;
-			Achievement = -1;
+			//初期化
+			for (int i = 0; i < NUM_DIFFICULTY; i++) {
+				Score[i] = 0;
+				Achievement[i] = -1;
+			}
 			//ハイスコアを保存するファイルのパス
 			std::string scorePath = chartPath + "\\high_score.txt";
 			//範囲forで楽曲フォルダの中のすべてのファイルを確認
@@ -344,8 +347,11 @@ namespace GAME09 {
 					break;
 				}
 			}
-			Songs.back().highScore = Score;
-			Songs.back().achievement = Achievement;
+			//ハイスコアの書き込み
+			for (int i = 0; i < NUM_DIFFICULTY; i++) {
+				Songs.back().highScore[i] = Score[i];
+				Songs.back().achievement[i] = Achievement[i];
+			}
 			curLoad++;
 		}
 	}
@@ -455,11 +461,35 @@ namespace GAME09 {
 					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					switch (i) {
-					case SCORE:
-						Score = std::stoi(content);
+					case SCORE: {
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								Score[cnt] = std::stoi(content.substr(offset));
+								break;
+							}
+							Score[cnt] = std::stoi(content.substr(offset, pos - offset));
+							offset = pos + 1;
+							cnt++;
+						}
+					}
 						break;
-					case ACHIEVEMENT:
-						Achievement = std::stoi(content);
+					case ACHIEVEMENT: {
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								Achievement[cnt] = std::stoi(content.substr(offset));
+								break;
+							}
+							Achievement[cnt] = std::stoi(content.substr(offset, pos - offset));
+							offset = pos + 1;
+							cnt++;
+						}
+					}
 						break;
 					default:
 						break;
@@ -485,7 +515,7 @@ namespace GAME09 {
 		}
 	}
 
-	void CHARTMANAGER::updateHighScore(int highScore, int achievement) {
+	void CHARTMANAGER::updateHighScore() {
 		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
 		std::ofstream file;
 		file.open(songInfo.scorePath, std::ios::out);
@@ -496,10 +526,18 @@ namespace GAME09 {
 			text += ":";
 			switch (i) {
 			case SCORE:
-				text += std::to_string(highScore);
+				for (int i = 0; i < NUM_DIFFICULTY; i++) {
+					text += std::to_string(songInfo.highScore[i]);
+					text += ",";
+				}
+				text.pop_back();
 				break;
 			case ACHIEVEMENT:
-				text += std::to_string(achievement);
+				for (int i = 0; i < NUM_DIFFICULTY; i++) {
+					text += std::to_string(songInfo.achievement[i]);
+					text += ",";
+				}
+				text.pop_back();
 				break;
 			default:
 				break;

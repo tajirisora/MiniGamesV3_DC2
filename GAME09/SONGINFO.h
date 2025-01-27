@@ -26,7 +26,7 @@ namespace GAME09 {
         int jacketImageIdx = 0;
         VECTOR2 jacketImageSize = VECTOR2(1920, 1080);
         float volume = -5000;
-        int highScore = 0;
-        int achievement = -1;
+        int highScore[CHARTMANAGER::NUM_DIFFICULTY]{};
+        int achievement[CHARTMANAGER::NUM_DIFFICULTY]{};
     };
 }

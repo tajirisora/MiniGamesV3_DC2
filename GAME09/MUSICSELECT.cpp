@@ -38,8 +38,8 @@ namespace GAME09 {
 		game()->backGround()->draw(songInfo);
 		game()->banner()->draw();
 		game()->jacket()->draw(songInfo, Select.jacketTf);
-		game()->score()->draw(Select.scoreTf.pos, Select.scoreTf.size, songInfo.highScore);
-		game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement,
+		game()->score()->draw(Select.scoreTf.pos, Select.scoreTf.size, songInfo.highScore[game()->difficultySelect()->curDifficulty()]);
+		game()->achievement()->draw((ACHIEVEMENT::ACHIEVEMENTS)songInfo.achievement[game()->difficultySelect()->curDifficulty()],
 			Select.achievementTf.pos, Select.achievementTf.size);
 		game()->optionButton()->draw();
 		game()->autoButton()->draw();

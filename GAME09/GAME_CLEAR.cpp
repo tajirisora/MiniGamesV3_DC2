@@ -36,17 +36,18 @@ namespace GAME09 {
 	}
 	void GAME_CLEAR::UpdateHighScore() {
 		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
-		BeforeHighScore = songInfo.highScore;
+		CHARTMANAGER::DIFFICULTY d = game()->difficultySelect()->curDifficulty();
+		BeforeHighScore = songInfo.highScore[d];
 
 		if (!game()->judgeMNG()->autoRef()) {
-			if (songInfo.highScore < game()->score()->curScore()) {
-				songInfo.highScore = game()->score()->curScore();
+			if (songInfo.highScore[d] < game()->score()->curScore()) {
+				songInfo.highScore[d] = game()->score()->curScore();
 			}
-			if (songInfo.achievement < Achievement) {
-				songInfo.achievement = Achievement;
+			if (songInfo.achievement[d] < Achievement) {
+				songInfo.achievement[d] = Achievement;
 			}
 
-			game()->chartMNG()->updateHighScore(songInfo.highScore, songInfo.achievement);
+			game()->chartMNG()->updateHighScore();
 		}
 	}
 
