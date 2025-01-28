@@ -214,8 +214,8 @@ namespace GAME09
 
 		Data.gameClear.jacketTF.pos = VECTOR2(1450, 650);
 		Data.gameClear.jacketTF.size = 1.0f;
-		Data.gameClear.framePos = VECTOR2(550, 540);
-		Data.gameClear.frameSize = 1.5f;
+		Data.gameClear.framePos = VECTOR2(550, 560);
+		Data.gameClear.frameSize = 0.95f;
 		Data.gameClear.judgeImgPos = VECTOR2(280, 620);
 		Data.gameClear.judgeImgSize = 0.3f;
 		Data.gameClear.judgeNumPos = VECTOR2(600, 652);
@@ -328,6 +328,8 @@ namespace GAME09
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::MINUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Minus.png");
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::RIGHT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Right.png");
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::LEFT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Left.png");
+		Data.gameClear.frameImg = loadImage("..\\main\\assets\\game09\\texture\\result_frame.png");
+		Data.gameClear.fastSlowImg = loadImage("..\\main\\assets\\game09\\texture\\result_fast_slow.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");
