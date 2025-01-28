@@ -10,10 +10,13 @@ namespace GAME06
 	}
 
 	void TARGET::init() {
+		const DATA& target = game()->container()->data().target;
 		Target.img = Target.type1;
-		Target.pos = { width - 300,height / 2 };
-		Target.advSpeed = height / 4;
-		Target.vec = 1;
+		Target.pos = target.pos;
+		Target.speed = target.speed;
+		Target.vec = target.vec;
+		Target.collisionFlag = target.collisionFlag;
+		Target.collisionTimer = target.collisionTimer;
 	}
 
 	void TARGET::update() {
@@ -23,11 +26,21 @@ namespace GAME06
 		else if (Target.pos.y < Target.limmitH && Target.vec < 0) {
 			Target.vec *= -1;
 		}
-		Target.pos.y += Target.advSpeed * delta * Target.vec;
+		Target.pos.y += Target.speed * delta * Target.vec;
+		if (Target.collisionFlag == true) {
+			Target.collisionTimer -= delta;
+			if (Target.collisionTimer <= 0.0f) {
+				const DATA& target = game()->container()->data().target;
+				Target.collisionTimer = target.collisionTimer;
+				Target.collisionFlag = false;
+			}
+		}
 	}
 
 	void TARGET::draw() {
 		rectMode(CENTER);
+		if (Target.collisionFlag == false) { Target.img = Target.type1; }
+		else { Target.img = Target.type2; }
 		image(Target.img, Target.pos.x, Target.pos.y, Target.angle, Target.scale);
 	}
 }

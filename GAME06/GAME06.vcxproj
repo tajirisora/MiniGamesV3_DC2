@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BULLET.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="GAME06.cpp" />
     <ClCompile Include="JUDGE_LIST.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BULLET.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="GAME06.h" />
     <ClInclude Include="GAME_OBJECT.h" />

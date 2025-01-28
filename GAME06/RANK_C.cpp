@@ -20,7 +20,7 @@ namespace GAME06
 		text(RankC.str2, RankC.pos2.x, RankC.pos2.y);
 		fill(RankC.color3);
 		textSize(RankC.size3);
-		text((let)"‹L˜^F" + game()->recode() + "”­", RankC.pos3.x, RankC.pos3.y);
+		text((let)"‹L˜^F" + game()->collisionCounter() + "”­", RankC.pos3.x, RankC.pos3.y);
 	}
 
 	void RANK_C::nextScene() {

@@ -15,8 +15,9 @@ namespace GAME06
 			VECTOR2 pos;
 			float angle = 0.0f;
 			float scale = 0.0f;
-			float advSpeed = 0.0f;
+			float speed = 0.0f;
 			float limmitH = 0.0f;
+			bool triggerFlag = false;
 			//launchVec
 			/*VECTOR2 launchVec;
 			float triggerErapsedTime;
@@ -26,8 +27,10 @@ namespace GAME06
 		DATA Player;
 	public:
 		int& img() { return Player.img; }
-		int& type1() { return Player.type1; }
-		int& type2() { return Player.type2; }
+		const int& type1() { return Player.type1; }
+		const int& type2() { return Player.type2; }
+		bool& triggerFlag() { return Player.triggerFlag; }
+		const VECTOR2& pos() { return Player.pos; }
 	public:
 		PLAYER(class GAME* game):GAME_OBJECT(game){}
 		~PLAYER(){}

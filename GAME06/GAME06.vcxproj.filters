@@ -12,6 +12,7 @@
     <ClCompile Include="RANK_A.cpp" />
     <ClCompile Include="RANK_S.cpp" />
     <ClCompile Include="TARGET.cpp" />
+    <ClCompile Include="BULLET.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME06.h" />
@@ -27,6 +28,7 @@
     <ClInclude Include="RANK_A.h" />
     <ClInclude Include="RANK_S.h" />
     <ClInclude Include="TARGET.h" />
+    <ClInclude Include="BULLET.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

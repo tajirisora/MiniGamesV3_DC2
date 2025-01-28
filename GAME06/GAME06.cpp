@@ -1,4 +1,5 @@
 #include "../../libOne/inc/input.h"
+#include "../../libOne/inc/mathUtil.h"
 #include "../MAIN//MAIN.h"
 #include "TITLE.h"
 #include "STAGE.h"
@@ -10,6 +11,7 @@
 #include "CONTAINER.h"
 #include "PLAYER.h"
 #include "TARGET.h"
+#include "BULLET.h"
 #include "GAME06.h"
 //仕様
 //タイトル「スナイパー」
@@ -34,6 +36,7 @@ namespace GAME06
 		CurSceneId = TITLE_ID;
 		Player = new PLAYER(this);
 		Target = new TARGET(this);
+		Bullet = new BULLET(this);
 		Container->load();
 		Scenes[TITLE_ID]->create();
 		Scenes[STAGE_ID]->create();
@@ -44,11 +47,13 @@ namespace GAME06
 		JudgeList->create();
 		Player->create();
 		Target->create();
+		Bullet->create();
 		return 0;
 	}
 
 	void GAME::destroy()
 	{
+		delete Bullet;
 		delete Target;
 		delete Player;
 		delete JudgeList;
@@ -62,8 +67,16 @@ namespace GAME06
 		CurSceneId = nextSceneId;
 	}
 
-	void GAME::setRecode(int recode) {
-		Recode = recode;
+	bool GAME::collision(class BULLET* bullet, class TARGET* target) {
+		float dx = target->pos().x - bullet->pos().x;
+		float dy = target->pos().y - bullet->pos().y;
+		float distance = Sqrt(dx * dx + dy * dy);
+		if (distance > 50.0f) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	void GAME::proc()

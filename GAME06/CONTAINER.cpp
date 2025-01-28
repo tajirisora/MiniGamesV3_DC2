@@ -20,10 +20,8 @@ namespace GAME06
 		Data.title.str2 = "SPACEキーでスタート";
 		//ステージデータ
 		Data.stage.backScreenColor = { 128,128,128 };
-		Data.stage.timer = 0.0f;
-		Data.stage.timeToInit = 30.0f;
-		Data.stage.collisionCounter = 0;
-		Data.stage.curState = STAGE::WAITING_ID;
+		Data.stage.timer = 30.0f;
+		Data.stage.curState = STAGE::CHOOSING_TYPE_ID;
 		//リザルトデータ
 		//CRank
 		Data.rankC.backScreenColor = { 128,128,128 };
@@ -90,19 +88,26 @@ namespace GAME06
 		Data.judgeList.str4 = "C:0～4発";
 		//プレイヤーデータ
 		Data.player.img = 0;
-		Data.player.pos = { 180,height / 2 };
+		Data.player.pos = { 300,height / 2 };
 		Data.player.angle = 0.0f;
 		Data.player.scale = 0.2f;//288*216
-		Data.player.advSpeed = height / 3;
+		Data.player.speed = height / 3;
 		Data.player.limmitH = 100.0f;
 		//ターゲットデータ
 		Data.target.img = 0;
 		Data.target.pos = { width - 300,height / 2 };
 		Data.target.angle = 0.0f;
 		Data.target.scale = 0.1f;
-		Data.target.advSpeed = height / 4;
+		Data.target.speed = height / 3;
 		Data.target.vec = 1;
-		Data.target.limmitH = 150.0f;
+		Data.target.limmitH = 80.0f;
+		Data.target.collisionFlag = false;
+		Data.target.collisionTimer = 0.2f;
+		//バレットデータ
+		Data.bullet.pos = { Data.player.pos.x,Data.player.pos.y };
+		Data.bullet.angle = 90.0f;
+		Data.bullet.scale = 0.05f;
+		Data.bullet.speed = width / 10 * 4;
 	}
 
 	void CONTAINER::loadGraphic() {
@@ -110,5 +115,6 @@ namespace GAME06
 		Data.player.type2 = loadImage("../MAIN/assets/game06/player2.png");
 		Data.target.type1 = loadImage("../MAIN/assets/game06/target1.png");
 		Data.target.type2 = loadImage("../MAIN/assets/game06/target2.png");
+		Data.bullet.img = loadImage("../MAIN/assets/game06/bullet.png");
 	}
 }

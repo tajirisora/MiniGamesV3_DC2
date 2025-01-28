@@ -11,16 +11,17 @@ namespace GAME06
 	}
 
 	void STAGE::init() {
-		Stage.timer = Stage.timeToInit;
-		Stage.collisionCounter = 0;
-		Stage.curState = WAITING_ID;
+		const DATA& stage = game()->container()->data().stage;
+		Stage.timer = stage.timer;
+		Stage.curState = CHOOSING_TYPE_ID;
+		game()->collisionCounter() = 0;
 		game()->player()->init();
 		game()->target()->init();
-		//game()->enemy()->init();
+		game()->bullet()->init();
 	}
 
 	void STAGE::update() {
-		if (Stage.curState == WAITING_ID) {
+		if (Stage.curState == CHOOSING_TYPE_ID) {
 			class PLAYER* player = game()->player();
 			if (isTrigger(KEY_LEFT)) {
 				player->img() = player->type1();
@@ -36,14 +37,13 @@ namespace GAME06
 			Stage.timer -= delta;
 			game()->player()->update();
 			game()->target()->update();
-			//game()->enemy()->update();
-			if (isTrigger(KEY_Q))Stage.collisionCounter++;
+			if (game()->player()->triggerFlag() == true)game()->bullet()->update();
 		}
 	}
 
 	void STAGE::draw() {
 		clear(Stage.backScreenColor);
-		if (Stage.curState == WAITING_ID) {
+		if (Stage.curState == CHOOSING_TYPE_ID) {
 			rectMode(CENTER);
 			class PLAYER* player = game()->player();
 			image(player->type1(), width / 2 - 164, height / 2, 0.0f, 0.2f);
@@ -70,27 +70,26 @@ namespace GAME06
 		else if (Stage.curState == MAIN_ID) {
 			game()->player()->draw();
 			game()->target()->draw();
-			//game()->enemy()->draw();
+			if (game()->player()->triggerFlag() == true)game()->bullet()->draw();
 			fill(0);
 			textSize(40);
 			text("上に移動：Wキー", 0, 40);
 			text("下に移動：Sキー", 0, 80);
 			text("カウントアップ（テスト用）:Qキー", 0, 120);
 			text((let)"" + Stage.timer, 0, 160);
-			text((let)"" + Stage.collisionCounter, 0, 200);
+			text((let)"" + game()->collisionCounter(), 0, 200);
 		}
 	}
 
 	void STAGE::nextScene() {
 		if (Stage.timer <= 0.0f) {
-			game()->setRecode(Stage.collisionCounter);
-			if (Stage.collisionCounter <= Line1) {
+			if (game()->collisionCounter() <= Line1) {
 				game()->changeScene(GAME::RANK_C_ID);
 			}
-			else if (Stage.collisionCounter <= Line2) {
+			else if (game()->collisionCounter() <= Line2) {
 				game()->changeScene(GAME::RANK_B_ID);
 			}
-			else if (Stage.collisionCounter <= Line3) {
+			else if (game()->collisionCounter() <= Line3) {
 				game()->changeScene(GAME::RANK_A_ID);
 			}
 			else {

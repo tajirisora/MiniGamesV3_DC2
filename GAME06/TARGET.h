@@ -14,12 +14,18 @@ namespace GAME06
             VECTOR2 pos;
             float angle = 0.0f;
             float scale = 0.0f;
-            float advSpeed = 0.0f;
+            float speed = 0.0f;
             int vec = 0;
             float limmitH = 0.0f;
+            bool collisionFlag = false;
+            float collisionTimer = 0.0f;
         };
     private:
         DATA Target;
+    public:
+        const VECTOR2& pos() { return Target.pos; }
+        bool& collisionFlag() { return Target.collisionFlag; }
+        float& collisionTimer() { return Target.collisionTimer; }
     public:
         TARGET(class GAME* game):GAME_OBJECT(game){}
         ~TARGET(){}

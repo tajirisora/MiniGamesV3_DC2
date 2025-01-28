@@ -10,15 +10,14 @@ namespace GAME06
 		struct DATA {
 			COLOR backScreenColor;
 			float timer = 0.0f;
-			float timeToInit = 0.0f;
-			int collisionCounter = 0;
+			float definedTime = 0.0f;
 			int curState = 0;
 		};
 	private:
 		DATA Stage;
 	public:
 		enum STATE_ID {
-			WAITING_ID,
+			CHOOSING_TYPE_ID,
 			MAIN_ID
 		};
 	private:

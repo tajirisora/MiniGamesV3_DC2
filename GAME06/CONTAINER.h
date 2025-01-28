@@ -8,6 +8,7 @@
 #include "JUDGE_LIST.h"
 #include "PLAYER.h"
 #include "TARGET.h"
+#include "BULLET.h"
 namespace GAME06 
 {
 	class CONTAINER 
@@ -23,6 +24,7 @@ namespace GAME06
 			JUDGE_LIST::DATA judgeList;
 			PLAYER::DATA player;
 			TARGET::DATA target;
+			BULLET::DATA bullet;
 		};
 	private:
 		DATA Data;

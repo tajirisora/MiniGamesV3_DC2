@@ -12,14 +12,19 @@ namespace GAME06
 	}
 
 	void PLAYER::init() {
-		const DATA player = game()->container()->data().player;
+		const DATA& player = game()->container()->data().player;
 		Player.img = Player.type1;
 		Player.pos = player.pos;
+		Player.triggerFlag = false;
 	}
 
 	void PLAYER::update() {
-		if (isPress(KEY_W) && Player.pos.y > Player.limmitH)Player.pos.y += -Player.advSpeed * delta;
-		else if (isPress(KEY_S) && Player.pos.y < height - Player.limmitH)Player.pos.y += Player.advSpeed * delta;
+		if (isPress(KEY_W) && Player.pos.y > Player.limmitH)Player.pos.y += -Player.speed * delta;
+		else if (isPress(KEY_S) && Player.pos.y < height - Player.limmitH)Player.pos.y += Player.speed * delta;
+		if (isTrigger(KEY_E) && Player.triggerFlag == false) {
+			game()->bullet()->init();
+			Player.triggerFlag = true;
+		}
 	}
 
 	void PLAYER::draw() {
