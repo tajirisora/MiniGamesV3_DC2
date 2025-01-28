@@ -17,6 +17,9 @@ namespace GAME09
 		Data.select.scoreTf.size = 0.9f;
 		Data.select.achievementTf.pos = VECTOR2(1375, 880);
 		Data.select.achievementTf.size = 0.4f;
+		Data.select.operationPos = VECTOR2(960, 1050);
+		Data.select.operationSize = VECTOR2(1920, 60);
+		Data.select.operationStr = "Escape:タイトルへ ↑↓:曲選択 ←→:難易度選択 O:設定 A:オート切替 Enter:スタート";
 
 		Data.stage.songTitleTF.pos = VECTOR2(1620, 80);
 		Data.stage.songTitleTF.size = 0.8f;

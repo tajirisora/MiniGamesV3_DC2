@@ -3,6 +3,7 @@
 #include "CONTAINER.h"
 #include "GAME09.h"
 #include "MUSICSELECT.h"
+#include "textFunc.h"
 
 namespace GAME09 {
 	MUSICSELECT::MUSICSELECT(class GAME* game) :
@@ -47,9 +48,12 @@ namespace GAME09 {
 		game()->startButton()->draw();
 		game()->backButton()->draw();
 
-		rectMode(CORNER);
+		rectMode(CENTER);
 		fill(0);
-		rect(0, 1020, 1920, 60);
+		rect(Select.operationPos.x, Select.operationPos.y, Select.operationSize.x, Select.operationSize.y);
+		fill(255);
+		textfMode(M_RIGHT);
+		textf(Select.operationStr, Select.operationPos + Select.operationSize / 2, Select.operationSize);
 
 		//RHYTHM_GAME_CONTROLLER::SONGINFO songInfo = game()->banner()->curSongInfo();
 		//if (Option) game()->option()->draw();

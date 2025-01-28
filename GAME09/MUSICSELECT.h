@@ -11,6 +11,9 @@ namespace GAME09 {
             TRANSFORM jacketTf;
             TRANSFORM scoreTf;
             TRANSFORM achievementTf;
+            VECTOR2 operationPos;
+            VECTOR2 operationSize;
+            std::string operationStr;
         };
     private:
         DATA Select;
