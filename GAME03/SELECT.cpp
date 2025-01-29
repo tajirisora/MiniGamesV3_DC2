@@ -127,6 +127,25 @@ namespace GAME03 {
 					image(Select.chara_img[i], width / 4.3f + 200 * j, height / 6.5f + 200 * i , 0 , 1.5f);
 				}
 			}
+			if (isTrigger(KEY_Q)) {
+				Select.TimePls += 30;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			if (isTrigger(KEY_E)) {
+				if (Select.TimePls >= 0)Select.TimePls -= 30;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			if (Select.TimePls < 0) { Select.TimePls = 0; }
+			if (isTrigger(KEY_R)) {
+				Select.TimePls = 0;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			fill(0);
+			textSize(50);
+			text("default 30•b", 1450, 400);
+			text("Q © +" + (let)(int)Select.TimePls + "•b ¨ E", 1430, 460);
+			textSize(30);
+			text("R : ƒŠƒZƒbƒg", 1500, 500);
 		}
 		else if (Select.Confirm_selection) {
 			image(Select.select_sfream, 0, 0);
@@ -197,9 +216,15 @@ namespace GAME03 {
 		game()->fade()->draw();
 
 	}
+
+	time_t SELECT::timepls() const {
+		return Select.TimePls;
+	}
+
 	void SELECT::nextScene() {
 		if (Select.next_scene) {
 			Select.next_scene = false;
+			stopSound(game()->container()->data().volume.Snd_A);
 			game()->fade()->outTrigger();
 		}
 		if (game()->fade()->outEndFlag()) {

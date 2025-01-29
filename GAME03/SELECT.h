@@ -23,6 +23,7 @@ namespace GAME03 {
 			int click_cnt = 0;
 			int a = 0;
 			int b = 0;
+			time_t TimePls = 0;
 			fs::path targetPath;
 		};
 	private:
@@ -34,6 +35,7 @@ namespace GAME03 {
 		void init();
 		void draw();
 		void nextScene();
+		time_t timepls() const;
 	};
 }
 

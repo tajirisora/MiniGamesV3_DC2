@@ -4,6 +4,7 @@
 #include"SELECT.h"
 #include"MAP.h"
 #include"PLAYER.h"
+#include"PLAYER_BULLET.h"
 #include"ENEMY.h"
 #include"VOLUME.h"
 #include"FADE.h"
@@ -28,7 +29,9 @@ namespace GAME03 {
             CHARACTER::DATA enemyChara2;
             CHARACTER::DATA enemyChara3;
             CHARACTER::DATA enemyChara4;
+            CHARACTER::DATA playerBulletChara;
             PLAYER::DATA player;
+            PLAYER_BULLET::DATA playerBullet;
             ENEMY::DATA enemy;
             VOLUME::DATA volume;
             CHARACTER_MANAGER::DATA charaMng;

@@ -18,6 +18,7 @@
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="TITLE.cpp" />
     <ClCompile Include="VOLUME.cpp" />
+    <ClCompile Include="PLAYER_BULLET.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME03.h" />
@@ -37,8 +38,12 @@
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="TITLE.h" />
     <ClInclude Include="VOLUME.h" />
+    <ClInclude Include="PLAYER_BULLET.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game03\title.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

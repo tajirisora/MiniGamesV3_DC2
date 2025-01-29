@@ -2,6 +2,7 @@
 #include"CONTAINER.h"
 #include"CHARACTER.h"
 #include"PLAYER.h"
+#include"PLAYER_BULLET.h"
 #include"ENEMY.h"
 #include "CHARACTER_MANAGER.h"
 namespace GAME03 {
@@ -24,18 +25,19 @@ namespace GAME03 {
 
 		Total = 0;
 		Total += CharaMng.numPlayers;
-		//Total += CharaMng.numPlayerBullets;
-		//Total += CharaMng.numBats;
-		//Total += CharaMng.numBatBullets;
-		//Total += CharaMng.numPumpkins;
-		Characters = new CHARACTER * [Total + 1];
+		Total += CharaMng.numBats;
+		Total += CharaMng.numPlayerBullets;
+		Characters = new CHARACTER * [Total + 9];
 
 		Player = new PLAYER(game());
 		int j = 0;
 		for (int i = 0; i < CharaMng.numPlayers; i++) { Characters[j++] = Player; }
+		for (int i = 0; i < CharaMng.numPlayerBullets; i++) Characters[j++] = new PLAYER_BULLET(game());
+		for (int i = 0; i < CharaMng.numBats; i++) { Characters[j++] = new ENEMY(game()); }
 		for (int k = 0; k < Total; k++) {
 			Characters[k]->create();
 		}
+
 	}
 	void CHARACTER_MANAGER::appear(char charaId, float wx, float wy, float vx, float vy) {
 		for (int i = 0; i < Total; i++) {
@@ -60,6 +62,36 @@ namespace GAME03 {
 			for (int j = i + 1; j < Total; j++) {
 				if (Characters[j]->hp() == 0) {
 					continue;
+				}
+				if (Characters[i]->groupId() == 1 && Characters[i]->groupId() == Characters[j]->groupId()) {
+					if (Characters[i]->wLeft() < Characters[j]->wRight()) {
+						Characters[i]->reflection(-0.01f, 0.00f);
+						Characters[j]->reflection(0.01f, 0.00f);
+					}
+					if (Characters[j]->wLeft() < Characters[i]->wRight()) {
+						Characters[i]->reflection(0.01f, 0.00f);
+						Characters[j]->reflection(-0.01f, 0.00f);
+					}
+					if (Characters[i]->wTop() < Characters[j]->wBottom()) {
+						Characters[i]->reflection(0.00f, -0.01f);
+						Characters[j]->reflection(0.00f, 0.01f);
+					}
+					if (Characters[j]->wTop() < Characters[i]->wBottom()) {
+						Characters[i]->reflection(0.00f, 0.01f);
+						Characters[j]->reflection(0.00f, -0.01f);
+					}
+					continue;
+				}
+				else if (Characters[i]->groupId() == Characters[j]->groupId()) {
+					continue;
+				}
+				if (Characters[i]->wLeft() < Characters[j]->wRight() &&
+					Characters[j]->wLeft() < Characters[i]->wRight() &&
+					Characters[i]->wTop() < Characters[j]->wBottom() &&
+					Characters[j]->wTop() < Characters[i]->wBottom()) {
+					//“–‚½‚Á‚½
+					Characters[i]->damage();
+					Characters[j]->damage();
 				}
 			}
 		}

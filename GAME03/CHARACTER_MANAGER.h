@@ -8,15 +8,15 @@ namespace GAME03 {
 		struct DATA {
 			int numPlayers = 0;
 			int numPlayerBullets = 0;
-			int numPumpkins = 0;
 			int numBats = 0;
-			int numBatBullets = 0;
+			time_t s_time = 0, e_time = 0, n_time = 0;
 		};
 	private:
 		int Total = 0;
 		DATA CharaMng;
 		class CHARACTER** Characters = nullptr;
 		class PLAYER* Player = nullptr;
+		class ENEMY* Enemy = nullptr;
 	public:
 		CHARACTER_MANAGER(class GAME* game);
 		~CHARACTER_MANAGER();
@@ -26,6 +26,7 @@ namespace GAME03 {
 		void update();
 		void draw();
 		class PLAYER* player() { return Player; }
+		class ENEMY* enemy() { return Enemy; }
 	};
 };
 

@@ -35,13 +35,9 @@ namespace GAME03 {
 				setVolume(game()->container()->data().volume.Se_C, -(100 - f2) * (100 - f2));
 				setVolume(game()->container()->data().volume.Se_D, -(100 - f2) * (100 - f2));
 				setVolume(game()->container()->data().volume.Se_E, -(100 - f2) * (100 - f2));
+				setVolume(game()->container()->data().volume.Se_F, -(100 - f2) * (100 - f2));
 			}
 			loopBgm = false;
-		}
-		fopen_s(&fp, "assets/game03/data/score.txt", "r");
-		if (fp != NULL) {
-			fscanf_s(fp, "%d", &f3);
-			fclose(fp);
 		}
 		if (!reset) {
 			imageColor(240);
@@ -93,15 +89,32 @@ namespace GAME03 {
 			text("本当にリセットしますか？Y / N", width / 5.0f - 20.0f, height / 2.0f);
 			if (isTrigger(KEY_Y)) {
 				playSound(game()->container()->data().volume.Se_D);
-				fopen_s(&fp, "assets/game03/data/score.txt", "w");
 				if (fp != NULL) {
 					fprintf_s(fp, "0");
 					fclose(fp);
 				}
-				fopen_s(&fp, "assets/game03/data/volume.txt", "w");
+				fopen_s(&fp, "assets/game03/data/sounds/volume.txt", "w");
 				if (fp != NULL) {
-					fprintf_s(fp, "80\n80\n");
+					f1 = 80;
+					f2 = 80;
+					fprintf_s(fp, "%d\n", f1);
+					fprintf_s(fp, "%d\n", f2);
 					fclose(fp);
+				}
+				fopen_s(&fp, "assets/game03/data/sounds/volume.txt", "r");
+				if (fp != NULL) {
+					fscanf_s(fp, "%d\n%d\n", &f1, &f2);
+					fclose(fp);
+					setVolume(game()->container()->data().volume.Snd_A, -(100 - f1) * (100 - f1));
+					setVolume(game()->container()->data().volume.Snd_B, -(100 - f1) * (100 - f1));
+					setVolume(game()->container()->data().volume.Snd_C, -(100 - f1) * (100 - f1));
+					setVolume(game()->container()->data().volume.Snd_D, -(100 - f1) * (100 - f1));
+					setVolume(game()->container()->data().volume.Se_A, -(100 - f2) * (100 - f2));
+					setVolume(game()->container()->data().volume.Se_B, -(100 - f2) * (100 - f2));
+					setVolume(game()->container()->data().volume.Se_C, -(100 - f2) * (100 - f2));
+					setVolume(game()->container()->data().volume.Se_D, -(100 - f2) * (100 - f2));
+					setVolume(game()->container()->data().volume.Se_E, -(100 - f2) * (100 - f2));
+					setVolume(game()->container()->data().volume.Se_F, -(100 - f2) * (100 - f2));
 				}
 				reset = false;
 			}
@@ -134,11 +147,11 @@ namespace GAME03 {
 				playSound(game()->container()->data().volume.Se_D);
 			}
 			if (game()->fade()->outEndFlag() && delibe == 1) {
-				stopSound(game()->container()->data().volume.Snd_A);
+				//stopSound(game()->container()->data().volume.Snd_A);
 				game()->setCurScene(game()->volume());
 			}
 			if (game()->fade()->outEndFlag() && delibe == 2) {
-				stopSound(game()->container()->data().volume.Snd_A);
+				//stopSound(game()->container()->data().volume.Snd_A);
 				game()->setCurScene(game()->explan());
 			}
 		}

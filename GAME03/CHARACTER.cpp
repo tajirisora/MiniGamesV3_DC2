@@ -21,6 +21,7 @@ namespace GAME03 {
     }
     void CHARACTER::update() {
         float px = Chara.wx - game()->map()->wx();
+        float py = Chara.wy - game()->map()->wy();
         if (px < -game()->map()->chipSize()) {
             Chara.hp = 0;
         }
@@ -44,7 +45,15 @@ namespace GAME03 {
             fill(255);
             print((let)Chara.wx);
             print((let)Chara.wy);
-            print((let)flg_clear);
+            print((let)Chara.hp);
         }
+    }
+    void CHARACTER::damage() {
+        if (Chara.hp > 0) {
+            Chara.hp--;
+        }
+    }
+    void CHARACTER::reflection(float x, float y) {
+
     }
 }

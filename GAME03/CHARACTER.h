@@ -13,8 +13,9 @@ namespace GAME03 {
 			int img = 0;
 			int shadowImg = 0;
 			COLOR color;
-			char charaId = 0;
 			char filename[64]{};
+			char charaId = 0;
+			int groupId = 0;
 			float wx = 0;
 			float wy = 0;
 			float vx = 0;
@@ -37,7 +38,10 @@ namespace GAME03 {
 		virtual void appear(float wx, float ey, float vx, float vy);
 		virtual void update();
 		virtual void draw();
+		virtual void damage();
+		virtual void reflection(float x, float y);
 		int hp() const { return Chara.hp; }
+		int groupId() const { return Chara.groupId; }
 		char charaId() const { return Chara.charaId; }
 		float wLeft() const { return Chara.wx + Chara.offsetLeft; }
 		float wTop() const { return Chara.wy + Chara.offsetTop; }
