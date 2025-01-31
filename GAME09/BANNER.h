@@ -9,14 +9,8 @@ namespace GAME09 {
     {
     public:
         struct DATA {
-            int bannerImg;
-            float imgSize;
             VECTOR2 centerPos;
             VECTOR2 nextPosOfst;
-            VECTOR2 titlePosOfst;
-            VECTOR2 artistPosOfst;
-            VECTOR2 titleStrSize;
-            VECTOR2 artistStrSize;
 
             float moveAnimeTime;
         };

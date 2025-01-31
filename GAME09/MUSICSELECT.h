@@ -9,6 +9,11 @@ namespace GAME09 {
     public:
         struct DATA {
             TRANSFORM jacketTf;
+            TRANSFORM scoreTf;
+            TRANSFORM achievementTf;
+            VECTOR2 operationPos;
+            VECTOR2 operationSize;
+            std::string operationStr;
         };
     private:
         DATA Select;

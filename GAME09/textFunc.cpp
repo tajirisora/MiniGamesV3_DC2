@@ -3,11 +3,22 @@
 
 namespace GAME09 {
 	TEXTF_MODE TextMode = M_CENTER;
+	float StrokeSize = 0;
+	COLOR StrokeColor;
 
 	void textfMode(TEXTF_MODE mode) {
 		TextMode = mode;
 	}
+	void textfStrokeSize(float size) {
+		StrokeSize = size;
+	}
 
+	void textfStroke(std::string str, VECTOR2 pos, VECTOR2 size) {
+		textf(str, pos + VECTOR2(StrokeSize, 0), size);
+		textf(str, pos + VECTOR2(-StrokeSize, 0), size);
+		textf(str, pos + VECTOR2(0, StrokeSize), size);
+		textf(str, pos + VECTOR2(0, -StrokeSize), size);
+	}
 	void textf(std::string str, VECTOR2 pos, VECTOR2 size) {
 		textMode(BOTTOM);
 		VECTOR2 strPos = pos;

@@ -12,7 +12,30 @@ namespace GAME09 {
 
 	}
 	OPTION::~OPTION() {
-
+		//解放
+		for (auto e : KindButtons) {
+			delete e;
+		}
+		for (auto e : BindTypeButtons) {
+			delete e;
+		}
+		for (auto e : ColorTypeButtons) {
+			delete e;
+		}
+		for (int y = 0; y < 6; y++) {
+			for (int x = 0; x < 6; x++) {
+				if (KeyButtons[y][x] != nullptr)delete KeyButtons[y][x];
+			}
+		}
+		for (auto e : ColorType1Buttons) {
+			delete e;
+		}
+		for (auto e : ColorType2Buttons) {
+			delete e;
+		}
+		for (auto e : Adjust) {
+			delete e;
+		}
 	}
 	void OPTION::create() {
 		Option = game()->container()->data().option;
@@ -101,6 +124,31 @@ namespace GAME09 {
 			ColorType2Buttons[i]->setData(Data);
 			ColorType2Buttons[i]->setChoice(true);
 		}
+		for (int i = 0; i < LOADOPTION::KEY_BIND_TYPE; i++) {
+			Adjust[i] = new ADJUST(game());
+			ADJUST::SETDATA Data;
+			Data = Option.adjustData[i];
+			Data.pos = Option.adjustTF.pos + Option.adjustTF.ofst * i;
+			switch (i)
+			{
+			case LOADOPTION::SPEED:
+				Data.valueF = &game()->loadOption()->optionData().speed;
+				break;
+			case LOADOPTION::SOUND_EFFECT:
+				Data.valueB = &game()->loadOption()->optionData().soundEffect;
+				break;
+			case LOADOPTION::AUDIO_OFFSET:
+				Data.valueI = &game()->loadOption()->optionData().audioOffset;
+				break;
+			case LOADOPTION::VISUAL_OFFSET:
+				Data.valueI = &game()->loadOption()->optionData().visualOffset;
+				break;
+			default:
+				break;
+			}
+			Adjust[i]->create();
+			Adjust[i]->setData(Data);
+		}
 	}
 	void OPTION::init() {
 		OptionKind = GENERAL;
@@ -181,8 +229,9 @@ namespace GAME09 {
 		}
 	}
 	void OPTION::DrawGeneral() {
-		fill(0);
-		text("一般", 20, 400);
+		for (auto e : Adjust) {
+			e->draw();
+		}
 	}
 	void OPTION::DrawKeyBind() {
 		//タイプ切り替えボタン
@@ -245,7 +294,9 @@ namespace GAME09 {
 		}
 	}
 	void OPTION::UpdateGeneral() {
-		
+		for (auto e : Adjust) {
+			e->update();
+		}
 	}
 	void OPTION::UpdateKeyBind() {
 		//通常時

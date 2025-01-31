@@ -10,9 +10,25 @@ namespace GAME09
 		loadSounds();
 	}
 	void CONTAINER::setData() {
+		Data.title.titleTf.pos = VECTOR2(970, 450);
+		Data.title.titleTf.size = 0.6f;
+		Data.title.pressEnterkeyTf.pos = VECTOR2(960, 830);
+		Data.title.pressEnterkeyTf.size = 0.6f;
 
-		Data.select.jacketTf.pos = VECTOR2(1340, 380);
-		Data.select.jacketTf.size = 0.93f;
+		Data.select.jacketTf.pos = VECTOR2(1360, 330);
+		Data.select.jacketTf.size = 0.88f;
+		Data.select.scoreTf.pos = VECTOR2(1300, 940);
+		Data.select.scoreTf.size = 0.9f;
+		Data.select.achievementTf.pos = VECTOR2(1375, 880);
+		Data.select.achievementTf.size = 0.4f;
+		Data.select.operationPos = VECTOR2(960, 1050);
+		Data.select.operationSize = VECTOR2(1920, 60);
+		Data.select.operationStr = "Escape:タイトルへ ↑↓:曲選択 ←→:難易度選択 O:設定 A:オート切替 Enter:スタート";
+
+		Data.stage.songTitleTF.pos = VECTOR2(1620, 80);
+		Data.stage.songTitleTF.size = 0.8f;
+		Data.stage.jacketTF.pos = VECTOR2(302, 778);
+		Data.stage.jacketTF.size = 0.75f;
 
 		Data.fade.alpha = 0;
 		Data.fade.color = COLOR(0, 0, 0);
@@ -24,6 +40,7 @@ namespace GAME09
 		Data.chartMNG.infoStartStr[CHARTMANAGER::MUSIC] = "#MUSIC";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BANNER] = "#BANNER";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BACKGROUND] = "#BACKGROUND";
+		Data.chartMNG.infoStartStr[CHARTMANAGER::DIFFICULTIES] = "#DIFFICULTIES";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::OFFSET] = "#OFFSET";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::BASEBPM] = "#BASEBPM";
 		Data.chartMNG.infoStartStr[CHARTMANAGER::MEASURE] = "#MEASURE";
@@ -35,15 +52,22 @@ namespace GAME09
 		Data.chartMNG.commandStr[CHARTMANAGER::LANECHANGE] = "#LANECHANGE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::SCORE] = "#SCORE";
 		Data.chartMNG.scoreDataStr[CHARTMANAGER::ACHIEVEMENT] = "#ACHIEVEMENT";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::EASY] = "Hard";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::HARD] = "Extra";
+		Data.chartMNG.difficultyStr[CHARTMANAGER::EXPART] = "Lunatic";
 		Data.chartMNG.chartPath = "..\\main\\assets\\game09\\charts";
+
+		Data.songTitle.difficultyFrameOfst = VECTOR2(-300, 0);
+		Data.songTitle.bannerImgSize = 0.37f;
+		Data.songTitle.difficultyFrameImgSize = 0.42f;
+		Data.songTitle.titlePosOfst = VECTOR2(-210, 5);
+		Data.songTitle.artistPosOfst = VECTOR2(-200, 55);
+		Data.songTitle.titleStrSize = VECTOR2(680, 50);
+		Data.songTitle.artistStrSize = VECTOR2(700, 35);
+		Data.songTitle.numStrSize = VECTOR2(60, 60);
 
 		Data.banner.centerPos = VECTOR2(450, height / 2 - 30);
 		Data.banner.nextPosOfst = VECTOR2(45, 150);
-		Data.banner.imgSize = 2.0f;
-		Data.banner.titlePosOfst = VECTOR2(-210, 5);
-		Data.banner.artistPosOfst = VECTOR2(-210, 60);
-		Data.banner.titleStrSize = VECTOR2(680, 50);
-		Data.banner.artistStrSize = VECTOR2(700, 35);
 		Data.banner.moveAnimeTime = 0.3f;
 
 		Data.jacket.areaSize = VECTOR2(700, 700);
@@ -119,6 +143,21 @@ namespace GAME09
 		Data.option.colorType2ButtonTF.pos = VECTOR2(1810, 300);
 		Data.option.colorType2ButtonTF.ofst = VECTOR2(0, 300);
 		Data.option.colorType2ButtonTF.size = VECTOR2(150, 150);
+		Data.option.adjustTF.pos = VECTOR2(720, 300);
+		Data.option.adjustTF.ofst = VECTOR2(0, 200);
+		Data.option.adjustData[LOADOPTION::SPEED].str = "譜面速度";
+		Data.option.adjustData[LOADOPTION::SPEED].valueMax = 20;
+		Data.option.adjustData[LOADOPTION::SPEED].valueMin = 1;
+		Data.option.adjustData[LOADOPTION::SPEED].changeValue = 0.1f;
+		Data.option.adjustData[LOADOPTION::SOUND_EFFECT].str = "タップ音";
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].str = "音声オフセット";
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].valueMax = 300;
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].valueMin = -300;
+		Data.option.adjustData[LOADOPTION::AUDIO_OFFSET].changeValue = 5;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].str = "判定オフセット";
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].valueMax = 300;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].valueMin = -300;
+		Data.option.adjustData[LOADOPTION::VISUAL_OFFSET].changeValue = 5;
 
 		Data.optionButton.imgSize = 0.44f;
 		Data.optionButton.colliType = BUTTON::DIAMOND;
@@ -172,8 +211,8 @@ namespace GAME09
 		Data.combo.digitSpace = 80;
 
 		Data.score.backImgPos = VECTOR2(1618, 990);
-		Data.score.backImgSize = 0.65f;
-		Data.score.scoreNumPosOfst = VECTOR2(250, 62);
+		Data.score.backImgSize = 0.5f;
+		Data.score.scoreNumPosOfst = VECTOR2(200, 62);
 		Data.score.scoreNumSize = VECTOR2(500, 100);
 		Data.score.scoreAnimeTime = 0.3f;
 
@@ -182,8 +221,8 @@ namespace GAME09
 
 		Data.gameClear.jacketTF.pos = VECTOR2(1450, 650);
 		Data.gameClear.jacketTF.size = 1.0f;
-		Data.gameClear.framePos = VECTOR2(550, 540);
-		Data.gameClear.frameSize = 1.5f;
+		Data.gameClear.framePos = VECTOR2(550, 560);
+		Data.gameClear.frameSize = 0.95f;
 		Data.gameClear.judgeImgPos = VECTOR2(280, 620);
 		Data.gameClear.judgeImgSize = 0.3f;
 		Data.gameClear.judgeNumPos = VECTOR2(600, 652);
@@ -198,8 +237,8 @@ namespace GAME09
 		Data.gameClear.highScoreDiffOfst = VECTOR2(30, 0);
 		Data.gameClear.highScoreStrSize = VECTOR2(width, 40);
 		Data.gameClear.highScoreSize = VECTOR2(width, 60);
-		Data.gameClear.titlePos = VECTOR2(1450, 170);
-		Data.gameClear.titleSize = 1.092f;
+		Data.gameClear.titlePos = VECTOR2(1410, 190);
+		Data.gameClear.titleSize = 1.0f;
 		Data.gameClear.operationPos = VECTOR2(1542, 1033);
 		Data.gameClear.operationSize = 0.6f;
 		Data.gameClear.fastSlowPos = VECTOR2(550, 940);
@@ -217,8 +256,55 @@ namespace GAME09
 		Data.autoButton.key = KEY_A;
 		Data.autoButton.pos = VECTOR2(1810, 320);
 		Data.autoButton.radius = 80;
+
+		Data.adjustButton.imgSize = 0.15f;
+		Data.adjustButton.colliType = BUTTON::RECT;
+		Data.adjustButton.key = KEY_NONE;
+		Data.adjustButton.pos = VECTOR2(0, 0);
+		Data.adjustButton.size = VECTOR2(100, 100);
+
+		Data.adjust.strSize = VECTOR2(700, 100);
+		Data.adjust.leftButtonOfst = VECTOR2(500, 0);
+		Data.adjust.rightButtonOfst = VECTOR2(1000, 0);
+		Data.adjust.valueOfst = VECTOR2(750, 0);
+		Data.adjust.valueSize = VECTOR2(400, 100);
+
+		Data.adjustButtonImg.repeatStartTime = 0.4f;
+		Data.adjustButtonImg.repeatInterval = 0.05f;
+
+		Data.startButton.imgSize = 0.9f;
+		Data.startButton.colliType = BUTTON::DIAMOND;
+		Data.startButton.key = KEY_ENTER;
+		Data.startButton.pos = VECTOR2(1730, 830);
+		Data.startButton.radius = 165;
+
+		Data.difficultyButton.imgSize = 0.44f;
+		Data.difficultyButton.colliType = BUTTON::DIAMOND;
+		Data.difficultyButton.key = KEY_NONE;
+		Data.difficultyButton.radius = 80;
+
+		Data.difficultySelect.buttonTf.pos = VECTOR2(1050, 750);
+		Data.difficultySelect.buttonTf.ofst = VECTOR2(200, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::EASY] = COLOR(0, 255, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::HARD] = COLOR(255, 128, 0);
+		Data.difficultySelect.Color[CHARTMANAGER::EXPART] = COLOR(255, 0, 255);
+
+		Data.difficultyButtonData.numStrSize = VECTOR2(60, 60);
+
+		Data.warning.warningTf.pos = VECTOR2(960, 540);
+		Data.warning.warningTf.size = 1.5f;
+		Data.warning.displayTime = 1.5;
+		Data.warning.fadeTime = 0.3f;
+
+		Data.retryButton.imgSize = 0.44f;
+		Data.retryButton.colliType = BUTTON::DIAMOND;
+		Data.retryButton.key = KEY_R;
+		Data.retryButton.pos = VECTOR2(1820, 100);
+		Data.retryButton.radius = 80;
 	}
 	void CONTAINER::loadGraphic() {
+		Data.title.titleLogo = loadImage("..\\main\\assets\\game09\\texture\\Title_Logo.png");
+		Data.title.pressEnterkey = loadImage("..\\main\\assets\\game09\\texture\\Press_Enterkey.png");
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
 		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
 		Data.note.centerUnderImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center_Under.png");
@@ -254,6 +340,18 @@ namespace GAME09
 		Data.autoButtonImg.imgs[0] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_Off.png");
 		Data.autoButtonImg.imgs[1] = loadImage("..\\main\\assets\\game09\\texture\\Auto_Button_On.png");
 		Data.optionButton.img = loadImage("..\\main\\assets\\game09\\texture\\Option_Button.png");
+		Data.startButton.img = loadImage("..\\main\\assets\\game09\\texture\\Start_Button.png");
+		Data.difficultyButton.img = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
+		Data.songTitle.bannerImg = loadImage("..\\main\\assets\\game09\\texture\\Banner.png");
+		Data.songTitle.difficultyFrameImg = loadImage("..\\main\\assets\\game09\\texture\\Difficulty_Frame.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::PLUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Plus.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::MINUS] = loadImage("..\\main\\assets\\game09\\texture\\Option_Minus.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::RIGHT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Right.png");
+		Data.adjustButtonImg.imgs[ADJUSTBUTTON::LEFT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Left.png");
+		Data.gameClear.frameImg = loadImage("..\\main\\assets\\game09\\texture\\result_frame.png");
+		Data.gameClear.fastSlowImg = loadImage("..\\main\\assets\\game09\\texture\\result_fast_slow.png");
+		Data.warning.warningImg = loadImage("..\\main\\assets\\game09\\texture\\Warning_Message.png");
+		Data.retryButton.img = loadImage("..\\main\\assets\\game09\\texture\\Retry_Button.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

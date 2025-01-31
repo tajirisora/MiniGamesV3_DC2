@@ -1,6 +1,6 @@
 #pragma once
 #include "SCENE.h"
-#include "../../libOne/inc/VECTOR2.h"
+#include "TRANSFORM.h"
 
 namespace GAME09 {
     class TITLE :
@@ -8,6 +8,10 @@ namespace GAME09 {
     {
     public:
         struct DATA {
+            int titleLogo;
+            TRANSFORM titleTf;
+            int pressEnterkey;
+            TRANSFORM pressEnterkeyTf;
         };
     private:
         DATA Title;

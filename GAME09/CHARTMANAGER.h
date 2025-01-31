@@ -18,6 +18,7 @@ namespace GAME09 {
             MUSIC,
             BANNER,
             BACKGROUND,
+            DIFFICULTIES,
             OFFSET,
             BASEBPM,
             MEASURE,
@@ -37,19 +38,26 @@ namespace GAME09 {
             ACHIEVEMENT,
             NUM_SCORE_DATAS
         };
+        enum DIFFICULTY {
+            EASY,
+            HARD,
+            EXPART,
+            NUM_DIFFICULTY
+        };
         struct DATA {
             std::string infoStartStr[NUM_INFOS];
             std::string commandStr[NUM_COMMANDS];
             std::string scoreDataStr[NUM_SCORE_DATAS];
+            std::string difficultyStr[NUM_DIFFICULTY];
             std::string chartPath;
             int tempImage;
         };
     private:
         DATA ChartMNG;
-        float AudioOffset = 0;  //プラスにすると曲より早く流れる
-        float VisualOffset = 0; //プラスにすると手前、マイナスにすると奥に動く
-        int Score = 0;
-        int Achievement = -1;
+        int* AudioOffset = 0;  //プラスにすると曲より早く流れる
+        int* VisualOffset = 0; //プラスにすると手前、マイナスにすると奥に動く
+        int Score[NUM_DIFFICULTY]{};
+        int Achievement[NUM_DIFFICULTY]{};
 
         int AllNotesNum = 0;
     public:
@@ -65,10 +73,7 @@ namespace GAME09 {
         void loadHiscore(std::string fileName);
         void loadChartImage(std::string chartPath, std::string fileName, int& idx, VECTOR2& size);
         void loadChart(struct SONGINFO& songInfo, int& curRow);
-        void updateHighScore(int highScore, int achievement);
+        void updateHighScore();
         int allNotesNum() { return AllNotesNum; }
-
-        float* audioOffsetPtr() { return &AudioOffset; }
-        float* visualOffsetPtr() { return &VisualOffset; }
     };
 }

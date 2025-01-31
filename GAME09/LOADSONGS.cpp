@@ -48,7 +48,7 @@ namespace GAME09 {
 
 			textSize((float)LoadSongs.msgSize);
 			fill(255);
-			text("NowLoding...", LoadSongs.msgPos.x, LoadSongs.msgPos.y);
+			text("NowLoading...", LoadSongs.msgPos.x, LoadSongs.msgPos.y);
 			text(str, LoadSongs.percentPos.x, LoadSongs.percentPos.y);
 			fill(100);
 			rect(LoadSongs.barPos.x, LoadSongs.barPos.y, LoadSongs.barSize.x, LoadSongs.barSize.y);

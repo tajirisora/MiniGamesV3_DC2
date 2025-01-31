@@ -1,6 +1,7 @@
 #pragma once
 #include "SCENE.h"
 #include "SONGINFO.h"
+#include "TRANSFORM.h"
 #include "../../libOne/inc/VECTOR2.h"
 
 namespace GAME09 {
@@ -14,7 +15,8 @@ namespace GAME09 {
             NUM_CHOICES
         };
         struct DATA {
-            
+            TRANSFORM songTitleTF;
+            TRANSFORM jacketTF;
         };
     private:
         DATA Stage;

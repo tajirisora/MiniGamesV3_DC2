@@ -23,6 +23,7 @@ namespace GAME09 {
 		game()->rgCont()->init();
 		game()->lane()->init();
 		game()->judgeMNG()->init();
+		game()->score()->init();
 		//Pause = false;
 		Choices = RETRY;
 	}
@@ -66,6 +67,8 @@ namespace GAME09 {
 		}
 		game()->judgeMNG()->draw();
 		game()->score()->draw();
+		game()->songTitle()->draw(SongInfo, Stage.songTitleTF.pos, Stage.songTitleTF.size);
+		game()->jacket()->draw(SongInfo, Stage.jacketTF);
 
 		game()->rgCont()->draw();
 		

@@ -22,7 +22,7 @@
 #include "OPTIONBUTTON.h"
 #include "BACKBUTTON.h"
 #include "OPTION.h"
-//#include "SONGTITLE.h"
+#include "SONGTITLE.h"
 #include "ACHIEVEMENT.h"
 #include "LANE.h"
 #include "LOADSONGS.h"
@@ -30,6 +30,13 @@
 #include "LOADOPTION.h"
 #include "KEYCONFIG.h"
 #include "COLOR_PICKER.h"
+#include "ADJUST.h"
+#include "ADJUSTBUTTON.h"
+#include "STARTBUTTON.h"
+#include "DIFFICULTYSELECT.h"
+#include "DIFFICULTYBUTTON.h"
+#include "WARNING_MESSAGE.h"
+#include "RETRYBUTTON.h"
 
 namespace GAME09
 {
@@ -59,14 +66,23 @@ namespace GAME09
 			BUTTON::DATA autoButton;
 			BUTTON::DATA optionButton;
 			BUTTON::DATA backButton;
+			BUTTON::DATA adjustButton;
+			BUTTON::DATA startButton;
+			BUTTON::DATA difficultyButton;
+			BUTTON::DATA retryButton;
 			OPTION::DATA option;
-			//SONGTITLE::DATA songTitle;
+			SONGTITLE::DATA songTitle;
 			ACHIEVEMENT::DATA achievement;
 			LANE::DATA lane;
 			KEYCONFIG::DATA keyConfig;
 			LOADOPTION::DATA loadOption;
 			COLOR_PICKER::DATA colorPicker;
 			AUTOBUTTON::DATA autoButtonImg;
+			ADJUST::DATA adjust;
+			ADJUSTBUTTON::DATA adjustButtonImg;
+			DIFFICULTYSELECT::DATA difficultySelect;
+			DIFFICULTYBUTTON::DATA difficultyButtonData;
+			WARNING_MESSAGE::DATA warning;
 		};
 		DATA Data;
 	public:

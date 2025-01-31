@@ -49,7 +49,7 @@ namespace GAME09 {
 
 			textSize((float)LoadChart.msgSize);
 			fill(255);
-			text("NowLoding...", LoadChart.msgPos.x, LoadChart.msgPos.y);
+			text("NowLoading...", LoadChart.msgPos.x, LoadChart.msgPos.y);
 			text(str, LoadChart.percentPos.x, LoadChart.percentPos.y);
 			fill(100);
 			rect(LoadChart.barPos.x, LoadChart.barPos.y, LoadChart.barSize.x, LoadChart.barSize.y);

@@ -27,6 +27,8 @@ namespace GAME09 {
 
 	void CHARTMANAGER::create() {
 		ChartMNG = game()->container()->data().chartMNG;
+		AudioOffset = &game()->loadOption()->optionData().audioOffset;
+		VisualOffset = &game()->loadOption()->optionData().visualOffset;
 	}
 
 	void CHARTMANAGER::init() {
@@ -57,10 +59,10 @@ namespace GAME09 {
 	void CHARTMANAGER::loadChart(struct SONGINFO& songInfo, int& curRow){
 
 		//音声オフセットを反映
-		songInfo.offset += AudioOffset / 1000.0f;
-		songInfo.offset += VisualOffset / 1000.0f;
+		songInfo.offset += *AudioOffset / 1000.0f;
+		songInfo.offset += *VisualOffset / 1000.0f;
 		songInfo.offsetB = -songInfo.offset / (60.0f / songInfo.bpm);
-		songInfo.offset -= VisualOffset / 1000.0f;
+		songInfo.offset -= *VisualOffset / 1000.0f;
 
 		std::vector<NOTE*>& notes = game()->notes();
 		std::vector<CHANGEDATA>& changeDatas = game()->changeDatas();
@@ -112,10 +114,18 @@ namespace GAME09 {
 				std::string t = "#NOTES";
 				if (buffer.size() >= t.size() &&
 					buffer.find(t) != std::string::npos) {
-					notesTag = true;
-					for (int i = 0; i < 4; i++) {   //余計な情報4行分を飛ばす
+					for (int i = 0; i < 2; i++) {
 						std::getline(file, buffer);
 						curRow++;
+					}
+					std::string d = ChartMNG.difficultyStr[game()->difficultySelect()->curDifficulty()];
+					if (buffer.size() >= d.size() &&
+						buffer.find(d) != std::string::npos) {
+						for (int i = 0; i < 2; i++) {
+							std::getline(file, buffer);
+							curRow++;
+						}
+						notesTag = true;
 					}
 				}
 			}
@@ -168,9 +178,12 @@ namespace GAME09 {
 						if (buffer.find(ChartMNG.commandStr[LANECHANGE]) != std::string::npos) {
 							bar.emplace_back(buffer);
 						}
-						else if (buffer.find(',') != std::string::npos ||
-							buffer.find(';') != std::string::npos) {
-							end = true; //,か;が見つかったら小節の終了
+						else if (buffer.find(',') != std::string::npos) {
+							end = true; //,が見つかったら小節の終了
+						}
+						else if (buffer.find(';') != std::string::npos) {
+							end = true; //;が見つかったら譜面の終了
+							notesTag = false;
 						}
 						else {
 							bar.emplace_back(buffer);
@@ -280,7 +293,7 @@ namespace GAME09 {
 		safe_clear(longBeltData);
 
 		//音声オフセットの値が毎回足されるのを防ぐためにここで減らす
-		songInfo.offset -= AudioOffset / 1000.0f;
+		songInfo.offset -= *AudioOffset / 1000.0f;
 
 		game()->rgCont()->setEndTime(endTime);
 	}
@@ -297,8 +310,11 @@ namespace GAME09 {
 			std::filesystem::directory_iterator chartDirectory = std::filesystem::directory_iterator(chartPath);
 			bool isLoadChart = false;
 			bool isLoadScore = false;
-			Score = 0;
-			Achievement = -1;
+			//初期化
+			for (int i = 0; i < NUM_DIFFICULTY; i++) {
+				Score[i] = 0;
+				Achievement[i] = -1;
+			}
 			//ハイスコアを保存するファイルのパス
 			std::string scorePath = chartPath + "\\high_score.txt";
 			//範囲forで楽曲フォルダの中のすべてのファイルを確認
@@ -331,8 +347,11 @@ namespace GAME09 {
 					break;
 				}
 			}
-			Songs.back().highScore = Score;
-			Songs.back().achievement = Achievement;
+			//ハイスコアの書き込み
+			for (int i = 0; i < NUM_DIFFICULTY; i++) {
+				Songs.back().highScore[i] = Score[i];
+				Songs.back().achievement[i] = Achievement[i];
+			}
 			curLoad++;
 		}
 	}
@@ -369,6 +388,23 @@ namespace GAME09 {
 						break;
 					case BACKGROUND:
 						songInfo.backGround = content;
+						break;
+					case DIFFICULTIES:{
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								songInfo.difficulty[cnt - 2] = std::stoi(content.substr(offset));
+								break;
+							}
+							if (cnt > 1) {
+								songInfo.difficulty[cnt - 2] = std::stoi(content.substr(offset, pos - offset));
+							}
+							offset = pos + 1;
+							cnt++;
+						}
+					}
 						break;
 					case OFFSET:
 						songInfo.offset = std::stof(content);
@@ -425,11 +461,35 @@ namespace GAME09 {
 					int conE = (int)buffer.find_last_of(';');
 					std::string content = buffer.substr(conS, conE - conS);
 					switch (i) {
-					case SCORE:
-						Score = std::stoi(content);
+					case SCORE: {
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								Score[cnt] = std::stoi(content.substr(offset));
+								break;
+							}
+							Score[cnt] = std::stoi(content.substr(offset, pos - offset));
+							offset = pos + 1;
+							cnt++;
+						}
+					}
 						break;
-					case ACHIEVEMENT:
-						Achievement = std::stoi(content);
+					case ACHIEVEMENT: {
+						auto offset = std::string::size_type(0);
+						int cnt = 0;
+						while (1) {
+							auto pos = content.find(",", offset);
+							if (pos == std::string::npos) {
+								Achievement[cnt] = std::stoi(content.substr(offset));
+								break;
+							}
+							Achievement[cnt] = std::stoi(content.substr(offset, pos - offset));
+							offset = pos + 1;
+							cnt++;
+						}
+					}
 						break;
 					default:
 						break;
@@ -455,7 +515,7 @@ namespace GAME09 {
 		}
 	}
 
-	void CHARTMANAGER::updateHighScore(int highScore, int achievement) {
+	void CHARTMANAGER::updateHighScore() {
 		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
 		std::ofstream file;
 		file.open(songInfo.scorePath, std::ios::out);
@@ -466,10 +526,18 @@ namespace GAME09 {
 			text += ":";
 			switch (i) {
 			case SCORE:
-				text += std::to_string(highScore);
+				for (int i = 0; i < NUM_DIFFICULTY; i++) {
+					text += std::to_string(songInfo.highScore[i]);
+					text += ",";
+				}
+				text.pop_back();
 				break;
 			case ACHIEVEMENT:
-				text += std::to_string(achievement);
+				for (int i = 0; i < NUM_DIFFICULTY; i++) {
+					text += std::to_string(songInfo.achievement[i]);
+					text += ",";
+				}
+				text.pop_back();
 				break;
 			default:
 				break;

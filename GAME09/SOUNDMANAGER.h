@@ -12,7 +12,7 @@ namespace GAME09 {
     private:
         DATA Sound;
         int Music = 0;
-        bool SoundEffect = true;
+        bool* SoundEffect = nullptr;
     public:
         SOUNDMANAGER(class GAME* game);
         ~SOUNDMANAGER();
@@ -23,6 +23,5 @@ namespace GAME09 {
         void playMusic(int idx);
         void stopMusic();
         void tapSound();
-        bool* soundEffect() { return &SoundEffect; }
     };
 }

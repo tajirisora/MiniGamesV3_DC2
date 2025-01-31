@@ -22,10 +22,12 @@ namespace GAME09 {
 		Banner = game()->container()->data().banner;
 		CurNum = 0;
 		BackGroundImageNum = CurNum;
+		AnimeNum = CurNum;
 	}
 
 	void BANNER::init() {
 		PlayDemoMusic = true;
+		AnimeFlag = false;
 	}
 
 	void BANNER::update() {
@@ -87,17 +89,8 @@ namespace GAME09 {
 			else {
 				pos += Banner.nextPosOfst * dist;
 			}
-			//image(Banner.bannerImg, pos.x, pos.y, 0, Banner.imgSize);
-			fill(255);
-			rect(pos.x, pos.y, 600, 120);
-			fill(255,0,0);
-			rect(pos.x - 300, pos.y, 100, 100, 45);
-			fill(0);
-			textfMode(M_LEFT);
-			VECTOR2 textPos = pos + Banner.titlePosOfst;
-			textf(game()->songs()[bannerNum].title, textPos, Banner.titleStrSize);
-			textPos = pos + Banner.artistPosOfst;
-			textf(game()->songs()[bannerNum].artist, textPos, Banner.artistStrSize);
+			//game()->songs()[bannerNum]
+			game()->songTitle()->draw(game()->songs()[bannerNum], pos, 1);
 		}
 	}
 

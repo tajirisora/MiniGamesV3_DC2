@@ -34,6 +34,11 @@ namespace GAME09
 		Score = new SCORE(this);
 		Achievement = new ACHIEVEMENT(this);
 		AutoButton = new AUTOBUTTON(this);
+		SongTitle = new SONGTITLE(this);
+		StartButton = new STARTBUTTON(this);
+		DifficultySelect = new DIFFICULTYSELECT(this);
+		WarningMessage = new WARNING_MESSAGE(this);
+		RetryButton = new RETRYBUTTON(this);
 
 		Container->load();
 		LoadOption->create();
@@ -63,6 +68,11 @@ namespace GAME09
 		Score->create();
 		Achievement->create();
 		AutoButton->create();
+		SongTitle->create();
+		StartButton->create();
+		DifficultySelect->create();
+		WarningMessage->create();
+		RetryButton->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -71,6 +81,11 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete RetryButton;
+		delete WarningMessage;
+		delete DifficultySelect;
+		delete StartButton;
+		delete SongTitle;
 		delete AutoButton;
 		delete Achievement;
 		delete Score;

@@ -36,33 +36,35 @@ namespace GAME09 {
 	}
 	void GAME_CLEAR::UpdateHighScore() {
 		SONGINFO& songInfo = game()->songs()[game()->banner()->curNum()];
-		BeforeHighScore = songInfo.highScore;
+		CHARTMANAGER::DIFFICULTY d = game()->difficultySelect()->curDifficulty();
+		BeforeHighScore = songInfo.highScore[d];
 
 		if (!game()->judgeMNG()->autoRef()) {
-			if (songInfo.highScore < game()->score()->curScore()) {
-				songInfo.highScore = game()->score()->curScore();
+			if (songInfo.highScore[d] < game()->score()->curScore()) {
+				songInfo.highScore[d] = game()->score()->curScore();
 			}
-			if (songInfo.achievement < Achievement) {
-				songInfo.achievement = Achievement;
+			if (songInfo.achievement[d] < Achievement) {
+				songInfo.achievement[d] = Achievement;
 			}
 
-			game()->chartMNG()->updateHighScore(songInfo.highScore, songInfo.achievement);
+			game()->chartMNG()->updateHighScore();
 		}
 	}
 
 	void GAME_CLEAR::update() {
-
+		game()->backButton()->update();
+		game()->retryButton()->update();
 	}
 	void GAME_CLEAR::draw() {
 		clear(200);
 		SONGINFO songInfo = game()->songs()[game()->banner()->curNum()];
 		//背景
 		game()->backGround()->draw(songInfo);
-		//ジャケット
-		game()->jacket()->draw(songInfo, Result.jacketTF);
 		//リザルト表示する枠
 		rectMode(CENTER);
-		//image(Result.frameImg, Result.framePos.x, Result.framePos.y, 0, Result.frameSize);
+		image(Result.frameImg, Result.framePos.x, Result.framePos.y, 0, Result.frameSize);
+		//ジャケット
+		game()->jacket()->draw(songInfo, Result.jacketTF);
 		//FCとかAPとかの表示
 		game()->achievement()->draw(Achievement);
 		//それぞれの判定の数
@@ -107,30 +109,30 @@ namespace GAME09 {
 			}
 		}
 		//曲名、アーティスト
-		//game()->songTitle()->draw(Result.titlePos, Result.titleSize);
+		game()->songTitle()->draw(songInfo, Result.titlePos, Result.titleSize);
 		//操作方法
 		//image(Result.operationImg, Result.operationPos.x, Result.operationPos.y, 0, Result.operationSize);
 		//FAST,SLOWの数
 		int fastNum = game()->judgeMNG()->accuracy()[JUDGEMANAGER::FAST];
 		int slowNum = game()->judgeMNG()->accuracy()[JUDGEMANAGER::SLOW];
-		//float ratio;
-		//if (fastNum != 0 || slowNum != 0) {
-		//	ratio = (float)fastNum / (fastNum + slowNum);
-		//}
-		//else {
-		//	ratio = -1;
-		//}
-		//image(Result.fastSlowImg, Result.fastSlowPos.x, Result.fastSlowPos.y, 0, Result.fastSlowSize);
-		//rectMode(CORNER);
-		//noStroke();
-		//if (ratio != -1) {
-		//	VECTOR2 cornerPos = Result.fastSlowPos + Result.fastSlowGaugeOfst;
-		//	fill(Result.fastColor);
-		//	rect(cornerPos.x, cornerPos.y, Result.fastSlowGaugeSize.x * ratio, Result.fastSlowGaugeSize.y);
-		//	cornerPos.x += Result.fastSlowGaugeSize.x * ratio;
-		//	fill(Result.slowColor);
-		//	rect(cornerPos.x, cornerPos.y, Result.fastSlowGaugeSize.x * (1 - ratio), Result.fastSlowGaugeSize.y);
-		//}
+		float ratio;
+		if (fastNum != 0 || slowNum != 0) {
+			ratio = (float)fastNum / (fastNum + slowNum);
+		}
+		else {
+			ratio = -1;
+		}
+		image(Result.fastSlowImg, Result.fastSlowPos.x, Result.fastSlowPos.y, 0, Result.fastSlowSize);
+		rectMode(CORNER);
+		noStroke();
+		if (ratio != -1) {
+			VECTOR2 cornerPos = Result.fastSlowPos + Result.fastSlowGaugeOfst;
+			fill(Result.fastColor);
+			rect(cornerPos.x, cornerPos.y, Result.fastSlowGaugeSize.x * ratio, Result.fastSlowGaugeSize.y);
+			cornerPos.x += Result.fastSlowGaugeSize.x * ratio;
+			fill(Result.slowColor);
+			rect(cornerPos.x, cornerPos.y, Result.fastSlowGaugeSize.x * (1 - ratio), Result.fastSlowGaugeSize.y);
+		}
 		fill(0);
 		textfMode(M_LEFT);
 		VECTOR2 FNumPos = Result.fastSlowPos + Result.fastNumOfst;
@@ -138,15 +140,19 @@ namespace GAME09 {
 		textfMode(M_RIGHT);
 		VECTOR2 SNumPos = Result.fastSlowPos + Result.slowNumOfst;
 		textf(std::to_string(slowNum), SNumPos, Result.fastSlowNumSize);
+		//戻るボタン
+		game()->backButton()->draw();
+		//リトライボタン
+		game()->retryButton()->draw();
 	}
 	void GAME_CLEAR::nextScene() {
 		if (game()->fade()->inEndFlag()) {
-			if (isTrigger(KEY_ENTER)) {
+			if (game()->backButton()->isClick()) {
 				NextScene = GAME::SELECT_ID;
 				game()->fade()->outStart();
 			}
-			if (isTrigger(KEY_R)) {
-				NextScene = GAME::STAGE_ID;
+			if (game()->retryButton()->isClick()) {
+				NextScene = GAME::LOADCHART_ID;
 				game()->fade()->outStart();
 			}
 		}

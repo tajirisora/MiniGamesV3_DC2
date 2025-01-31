@@ -14,6 +14,7 @@ namespace GAME09 {
 
 	void SOUNDMANAGER::create() {
 		Sound = game()->container()->data().sound;
+		SoundEffect = &game()->loadOption()->optionData().soundEffect;
 	}
 
 	void SOUNDMANAGER::init() {
@@ -36,7 +37,7 @@ namespace GAME09 {
 		stopSound(Music);
 	}
 	void SOUNDMANAGER::tapSound() {
-		if (SoundEffect) {
+		if (*SoundEffect) {
 			stopSound(Sound.tapSound);
 			playSound(Sound.tapSound);
 		}
