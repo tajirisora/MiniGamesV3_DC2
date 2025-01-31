@@ -237,8 +237,8 @@ namespace GAME09
 		Data.gameClear.highScoreDiffOfst = VECTOR2(30, 0);
 		Data.gameClear.highScoreStrSize = VECTOR2(width, 40);
 		Data.gameClear.highScoreSize = VECTOR2(width, 60);
-		Data.gameClear.titlePos = VECTOR2(1450, 170);
-		Data.gameClear.titleSize = 1.092f;
+		Data.gameClear.titlePos = VECTOR2(1410, 190);
+		Data.gameClear.titleSize = 1.0f;
 		Data.gameClear.operationPos = VECTOR2(1542, 1033);
 		Data.gameClear.operationSize = 0.6f;
 		Data.gameClear.fastSlowPos = VECTOR2(550, 940);
@@ -295,6 +295,12 @@ namespace GAME09
 		Data.warning.warningTf.size = 1.5f;
 		Data.warning.displayTime = 1.5;
 		Data.warning.fadeTime = 0.3f;
+
+		Data.retryButton.imgSize = 0.44f;
+		Data.retryButton.colliType = BUTTON::DIAMOND;
+		Data.retryButton.key = KEY_R;
+		Data.retryButton.pos = VECTOR2(1820, 100);
+		Data.retryButton.radius = 80;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.title.titleLogo = loadImage("..\\main\\assets\\game09\\texture\\Title_Logo.png");
@@ -345,6 +351,7 @@ namespace GAME09
 		Data.gameClear.frameImg = loadImage("..\\main\\assets\\game09\\texture\\result_frame.png");
 		Data.gameClear.fastSlowImg = loadImage("..\\main\\assets\\game09\\texture\\result_fast_slow.png");
 		Data.warning.warningImg = loadImage("..\\main\\assets\\game09\\texture\\Warning_Message.png");
+		Data.retryButton.img = loadImage("..\\main\\assets\\game09\\texture\\Retry_Button.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

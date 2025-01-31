@@ -36,6 +36,7 @@
 #include "DIFFICULTYSELECT.h"
 #include "DIFFICULTYBUTTON.h"
 #include "WARNING_MESSAGE.h"
+#include "RETRYBUTTON.h"
 
 namespace GAME09
 {
@@ -68,6 +69,7 @@ namespace GAME09
 			BUTTON::DATA adjustButton;
 			BUTTON::DATA startButton;
 			BUTTON::DATA difficultyButton;
+			BUTTON::DATA retryButton;
 			OPTION::DATA option;
 			SONGTITLE::DATA songTitle;
 			ACHIEVEMENT::DATA achievement;

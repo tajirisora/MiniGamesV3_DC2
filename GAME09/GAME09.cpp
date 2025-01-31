@@ -38,6 +38,7 @@ namespace GAME09
 		StartButton = new STARTBUTTON(this);
 		DifficultySelect = new DIFFICULTYSELECT(this);
 		WarningMessage = new WARNING_MESSAGE(this);
+		RetryButton = new RETRYBUTTON(this);
 
 		Container->load();
 		LoadOption->create();
@@ -71,6 +72,7 @@ namespace GAME09
 		StartButton->create();
 		DifficultySelect->create();
 		WarningMessage->create();
+		RetryButton->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -79,6 +81,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete RetryButton;
 		delete WarningMessage;
 		delete DifficultySelect;
 		delete StartButton;

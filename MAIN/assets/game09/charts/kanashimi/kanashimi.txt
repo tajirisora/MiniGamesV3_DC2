@@ -20,7 +20,7 @@
 #LASTSECONDHINT:0;
 #CMOD:0;
 #LUA:;
-#VOLUME:-2000;
+#VOLUME:-1500;
 #LANES:1,2;
 #NOTES:
     dankaglike:

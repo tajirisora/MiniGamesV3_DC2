@@ -53,6 +53,7 @@ namespace GAME09 {
 
 	void GAME_CLEAR::update() {
 		game()->backButton()->update();
+		game()->retryButton()->update();
 	}
 	void GAME_CLEAR::draw() {
 		clear(200);
@@ -141,6 +142,8 @@ namespace GAME09 {
 		textf(std::to_string(slowNum), SNumPos, Result.fastSlowNumSize);
 		//戻るボタン
 		game()->backButton()->draw();
+		//リトライボタン
+		game()->retryButton()->draw();
 	}
 	void GAME_CLEAR::nextScene() {
 		if (game()->fade()->inEndFlag()) {
@@ -148,8 +151,8 @@ namespace GAME09 {
 				NextScene = GAME::SELECT_ID;
 				game()->fade()->outStart();
 			}
-			if (isTrigger(KEY_R)) {
-				NextScene = GAME::STAGE_ID;
+			if (game()->retryButton()->isClick()) {
+				NextScene = GAME::LOADCHART_ID;
 				game()->fade()->outStart();
 			}
 		}

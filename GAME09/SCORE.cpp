@@ -26,6 +26,7 @@ namespace GAME09 {
 	void SCORE::update() {
 		int* judgeNum = game()->judgeMNG()->judgeResult();
 		int allNotes = game()->chartMNG()->allNotesNum();
+		if (allNotes == 0)return;
 		float hitNotes = 0;
 		for (int i = 0; i < JUDGEMANAGER::NUM_JUDGE; i++) {
 			if (i == JUDGEMANAGER::PERFECT) {

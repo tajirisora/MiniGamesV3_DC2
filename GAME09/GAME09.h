@@ -4,7 +4,7 @@
 #include "CHANGEDATA.h"
 #include "NOTE.h"
 #include <vector>
-#define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
+//#define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
 extern bool EscapeKeyValid;
 namespace GAME09
 {
@@ -61,6 +61,7 @@ namespace GAME09
 		class STARTBUTTON* StartButton;
 		class DIFFICULTYSELECT* DifficultySelect;
 		class WARNING_MESSAGE* WarningMessage;
+		class RETRYBUTTON* RetryButton;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -92,6 +93,7 @@ namespace GAME09
 		class STARTBUTTON* startButton() { return StartButton; }
 		class DIFFICULTYSELECT* difficultySelect() { return DifficultySelect; }
 		class WARNING_MESSAGE* warningMessage() { return WarningMessage; }
+		class RETRYBUTTON* retryButton() { return RetryButton; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

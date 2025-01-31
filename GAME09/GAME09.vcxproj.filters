@@ -45,6 +45,7 @@
     <ClCompile Include="DIFFICULTYSELECT.cpp" />
     <ClCompile Include="DIFFICULTYBUTTON.cpp" />
     <ClCompile Include="WARNING_MESSAGE.cpp" />
+    <ClCompile Include="RETRYBUTTON.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME09.h" />
@@ -97,6 +98,7 @@
     <ClInclude Include="DIFFICULTYSELECT.h" />
     <ClInclude Include="DIFFICULTYBUTTON.h" />
     <ClInclude Include="WARNING_MESSAGE.h" />
+    <ClInclude Include="RETRYBUTTON.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game09\title.txt" />

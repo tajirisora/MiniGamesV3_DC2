@@ -168,6 +168,7 @@
     <ClCompile Include="OPTION.cpp" />
     <ClCompile Include="OPTIONBUTTON.cpp" />
     <ClCompile Include="OPTION_RELATED_BUTTON.cpp" />
+    <ClCompile Include="RETRYBUTTON.cpp" />
     <ClCompile Include="RHYTHM_GAME_CONTROLLER.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="SCORE.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="OPTION.h" />
     <ClInclude Include="OPTIONBUTTON.h" />
     <ClInclude Include="OPTION_RELATED_BUTTON.h" />
+    <ClInclude Include="RETRYBUTTON.h" />
     <ClInclude Include="RHYTHM_GAME_CONTROLLER.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SCORE.h" />
