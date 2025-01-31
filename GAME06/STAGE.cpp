@@ -74,11 +74,15 @@ namespace GAME06
 				fill(red);
 				text("Type2", textPos2.x, textPos2.y);
 			}
-			VECTOR2 textPos = { width / 2 - 360,height - 150 };
-			size = 40;
+			VECTOR2 textPos3 = { width / 2 - 314,400 };
+			VECTOR2 textPos4 = { width / 2 - 360,height - 150 };
 			fill(brack);
+			size = 50;
 			textSize(size);
-			text("左右キーで選択、SPACEキーで開始", textPos.x, textPos.y);
+			text("見た目を選んでください", textPos3.x, textPos3.y);
+			size = 40;
+			textSize(size);
+			text("左右キーで選択、SPACEキーで開始", textPos4.x, textPos4.y);
 		}
 		else if (Stage.curState == UPDATING_CHARACTER_DATA_ID) {
 			game()->player()->draw();
