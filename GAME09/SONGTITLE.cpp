@@ -33,17 +33,20 @@ namespace GAME09 {
 			framePos.y, 0, SongTitle.difficultyFrameImgSize * size);
 		imageColor(255);
 		//“ïˆÕ“x
-		framePos.y += SongTitle.numStrSize.y * size / 2;
-		font("‚l‚r –¾’©");
-		textfMode(M_CENTER);
-		textfStrokeSize(2 * size);
-		fill(0);
-		textfStroke(std::to_string(songInfo.difficulty[game()->difficultySelect()->curDifficulty()]),
-			framePos, SongTitle.numStrSize * size);
-		fill(255);
-		textf(std::to_string(songInfo.difficulty[game()->difficultySelect()->curDifficulty()]),
-			framePos, SongTitle.numStrSize * size);
-		font("Arial");
+		int d = songInfo.difficulty[game()->difficultySelect()->curDifficulty()];
+		if (d != 0) {
+			framePos.y += SongTitle.numStrSize.y * size / 2;
+			font("‚l‚r –¾’©");
+			textfMode(M_CENTER);
+			textfStrokeSize(2 * size);
+			fill(0);
+			textfStroke(std::to_string(d),
+				framePos, SongTitle.numStrSize * size);
+			fill(255);
+			textf(std::to_string(d),
+				framePos, SongTitle.numStrSize * size);
+			font("Arial");
+		}
 		//ƒ^ƒCƒgƒ‹
 		fill(0);
 		textfMode(M_LEFT);

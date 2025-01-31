@@ -35,17 +35,20 @@ namespace GAME09 {
 		imageColor(Color * ratio);
 		BUTTON::draw();
 		imageColor(255);
-		textfMode(M_CENTER);
-		VECTOR2 pos(Button.pos + Button.ofst);
-		pos.y += DifficultyButton.numStrSize.y / 2;
-		font("‚l‚r –¾’©");
-		textfStrokeSize(2);
-		fill(0);
-		textfStroke(std::to_string(game()->songs()[game()->banner()->curNum()].difficulty[Difficulty]),
-			pos, DifficultyButton.numStrSize);
-		fill(255);
-		textf(std::to_string(game()->songs()[game()->banner()->curNum()].difficulty[Difficulty]),
-			pos, DifficultyButton.numStrSize);
-		font("Arial");
+		int d = game()->songs()[game()->banner()->curNum()].difficulty[Difficulty];
+		if(d != 0){
+			textfMode(M_CENTER);
+			VECTOR2 pos(Button.pos + Button.ofst);
+			pos.y += DifficultyButton.numStrSize.y / 2;
+			font("‚l‚r –¾’©");
+			textfStrokeSize(2);
+			fill(0);
+			textfStroke(std::to_string(d),
+				pos, DifficultyButton.numStrSize);
+			fill(255);
+			textf(std::to_string(d),
+				pos, DifficultyButton.numStrSize);
+			font("Arial");
+		}
 	}
 }
