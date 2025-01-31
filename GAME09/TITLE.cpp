@@ -23,8 +23,9 @@ namespace GAME09 {
 	}
 	void TITLE::draw() {
 		clear(255);
-		fill(0);
-		print("title");
+		rectMode(CENTER);
+		image(Title.titleLogo, Title.titleTf.pos.x, Title.titleTf.pos.y, 0, Title.titleTf.size);
+		image(Title.pressEnterkey, Title.pressEnterkeyTf.pos.x, Title.pressEnterkeyTf.pos.y, 0, Title.pressEnterkeyTf.size);
 		game()->backButton()->draw();
 	}
 	void TITLE::nextScene() {

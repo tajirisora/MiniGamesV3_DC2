@@ -29,6 +29,7 @@ namespace GAME09 {
 		COLOR c = Detail.backColor;
 		c.a *= ratio;
 		fill(c);
+		noStroke();
 		rect(0, 0, width, height);
 		imageColor(255, 255, 255, 255 * ratio);
 		game()->jacket()->draw(s, { Detail.jacketPos, 0.8f });

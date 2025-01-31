@@ -10,6 +10,10 @@ namespace GAME09
 		loadSounds();
 	}
 	void CONTAINER::setData() {
+		Data.title.titleTf.pos = VECTOR2(970, 450);
+		Data.title.titleTf.size = 0.6f;
+		Data.title.pressEnterkeyTf.pos = VECTOR2(960, 830);
+		Data.title.pressEnterkeyTf.size = 0.6f;
 
 		Data.select.jacketTf.pos = VECTOR2(1360, 330);
 		Data.select.jacketTf.size = 0.88f;
@@ -288,6 +292,8 @@ namespace GAME09
 		Data.difficultyButtonData.numStrSize = VECTOR2(60, 60);
 	}
 	void CONTAINER::loadGraphic() {
+		Data.title.titleLogo = loadImage("..\\main\\assets\\game09\\texture\\Title_Logo.png");
+		Data.title.pressEnterkey = loadImage("..\\main\\assets\\game09\\texture\\Press_Enterkey.png");
 		Data.chartMNG.tempImage = loadImage("..\\main\\assets\\game09\\texture\\temp_image.png");
 		Data.jacket.areaBackImg = loadImage("..\\main\\assets\\game09\\texture\\jacket_back.png");
 		Data.note.centerUnderImg = loadImage("..\\main\\assets\\game09\\texture\\Note_Center_Under.png");
