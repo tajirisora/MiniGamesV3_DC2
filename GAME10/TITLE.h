@@ -18,6 +18,7 @@ public:
 			T_ID,//2000m
 			F_ID,//4000m
 			S_ID,//6000m
+			TUTORIAL_ID,
 			STATE_NUM
 		};
 		int SELECTSTATE = T_ID;

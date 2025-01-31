@@ -6,6 +6,7 @@ class HP_GAUGE :public GAME_OBJECT10
 public:
 	HP_GAUGE(class GAME10_GAME* game);
 	virtual ~HP_GAUGE();
+	virtual void init();
 	virtual void setHp(int Hp);//セッター
 	virtual void create();
 	virtual void appear(int hp, int Level);//

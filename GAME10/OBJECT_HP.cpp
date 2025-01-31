@@ -1,11 +1,23 @@
 #include "OBJECT_HP.h"
 #include"GAME_OBJECT10.h"
+#include"PLAYER.h"
 #include"CONTAINER.h"
 #include"GAME10_GAME.h"
 OBJECT_HP::OBJECT_HP(class GAME10_GAME* game) :HP_GAUGE(game) {}
 OBJECT_HP::~OBJECT_HP() {
 	delete[] NowHp;
 	delete[] baseHp;
+}
+void OBJECT_HP::init() {
+	ObjectGauge = game()->container()->objectHpGauge();
+	if (NowHp != nullptr) {
+		delete[] NowHp;
+	}
+	if (baseHp != nullptr) {
+		delete[] baseHp;
+	}
+	NowHp = new float[ObjectGauge.MaxNumHp];
+	baseHp = new float[ObjectGauge.MaxNumHp];
 }
 void OBJECT_HP::create() {
 	ObjectGauge = game()->container()->objectHpGauge();
@@ -18,8 +30,11 @@ void OBJECT_HP::appear(int hp, int level) {
 	ObjectGauge.curHp++;
 }
 void OBJECT_HP::getDamage(float damage, int objectKind,int weaponKind) {
-	if (weaponKind == GAME10_GAME::MISSILEBULLET_ID) {
+	if (game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::MISSILEBULLET_ID) {
 		NowHp[objectKind] -= damage * 3;
+	}
+	else if(game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::HANDGUN_ID){
+		NowHp[objectKind] -= damage / 2;
 	}
 	else {
 		NowHp[objectKind] -= damage;
@@ -37,6 +52,4 @@ void OBJECT_HP::draw(VECTOR2 pos, int objectKind) {
 	rect(pos.x, pos.y + ObjectGauge.My, ObjectGauge.hpWidth, ObjectGauge.hpHeight);
 	fill(0, 255, 0);
 	rect(pos.x, pos.y + ObjectGauge.My, ObjectGauge.hpWidth * (NowHp[objectKind] / baseHp[objectKind]), ObjectGauge.hpHeight);
-	text(NowHp[objectKind], 0, 25 * (objectKind + 1));
-	text(baseHp[objectKind], 70, 25 * (objectKind + 1));
 }

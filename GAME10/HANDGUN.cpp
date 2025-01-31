@@ -24,6 +24,13 @@ void HANDGUN::launch(VECTOR2 pos,int lane){
 		Handgun.intervalTime--;
 	}
 }
+void HANDGUN::levelUp() {
+	Handgun.Level++;
+	game()->player()->levelUp();
+	game()->enemies()->levelUp();
+	game()->objects()->levelUp();
+}
 void HANDGUN::draw(){
 	image(Handgun.GunsImg, Handgun.Pos.x, Handgun.Pos.y);
+	text(Handgun.Level, Handgun.LPos.x, Handgun.LPos.y);
 }

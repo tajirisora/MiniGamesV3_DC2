@@ -11,6 +11,7 @@ public:
 	virtual void launch(VECTOR2 pos,int lane);
 	virtual void proc();
 	virtual void update();
+	virtual void levelUp();
 	virtual void draw();
 	virtual int damage() { return 0; };
 };

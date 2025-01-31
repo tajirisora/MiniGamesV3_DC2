@@ -19,6 +19,7 @@ class OBJECT_HP :public HP_GAUGE
 	public:
 		OBJECT_HP(class GAME10_GAME* game);
 		~OBJECT_HP();
+		void init();
 		void appear(int hp, int Level);
 		void create();
 		void getDamage(float damage, int enemyKind,int weaponKind);

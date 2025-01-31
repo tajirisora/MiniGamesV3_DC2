@@ -6,7 +6,11 @@ class RESULT :
 {
 public:
 	struct DATA {
-		int resultImg = 0;
+		enum {
+			CLEAR_ID,
+			OVER_ID,
+		};
+		int resultImg[2];
 		VECTOR2 imgPos;
 	};
 private:

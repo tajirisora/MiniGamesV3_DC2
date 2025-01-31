@@ -14,7 +14,9 @@ public:
 	//ÉVÅ[ÉìÇÃêî
 	enum SCENE_ID {
 		TITLE_ID,
+		TUTORIAL_ID,
 		STAGE_ID,
+		SELECT_ID,
 		RESULT_ID,
 		NUM_SCENES
 	};
@@ -22,6 +24,7 @@ public:
 	enum WEAPON_ID {
 		HANDGUN_ID,
 		SHOTGUN_ID,
+		MISSILE_ID,
 		NUM_WEAPON
 	};
 	//HPÇÃID

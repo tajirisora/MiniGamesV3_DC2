@@ -9,6 +9,12 @@ OBJECT::~OBJECT() {
 	delete[] Objects;
 }
 void OBJECT::init() {
+	Object = game()->container()->object();
+	if (Objects != nullptr) {
+		delete[] Objects;
+		Objects = new OBJECTS[Object.totalNum];
+	}
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->init();
 }
 void OBJECT::create() {
 	Object = game()->container()->object();
@@ -23,8 +29,8 @@ void OBJECT::appear() {
 		Objects[Object.nowNum].lane = random() % 4;
 		Objects[Object.nowNum].pos.x = Object.opos.x;
 		Objects[Object.nowNum].pos.y = Object.opos.y + Object.my * Objects[Object.nowNum].lane;
-		Objects[Object.nowNum].hp = Object.ohp;
 		Objects[Object.nowNum].level = Object.level;
+		Objects[Object.nowNum].hp = Object.ohp + Object.upHp * Object.level;
 		Objects[Object.nowNum].Img = Object.Img[random() % 3];
 		game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->appear(Objects[Object.nowNum].hp, Objects[Object.nowNum].level);
 		Object.nowNum++;
@@ -44,20 +50,26 @@ void OBJECT::move() {
 }
 void OBJECT::collision() {
 	for (int i = 0; Object.nowNum > i; i++) {//“G‚Ì‘”•ª‰ñ‚é
-		for (int bulletKind = 0; bulletKind < game()->player()->playerData().weaponHaveNum; bulletKind++) {
-			for (int j = 0; j < game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->BulletNum(); j++) {//’e‚»‚ê‚¼‚ê‚É”»’è‚ğŒŸõ‚·‚é
-				if (Objects[i].pos.x <= game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->BulletRight(j)
-					&& Objects[i].lane == game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->bulletLane(j)) {
-					game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->getDamage(game()->weapons(game()->player()->playerData().weaponKind[bulletKind])->damage(), i,bulletKind);
-					game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->kill(j);
+		for (int bulletKind = 0; bulletKind < game()->player()->PlayerWeaHaveNum(); bulletKind++) {
+			for (int j = 0; j < game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->BulletNum(); j++) {//’e‚»‚ê‚¼‚ê‚É”»’è‚ğŒŸõ‚·‚é
+				if (Objects[i].pos.x <= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->BulletRight(j)
+					&& Objects[i].pos.x + Object.rightMx >= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLeft(j)
+					&& Objects[i].lane == game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLane(j)) {
+					game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->getDamage(game()->weapons(game()->player()->PlayerWeaponKind(bulletKind))->damage(), i,bulletKind);
+					game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->kill(j);
 				}
 			}
 		}
 
 		if (game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->GetHp(i) <= 0) {
+			Object.sumDestroy++;
 			kill(i);
+			game()->time()->rewind();
 		}
 	}
+}
+void OBJECT::levelUp() {
+	Object.level++;
 }
 void OBJECT::kill(int i) {
 	Object.nowNum--;
@@ -71,10 +83,7 @@ void OBJECT::AllKill() {
 	Object.nowNum = NULL;
 	Object.callIntervalDist = Object.initIntervalDist;
 }
-void OBJECT::draw() {
-	textSize(30);
-	for (int i = 0; Object.nowNum > i; i++) {
-		image(Objects[i].Img, Objects[i].pos.x, Objects[i].pos.y);
-		game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->draw(Objects[i].pos, i);
-	}
+void OBJECT::draw(int objectKind) {
+		image(Objects[objectKind].Img, Objects[objectKind].pos.x, Objects[objectKind].pos.y);
+		game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->draw(Objects[objectKind].pos, objectKind);
 }

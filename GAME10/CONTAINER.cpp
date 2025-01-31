@@ -20,17 +20,30 @@ void CONTAINER::load(){
 void CONTAINER::setImage() {
 	Data.title.titleImg = loadImage("..\\main\\assets\\game10\\title.png");
 
+	Data.tutorial.tutoImg[0] = loadImage("..\\main\\assets\\game10\\tutorial0.png");
+	Data.tutorial.tutoImg[1] = loadImage("..\\main\\assets\\game10\\tutorial1.png");
+	Data.tutorial.tutoImg[2] = loadImage("..\\main\\assets\\game10\\tutorial2.png");
+
 	Data.stage.stageImg = loadImage("..\\main\\assets\\game10\\stageImg.png");
 	Data.stage.backImg = loadImage("..\\main\\assets\\game10\\backImg.png");
 	Data.stage.frontImg = loadImage("..\\main\\assets\\game10\\frontImg.png");
 	Data.stage.GoalBoardImg = loadImage("..\\main\\assets\\game10\\kanban1.png");
+	Data.stage.GoalImg = loadImage("..\\main\\assets\\game10\\goalTape.png");
 
-	Data.result.resultImg = loadImage("..\\main\\assets\\game10\\title.png");
+	Data.select.backImg = loadImage("..\\main\\assets\\game10\\selectImg.png");
+	Data.select.weaponImg[0] = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
+	Data.select.weaponImg[1] = loadImage("..\\main\\assets\\game10\\shotgunImg.png");
+	Data.select.weaponImg[2] = loadImage("..\\main\\assets\\game10\\bombImg.png");
+
+	Data.result.resultImg[0] = loadImage("..\\main\\assets\\game10\\clearImg.png");
+	Data.result.resultImg[1] = loadImage("..\\main\\assets\\game10\\overImg.png");
 	for (int i = 0; i < 4; i++) {
 		Data.stage.Lanes[i].LaneImg = loadImage("..\\main\\assets\\game10\\stageLane.png");
 	}
-	Data.stage.GoalImg = loadImage("..\\main\\assets\\game10\\goalTape.png");
-	Data.player.playerImg = loadImage("..\\main\\assets\\game10\\playerImg.png");
+
+	Data.player.playerImg = loadImage("..\\main\\assets\\game10\\playerImg0.png");
+	Data.player.pImg[0] = loadImage("..\\main\\assets\\game10\\playerImg0.png");
+	Data.player.pImg[1] = loadImage("..\\main\\assets\\game10\\playerImg1.png");
 	Data.player.timeImage = loadImage("..\\main\\assets\\game10\\timeImg.png");
 
 	Data.enemy.Img[0] = loadImage("..\\main\\assets\\game10\\enemyImg00.png");
@@ -45,10 +58,15 @@ void CONTAINER::setImage() {
 
 	Data.handgun.GunsImg = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
 	Data.shotgun.GunsImg = loadImage("..\\main\\assets\\game10\\shotgunImg.png");
+	Data.missile.GunsImg = loadImage("..\\main\\assets\\game10\\bombImg.png");
+
 	Data.handgunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
-	Data.shotGunBullet.img = loadImage("..\\main\\assets\\game10\\Bullet.png");
+	Data.shotGunBullet.img = loadImage("..\\main\\assets\\game10\\shotGunBullet.png");
+	Data.missileBullet.img = loadImage("..\\main\\assets\\game10\\missileBullet.png");
+
 	Data.handgunBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
 	Data.shotGunBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
+	Data.missileBullet.imgShadow = loadImage("..\\main\\assets\\game10\\BulletShadow.png");
 }
 void CONTAINER::setData(){
 	Data.title.imgPos.x = 0;
@@ -60,6 +78,10 @@ void CONTAINER::setData(){
 	Data.title.crPos.x = 850;
 	Data.title.crPos.y = 560;
 	Data.title.rad = 50;
+//tutorial
+	Data.tutorial.ImgPos.x = 0;
+	Data.tutorial.ImgPos.y = 0;
+	Data.tutorial.NOW_PAGE = Data.tutorial.ONE_PAGE;
 //ステージ
 	Data.stage.imgPos.x = 0;
 	Data.stage.imgPos.y = 0;
@@ -75,6 +97,11 @@ void CONTAINER::setData(){
 	Data.stage.backMx = 2.2f;
 	Data.stage.bImgNum = 5;
 	Data.stage.ImgLen = 3000.0f;
+
+	Data.stage.DestPos.x = 1250;
+	Data.stage.DestPos.y = 75;
+	Data.stage.DestNum = 0;
+	Data.stage.DestTextSize = 50;
 
 	Data.stage.LaneLenNum = 8;
 	Data.stage.opx = 0;
@@ -95,14 +122,48 @@ void CONTAINER::setData(){
 	Data.stage.bPos.x = Width * (Data.stage.LaneLenNum - 1) - 100;
 	Data.stage.bPos.y = 400;
 
+	//武器のselect
+	Data.select.ImgPos.x = 0;
+	Data.select.ImgPos.y = 0;
+	Data.select.weaponImgPos.x = 400;
+	Data.select.weaponImgPos.y = 250;
+	Data.select.weaponImgMy = 200;
+	Data.select.getFlag[Data.select.HANDGUN] = true;
+	Data.select.getFlag[Data.select.SHOTGUN] = false;
+	Data.select.getFlag[Data.select.MISSILE] = false;
+	Data.select.getFlag[Data.select.SKIP] = true;
+	Data.select.textPos.x = 550;
+	Data.select.textPos.y = 330;
+	Data.select.skipTextSize = 100;
+	Data.select.skipPos.x = 870;
+	Data.select.skipPos.y = 970;
+	Data.select.textMy = 200;
+	Data.select.selectColor = COLOR(255, 255, 0);
+	Data.select.noSelectColor = COLOR(255,255,255);
+	Data.select.noGetMoji[0] = "胃薬　正面に弾を飛ばす";
+	Data.select.noGetMoji[1] = "錠剤　三列に弾を飛ばす";
+	Data.select.noGetMoji[2] = "ハンマー　近い障害物を追尾する";
+	Data.select.Moji[0] = "胃薬　威力アップ";
+	Data.select.Moji[1] = "錠剤　威力アップ";
+	Data.select.Moji[2] = "ハンマー　威力アップ";
+	Data.select.Moji[3] = "SKIP";
+	Data.select.selectFlag = false;
+	Data.select.SELECT_NOW = Data.select.HANDGUN;
+
 	//result
 	Data.result.imgPos.x = 0;
 	Data.result.imgPos.y = 0;
 
 	//プレイヤー
 	Data.player.Opos.x = 400;
-	Data.player.Opos.y = 500;
+	Data.player.Opos.y = 560;//元は５００
 	Data.player.ImgRight = 100;
+	Data.player.level = 1;
+	Data.player.levelUpBorder = 2;
+	Data.player.nowImage = 0;
+	Data.player.nowFlame = 0;
+	Data.player.nextFlame = 20;
+	Data.player.imgNum = 2;
 	Data.player.maxSpeed = 10.0f;
 	Data.player.minSpeed = 5.0f;
 	Data.player.gearSpeed = 0.05f;
@@ -111,7 +172,7 @@ void CONTAINER::setData(){
 	Data.player.Pmy = 60;
 	Data.player.hp = 16;
 	Data.player.Pos.x = Data.player.Opos.x;
-	Data.player.Pos.y = Data.stage.opy - Data.player.Pmy * Data.player.nowLane;
+	Data.player.Pos.y = Data.player.Opos.y;
 	Data.player.LaneMax = Data.stage.LaneNum;
 	Data.player.initInvisibleTime = 150;
 	Data.player.invisibleTime = 0;
@@ -132,34 +193,40 @@ void CONTAINER::setData(){
 
 	//敵データ
 	Data.enemy.opos.x = width;
-	Data.enemy.opos.y = 520;
+	Data.enemy.opos.y = 540;
 	Data.enemy.my = Data.player.Pmy;
 	Data.enemy.ohp = 200;
+	Data.enemy.upHp = 100;
 	Data.enemy.rightMx = 100;
 	Data.enemy.totalNum = 50;
 	Data.enemy.nowNum = 0;
 	Data.enemy.speed = 6;
 	Data.enemy.level = 1;
-	Data.enemy.initIntervalDist = 1000;
+	Data.enemy.sumDestroy = 0;
+	Data.enemy.initIntervalDist = 600;
 	Data.enemy.callIntervalDist = Data.enemy.initIntervalDist;
 	Data.enemy.sumTime = 500;
 	Data.enemy.hitDamage = 2;
 	Data.enemy.shortTime = 20;
+	Data.enemy.sumDestroy = 0;
 
 	//障害物データ
 	Data.object.opos.x = width;
-	Data.object.opos.y = 520;
+	Data.object.opos.y = 540;
 	Data.object.my = Data.player.Pmy;
-	Data.object.ohp = 200;
+	Data.object.ohp = 300;
+	Data.object.upHp = 200;
 	Data.object.rightMx = 100;
 	Data.object.totalNum = 50;
 	Data.object.nowNum = 0;
 	Data.object.speed = 6;
 	Data.object.level = 1;
-	Data.object.initIntervalDist = 600;
+	Data.object.initIntervalDist = 1000;
 	Data.object.callIntervalDist = Data.object.initIntervalDist;
 	Data.object.sumTime = 300;
+	Data.object.hitDamage = 2;
 	Data.object.shortTime = 20;
+	Data.object.sumDestroy = 0;
 
 	//HPゲージ
 	Data.playerGauge.imgPos.x = 70;
@@ -186,21 +253,39 @@ void CONTAINER::setData(){
 	//武器
 	Data.handgun.Pos.x = 1000;
 	Data.handgun.Pos.y = 920;
+	Data.handgun.LPos.x = 1040;
+	Data.handgun.LPos.y = 1070;
 	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
-	Data.handgun.damage = 50;
+	Data.handgun.damage = 100;
+	Data.handgun.damageUp = 100;
 	Data.handgun.ctIntervalTime = 60;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
 
 	Data.shotgun.Pos.x = 1200;
 	Data.shotgun.Pos.y = 920;
+	Data.shotgun.LPos.x = 1240;
+	Data.shotgun.LPos.y = 1070;
 	Data.shotgun.speed = 20;
 	Data.shotgun.bulletNum = 3;
-	Data.shotgun.damage = 150;
+	Data.shotgun.damage = 100;
+	Data.shotgun.damageUp = 70;
 	Data.shotgun.ctIntervalTime = 90;
 	Data.shotgun.intervalTime = Data.shotgun.ctIntervalTime;
 	Data.shotgun.Level = 1;
+
+	Data.missile.Pos.x = 1400;
+	Data.missile.Pos.y = 920;
+	Data.missile.LPos.x = 1440;
+	Data.missile.LPos.y = 1070;
+	Data.missile.speed = 0.05f;
+	Data.missile.bulletNum = 1;
+	Data.missile.damage = 200;
+	Data.missile.damageUp = 100;
+	Data.missile.ctIntervalTime = 110;
+	Data.missile.intervalTime = Data.missile.ctIntervalTime;
+	Data.missile.Level = 1;
 
 	//時間
 	Data.time.time = 3600;
@@ -218,16 +303,19 @@ void CONTAINER::setData(){
 	Data.distance.distPos.x = 400;
 	Data.distance.distPos.y = 100;
 
+	Data.handgunBullet.BulletSmx = Data.player.ImgRight - 20;
 	Data.handgunBullet.totalNum = 20;
 	Data.handgunBullet.curNum = 0;
-	Data.handgunBullet.speed = 4.0f;
+	Data.handgunBullet.speed = 1.0f;
 	Data.handgunBullet.LaneMax = Data.stage.LaneNum;
 	Data.handgunBullet.Bmy = Data.player.Pmy;
 	Data.handgunBullet.RightX = 50;
 	Data.handgunBullet.cRadius = 10;
 	Data.handgunBullet.ImgHalf = 25;
+	Data.handgunBullet.bulletShadowMy = 120;
 	Data.handgunBullet.BulletNum = 1;
 
+	Data.shotGunBullet.BulletSmx = Data.player.ImgRight - 20;
 	Data.shotGunBullet.totalNum = 60;
 	Data.shotGunBullet.curNum = 0;
 	Data.shotGunBullet.speed = 0;
@@ -237,5 +325,24 @@ void CONTAINER::setData(){
 	Data.shotGunBullet.img = 0;
 	Data.shotGunBullet.cRadius = 10;
 	Data.shotGunBullet.ImgHalf = 25;
+	Data.shotGunBullet.bulletShadowMy = 120;
 	Data.shotGunBullet.BulletNum = 3;
+
+	//ミサイル
+	Data.missileBullet.BulletSmx = Data.player.ImgRight - 20;
+	Data.missileBullet.totalNum = 10;
+	Data.missileBullet.curNum = 0;
+	Data.missileBullet.speed = 0;
+	Data.missileBullet.upFlame = 5;
+	Data.missileBullet.nowFlame = 0;
+	Data.missileBullet.upSpeed = 0;
+	Data.missileBullet.maxSpeed = 20.0f;
+	Data.missileBullet.LaneMax = Data.stage.LaneNum;
+	Data.missileBullet.Bmy = Data.player.Pmy;
+	Data.missileBullet.RightX = 50;
+	Data.missileBullet.cRadius = 10;
+	Data.missileBullet.ImgHalf = 25;
+	Data.missileBullet.EPGap = 40;
+	Data.missileBullet.bulletShadowMy = 120;
+	Data.missileBullet.BulletNum = 1;
 }

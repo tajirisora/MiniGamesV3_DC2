@@ -9,5 +9,6 @@ void WEAPONS::proc(){
 	update();
 	draw();
 }
+void WEAPONS::levelUp() {}
 void WEAPONS::update(){}
 void WEAPONS::draw(){}

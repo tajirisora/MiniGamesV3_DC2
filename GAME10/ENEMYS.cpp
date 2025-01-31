@@ -8,9 +8,17 @@
 ENEMYS::ENEMYS(class GAME10_GAME* game) :GAME_OBJECT10(game) {
 }
 ENEMYS::~ENEMYS() {
-	delete[] Enemies;
+	if (Enemies != nullptr) {
+		delete[] Enemies;
+	}
 }
 void ENEMYS::init() {
+	Enemy = game()->container()->enemy();
+	if (Enemies != nullptr) {
+		delete[] Enemies;
+		Enemies = new ENEMY[Enemy.totalNum];
+	}
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->init();
 }
 void ENEMYS::create() {
 	Enemy = game()->container()->enemy();
@@ -25,8 +33,8 @@ void ENEMYS::appear() {
 		Enemies[Enemy.nowNum].lane = random() % 4;
 		Enemies[Enemy.nowNum].pos.x = Enemy.opos.x;
 		Enemies[Enemy.nowNum].pos.y = Enemy.opos.y + Enemy.my * Enemies[Enemy.nowNum].lane;
-		Enemies[Enemy.nowNum].hp = Enemy.ohp;
 		Enemies[Enemy.nowNum].level = Enemy.level;
+		Enemies[Enemy.nowNum].hp = Enemy.ohp + Enemy.upHp * Enemy.level;
 		Enemies[Enemy.nowNum].Img = Enemy.Img[random() % 3];
 		game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->appear(Enemies[Enemy.nowNum].hp, Enemies[Enemy.nowNum].level);
 		Enemy.nowNum++;
@@ -46,22 +54,26 @@ void ENEMYS::move() {
 }
 void ENEMYS::collision() {
 	for (int i = 0; Enemy.nowNum > i; i++) {//“G‚Ì‘”•ª‰ñ‚é
-		for (int bulletKind = 0; bulletKind < game()->player()->playerData().weaponHaveNum; bulletKind++) {
-			for (int j = 0; j < game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->BulletNum(); j++) {//’e‚»‚ê‚¼‚ê‚É”»’è‚ğŒŸõ‚·‚é
-				if (Enemies[i].pos.x + Enemy.rightMx >= game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->bulletLeft(j)
-					&& Enemies[i].pos.x <= game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->BulletRight(j)
-					&& Enemies[i].lane == game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->bulletLane(j)) {
-					game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->getDamage(game()->weapons(game()->player()->playerData().weaponKind[bulletKind])->damage(), i,bulletKind);
-					game()->bullets(game()->player()->playerData().weaponKind[bulletKind])->kill(j);
+		for (int bulletKind = 0; bulletKind < game()->player()->PlayerWeaHaveNum(); bulletKind++) {
+			for (int j = 0; j < game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->BulletNum(); j++) {//’e‚»‚ê‚¼‚ê‚É”»’è‚ğŒŸõ‚·‚é
+				if (Enemies[i].pos.x + Enemy.rightMx >= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLeft(j)
+					&& Enemies[i].pos.x <= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->BulletRight(j)
+					&& Enemies[i].lane == game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLane(j)) {
+					game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->getDamage(game()->weapons(game()->player()->PlayerWeaponKind(bulletKind))->damage(), i,bulletKind);
+					game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->kill(j);
 				}
 			}
 		}
 
 		if (game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->GetHp(i) <= 0) {
+			Enemy.sumDestroy++;
 			kill(i);
 			game()->time()->rewind();
 		}
 	}
+}
+void ENEMYS::levelUp() {
+	Enemy.level++;
 }
 void ENEMYS::kill(int i) {
 	Enemy.nowNum--;
@@ -76,7 +88,6 @@ void ENEMYS::AllKill() {
 	Enemy.callIntervalDist = Enemy.initIntervalDist;
 }
 void ENEMYS::draw(int EnemyKind) {
-	textSize(30);
 	image(Enemies[EnemyKind].Img, Enemies[EnemyKind].pos.x, Enemies[EnemyKind].pos.y);
 	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->draw(Enemies[EnemyKind].pos, EnemyKind);
 }
