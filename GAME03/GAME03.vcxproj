@@ -145,6 +145,7 @@
     <ClCompile Include="GAME_OBJECT.cpp" />
     <ClCompile Include="MAP.cpp" />
     <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="PLAYER_BULLET.cpp" />
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="SELECT.cpp" />
     <ClCompile Include="STAGE.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="PLAYER_BULLET.h" />
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="SELECT.h" />
     <ClInclude Include="STAGE.h" />
@@ -172,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game03\title.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

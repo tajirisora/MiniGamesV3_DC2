@@ -94,8 +94,10 @@ namespace GAME03 {
 					Select.Confirm_selection = true;
 				}
 			}
+			int cntimg = 0;
 			for (int i = 1; i <= Select.numPlayer / 4 + 1; i++) {
 				for (int j = 1; j <= 4; j++) {
+					cntimg++;
 					if ((i - 1) * 4 + j > Select.numPlayer) {
 						break;
 					}
@@ -125,8 +127,36 @@ namespace GAME03 {
 					image(Select.select_chara, width / 5.1f + 200 * j, height / 11.0f + 200 * i);
 					imageColor(240);
 					image(Select.chara_img[i], width / 4.3f + 200 * j, height / 6.5f + 200 * i , 0 , 1.5f);
+					sprintf_s(Select.charaName[cntimg], "assets/game03/data/player/player%d/player%d.txt", cntimg, cntimg);
+					fopen_s(&fp, Select.charaName[cntimg], "r");
+					if (fp != NULL) {
+						fscanf_s(fp, "%[^\n]", name, (unsigned)_countof(name));
+						fill(0);
+						textSize(40);
+						text(name, width / 5.1f + 10 + 200 * j, height / 11.0f + 50 + 200 * i);
+						fclose(fp);
+					}
 				}
 			}
+			if (isTrigger(KEY_Q)) {
+				Select.TimePls += 30;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			if (isTrigger(KEY_E)) {
+				if (Select.TimePls >= 0)Select.TimePls -= 30;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			if (Select.TimePls < 0) { Select.TimePls = 0; }
+			if (isTrigger(KEY_R)) {
+				Select.TimePls = 0;
+				playSound(game()->container()->data().volume.Se_C);
+			}
+			fill(0);
+			textSize(50);
+			text("default 30•b", 1450, 400);
+			text("Q © +" + (let)(int)Select.TimePls + "•b ¨ E", 1430, 460);
+			textSize(30);
+			text("R : ƒŠƒZƒbƒg", 1500, 500);
 		}
 		else if (Select.Confirm_selection) {
 			image(Select.select_sfream, 0, 0);
@@ -183,6 +213,16 @@ namespace GAME03 {
 					}
 				}
 				image(Select.select_stage, width / 16.1f + 200, height / 12.0f + 180 * i);
+				sprintf_s(Select.stageName[i], "assets/game03/data/stage/stage%d/stage%d.txt", i, i);
+				fopen_s(&fp, Select.stageName[i], "r");
+				if (fp != NULL) {
+					fscanf_s(fp, "%[^\n]", name, (unsigned)_countof(name));
+					fill(0);
+					textSize(60);
+					text(name, width / 16.1f + 220, height / 12.0f + 90 + 180 * i);
+					//text(Select.stageName[i], width / 16.1f + 220, height / 12.0f + 90 + 180 * i);
+					fclose(fp);
+				}
 			}
 			if (isRelease(KEY_ESCAPE)) {
 				playSound(game()->container()->data().volume.Se_D);
@@ -197,9 +237,15 @@ namespace GAME03 {
 		game()->fade()->draw();
 
 	}
+
+	time_t SELECT::timepls() const {
+		return Select.TimePls;
+	}
+
 	void SELECT::nextScene() {
 		if (Select.next_scene) {
 			Select.next_scene = false;
+			stopSound(game()->container()->data().volume.Snd_A);
 			game()->fade()->outTrigger();
 		}
 		if (game()->fade()->outEndFlag()) {

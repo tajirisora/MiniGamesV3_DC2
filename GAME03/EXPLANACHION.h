@@ -4,7 +4,7 @@ namespace GAME03 {
 	class EXPLANACHION :public SCENE {
 	public:
 		struct DATA {
-
+			int explanationImg = 0;
 		};
 	private:
 		DATA Explan;

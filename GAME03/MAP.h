@@ -20,13 +20,17 @@ namespace GAME03 {
             float endWorldX = 0;
             float endWorldY = 0;
             float centerX = 0;
+            int random_x = 0;
+            int random_y = 0;
         };
         enum CHARA_ID {
             PLAYER1_ID = 'a',
             PLAYER2_ID = 'a',
             PLAYER3_ID = 'a',
             PLAYER4_ID = 'a',
-            PLAYER5_ID = 'a',
+            PLAYER5_ID = 'a', 
+            BAT_ID = 'b',
+            PLAYER_BULLET_ID = 'c',
         };
     private:
         DATA Map;
@@ -45,6 +49,7 @@ namespace GAME03 {
         bool collisionCharaRight(float wx, float wy) const;
         bool collisionCharaTop(float wx, float wy) const;
         bool collisionCharaBottom(float wx, float wy) const;
+        bool collisionCharaRect(float wLeft, float wTop, float wRight, float wBottom) const;
         float wDispLeft() const;
         float wDispRight() const;
     };
