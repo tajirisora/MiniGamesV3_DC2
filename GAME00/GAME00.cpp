@@ -127,7 +127,7 @@ namespace GAME00
 		textSize(80);
 		print("カードは4枚まで引ける");
 		print("合計が21に近いほうが勝ち");
-		print("カードがそろったらENTER");
+		print("カードがそろったらENTERで次に進む");
 		
 		textSize(80);
 		textMode(BCENTER);
@@ -173,7 +173,7 @@ namespace GAME00
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text("相手", 800, 100);
+		text("相手", 900, 100);
 
 	}
 	void GAME::Draw2()
