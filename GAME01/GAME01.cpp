@@ -1,16 +1,27 @@
-#include "../../libOne/inc/libOne.h"
+ï»¿#include "../../libOne/inc/libOne.h"
 #include "../MAIN/MAIN.h"
 #include "GAME01.h"
+#include <cstdio>
+
+
 namespace GAME01
 {
+
 	int GAME::create()
 	{
+        bgmSnd = loadSound("..\\main\\assets\\game01\\BGM.wav");
+        aaaSnd = loadSound("..\\main\\assets\\game01\\aaa.wav");
+        loadHighScore();
+
+        for (int i = 0; i < RANKING_SIZE; i++) {
+            rankings[i] = 0;
+        }
 		return 0;
 	}
 
 	void GAME::destroy()
 	{
-
+        saveHighScore();
 	}
 
     void GAME::proc()
@@ -23,29 +34,29 @@ namespace GAME01
     int bonus = 0;
     int Score = 0;
     int Offsets[7][3][2] = {
-        //¡ ¡¡...0
+        //â– â–¡â– â– ...0
         -1,0,   1,0,  2,0,
-        //¡
-        //¡ ¡....1
+        //â– 
+        //â– â–¡â– ....1
         -1,-1, -1,0,  1,0,
-        //  @¡
-        //¡ ¡....2
+        //  ã€€â– 
+        //â– â–¡â– ....2
         -1,0,   1,-1, 1,0,
-        //¡ 
-        //@¡¡....3
+        //â– â–¡
+        //ã€€â– â– ....3
         -1,0,   0,1,  1,1,
-        //@ ¡
-        //¡¡  ....4
+        //ã€€â–¡â– 
+        //â– â–   ....4
          1,0,   0,1, -1,1,
-         //@¡
-         //¡ ¡....5
+         //ã€€â– 
+         //â– â–¡â– ....5
          -1,0,   0,-1, 1,0,
-         // ¡
-         //¡¡......6
+         //â–¡â– 
+         //â– â– ......6
           1,0,   0,1,  1,1,
     };
 
-    // HSB‚©‚çRGB‚Ö‚Ì•ÏŠ·ŠÖ”
+    // HSBã‹ã‚‰RGBã¸ã®å¤‰æ›é–¢æ•°
     void GAME::hsbToRgb(float h, float s, float v, int& r, int& g, int& b) {
         if (s == 0) {
             r = g = b = static_cast<int>(v * 255);
@@ -92,16 +103,31 @@ namespace GAME01
 
     void GAME::title()
     {
-        clear(255, 255, 255);
-        //ƒeƒLƒXƒgî•ñ
-        fill(0, 255, 0);
+
+        angleMode(DEGREES);
+        colorMode(RGB); // ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ç”¨ã«RGBãƒ¢ãƒ¼ãƒ‰ã«è¨­å®š
+        clear(240, 240, 255); // è–„ã„é’
+
+        // ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—
+        fill(0, 102, 204); // æ¿ƒã„é’
         textSize(200);
-       // text("Tetris", 600, 450);
-        fill(0, 0, 0);
+        text("Tetris ", 600, 450);
+
+        // ãƒã‚¤ã‚¹ã‚³ã‚¢è¡¨ç¤º
+        fill(0, 0, 0); // é»’
+        textSize(50);
+        char highScoreStr[20];
+        intToStr(highScore, highScoreStr);
+        text("High Score: ", 300, 600);
+        text(highScoreStr, 750, 600);
+
+        // æ“ä½œèª¬æ˜æ–‡å­—
+        fill(0, 0, 0); // é»’
         textSize(40);
-        text("ƒNƒŠƒbƒN‚Å‘€ìà–¾‰æ–Ê‚Ö", 750, 500);
-        text("Enter‚Åƒƒjƒ…[‚É–ß‚é", 0, 1080);
-        //ƒV[ƒ“Ø‚è‘Ö‚¦
+        text("ã‚¯ãƒªãƒƒã‚¯ã§æ“ä½œèª¬æ˜ç”»é¢ã¸", 750, 500);
+        text("Enterã§ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚‹", 0, 1080);
+
+        //ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆ
         setPtnPosition();
         if (isTrigger(MOUSE_LBUTTON)) {
             State = INIT;
@@ -109,23 +135,27 @@ namespace GAME01
         }
        
         
-        //ƒƒjƒ…[‚É–ß‚é
+        //ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚‹
         if (isTrigger(KEY_ENTER)) {
             main()->backToMenu();
         }
     }
 
     void GAME::init() {
-        //•Ç‚Æ”wŒi‚ÌF”Ô†‚ğStage2ŸŒ³”z—ñ‚ÉƒZƒbƒg
+        //å£ã¨èƒŒæ™¯ã®è‰²ç•ªå·ã‚’Stage2æ¬¡å…ƒé…åˆ—ã«ã‚»ãƒƒãƒˆ
         
-        clear(255, 60, 60);
-        fill(0, 0, 0);
+        clear(255, 240, 240); // è–„ã„èµ¤
+
+        // èª¬æ˜æ–‡å­—
+        fill(0, 0, 0); // é»’
         textSize(60);
-        text("‰E‚Ö‚Pƒ}ƒX:D", 750, 500);
-        text("¶‚Ö‚Pƒ}ƒX:A", 750, 550);
-        text("‰ñ“]:W", 750, 600);
-        text("—‰º:S", 750, 650);
-        text("ƒNƒŠƒbƒN‚ÅƒQ[ƒ€ƒXƒ^[ƒg", 750, 700);
+        text("å³ã¸ï¼‘ãƒã‚¹:D", 750, 500);
+        text("å·¦ã¸ï¼‘ãƒã‚¹:A", 750, 550);
+        text("å›è»¢:W", 750, 600);
+        text("è½ä¸‹:S", 750, 650);
+        text("levelã¯8ã¾ã§ã‚ã‚Šã€ä¸€å®šã‚¹ã‚³ã‚¢åˆ°é”ã§levelã¨é€Ÿåº¦ã‚¢ãƒƒãƒ—", 350, 760);
+        text("ã‚¯ãƒªãƒƒã‚¯ã§ã‚²ãƒ¼ãƒ ã‚¹ã‚¿ãƒ¼ãƒˆ", 750, 900);
+
 
         for (int y = 0; y < ROWS; y++) {
             Stage[y][0] = Stage[y][COLS - 1] = WALL;
@@ -136,8 +166,12 @@ namespace GAME01
                 }
             }
         }
-        
-        //ƒuƒƒbƒN‰Šú’l
+        Score = 0;
+        Level = 1;
+        dropSpeed = INITIAL_DROP_SPEED;
+       
+
+        //ãƒ–ãƒ­ãƒƒã‚¯åˆæœŸå€¤
         X = 5;
         Y = 1;
         R = 0;
@@ -150,6 +184,67 @@ namespace GAME01
         }
         
     }
+
+
+
+    void GAME::intToStr(int num, char* buffer) {
+        char temp[12]; // ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ï¼ˆæœ€å¤§11æ¡ã®æ•´æ•° + çµ‚ç«¯æ–‡å­—ï¼‰
+        int index = 0;
+
+        if (num == 0) {
+            buffer[index++] = '0';
+            buffer[index] = '\0';
+            return;
+        }
+
+        // è² ã®æ•°ã®å ´åˆ
+        if (num < 0) {
+            buffer[index++] = '-';
+            num = -num;
+        }
+
+        // æ•°å­—ã‚’é€†é †ã§æ ¼ç´
+        while (num > 0) {
+            temp[index++] = '0' + (num % 10);
+            num /= 10;
+        }
+
+        // ãƒãƒƒãƒ•ã‚¡ã«é€†é †ã§ã‚³ãƒ”ãƒ¼
+        int start = (buffer[0] == '-') ? 1 : 0; // è² ã®æ•°ã®å ´åˆã‚’è€ƒæ…®
+        for (int i = 0; i < index; i++) {
+            buffer[start + i] = temp[index - i - 1];
+        }
+        buffer[start + index] = '\0'; // çµ‚ç«¯æ–‡å­—
+    }
+
+
+    // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’èª­ã¿è¾¼ã‚€é–¢æ•°
+    void GAME::loadHighScore() {
+        FILE* file = nullptr;
+        // ä¿å­˜å…ˆã®ãƒ‘ã‚¹ã‚’å¤‰æ›´
+        errno_t err = fopen_s(&file, "main\\assets\\game01\\highscore.txt", "r");
+        if (err == 0 && file) {
+            // fscanf_s ã‚’ä½¿ç”¨
+            fscanf_s(file, "%d", &highScore);
+            fclose(file);
+        }
+        else {
+            // ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ãªã‹ã£ãŸå ´åˆã®å‡¦ç†
+            highScore = 0; // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+        }
+    }
+
+    // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’ä¿å­˜ã™ã‚‹é–¢æ•°
+    void GAME::saveHighScore() {
+        FILE* file = nullptr;
+        // ä¿å­˜å…ˆã®ãƒ‘ã‚¹ã‚’å¤‰æ›´
+        fopen_s(&file, "main\\assets\\game01\\highscore.txt", "w");
+        if (file) {
+            fprintf(file, "%d", highScore); // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’ä¿å­˜ã™ã‚‹
+            fclose(file);
+        }
+    }
+    
 
     void GAME::drawStage() {
         void complete();
@@ -180,21 +275,22 @@ namespace GAME01
         fill(255);
         textSize(40);
        text((let)"Score:" + Score, 800, 100);
+       text((let)"Level:" + Level, 800, 150);
+       fill(255);
+       textSize(40);
         text("Score:",0,0);
         text((let)Score,100,0);
-       
-        
-        
     }
+
     void GAME::setPtnPosition() {
-        //Šî€ƒuƒƒbƒNˆÊ’u
+        //åŸºæº–ãƒ–ãƒ­ãƒƒã‚¯ä½ç½®
         Px[0] = X;
         Py[0] = Y;
-        //‰ñ“]”
+        
         int r = R % 4;
 
         for (int i = 0; i < 3; i++) {
-            //Œ»İ‚ÌƒuƒƒbƒNƒpƒ^[ƒ“‚ÌƒIƒtƒZƒbƒg’l‚ğæ“¾
+            //ç¾åœ¨ã®ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆå€¤ã‚’å–å¾—
             int ofsX = Offsets[PtnNo][i][0];
             int ofsY = Offsets[PtnNo][i][1];
             
@@ -208,6 +304,7 @@ namespace GAME01
             Py[i + 1] = Y + ofsY;
         }
     }
+
     void GAME::setPtnNoToStage() {
         setPtnPosition();
         for (int i = 0; i < 4; i++) {
@@ -252,46 +349,58 @@ namespace GAME01
                     Score += 10000;
                     bonus = 0;
                 }
-                //‚»‚ë‚Á‚½‚Ì‚ÅƒXƒ‰ƒCƒh
+                //ãã‚ã£ãŸã®ã§ã‚¹ãƒ©ã‚¤ãƒ‰
                 for (int upy = y - 1; upy >= 0; upy--) {
                     for (int x = 1; x < COLS - 1; x++) {
                         Stage[upy + 1][x] = Stage[upy][x];
+                        playSound(aaaSnd);
+
                     }
                 }
             }
         }
     }
     
+    
     void GAME::drawNextBlock() {
-        // Ÿ‚ÌƒuƒƒbƒN‚ğ•\¦‚·‚éŠî€ˆÊ’u
-        
+        // æ¬¡ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚’è¡¨ç¤ºã™ã‚‹åŸºæº–ä½ç½®
+
         rectMode(CENTER);
-        for (int i = 0; i < 4; i++) { // Šî€ƒuƒƒbƒN + 3‚Â‚ÌƒIƒtƒZƒbƒg
+        for (int i = 0; i < 4; i++){
+    
             int ofsX = (i == 0) ? 0 : Offsets[NextPtnNo][i - 1][0];
             int ofsY = (i == 0) ? 0 : Offsets[NextPtnNo][i - 1][1];
 
             int px = previewX + ofsX;
             int py = previewY + ofsY;
 
-            // Ÿ‚ÌƒuƒƒbƒN‚ÌF‚ğæ“¾
+            // æ¬¡ã®ãƒ–ãƒ­ãƒƒã‚¯ã®è‰²ã‚’å–å¾—
             fill(Color[NextPtnNo].hue, Color[NextPtnNo].satu, Color[NextPtnNo].value);
-            stroke(0, 0, 0); // •‚¢˜gü
+            stroke(0, 0, 0); // é»’ã„æ ç·š
             rect(offsetX + size * px, offsetY + size * py, size, size);
         }
 
-        // "Next Block" ‚ÌƒeƒLƒXƒg‚ğ•\¦
-        fill(255); // ”’‚¢•¶š
+        // "Next Block" ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤º
+        fill(255); // ç™½ã„æ–‡å­—
         textSize(40);
         text("Next Block", offsetX + size * (previewX - 1), offsetY + size * (previewY - 3));
     }
 
 
+
     void GAME::play() {
-        //Œ»İ‚Ìƒpƒ^[ƒ“”Ô†iF”Ô†j‚ğƒXƒe[ƒW‚©‚çÁ‚·
+        //ç¾åœ¨ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ç•ªå·ï¼ˆè‰²ç•ªå·ï¼‰ã‚’ã‚¹ãƒ†ãƒ¼ã‚¸ã‹ã‚‰æ¶ˆã™
+        if (!isBgmPlaying) {
+            playSound(bgmSnd);  // âœ… ä¿®æ­£ï¼šå¼•æ•°ã‚’1ã¤ã«ã™ã‚‹
+            isBgmPlaying = true; // BGMãŒå†ç”Ÿä¸­ã§ã‚ã‚‹ã“ã¨ã‚’è¨˜éŒ²
+        }
+
         delPtnNoFromStage();
-        //ˆÚ“®A‰ñ“]
+        adjustFallSpeed();
+       
+        //ç§»å‹•ã€å›è»¢
         int dy = 0, dx = 0, dr = 0;;
-        if ((++LoopCnt %= 30) == 0)dy = 1;
+        if ((++LoopCnt % FallSpeed) == 0)dy = 1;
         if (isTrigger(KEY_D))dx = 1;
         if (isTrigger(KEY_A))dx = -1;
         if (isTrigger(KEY_W))dr = 1;
@@ -301,17 +410,17 @@ namespace GAME01
         X += dx;
         R += dr;
         if (collision()) {
-            //Œ³‚ÌˆÊ’uA‰ñ“]‚É–ß‚·
+            //å…ƒã®ä½ç½®ã€å›è»¢ã«æˆ»ã™
             Y -= dy;
             X -= dx;
             R -= dr;
             FallFlag = 0;
             if (dy == 1 && dx == 0 && dr == 0) {
-                //Ï‚à‚ç‚¹‚é
+                //ç©ã‚‚ã‚‰ã›ã‚‹
                 setPtnNoToStage();
-                //s‚ª‚»‚ë‚Á‚Ä‚¢‚½‚çƒXƒ‰ƒCƒh‚³‚¹‚é
+                //è¡ŒãŒãã‚ã£ã¦ã„ãŸã‚‰ã‚¹ãƒ©ã‚¤ãƒ‰ã•ã›ã‚‹
                 complete();
-                //V‚µ‚¢ƒuƒƒbƒN’a¶
+                //æ–°ã—ã„ãƒ–ãƒ­ãƒƒã‚¯èª•ç”Ÿ
                 X = 5;
                 Y = 1;
                 R = 0;
@@ -320,27 +429,138 @@ namespace GAME01
                 //PtnNo = random() % 7;
                 if (collision()) {
                     State = OVER;
+                    stopSound(bgmSnd);  // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«BGMã‚’æ­¢ã‚ã‚‹
+                    isBgmPlaying = false; // ãƒ•ãƒ©ã‚°ã‚’ãƒªã‚»ãƒƒãƒˆ
+                    
+
                 }
             }
         }
-        //ƒpƒ^[ƒ“”Ô†iF”Ô†j‚ğƒXƒe[ƒW‚ÉƒZƒbƒg
+        //ãƒ‘ã‚¿ãƒ¼ãƒ³ç•ªå·ï¼ˆè‰²ç•ªå·ï¼‰ã‚’ã‚¹ãƒ†ãƒ¼ã‚¸ã«ã‚»ãƒƒãƒˆ
         setPtnNoToStage();
 
-        //•`‰æ
+        //æç”»
         clear(0);
         drawStage();
        
+
+        if (showLevelUpMessage) {
+            fill(255, 0, 0);
+            textSize(50);
+            text("Speed Up!", 650, 400);
+            if (++messageTimer > 60) { // 1ç§’é–“è¡¨ç¤º
+                showLevelUpMessage = false;
+                messageTimer = 0;
+            }
+        }
+       
     }
 
-        //ƒQ[ƒ€ƒI[ƒo[           
+    void GAME::adjustFallSpeed() {
+        // ã‚¹ã‚³ã‚¢ã«å¿œã˜ã¦è½ä¸‹é€Ÿåº¦ã¨ãƒ¬ãƒ™ãƒ«ã‚’èª¿æ•´
+        int newLevel = Level;
+
+        if (Score >= 3000) newLevel = 2, FallSpeed = 25;
+        if (Score >= 5000) newLevel = 3, FallSpeed = 20;
+        if (Score >= 10000) newLevel = 4, FallSpeed = 15;
+        if (Score >= 20000) newLevel = 5, FallSpeed = 10;
+        if (Score >= 30000)newLevel = 6, FallSpeed = 8;
+        if (Score >= 40000)newLevel = 7, FallSpeed = 5;
+        if (Score >= 50000)newLevel = 8, FallSpeed = 2;
+
+        if (newLevel > Level) {
+            Level = newLevel;
+            showLevelUpMessage = true; // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—é€šçŸ¥ãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
+        }
+    }
+
+    void intToStr(int num, char* buffer) {
+        char temp[12]; // ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ï¼ˆæœ€å¤§11æ¡ã®æ•´æ•° + çµ‚ç«¯æ–‡å­—ï¼‰
+        int index = 0;
+
+        if (num == 0) {
+            buffer[index++] = '0';
+            buffer[index] = '\0';
+            return;
+        }
+
+        // è² ã®æ•°ã®å ´åˆ
+        if (num < 0) {
+            buffer[index++] = '-';
+            num = -num;
+        }
+
+        // æ•°å­—ã‚’é€†é †ã§æ ¼ç´
+        while (num > 0) {
+            temp[index++] = '0' + (num % 10);
+            num /= 10;
+        }
+
+        // ãƒãƒƒãƒ•ã‚¡ã«é€†é †ã§ã‚³ãƒ”ãƒ¼
+        int start = (buffer[0] == '-') ? 1 : 0; // è² ã®æ•°ã®å ´åˆã‚’è€ƒæ…®
+        for (int i = 0; i < index; i++) {
+            buffer[start + i] = temp[index - i - 1];
+        }
+        buffer[start + index] = '\0'; // çµ‚ç«¯æ–‡å­—
+    }
+
+
+
+        //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼           
     void GAME::over() {
-        clear(255, 0, 0);
-        fill(0, 0, 255);
-        textSize(80);
-        text("   ", 650, 450);
-        text("SPACEƒL[‚Åƒ^ƒCƒgƒ‹‚É–ß‚é", 500, 550);
+        
+        stopSound(bgmSnd);
+        isBgmPlaying = false;
+        
+        // ç¾åœ¨ã®ã‚¹ã‚³ã‚¢ãŒãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’è¶…ãˆãŸå ´åˆã€ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°
+        if (Score > highScore) {
+            highScore = Score;
+            saveHighScore(); // æ–°ã—ã„ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’ä¿å­˜
+        }
+        
+     
+
+
+        // èƒŒæ™¯è‰²
+        clear(255, 204, 204); // è–„ã„ãƒ”ãƒ³ã‚¯
+
+        // ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼æ–‡å­—
+        fill(255, 0, 0); // èµ¤
+        textSize(100);
+        text("Game Over", 500, 150);
+
+        // æœ€çµ‚ã‚¹ã‚³ã‚¢è¡¨ç¤º
+        fill(0, 0, 0); // é»’
+        textSize(50);
+        char scoreStr[20];
+        intToStr(Score, scoreStr); // ã‚¹ã‚³ã‚¢ã‚’æ–‡å­—åˆ—ã«å¤‰æ›
+        text("Score: ", 600, 500);
+        text(scoreStr, 750, 500);
+
+        char highScoreStr[20];
+        intToStr(highScore, highScoreStr);
+        text("High Score: ", 300, 600);
+        text(highScoreStr, 750, 600);
+
+
+       //fill(0, 0, 0); // é»’
+        //textSize(50);
+        //text((let)"Score:" + Score, 650, 650); 
+        //text((let)"Level:" + Level, 800, 150);
+
+        
+        // å†é–‹æ¡ˆå†…
+        fill(0, 0, 0); // é»’
+        textSize(40);
+        text("SPACEã‚­ãƒ¼ã§ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹", 100, 700);
+
         if (isTrigger(KEY_SPACE)) {
             State = TITLE;
+            FallSpeed = 30;
+            
+
+
+
         }
     }
 
@@ -350,3 +570,5 @@ namespace GAME01
 
    
 }
+
+
