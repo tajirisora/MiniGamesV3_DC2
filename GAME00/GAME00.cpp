@@ -233,11 +233,17 @@ namespace GAME00
 		textSize(300);
 		textMode(BCENTER);
 		text(score, 500, 500);
+		textSize(100);
+		textMode(BCENTER);
+		text("‚ ‚È‚½", 450, 300);
 
 		fill(240, 255, 16);
 		textSize(300);
 		textMode(BCENTER);
 		text(enemyScore, 1200, 500);
+		textSize(100);
+		textMode(BCENTER);
+		text("‘ŠŽè", 1150, 300);
 
 		fill(255);
 		textSize(100);
@@ -260,7 +266,7 @@ namespace GAME00
 			}
 		}
 		else if (score < enemyScore) {
-			if (enemyScore >= 22) {
+			if (enemyScore >= 21) {
 				fill(240, 255, 16);
 					textSize(100);
 				textMode(BCENTER);
@@ -274,7 +280,7 @@ namespace GAME00
 			}
 		}
 		else if (score == enemyScore) {
-			if (score <= 22) {
+			if (score <= 21) {
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
