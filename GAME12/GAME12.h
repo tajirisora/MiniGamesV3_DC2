@@ -10,6 +10,7 @@
 #include<thread>
 #include<random>
 #include<map>
+#include<cstring>
 #include"../../libOne/inc/input.h"
 #define Qnumber 100
 
@@ -36,14 +37,8 @@ namespace GAME12
         void play4();
         void over();
         void end();
-        void count1();
-        void count2();
-        void count3();
-        void count4();
-        void express();
         void recordInputToKana();
         void gmain();
-        void dec(int num, int wnum);
         void draw1(int snum);
         void draw2(int snum);
         void draw3(int snum);
@@ -51,12 +46,8 @@ namespace GAME12
         void randomnum();
         INPUT_CODE gettriggerkeycode();
 
-        int miss, num[Qnumber], wnum, rnum, number, flag, fflag, gend, lend, set, stop, count;
+        int num[Qnumber], rnum, number, flag, set, count, stop;
         std::string ch;
-        //const char* ch[100][100];
-        size_t sum;
-        size_t str;
-        size_t len;
         float curtime;
         std::string currentInput; // Œ»İ‚Ì“ü—Í•¶š—ñ
         const char* pretwoWard[Qnumber][3] = {
@@ -70,7 +61,7 @@ namespace GAME12
             {"ŠÕU","‚©‚ñ‚³‚ñ"},
             {"–ï‰î","‚â‚Á‚©‚¢"},
             {"À‘T","‚´‚º‚ñ"},
-            {"’š”J","‚Ä‚¢‚Ë‚¢"},
+            //{"’š”J","‚Ä‚¢‚Ë‚¢"},
             {"ŠjS","‚©‚­‚µ‚ñ"},
             {"“Š","‚Æ‚¤‚©‚Â"},
             {"–Œi","‚¶‚å‚¯‚¢"},
