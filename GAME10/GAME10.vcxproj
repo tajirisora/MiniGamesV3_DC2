@@ -133,10 +133,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BULLETS.cpp" />
+    <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="DISTANCE.cpp" />
+    <ClCompile Include="ENEMYS.cpp" />
+    <ClCompile Include="ENEMY_HPGAUGE.cpp" />
     <ClCompile Include="GAME10.cpp" />
+    <ClCompile Include="GAME10_GAME.cpp" />
+    <ClCompile Include="GAME_OBJECT10.cpp" />
+    <ClCompile Include="HANDGUN.cpp" />
+    <ClCompile Include="HANDGUN_BULLETS.cpp" />
+    <ClCompile Include="HP_GAUGE.cpp" />
+    <ClCompile Include="MISSILE.cpp" />
+    <ClCompile Include="MISSILE_BULLETS.cpp" />
+    <ClCompile Include="OBJECT.cpp" />
+    <ClCompile Include="OBJECT_HP.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="PLAYER_HP.cpp" />
+    <ClCompile Include="RESULT.cpp" />
+    <ClCompile Include="SCENE.cpp" />
+    <ClCompile Include="SELECT.cpp" />
+    <ClCompile Include="SHOTGUN.cpp" />
+    <ClCompile Include="SHOTGUN_BULLET.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TIME.cpp" />
+    <ClCompile Include="TITLE.cpp" />
+    <ClCompile Include="TUTORIAL.cpp" />
+    <ClCompile Include="WEAPONS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BULLETS.h" />
+    <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="DISTANCE.h" />
+    <ClInclude Include="ENEMYS.h" />
+    <ClInclude Include="ENEMY_HPGAUGE.h" />
     <ClInclude Include="GAME10.h" />
+    <ClInclude Include="GAME10_GAME.h" />
+    <ClInclude Include="GAME_OBJECT10.h" />
+    <ClInclude Include="HANDGUN.h" />
+    <ClInclude Include="HANDGUN_BULLETS.h" />
+    <ClInclude Include="HP_GAUGE.h" />
+    <ClInclude Include="MISSILE.h" />
+    <ClInclude Include="MISSILE_BULLETS.h" />
+    <ClInclude Include="OBJECT.h" />
+    <ClInclude Include="OBJECT_HP.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="PLAYER_HP.h" />
+    <ClInclude Include="RESULT.h" />
+    <ClInclude Include="SCENE.h" />
+    <ClInclude Include="SELECT.h" />
+    <ClInclude Include="SHOTGUN.h" />
+    <ClInclude Include="SHOTGUN_BULLET.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TIME.h" />
+    <ClInclude Include="TITLE.h" />
+    <ClInclude Include="TUTORIAL.h" />
+    <ClInclude Include="WEAPONS.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />

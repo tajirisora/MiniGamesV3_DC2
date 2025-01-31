@@ -133,10 +133,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BULLET.cpp" />
+    <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="GAME06.cpp" />
+    <ClCompile Include="JUDGE_LIST.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="RANK_A.cpp" />
+    <ClCompile Include="RANK_B.cpp" />
+    <ClCompile Include="RANK_C.cpp" />
+    <ClCompile Include="RANK_S.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="TARGET.cpp" />
+    <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BULLET.h" />
+    <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="GAME06.h" />
+    <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="JUDGE_LIST.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="RANK_A.h" />
+    <ClInclude Include="RANK_B.h" />
+    <ClInclude Include="RANK_C.h" />
+    <ClInclude Include="RANK_S.h" />
+    <ClInclude Include="SCENE.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="TARGET.h" />
+    <ClInclude Include="TITLE.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

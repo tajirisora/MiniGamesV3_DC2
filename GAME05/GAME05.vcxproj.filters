@@ -5,6 +5,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME05.h" />
+    <ClInclude Include="TRAMP.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game05\title.txt" />

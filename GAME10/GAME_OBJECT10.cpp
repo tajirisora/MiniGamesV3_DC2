@@ -1,0 +1,6 @@
+#include "GAME_OBJECT10.h"
+GAME_OBJECT10::GAME_OBJECT10(class GAME10_GAME* game){
+	Game = game;
+}
+GAME_OBJECT10::~GAME_OBJECT10(){
+}

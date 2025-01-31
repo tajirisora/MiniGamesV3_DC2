@@ -2,9 +2,33 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="GAME06.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="TITLE.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="JUDGE_LIST.cpp" />
+    <ClCompile Include="RANK_C.cpp" />
+    <ClCompile Include="RANK_B.cpp" />
+    <ClCompile Include="RANK_A.cpp" />
+    <ClCompile Include="RANK_S.cpp" />
+    <ClCompile Include="TARGET.cpp" />
+    <ClCompile Include="BULLET.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME06.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="TITLE.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="SCENE.h" />
+    <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="JUDGE_LIST.h" />
+    <ClInclude Include="RANK_C.h" />
+    <ClInclude Include="RANK_B.h" />
+    <ClInclude Include="RANK_A.h" />
+    <ClInclude Include="RANK_S.h" />
+    <ClInclude Include="TARGET.h" />
+    <ClInclude Include="BULLET.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game06\title.txt" />

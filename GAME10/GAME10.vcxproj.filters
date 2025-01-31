@@ -1,12 +1,225 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GAME10.cpp" />
+    <ClCompile Include="GAME10.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME10_GAME.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME_OBJECT10.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="CONTAINER.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="TITLE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="STAGE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SCENE.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RESULT.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="WEAPONS.cpp">
+      <Filter>item\base</Filter>
+    </ClCompile>
+    <ClCompile Include="HANDGUN.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="TIME.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="HANDGUN_BULLETS.cpp">
+      <Filter>bullet\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="BULLETS.cpp">
+      <Filter>bullet\base</Filter>
+    </ClCompile>
+    <ClCompile Include="ENEMYS.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER_HP.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="ENEMY_HPGAUGE.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SHOTGUN_BULLET.cpp">
+      <Filter>bullet\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SHOTGUN.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="HP_GAUGE.cpp">
+      <Filter>HP\base</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT_HP.cpp">
+      <Filter>HP\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="DISTANCE.cpp">
+      <Filter>sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="MISSILE_BULLETS.cpp">
+      <Filter>bullet\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="MISSILE.cpp">
+      <Filter>item\sauce</Filter>
+    </ClCompile>
+    <ClCompile Include="SELECT.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TUTORIAL.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GAME10.h" />
+    <ClInclude Include="GAME10.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME10_GAME.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME_OBJECT10.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="CONTAINER.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="RESULT.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SCENE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="STAGE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="WEAPONS.h">
+      <Filter>item\base</Filter>
+    </ClInclude>
+    <ClInclude Include="HANDGUN.h">
+      <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="TIME.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="HANDGUN_BULLETS.h">
+      <Filter>bullet\header</Filter>
+    </ClInclude>
+    <ClInclude Include="BULLETS.h">
+      <Filter>bullet\base</Filter>
+    </ClInclude>
+    <ClInclude Include="ENEMYS.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="ENEMY_HPGAUGE.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER_HP.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SHOTGUN_BULLET.h">
+      <Filter>bullet\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SHOTGUN.h">
+      <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="HP_GAUGE.h">
+      <Filter>HP\base</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT_HP.h">
+      <Filter>HP\header</Filter>
+    </ClInclude>
+    <ClInclude Include="DISTANCE.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="MISSILE_BULLETS.h">
+      <Filter>bullet\header</Filter>
+    </ClInclude>
+    <ClInclude Include="MISSILE.h">
+      <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SELECT.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TUTORIAL.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game10\title.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="header">
+      <UniqueIdentifier>{89f1f4a6-1e01-4bf5-83f4-2c5c9c66ca98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sauce">
+      <UniqueIdentifier>{676ebb15-1fdb-4459-bf5f-acf61ac0a9db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{ffcca74c-6d00-474a-b473-501d92d1344b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sauce\scene">
+      <UniqueIdentifier>{7fc827a2-d41b-494a-8a1c-540472dc7a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\scene">
+      <UniqueIdentifier>{b120df26-5d89-4c89-b41d-a0aacf5fcd82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item">
+      <UniqueIdentifier>{e3b29e19-d712-4846-b62b-beaa1f17a788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\header">
+      <UniqueIdentifier>{bcb12f8e-3f89-46c2-8d8b-3b6c49b77d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\sauce">
+      <UniqueIdentifier>{8ba3d522-92ca-4812-9a94-25c38a873d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item\base">
+      <UniqueIdentifier>{ace68862-fc88-43d7-b7d6-55676f94f7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bullet">
+      <UniqueIdentifier>{cb3786c0-2891-440c-b2e5-b747d4a254a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bullet\base">
+      <UniqueIdentifier>{efbd1acf-4876-4a47-97d5-a395ce3009e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bullet\sauce">
+      <UniqueIdentifier>{6ce08729-57cf-4bfc-8597-6df6d23522ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bullet\header">
+      <UniqueIdentifier>{9e2d1f33-f340-421c-9059-06809db55623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP">
+      <UniqueIdentifier>{18b74d7e-727b-4b59-91d3-e3f46f04139c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\sauce">
+      <UniqueIdentifier>{8f393dca-1baf-4471-9ee3-de04ee40b620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\header">
+      <UniqueIdentifier>{6eae2f7a-0cda-4747-9b6d-b1ff801225f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HP\base">
+      <UniqueIdentifier>{8a6c3698-1655-4204-943b-5214a5f3a49b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

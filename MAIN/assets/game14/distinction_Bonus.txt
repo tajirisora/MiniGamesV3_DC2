@@ -1,0 +1,15 @@
+Red_BB
+top   /1
+middle/2
+bottom/0
+NO    /19/18/14/13/10/8/5
+Blue_BB
+top   /13
+middle/14
+bottom/0
+NO    /18/17/10/8/5/1/2
+REG
+top   /17/6
+middle/18
+bottom/19/10
+NO    /14/13/2/1
