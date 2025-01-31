@@ -1,3 +1,4 @@
+
 #pragma once
 #include "../MAIN/GAME_BASE.h"
 namespace GAME01
@@ -27,6 +28,12 @@ namespace GAME01
     void over();
     void gmain();
     void drawNextBlock();
+    void saveRanking();
+    void  adjustFallSpeed();
+    void updateDropSpeed();  // スコアに応じて落下スピードを変更
+    void loadHighScore();
+    void saveHighScore();
+    void intToStr(int num, char* buffer);
 
     //色
     struct COLOR2 {
@@ -82,6 +89,30 @@ namespace GAME01
     int previewY = 4;  // 少し下に配置
     int size = Size;   // 表示サイズを通常のブロックと同じに
 
+    int FallSpeed = 30; // 初期落下速度
+    int  Level = 1;       // 初期レベル
+    bool showLevelUpMessage = false; // レベルアップ通知フラグ
+    int messageTimer = 0;
+
+    static const int RANKING_SIZE = 5; // ランキングの最大件数
+    int rankings[RANKING_SIZE];       // ランキング配列
+    
+    // 既存のメンバー変数に追加
+    float dropSpeed;  // 落下スピード
+    const float INITIAL_DROP_SPEED = 1.0f; // 初期の落下スピード
+
+    int highScore = 0;
+
+    int bgmSnd = 0;
+    int aaaSnd = 0;
+
+    bool isBgmPlaying = false;
+    
+
+
+    
+
+    
 };
 
 
