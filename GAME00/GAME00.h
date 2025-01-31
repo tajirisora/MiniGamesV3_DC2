@@ -23,9 +23,12 @@ namespace GAME00
         void Draw3();
         void EnemyDraw();
         void EnemyDraw2();
+        void DrawEnemyCards();
         void Clear();
 
         int card_backImg = 0;
+
+        int haikeiImg = 0;
 
         float card1 = 0;
         float card2 = 0;
@@ -39,6 +42,8 @@ namespace GAME00
         
         float score = 0;
         float enemyScore = 0;
+
+        float enemyDrawCount = 0;
       
     private:
         enum STATE{ TITLE,PLAY,PLAY2,PLAY3,CLEAR};
