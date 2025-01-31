@@ -59,6 +59,7 @@ namespace GAME09
 		class SONGTITLE* SongTitle;
 		class STARTBUTTON* StartButton;
 		class DIFFICULTYSELECT* DifficultySelect;
+		class WARNING_MESSAGE* WarningMessage;
 
 		std::vector<SONGINFO> Songs;
 		std::vector<NOTE*> Notes;
@@ -89,6 +90,7 @@ namespace GAME09
 		class SONGTITLE* songTitle() { return SongTitle; }
 		class STARTBUTTON* startButton() { return StartButton; }
 		class DIFFICULTYSELECT* difficultySelect() { return DifficultySelect; }
+		class WARNING_MESSAGE* warningMessage() { return WarningMessage; }
 
 		std::vector<SONGINFO>& songs() { return Songs; }
 		std::vector<NOTE*>& notes() { return Notes; }

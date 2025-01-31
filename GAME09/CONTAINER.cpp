@@ -290,6 +290,11 @@ namespace GAME09
 		Data.difficultySelect.Color[CHARTMANAGER::EXPART] = COLOR(255, 0, 255);
 
 		Data.difficultyButtonData.numStrSize = VECTOR2(60, 60);
+
+		Data.warning.warningTf.pos = VECTOR2(960, 540);
+		Data.warning.warningTf.size = 1.5f;
+		Data.warning.displayTime = 1.5;
+		Data.warning.fadeTime = 0.3f;
 	}
 	void CONTAINER::loadGraphic() {
 		Data.title.titleLogo = loadImage("..\\main\\assets\\game09\\texture\\Title_Logo.png");
@@ -339,6 +344,7 @@ namespace GAME09
 		Data.adjustButtonImg.imgs[ADJUSTBUTTON::LEFT] = loadImage("..\\main\\assets\\game09\\texture\\Option_Left.png");
 		Data.gameClear.frameImg = loadImage("..\\main\\assets\\game09\\texture\\result_frame.png");
 		Data.gameClear.fastSlowImg = loadImage("..\\main\\assets\\game09\\texture\\result_fast_slow.png");
+		Data.warning.warningImg = loadImage("..\\main\\assets\\game09\\texture\\Warning_Message.png");
 	}
 	void CONTAINER::loadSounds() {
 		Data.sound.tapSound = loadSound("..\\main\\assets\\game09\\sounds\\tap2.wav");

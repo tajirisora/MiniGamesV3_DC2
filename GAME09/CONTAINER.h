@@ -35,6 +35,7 @@
 #include "STARTBUTTON.h"
 #include "DIFFICULTYSELECT.h"
 #include "DIFFICULTYBUTTON.h"
+#include "WARNING_MESSAGE.h"
 
 namespace GAME09
 {
@@ -79,6 +80,7 @@ namespace GAME09
 			ADJUSTBUTTON::DATA adjustButtonImg;
 			DIFFICULTYSELECT::DATA difficultySelect;
 			DIFFICULTYBUTTON::DATA difficultyButtonData;
+			WARNING_MESSAGE::DATA warning;
 		};
 		DATA Data;
 	public:

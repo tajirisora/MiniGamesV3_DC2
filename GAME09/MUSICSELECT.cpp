@@ -19,6 +19,7 @@ namespace GAME09 {
 	void MUSICSELECT::init() {
 		game()->banner()->init();
 		game()->keyConfig()->init();
+		game()->warningMessage()->init();
 	}
 	void MUSICSELECT::update() {
 		if (game()->fade()->inEndFlag()) {
@@ -30,6 +31,7 @@ namespace GAME09 {
 			game()->difficultySelect()->update();
 			game()->startButton()->update();
 			game()->backButton()->update();
+			game()->warningMessage()->update();
 		}
 	}
 	void MUSICSELECT::draw() {
@@ -47,6 +49,7 @@ namespace GAME09 {
 		game()->difficultySelect()->draw();
 		game()->startButton()->draw();
 		game()->backButton()->draw();
+		game()->warningMessage()->draw();
 
 		rectMode(CENTER);
 		fill(0);
@@ -61,7 +64,12 @@ namespace GAME09 {
 	void MUSICSELECT::nextScene() {
 		if (game()->startButton()->isClick()) {
 			if (!game()->banner()->animeFlag()) {
-				game()->fade()->outStart();
+				if (game()->songs()[game()->banner()->curNum()].difficulty[game()->difficultySelect()->curDifficulty()] == 0) {
+					game()->warningMessage()->apper();
+				}
+				else {
+					game()->fade()->outStart();
+				}
 			}
 			NextScene = GAME::LOADCHART_ID;
 		}

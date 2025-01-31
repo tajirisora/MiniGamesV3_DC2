@@ -37,6 +37,7 @@ namespace GAME09
 		SongTitle = new SONGTITLE(this);
 		StartButton = new STARTBUTTON(this);
 		DifficultySelect = new DIFFICULTYSELECT(this);
+		WarningMessage = new WARNING_MESSAGE(this);
 
 		Container->load();
 		LoadOption->create();
@@ -69,6 +70,7 @@ namespace GAME09
 		SongTitle->create();
 		StartButton->create();
 		DifficultySelect->create();
+		WarningMessage->create();
 
 		changeScene(TITLE_ID);
 		EscapeKeyValid = false;
@@ -77,6 +79,7 @@ namespace GAME09
 
 	void GAME::destroy()
 	{
+		delete WarningMessage;
 		delete DifficultySelect;
 		delete StartButton;
 		delete SongTitle;
