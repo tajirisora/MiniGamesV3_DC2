@@ -27,7 +27,8 @@ public:
 		VECTOR2 DestPos;
 		int DestNum;
 		int DestTextSize;
-
+		//‰¹Šy
+		int sound;
 		//laneŠÖ˜A
 		int opy = 0;
 		int opx = 0;

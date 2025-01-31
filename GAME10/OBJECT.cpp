@@ -55,6 +55,7 @@ void OBJECT::collision() {
 				if (Objects[i].pos.x <= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->BulletRight(j)
 					&& Objects[i].pos.x + Object.rightMx >= game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLeft(j)
 					&& Objects[i].lane == game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->bulletLane(j)) {
+					playSound(Object.hitSound);
 					game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->getDamage(game()->weapons(game()->player()->PlayerWeaponKind(bulletKind))->damage(), i,bulletKind);
 					game()->bullets(game()->player()->PlayerWeaponKind(bulletKind))->kill(j);
 				}

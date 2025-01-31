@@ -36,6 +36,7 @@ void TITLE::draw(){
 	text("4000m", Title.selectX, Title.selectY + Title.selectMy * Title.F_ID);
 	text("6000m", Title.selectX, Title.selectY + Title.selectMy * Title.S_ID);
 	text("説明", Title.selectX, Title.selectY + Title.selectMy * Title.TUTORIAL_ID);
+	text("ENTERキーでメニューに戻る", 0, 1080);
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE) && Title.TUTORIAL_ID != Title.SELECTSTATE) {

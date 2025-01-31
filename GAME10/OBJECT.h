@@ -7,6 +7,7 @@ public:
 	//‹¤’Êƒf[ƒ^
 	struct DATA
 	{
+		int hitSound;
 		int Img[3];
 		int totalNum;//“G‚ÌÅ‘å”
 		int nowNum;

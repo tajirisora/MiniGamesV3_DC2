@@ -12,18 +12,21 @@ void SELECT::init(){
 }
 void SELECT::update(){
 	if (isTrigger(KEY_W)) {
+		playSound(Select.selectMoveSound);
 		Select.SELECT_NOW--;
 		if (Select.SELECT_NOW < false) {
 			Select.SELECT_NOW = Select.SKIP;
 		}
 	}
 	if (isTrigger(KEY_S)) {
+		playSound(Select.selectMoveSound);
 		Select.SELECT_NOW++;
 		if (Select.SELECT_NOW >= Select.SELECT_NUM) {
 			Select.SELECT_NOW = Select.HANDGUN;
 		}
 	}
 	if (isTrigger(KEY_SPACE)) {
+		playSound(Select.selectSound);
 		Select.selectFlag = true;
 	}
 }
