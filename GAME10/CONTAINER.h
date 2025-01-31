@@ -1,6 +1,8 @@
 #pragma once
 #include"TITLE.h"
+#include"TUTORIAL.h"
 #include"STAGE.h"
+#include"SELECT.h"
 #include"RESULT.h"
 #include"PLAYER.h"
 #include"HP_GAUGE.h"
@@ -21,7 +23,9 @@ class CONTAINER
 private:
 	struct DATA {
 		TITLE::DATA title;
+		TUTORIAL::DATA tutorial;
 		STAGE::DATA stage;
+		SELECT::DATA select;
 		RESULT::DATA result;
 		PLAYER::DATA player;
 		PLAYER_HP::DATA playerGauge;
@@ -46,7 +50,9 @@ public:
 	void setImage();
 	void setData();
 	const TITLE::DATA& title() { return Data.title; }
+	const TUTORIAL::DATA& tutorial(){ return Data.tutorial; }
 	const STAGE::DATA& stage() { return Data.stage; }
+	const SELECT::DATA& select() { return Data.select; }
 	const RESULT::DATA& result() { return Data.result; }
 	const PLAYER::DATA& player() { return Data.player; }
 	const PLAYER_HP::DATA& PlayerHpGauge() { return Data.playerGauge; }

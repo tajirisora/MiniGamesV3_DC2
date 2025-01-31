@@ -1,5 +1,6 @@
 #include "OBJECT_HP.h"
 #include"GAME_OBJECT10.h"
+#include"PLAYER.h"
 #include"CONTAINER.h"
 #include"GAME10_GAME.h"
 OBJECT_HP::OBJECT_HP(class GAME10_GAME* game) :HP_GAUGE(game) {}
@@ -29,8 +30,11 @@ void OBJECT_HP::appear(int hp, int level) {
 	ObjectGauge.curHp++;
 }
 void OBJECT_HP::getDamage(float damage, int objectKind,int weaponKind) {
-	if (weaponKind == GAME10_GAME::MISSILEBULLET_ID) {
+	if (game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::MISSILEBULLET_ID) {
 		NowHp[objectKind] -= damage * 3;
+	}
+	else if(game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::HANDGUN_ID){
+		NowHp[objectKind] -= damage / 2;
 	}
 	else {
 		NowHp[objectKind] -= damage;

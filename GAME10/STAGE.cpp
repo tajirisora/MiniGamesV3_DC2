@@ -35,11 +35,11 @@ void STAGE::update() {
 
 	//ステージの強制スクロール（スピードはプレイヤーのスピードの依存する）
 	if (Stage.gPos.x - Stage.fworldX > width / 2 
-		&& (int)game()->player()->playerData().Opos.x == (int)game()->player()->playerData().Pos.x) {
-		Stage.frontMx = game()->player()->playerData().speed;
+		&& (int)game()->player()->playerOpos().x == (int)game()->player()->playerPos().x) {
+		Stage.frontMx = game()->player()->playerSpeed();
 		Stage.fworldX += Stage.frontMx;
-		if (game()->player()->playerData().speed >= Stage.backMx) {
-			Stage.bworldX += game()->player()->playerData().speed - Stage.backMx;
+		if (game()->player()->playerSpeed() >= Stage.backMx) {
+			Stage.bworldX += game()->player()->playerSpeed() - Stage.backMx;
 		}
 		game()->time()->timeCount();//強制スクロール中のみ時間が進む
 		if(Stage.gPos.x - Stage.fworldX > width ){
@@ -47,12 +47,12 @@ void STAGE::update() {
 		}
 	}
 	//ゴールテープが画面の中央に来た時、プレイヤーだけ動くようにするために少しだけプレイヤーを動かす。
-	else if(game()->player()->playerData().Opos.x == game()->player()->playerData().Pos.x){
+	else if(game()->player()->playerOpos().x == game()->player()->playerPos().x){
 		game()->player()->playerMove();
 	}
 	
 	//プレイヤーがgoalしたときの処理
-	if (game()->player()->playerData().Pos.x > width) {
+	if (game()->player()->playerPos().x > width) {
 		goalStage();
 	}
 	//エネミーのスピードを変える（プレイヤーの速度依存のため）
@@ -93,22 +93,21 @@ void STAGE::draw() {
 		layer(LNum);
 	}
 
-	if (game()->enemies()->uniEnemy().nowNum == NULL) {
-		game()->player()->draw();//敵がいなかった場合はプレイヤーのみ描画される
-	}
 	game()->time()->draw();
+	Stage.DestNum = game()->player()->levelUpBorder() - (game()->enemies()->sumDestroy() + game()->objects()->sumDestroy());
 	game()->distance()->draw();
+	textSize(Stage.DestTextSize);
+	text("LEVEL UPまであと" +(let)Stage.DestNum +(let)"体", Stage.DestPos.x, Stage.DestPos.y);
 	fill(255);
 }
-
 void STAGE::layer(int drawLane) {
-	for (int ENum = 0; ENum < game()->enemies()->uniEnemy().nowNum; ENum++) {
+	for (int ENum = 0; ENum < game()->enemies()->EnemiesNum(); ENum++) {
 		if (drawLane == game()->enemies()->EnemiesLane(ENum)) {
 			game()->enemies()->draw(ENum);
 		}
 	}	
 
-	for (int Onum = 0; Onum < game()->objects()->uniObject().nowNum; Onum++) {
+	for (int Onum = 0; Onum < game()->objects()->objectNum(); Onum++) {
 		if (drawLane == game()->objects()->ObjectsLane(Onum)) {
 			game()->objects()->draw(Onum);
 		}
@@ -132,15 +131,20 @@ void STAGE::layer(int drawLane) {
 		}
 	}
 
-	if (game()->player()->playerData().nowLane == drawLane) {
+	if (game()->player()->playerNowLane() == drawLane) {
 		game()->player()->draw();
 	}
 }
 void STAGE::nextScene() {
+	//レベルアップした場合、selectへ
+	if (game()->enemies()->sumDestroy() + game()->objects()->sumDestroy() >= game()->player()->levelUpBorder()) {
+		game()->changeScene(GAME10_GAME::SELECT_ID);
+	}
+	//リザルトへ
 	if (game()->time()->nowTime() <= NULL
-		|| game()->player()->playerData().hp<= NULL
+		|| game()->player()->playerHp()<= NULL
 		|| (game()->distance()->clearDist() <= game()->distance()->sumDist()
-		&& game()->player()->playerData().Pos.x>=width)) {
+		&& game()->player()->playerPos().x>=width)) {
 		game()->changeScene(GAME10_GAME::RESULT_ID);
 	}
 }

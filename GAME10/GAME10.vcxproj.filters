@@ -76,6 +76,12 @@
     <ClCompile Include="MISSILE.cpp">
       <Filter>item\sauce</Filter>
     </ClCompile>
+    <ClCompile Include="SELECT.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TUTORIAL.cpp">
+      <Filter>sauce\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME10.h">
@@ -152,6 +158,12 @@
     </ClInclude>
     <ClInclude Include="MISSILE.h">
       <Filter>item\header</Filter>
+    </ClInclude>
+    <ClInclude Include="SELECT.h">
+      <Filter>header\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TUTORIAL.h">
+      <Filter>header\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -29,7 +29,15 @@ void ENEMY_HPGAUGE::appear(int hp, int level) {
 	EnemyGauge.curHp++;
 }
 void ENEMY_HPGAUGE::getDamage(float damage,int enemyKind,int weaponKind) {
-	NowHp[enemyKind] -= damage;
+	if (game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::HANDGUN_ID) {
+		NowHp[enemyKind] -= damage * 2;
+	}
+	else if(game()->player()->PlayerWeaponKind(weaponKind) == GAME10_GAME::MISSILE_ID){
+		NowHp[enemyKind] -= damage / 3;
+	}
+	else {
+		NowHp[enemyKind] -= damage;
+	}
 }
 
 void ENEMY_HPGAUGE::death(int i) {

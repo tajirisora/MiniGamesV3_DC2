@@ -152,11 +152,13 @@
     <ClCompile Include="PLAYER_HP.cpp" />
     <ClCompile Include="RESULT.cpp" />
     <ClCompile Include="SCENE.cpp" />
+    <ClCompile Include="SELECT.cpp" />
     <ClCompile Include="SHOTGUN.cpp" />
     <ClCompile Include="SHOTGUN_BULLET.cpp" />
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="TIME.cpp" />
     <ClCompile Include="TITLE.cpp" />
+    <ClCompile Include="TUTORIAL.cpp" />
     <ClCompile Include="WEAPONS.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,11 +181,13 @@
     <ClInclude Include="PLAYER_HP.h" />
     <ClInclude Include="RESULT.h" />
     <ClInclude Include="SCENE.h" />
+    <ClInclude Include="SELECT.h" />
     <ClInclude Include="SHOTGUN.h" />
     <ClInclude Include="SHOTGUN_BULLET.h" />
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="TIME.h" />
     <ClInclude Include="TITLE.h" />
+    <ClInclude Include="TUTORIAL.h" />
     <ClInclude Include="WEAPONS.h" />
   </ItemGroup>
   <ItemGroup>

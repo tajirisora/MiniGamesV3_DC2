@@ -23,6 +23,10 @@ public:
 		float stopFlag = false;
 		int frontImgNumber;//‰æ‘œ‚Ì‘OŒã
 		int NofrontImg;
+		//“|‚µ‚½“G‚Ì”‚ğ¦‚·•¶š‚ÌˆÊ’u
+		VECTOR2 DestPos;
+		int DestNum;
+		int DestTextSize;
 
 		//laneŠÖ˜A
 		int opy = 0;

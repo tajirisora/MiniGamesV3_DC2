@@ -7,7 +7,14 @@ public:
 	struct DATA {
 		VECTOR2 Opos =0;
 		VECTOR2 Pos = 0;
+		int level;
+		int levelUpBorder;//この数だけ倒すと、レベルが上がる
 		float Pmy = 0;
+		int pImg[2];
+		int nowImage;
+		int nowFlame;
+		int nextFlame;
+		int imgNum;
 		int playerImg = 0;
 		float ImgRight = 0;
 		float maxSpeed = 0;
@@ -36,12 +43,23 @@ public:
 	void stageGoal();
 	void create();
 	void update();
+	void levelUp();
 	void launch();
 	void getWeapons(int weaponKind);
 	void collision();
 	void draw();
 	void playerMove();
+	void doubleUp() { Player.levelUpBorder *= 2; }//レベルが上がったらborderがあがる
+
+	VECTOR2 playerOpos() { return Player.Opos; }
+	VECTOR2 playerPos() { return Player.Pos; }
+	float playerHp() { return Player.hp; }
+	int playerNowLane() { return Player.nowLane; }
+	int PlayerWeaHaveNum() { return Player.weaponHaveNum; }
+	int PlayerWeaponKind(int weaponKind) { return Player.weaponKind[weaponKind]; }
+	float playerSpeed() { return Player.speed; }
 	float playerRight() { return Player.Pos.x + Player.ImgRight; }
-	const DATA& const playerData(){ return Player; }
+	int levelUpBorder() { return Player.levelUpBorder; }
+	int playerImagenow() { return Player.nowImage; }//デバッグ用
 };
 

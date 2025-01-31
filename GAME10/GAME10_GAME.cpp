@@ -1,5 +1,6 @@
 #include "GAME10_GAME.h"
 #include"TITLE.h"
+#include"TUTORIAL.h"
 #include"STAGE.h"
 #include"RESULT.h"
 #include"PLAYER.h"
@@ -15,7 +16,9 @@
 GAME10_GAME::GAME10_GAME(){
 	Container = new CONTAINER;
 	Scenes[TITLE_ID] = new TITLE(this);
+	Scenes[TUTORIAL_ID] = new TUTORIAL(this);
 	Scenes[STAGE_ID] = new STAGE(this);
+	Scenes[SELECT_ID] = new SELECT(this);
 	Scenes[RESULT_ID] = new RESULT(this);
 
 	Player = new PLAYER(this);
@@ -39,7 +42,9 @@ GAME10_GAME::GAME10_GAME(){
 	CurSceneId = TITLE_ID;
 	Container->load();
 	Scenes[TITLE_ID]->create();
+	Scenes[TUTORIAL_ID]->create();
 	Scenes[STAGE_ID]->create();
+	Scenes[SELECT_ID]->create();
 	Scenes[RESULT_ID]->create();
 
 	Weapons[HANDGUN_ID]->create();
@@ -73,11 +78,32 @@ void GAME10_GAME::run(){
 	Scenes[CurSceneId]->proc();
 }
 void GAME10_GAME::changeScene(SCENE_ID SceneId) {
-	CurSceneId = SceneId;
-	Scenes[CurSceneId]->init();
-	if (CurSceneId == STAGE_ID) {
-		for (int i = 0; i < NUM_WEAPON; i++) {
-			Weapons[i]->init();
-		}
+	if ((CurSceneId == STAGE_ID && SceneId == SELECT_ID)
+		||( CurSceneId == SELECT_ID && SceneId == STAGE_ID)) {
+		CurSceneId = SceneId;
 	}
+	else {
+		if (CurSceneId == STAGE_ID
+			&& SceneId == RESULT_ID) {
+			for (int i = 0; i < NUM_WEAPON; i++) {//武器のリセット
+				Weapons[i]->init();
+			}
+		}
+		CurSceneId = SceneId;
+		Scenes[CurSceneId]->init();
+	}
+
+	//if (CurSceneId != SELECT_ID
+	//	||CurSceneId == STAGE_ID) {
+	//	CurSceneId = SceneId;
+	//	Scenes[CurSceneId]->init();//ここがセレクト時にリセットされる原因
+	//	if (CurSceneId == STAGE_ID) {
+	//		for (int i = 0; i < NUM_WEAPON; i++) {
+	//			Weapons[i]->init();
+	//		}
+	//	}
+	//}
+	//else {
+	//	CurSceneId = SceneId;
+	//}
 }

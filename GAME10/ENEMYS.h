@@ -12,6 +12,7 @@ public:
 		int nowNum;
 		int speed;//ステージ速度に依存
 		int ohp;//Hp
+		int upHp;//レベルごとにアップするHp
 		int rightMx;//画像の右側
 		int my;//出現位置を決めるためのY軸移動量
 		int callIntervalDist;
@@ -19,7 +20,7 @@ public:
 		int sumTime;
 		int hitDamage;
 		int shortTime;//短くする時間
-		int destroy;//倒された数
+		int sumDestroy;//倒された数
 		int level;
 		VECTOR2 opos;
 	};
@@ -45,14 +46,18 @@ public:
 		void appear();//出現させるためのやつ
 		void move();
 		void collision();
+	void levelUp();
 	void kill(int i);
 	void AllKill();
 	void draw(int EnemyKind);
-	const DATA& uniEnemy() { return Enemy; }//共通データ
+	//const DATA& uniEnemy() { return Enemy; }//共通データ
+	const VECTOR2 EnemiesPos(int EnemiesKind) { return Enemies[EnemiesKind].pos; }
 	const int EnemiesHitDamage() { return Enemy.hitDamage; }
-	const int EnemiesLaneKind(int i) { return Enemies[i].lane; }
+	const int EnemiesNum() { return Enemy.nowNum; }
 	const float& EnemiesLeft(int i) { return Enemies[i].pos.x; }//敵ひとりひとりの位置データ(左)
 	const float EnemiesRight(int i) { return Enemies[i].pos.x + (float)Enemy.rightMx; }//敵ひとりひとりの位置データ(左)
 	const int& EnemiesLane(int i) { return Enemies[i].lane; }//敵ひとりひとりのlaneデータ
+	const int& sumDestroy() { return Enemy.sumDestroy; }
+	void DestroyReset() { Enemy.sumDestroy = 0; }
 };
 

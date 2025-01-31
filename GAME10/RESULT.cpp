@@ -11,16 +11,13 @@ void RESULT::create() {
 	Result = game()->container()->result();
 }
 void RESULT::draw() {
-	printSize(200);
 	game()->scenes(GAME10_GAME::STAGE_ID)->draw();
-	if (game()->player()->playerData().hp <= NULL
+	if (game()->player()->playerHp() <= NULL
 		|| game()->time()->nowTime() <= NULL) {
-		text("GAME OVER",width/2,height/2);
-		text("SPACEでタイトルに戻る", 300, height / 2 + 200);
+		image(Result.resultImg[Result.OVER_ID], Result.imgPos.x, Result.imgPos.y);
 	}
 	else {
-		text("GAME CLEAR", width / 2, height / 2);
-		text("SPACEでタイトルに戻る", 300, height / 2 + 200);
+		image(Result.resultImg[Result.CLEAR_ID], Result.imgPos.x, Result.imgPos.y);
 	}
 }
 void RESULT::nextScene() {

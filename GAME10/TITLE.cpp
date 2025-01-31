@@ -35,11 +35,16 @@ void TITLE::draw(){
 	text("2000m", Title.selectX, Title.selectY);
 	text("4000m", Title.selectX, Title.selectY + Title.selectMy * Title.F_ID);
 	text("6000m", Title.selectX, Title.selectY + Title.selectMy * Title.S_ID);
+	text("à–¾", Title.selectX, Title.selectY + Title.selectMy * Title.TUTORIAL_ID);
 }
 void TITLE::nextScene(){
-	if (isTrigger(KEY_SPACE)) {
+	if (isTrigger(KEY_SPACE) && Title.TUTORIAL_ID != Title.SELECTSTATE) {
 		game()->changeScene(GAME10_GAME::STAGE_ID);
 		game()->scenes(GAME10_GAME::STAGE_ID)->init();
 		game()->distance()->setClearDist(Title.SELECTSTATE);
+	}
+	else if(isTrigger(KEY_SPACE) && Title.TUTORIAL_ID == Title.SELECTSTATE){
+		game()->changeScene(GAME10_GAME::TUTORIAL_ID);
+		game()->scenes(GAME10_GAME::TUTORIAL_ID)->init();
 	}
 }

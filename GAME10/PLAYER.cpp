@@ -8,10 +8,6 @@ PLAYER::~PLAYER(){}
 void PLAYER::init(){
 	Player = game()->container()->player();
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->setHp(Player.hp);
-	//Player.weaponKind[1] = GAME10_GAME::SHOTGUN_ID;
-	//Player.weaponHaveNum++;
-	Player.weaponKind[1] = GAME10_GAME::MISSILE_ID;
-	Player.weaponHaveNum++;
 }
 
 void PLAYER::stageGoal() {
@@ -23,8 +19,11 @@ void PLAYER::create(){
 }
 
 void PLAYER::update() {
-	if ((int)Player.Pos.x != (int)Player.Opos.x) {
+	if ((int)Player.Pos.x != (int)Player.Opos.x) {//プレイヤーがゴール付近に近づいたら、プレイヤーが動き出す
 		playerMove();
+		for (int bulletsKind = GAME10_GAME::HANDGUNBULLET_ID; bulletsKind < Player.weaponHaveNum; bulletsKind++) {
+			game()->bullets(Player.weaponKind[bulletsKind])->BulletPMove(Player.speed);
+		}
 	}
 	else if (Player.Pos.x > Player.Opos.x) {
 		Player.Pos.x = Player.Opos.x;
@@ -72,11 +71,19 @@ void PLAYER::getWeapons(int weaponKind) {
 
 void PLAYER::collision() {
 	if (Player.invisibleTime <= 0) {
-		for (int i = 0; game()->enemies()->uniEnemy().nowNum > i; i++) {
+		for (int i = 0; game()->enemies()->EnemiesNum() > i; i++) {
 			if (Player.Pos.x + Player.ImgRight >= game()->enemies()->EnemiesLeft(i)
-				&&Player.Pos.x <= game()->enemies()->EnemiesRight(i)
+				&& Player.Pos.x <= game()->enemies()->EnemiesRight(i)
 				&& Player.nowLane == game()->enemies()->EnemiesLane(i)) {
 				game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->getDamage(game()->enemies()->EnemiesHitDamage());
+				Player.invisibleTime = Player.initInvisibleTime;
+			}
+		}
+		for (int i = 0; game()->objects()->objectNum() > i; i++) {
+			if (Player.Pos.x + Player.ImgRight > game()->objects()->ObjectsLeft(i)
+				&& Player.Pos.x <= game()->objects()->ObjectsRight(i)
+				&& Player.nowLane == game()->objects()->ObjectsLane(i)) {
+				game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->getDamage(game()->objects()->objectsHitDamage());
 				Player.invisibleTime = Player.initInvisibleTime;
 			}
 		}
@@ -90,6 +97,10 @@ void PLAYER::playerMove() {
 	Player.Pos.x += Player.speed;
 }
 
+void PLAYER::levelUp() {
+	Player.level++;
+}
+
 void PLAYER::launch(){
 	for (int i = 0; i < Player.weaponHaveNum; i++) {
 		game()->weapons(Player.weaponKind[i])->launch(Player.Pos, Player.nowLane);
@@ -97,18 +108,19 @@ void PLAYER::launch(){
 }
 
 void PLAYER::draw(){
-	if (Player.invisibleTime <= 0 || 0 != Player.invisibleTime % 20) {
-		image(Player.playerImg, Player.Pos.x, Player.Pos.y);
+	Player.nowImage = Player.nowFlame / Player.nextFlame;
+	if (Player.invisibleTime <= 0
+		|| 0 != Player.invisibleTime % 20) {
+		image(Player.pImg[Player.nowImage], Player.Pos.x, Player.Pos.y);
+	}
+	Player.nowFlame++;
+	if (Player.nowFlame >= Player.nextFlame * Player.imgNum) {
+		Player.nowFlame = false;
 	}
 	image(Player.timeImage, Player.Tpos.x, Player.Tpos.y);
 	fill(255);
 	textSize(40);
 	game()->Hp_gauge(GAME10_GAME::PLAYERHP_ID)->draw();
-	//for (int i = 0; i < Player.weaponNum; i++) {
-	//	if (Player.weaponKind[i] >= NULL) {
-	//		game()->weapons(i)->draw();
-	//	}
-	//}
 	for (int i = 0; i < Player.weaponHaveNum; i++) {
 		game()->weapons(Player.weaponKind[i])->draw();
 	}

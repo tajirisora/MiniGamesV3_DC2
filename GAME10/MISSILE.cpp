@@ -22,6 +22,13 @@ void MISSILE::launch(VECTOR2 pos, int lane) {
 		Missile.intervalTime--;
 	}
 }
+void MISSILE::levelUp() {
+	Missile.Level++;
+	game()->player()->levelUp();
+	game()->enemies()->levelUp();
+	game()->objects()->levelUp();
+}
 void MISSILE::draw() {
 	image(Missile.GunsImg, Missile.Pos.x, Missile.Pos.y);
+	text(Missile.Level, Missile.LPos.x, Missile.LPos.y);
 }

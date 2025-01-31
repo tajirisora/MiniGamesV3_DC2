@@ -18,7 +18,7 @@ void DISTANCE::loopCnt() {
 	Dist.loopNum++;
 }
 void DISTANCE::distcnt(){
-	Dist.sumDist += Dist.cntDist * game()->player()->playerData().speed;
+	Dist.sumDist += Dist.cntDist * game()->player()->playerSpeed();
 }
 void DISTANCE::errorCorrection() {
 	if ( NULL != (int)Dist.sumDist % (int)Dist.standardDist) {
@@ -28,5 +28,5 @@ void DISTANCE::errorCorrection() {
 	}
 }
 void DISTANCE::draw(){
-	text((int)Dist.sumDist, Dist.distPos.x, Dist.distPos.y);
+	text((let)+(int)Dist.sumDist+(let)"m", Dist.distPos.x, Dist.distPos.y);
 }

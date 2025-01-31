@@ -19,6 +19,13 @@ void SHOTGUN::launch(VECTOR2 pos, int lane){
 	}
 
 }
+void SHOTGUN::levelUp() {
+	ShotGun.Level++;
+	game()->player()->levelUp();
+	game()->enemies()->levelUp();
+	game()->objects()->levelUp();
+}
 void SHOTGUN::draw(){
 	image(ShotGun.GunsImg, ShotGun.Pos.x, ShotGun.Pos.y);
+	text(ShotGun.Level, ShotGun.LPos.x, ShotGun.LPos.y);
 }
