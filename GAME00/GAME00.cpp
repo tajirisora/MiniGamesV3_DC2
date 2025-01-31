@@ -9,6 +9,7 @@ namespace GAME00
 	int GAME::create()
 	{
 		card_backImg = loadImage("..\\main\\assets\\game00\\card_back.png");
+		haikeiImg = loadImage("..\\main\\assets\\game00\\haikei.jpg");
 
 		return 0;
 	}
@@ -27,10 +28,21 @@ namespace GAME00
 	}
 	void GAME::Titel()
 	{
-		clear(0, 0, 128);
-		fill(255, 255, 255);
-		textSize(80);
-		print("タイトル");
+		clear(11, 195, 54);
+
+		rectMode(CORNER);
+		image(haikeiImg,0,0);
+
+		fill(0);
+		textSize(200);
+		textMode(BCENTER);
+		text("ブラックジャック", 250, 540);
+
+		fill(0);
+		textSize(50);
+		text("クリックしてスタート", 250, 840);
+		text("ENTERで戻る", 250, 950);
+
 		if (isTrigger(MOUSE_LBUTTON)) {
 			Init();
 			State = PLAY;
@@ -54,37 +66,42 @@ namespace GAME00
 	}
 	void GAME::Play()
 	{
-		clear(0, 0, 128);
-		fill(255, 255, 255);
-		textSize(80);
-		print("プレイ");
-
+		clear(11, 195, 54);
+		image(haikeiImg, 0, 0);
 		score = card1 + card2;
 		enemyScore = eCard1 + eCard2;
+		enemyDrawCount = 2;
 
 		if (enemyScore <= 18) {
 			EnemyDraw();
 			enemyScore += eCard3;
+			enemyDrawCount++;
 		}
+		if (enemyScore <= 18) {
+			EnemyDraw2();
+			enemyScore += eCard4;
+			enemyDrawCount++;
+		}
+
+		DrawEnemyCards();
+
 		if (isTrigger(MOUSE_LBUTTON)) {
 			State = PLAY2;
-			score += card3;
+			score += card3;                                                                           
 		};
-		Draw();
+		Draw(); 
 
 		if (isTrigger(KEY_ENTER)) {
 			State = CLEAR;
 		}
 	}
 	void GAME::Play2() {
-		clear(0, 0, 128);
+		clear(11, 195, 54);
+		image(haikeiImg, 0, 0);
+		DrawEnemyCards();
 		Draw();
 		Draw2();
-		EnemyDraw();
-		if (enemyScore <= 18) {
-			enemyScore += eCard4;
-			EnemyDraw2();
-		}
+		
 		if (isTrigger(MOUSE_LBUTTON)) {
 			State = PLAY3;
 			score += card4;
@@ -94,138 +111,186 @@ namespace GAME00
 		}
 	}
 	void GAME::Play3() {
-		clear(0, 0, 128);
+		clear(11, 195, 54);
+		image(haikeiImg, 0, 0);
+		DrawEnemyCards();
 		Draw();
 		Draw2();
 		Draw3();
-		EnemyDraw();
-		EnemyDraw2();
 		if (isTrigger(KEY_ENTER)) {
 			State = CLEAR;
 		}
 	}
 	void GAME::Draw()
 	{
-		fill(240, 255, 16);
+		fill(255, 255, 255);
+		textSize(80);
+		print("カードは4枚まで引ける");
+		print("合計が21に近いほうが勝ち");
+		print("カードがそろったらENTERで次に進む");
+		
+		textSize(80);
+		textMode(BCENTER);
+		text("クリックしてカードを引く", 500, 1000);
+
+		rectMode(CORNER);
+		fill(255);
+		rect(550, 600, 150, 220);
+		fill(0);
 		textSize(100);
 		textMode(BCENTER);
-		text(card1, 500, 600);
+		text(card1, 625, 720);
+
+		rectMode(CORNER);
+		fill(255);
+		rect(750, 600, 150, 220);
+		fill(0);
+		textSize(100);
+		textMode(BCENTER);
+		text(card2, 825, 720);
+
+		rectMode(CORNER);
+		fill(255);
+		rect(550, 200, 150, 220);
+		fill(0);
+		textSize(100);
+		textMode(BCENTER);
+		text(eCard1, 625, 320);
+
+		fill(0);
+		textSize(100);
+		textMode(BCENTER);
+		text(eCard2, 825, 320);
+
+		image(card_backImg, 750, 200);
 
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(card2, 650, 600);
+		text("あなたの合計:", 500, 900);
+		text(score, 1150, 900);
 
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(eCard1, 500, 200);
-
-		fill(240, 255, 16);
-		textSize(100);
-		textMode(BCENTER);
-		text(eCard2, 650, 200);
-
-		//image(card_backImg, 650, 200);
-
-		fill(240, 255, 16);
-		textSize(100);
-		textMode(BCENTER);
-		text(score, 600, 800);
-
-		fill(240, 255, 16);
-		textSize(100);
-		textMode(BCENTER);
-		text(enemyScore, 600, 100);
+		text("相手", 900, 100);
 
 	}
 	void GAME::Draw2()
 	{
+		rectMode(CORNER);
+		fill(255);
+		rect(950, 600, 150, 220);
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(card3, 750, 600);
+		text(card3, 1025, 720);
 	}
 	void GAME::Draw3()
 	{
+		rectMode(CORNER);
+		fill(255);
+		rect(1150, 600, 150, 220);
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(card4, 850, 600);
+		text(card4, 1225, 720);
 	}
 	void GAME::EnemyDraw()
 	{
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(eCard3, 750, 200);
-		//image(card_backImg, 750, 200);
+		text(eCard3, 1025, 320);
+		image(card_backImg, 950, 200);
 	}
 	void GAME::EnemyDraw2()
 	{
 		fill(240, 255, 16);
 		textSize(100);
 		textMode(BCENTER);
-		text(eCard4, 850, 200);
-		//image(card_backImg, 850, 200);
+		text(eCard4, 1225, 320);
+		image(card_backImg, 1150, 200);
+	}
+	void GAME::DrawEnemyCards() {
+		if (enemyDrawCount >= 1) {
+
+		}
+		if (enemyDrawCount >= 2) {
+			EnemyDraw();
+		}
+		if (enemyDrawCount >= 3) {
+			EnemyDraw2();
+		}
 	}
 	void GAME::Clear()
 	{
 		clear(0, 0, 128);
-		fill(255, 255, 255);
-		textSize(80);
-		print("クリア");
+
+		image(haikeiImg, 0, 0);
 
 		fill(240, 255, 16);
+		textSize(300);
+		textMode(BCENTER);
+		text(score, 500, 500);
 		textSize(100);
 		textMode(BCENTER);
-		text(score, 500, 300);
+		text("あなた", 450, 300);
 
 		fill(240, 255, 16);
+		textSize(300);
+		textMode(BCENTER);
+		text(enemyScore, 1200, 500);
 		textSize(100);
 		textMode(BCENTER);
-		text(enemyScore, 700, 300);
+		text("相手", 1150, 300);
+
+		fill(255);
+		textSize(100);
+		textMode(BCENTER);
+		text("クリックしてタイトルに戻る",350,900);
+
 		if (score > enemyScore) {
 			if (score <= 21) {
 				fill(240, 255, 16);
-				textSize(100);
+				textSize(200);
 				textMode(BCENTER);
-				text("君の勝ち", 500, 540);
+				text("勝ち", 800, 740);
 			}
 			else if (score >= 22) {
 				fill(240, 255, 16);
-				textSize(100);
+				textSize(200);
 				textMode(BCENTER);
-				text("君の負け", 500, 540);
+				text("負け", 800, 740);
 
 			}
 		}
 		else if (score < enemyScore) {
-			if (enemyScore >= 22) {
+			if (enemyScore >= 21) {
 				fill(240, 255, 16);
 					textSize(100);
 				textMode(BCENTER);
-				text("君の勝ち", 500, 540);
+				text("勝ち", 800, 740);
 			}
 			else if (enemyScore <= 21) {
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
-				text("君の負け", 500, 540);
+				text("負け", 800, 740);
 			}
 		}
 		else if (score == enemyScore) {
-			if (score <= 22) {
+			if (score <= 21) {
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
-				text("引き分け", 500, 540);
+				text("引き分け", 800, 740);
 			}
 			else if (score >= 22) {
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
-				text("どっちも負け", 500, 540);
+				text("どっちも負け", 800, 740);
 			}
 		}
 		else if (score >= 21) {
@@ -233,7 +298,7 @@ namespace GAME00
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
-				text("どっちも負け", 500, 540);
+				text("どっちも負け", 800, 740);
 			}
 		}
 		else if (enemyScore >= 21) {
@@ -241,9 +306,10 @@ namespace GAME00
 				fill(240, 255, 16);
 				textSize(100);
 				textMode(BCENTER);
-				text("どっちも負け", 500, 540);
+				text("どっちも負け", 800, 740);
 			}
 		}
+
 		
 		if (isTrigger(MOUSE_LBUTTON)) {
 			State = TITLE;
