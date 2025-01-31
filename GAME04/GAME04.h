@@ -14,30 +14,46 @@ namespace GAME04
         void Init(struct DATA* d);
     private:
         //シーン分け
-        enum STATE { TITLE, PLAY, RESULT };
+        enum STATE { TITLE, PLAY,CLEAR,OVER };
         STATE State = TITLE;
         void Title(struct DATA* d);
         void Play(struct DATA* d);
-        void Result(struct DATA* d);
+        void Clear(struct DATA* d);
+        void Over(struct DATA* d);
         int Collision(struct CHARA* c, struct BULLET* b);
         void Draw(struct DATA* d);
         void HpGauge(struct CHARA* c);
         int FireSoundP;
-        int FireSoundN;
+        int FireSoundPBOM;
+        int FireSoundE;
+        int FireSoundB;
 
         int DamageSndP;
-        int DamageSndN;
+        int DamageSndE;
+        int DamageSndB;
 
         int BgmSound;
-
+        
         int GAMECSound;
         int GAMEOSound;
 
+        int PBulletsnd = 0;
+        //int PBOMsnd = 0;
+        int EBulletsnd = 0;
+        //int BBulletsnd = 0;
+
+        float hpWarning = 0.0f;
+        float hpDanger = 0.0f;
+
+        bool PBHitFlag = false;
+        bool PBOMHitFlag = false;
+        bool EBHitFlag = false;
+        bool BBHitFlag = false;
+        bool EHpGaugeFlag = true;
+
         struct DATA* d = 0;
         struct CHARA* c = 0;
-        struct BULLET* b = 0;
-        int PBulletsnd = 0;
-        int EBulletSnd = 0;
+        struct BULLET* b = 0;  
     };
     struct CHARA {
         //各画像番号
@@ -58,6 +74,8 @@ namespace GAME04
 
         //体力
         int hp;
+        //MaxHp
+        int MaxHp;
         //ＨＰゲージ表示オフセット位置
         float hpGaugeOfsY;
         //当たり判定用、半分の幅と高さ
