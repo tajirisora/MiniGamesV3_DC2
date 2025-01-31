@@ -25,14 +25,11 @@
     <ClCompile Include="TITLE.cpp">
       <Filter>scene</Filter>
     </ClCompile>
-    <ClCompile Include="STOP_BUTTON.cpp">
-      <Filter>character\button</Filter>
-    </ClCompile>
     <ClCompile Include="BUTTON.cpp">
       <Filter>character\button\bace</Filter>
     </ClCompile>
     <ClCompile Include="LEVER.cpp">
-      <Filter>character\lever</Filter>
+      <Filter>character\button\lever</Filter>
     </ClCompile>
     <ClCompile Include="LOTTERY.cpp">
       <Filter>character</Filter>
@@ -42,6 +39,18 @@
     </ClCompile>
     <ClCompile Include="REEL_MAP.cpp">
       <Filter>character\reel</Filter>
+    </ClCompile>
+    <ClCompile Include="CREDIT.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="BET.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="STOP_BUTTON.cpp">
+      <Filter>character\button\stopbutton</Filter>
+    </ClCompile>
+    <ClCompile Include="MAX_BET_BUTTON.cpp">
+      <Filter>character\button\bet_button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,14 +78,11 @@
     <ClInclude Include="TITLE.h">
       <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="STOP_BUTTON.h">
-      <Filter>character\button</Filter>
-    </ClInclude>
     <ClInclude Include="BUTTON.h">
       <Filter>character\button\bace</Filter>
     </ClInclude>
     <ClInclude Include="LEVER.h">
-      <Filter>character\lever</Filter>
+      <Filter>character\button\lever</Filter>
     </ClInclude>
     <ClInclude Include="LOTTERY.h">
       <Filter>character</Filter>
@@ -87,6 +93,18 @@
     <ClInclude Include="REEL_MAP.h">
       <Filter>character\reel</Filter>
     </ClInclude>
+    <ClInclude Include="CREDIT.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="BET.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="STOP_BUTTON.h">
+      <Filter>character\button\stopbutton</Filter>
+    </ClInclude>
+    <ClInclude Include="MAX_BET_BUTTON.h">
+      <Filter>character\button\bet_button</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game14\title.txt" />
@@ -96,41 +114,80 @@
     <Text Include="..\MAIN\assets\game14\flag_prob.txt">
       <Filter>character</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_NO_BB.txt">
+    <Text Include="..\MAIN\assets\game14\combi.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\bonus_combi.txt">
+      <Filter>character\reel</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\payout.txt">
       <Filter>character\reel</Filter>
     </Text>
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Blue_BB.txt">
-      <Filter>character\reel</Filter>
+      <Filter>character\reel\control_txt\left</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\left_first_control\left_first_NO_BB.txt">
+      <Filter>character\reel\control_txt\left</Filter>
     </Text>
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Red_BB.txt">
-      <Filter>character\reel</Filter>
+      <Filter>character\reel\control_txt\left</Filter>
     </Text>
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_REG.txt">
-      <Filter>character\reel</Filter>
+      <Filter>character\reel\control_txt\left</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Blue_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_Red_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_NO_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_REG.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Red_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_Blue_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_REG.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_NO_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Blue_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_Red_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_NO_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_REG.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Red_BB.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_Blue_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
     </Text>
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_REG.txt">
-      <Filter>character\reel</Filter>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_NO_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_Red_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_REG.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_Blue_BB .txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_NO_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_Red_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_REG.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_Blue_BB .txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_NO_BB.txt">
+      <Filter>character\reel\control_txt\right</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\distinction_NO_Bonus.txt">
+      <Filter>character\reel\control_txt</Filter>
+    </Text>
+    <Text Include="..\MAIN\assets\game14\distinction_Bonus.txt">
+      <Filter>character\reel\control_txt</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -158,11 +215,23 @@
     <Filter Include="character\button\stopbutton">
       <UniqueIdentifier>{34b992d6-56bd-4c5e-9608-a00061ee4ded}</UniqueIdentifier>
     </Filter>
-    <Filter Include="character\lever">
-      <UniqueIdentifier>{0b85e658-95da-44ba-b472-b346ed05146e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="character\reel">
       <UniqueIdentifier>{09c4d1a6-994a-44c1-9892-6b9393272aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\reel\control_txt">
+      <UniqueIdentifier>{503ca95d-d1e6-4dfe-9e2e-be7bc9c6a5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\button\lever">
+      <UniqueIdentifier>{0b85e658-95da-44ba-b472-b346ed05146e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\button\bet_button">
+      <UniqueIdentifier>{05355ec5-d4c0-4fa9-9d7a-f66aad93d220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\reel\control_txt\left">
+      <UniqueIdentifier>{8e16d5d4-d0ba-4d7b-8da5-12af027a3f82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character\reel\control_txt\right">
+      <UniqueIdentifier>{0d674b95-7475-4006-a5a9-605dbe1592fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

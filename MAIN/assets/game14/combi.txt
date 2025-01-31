@@ -1,0 +1,78 @@
+Replay      /4/4/4
+Bell_A      /8/8/8
+Bell_A      /8/8/9
+Bell_A      /8/9/8
+Bell_A      /8/9/9
+Bell_A      /9/8/8
+Bell_A      /9/8/9
+Bell_A      /9/9/8
+Bell_A      /9/9/9
+Bell_B      /8/8/8
+Bell_B      /8/8/9
+Bell_B      /8/9/8
+Bell_B      /8/9/9
+Bell_B      /9/8/8
+Bell_B      /9/8/9
+Bell_B      /9/9/8
+Bell_B      /9/9/9
+Watermelon_A/5/5/5
+Watermelon_A/5/5/6
+Watermelon_A/5/6/5
+Watermelon_A/5/6/6
+Watermelon_A/6/5/5
+Watermelon_A/6/5/6
+Watermelon_A/6/6/5
+Watermelon_A/6/6/6
+Watermelon_B/5/5/5
+Watermelon_B/5/5/6
+Watermelon_B/5/6/5
+Watermelon_B/5/6/6
+Watermelon_B/6/5/5
+Watermelon_B/6/5/6
+Watermelon_B/6/6/5
+Watermelon_B/6/6/6
+Cherry_A1   /7/-1/4
+Cherry_A1   /7/-1/8
+Cherry_A1   /7/-1/9
+Cherry_A2   /7/-1/4
+Cherry_A2   /7/-1/8
+Cherry_A2   /7/-1/9
+Cherry_B    /7/-1/4
+Cherry_B    /7/-1/8
+Cherry_B    /7/-1/9
+EX_A        /3/1/0
+EX_B        /1/2/1
+EX_B        /9/4/8
+EX_C        /2/0/2
+EX_C        /8/7/8
+EX_D        /7/4/7
+EX_E        /4/6/5
+EX_F        /5/6/0
+BB_Bell_A   /8/8/8
+BB_Bell_A   /8/8/9
+BB_Bell_A   /8/9/8
+BB_Bell_A   /8/9/9
+BB_Bell_A   /9/8/8
+BB_Bell_A   /9/8/9
+BB_Bell_A   /9/9/8
+BB_Bell_A   /3/9/9
+BB_Bell_A   /3/8/8
+BB_Bell_A   /3/8/9
+BB_Bell_A   /3/9/8
+BB_Bell_A   /3/9/9
+BB_Bell_B   /8/8/8
+BB_Bell_B   /8/8/9
+BB_Bell_B   /8/9/8
+BB_Bell_B   /8/9/9
+BB_Bell_B   /9/8/8
+BB_Bell_B   /9/8/9
+BB_Bell_B   /9/9/8
+BB_Bell_B   /9/9/9
+BB_Bell_B   /3/8/8
+BB_Bell_B   /3/8/9
+BB_Bell_B   /3/9/8
+BB_Bell_B   /3/9/9
+Challenge   /3/2/0
+Challenge   /3/2/1
+Lucky       /3/2/0
+Lucky       /3/2/1

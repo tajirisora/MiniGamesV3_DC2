@@ -133,13 +133,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BET.cpp" />
     <ClCompile Include="BUTTON.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="CREDIT.cpp" />
     <ClCompile Include="GAME14.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
     <ClCompile Include="HOME.cpp" />
     <ClCompile Include="LEVER.cpp" />
     <ClCompile Include="LOTTERY.cpp" />
+    <ClCompile Include="MAX_BET_BUTTON.cpp" />
     <ClCompile Include="REEL.cpp" />
     <ClCompile Include="REEL_MAP.cpp" />
     <ClCompile Include="RESULT.cpp" />
@@ -149,13 +152,16 @@
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BET.h" />
     <ClInclude Include="BUTTON.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="CREDIT.h" />
     <ClInclude Include="GAME14.h" />
     <ClInclude Include="GAME_OBJECT.h" />
     <ClInclude Include="HOME.h" />
     <ClInclude Include="LEVER.h" />
     <ClInclude Include="LOTTERY.h" />
+    <ClInclude Include="MAX_BET_BUTTON.h" />
     <ClInclude Include="REEL.h" />
     <ClInclude Include="REEL_MAP.h" />
     <ClInclude Include="RESULT.h" />
@@ -165,20 +171,33 @@
     <ClInclude Include="TITLE.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\MAIN\assets\game14\bonus_combi.txt" />
+    <Text Include="..\MAIN\assets\game14\combi.txt" />
+    <Text Include="..\MAIN\assets\game14\distinction_Bonus.txt" />
+    <Text Include="..\MAIN\assets\game14\distinction_NO_Bonus.txt" />
     <Text Include="..\MAIN\assets\game14\flag_prob.txt" />
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Blue_BB.txt" />
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_NO_BB.txt" />
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_Red_BB.txt" />
     <Text Include="..\MAIN\assets\game14\left_first_control\left_first_REG.txt" />
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Blue_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_NO_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_Red_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\mid_first_control\mid_first_REG.txt" />
+    <Text Include="..\MAIN\assets\game14\payout.txt" />
     <Text Include="..\MAIN\assets\game14\reel_map.txt" />
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Blue_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_NO_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_Red_BB.txt" />
-    <Text Include="..\MAIN\assets\game14\right_first_control\right_first_REG.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_Blue_BB .txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_NO_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_Red_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_bottom_time_REG.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_Blue_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_NO_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_Red_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_middle_time_REG.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_Blue_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_NO_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_Red_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_No_time_REG.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_Blue_BB .txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_NO_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_Red_BB.txt" />
+    <Text Include="..\MAIN\assets\game14\right_second_control\left_top_time_REG.txt" />
     <Text Include="..\MAIN\assets\game14\title.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

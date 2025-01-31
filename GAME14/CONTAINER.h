@@ -11,6 +11,9 @@
 #include"LOTTERY.h"
 #include"REEL.h"
 #include"REEL_MAP.h"
+#include"CREDIT.h"
+#include"BET.h"
+#include"MAX_BET_BUTTON.h"
 #include"GAME14.h"
 namespace GAME14 {
 	class CONTAINER{
@@ -24,6 +27,10 @@ namespace GAME14 {
 			GAME14::LOTTERY::DATA lottery;
 			GAME14::REEL::DATA reel;
 			GAME14::REEL_MAP::DATA map;
+			GAME14::CREDIT::DATA credit;
+			GAME14::BET::DATA bet;
+			GAME14::BUTTON::DATA max_bet_Button;
+			GAME14::MAX_BET_BUTTON::DATA max_betButton;
 		};
 		DATA Data;
 		void setData();

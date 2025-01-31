@@ -35,7 +35,9 @@ namespace GAME14 {
             for (int i = 0; i < StopButtons.numButton; i++) {
                 if (collisionCheck(StopButton[i].pos, Button.r)) {
                     if (isTrigger(MOUSE_LBUTTON)) {
-                        game()->reel()->stop(i);
+                        if (game()->reel()->tellmovereel(i)) {
+                            game()->reel()->stop(i);
+                        }
                         StopButton[i].sistemFlag = true;
                     }
                     if (isPress(MOUSE_LBUTTON)) {
@@ -61,12 +63,12 @@ namespace GAME14 {
             }
         }
     }
-    bool STOP_BUTTON::sistemFlag(int buttonId) {
+    /*bool STOP_BUTTON::sistemFlag(int buttonId) {
         for (int i = 0; i < StopButtons.numButton; i++) {
             if (StopButton[i].buttonId == buttonId) {
                 return StopButton[i].sistemFlag;
             }
         }
     }
-
+    */
 }

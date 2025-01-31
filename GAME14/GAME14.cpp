@@ -11,6 +11,9 @@
 #include"REEL.h"
 #include"REEL_MAP.h"
 #include"CONTAINER.h"
+#include"CREDIT.h"
+#include"BET.h"
+#include"MAX_BET_BUTTON.h"
 #include "GAME14.h"
 namespace GAME14
 {
@@ -33,6 +36,12 @@ namespace GAME14
 		Lottery = new LOTTERY(this);
 		Reel = new REEL(this);
 		ReelMap = new REEL_MAP(this);
+		Credit = new CREDIT(this);
+		Bet = new BET(this);
+		Max_betButton = new MAX_BET_BUTTON(this);
+		Max_betButton->create();
+		Bet->create();
+		Credit->create();
 		ReelMap->create();
 		Reel->create();
 		Lottery->create();
@@ -43,6 +52,9 @@ namespace GAME14
 
 	void GAME::destroy()
 	{
+		delete Max_betButton;
+		delete Bet;
+		delete Credit;
 		delete ReelMap;
 		delete Reel;
 		delete Lottery;
@@ -69,22 +81,30 @@ namespace GAME14
 		Lottery->init();
 		StopButton->init();
 		Lever->init();
-		Reel->init();
 		ReelMap->init();
+		Reel->init();
+		Credit->init();
+		Bet->init();
+		Max_betButton->init();
 	}
 	void GAME::charaUpdate() {
 		Lever->update();
-		//Lottery->update();
 		Reel->update();
 		StopButton->update();
+		Credit->update();
+		Max_betButton->update();
+		Bet->update();
 	}
 	void GAME::charaDraw() {
 		StopButton->draw();
 		Lever->draw();
 		Reel->draw();
-		Reel->debagDraw();
+		//Reel->debagDraw();
 		Lottery->debugdraw();
+		//Credit->debagdraw();
+		Credit->draw();
+		Bet->draw();
+		Max_betButton->draw();
 		ReelMap->debagDraw();
-
 	}
 }
