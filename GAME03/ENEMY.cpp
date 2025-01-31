@@ -51,14 +51,18 @@ namespace GAME03 {
 		}
 		if (Chara.wx < (game()->map()->wx() + width / 2.0f) - 1000.0f) {
 			Chara.wx += 2000.0f;
+			Chara.wy += rand() % 100;
 		}
 		if (Chara.wx > (game()->map()->wx() + width / 2.0f) + 1000.0f) {
 			Chara.wx -= 2000.0f;
+			Chara.wy += rand() % 100;
 		}
 		if (Chara.wy < (game()->map()->wy() + height / 2.0f) - 1000.0f) {
+			Chara.wx += rand() % 100;
 			Chara.wy += 2000.0f;
 		}
 		if (Chara.wy > (game()->map()->wy() + height / 2.0f) + 1000.0f) {
+			Chara.wx += rand() % 100;
 			Chara.wy -= 2000.0f;
 		}
 		Enemy.curWx = Chara.wx;

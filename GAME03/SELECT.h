@@ -23,10 +23,13 @@ namespace GAME03 {
 			int click_cnt = 0;
 			int a = 0;
 			int b = 0;
+			char stageName[100][100]{};
+			char charaName[100][100]{};
 			time_t TimePls = 0;
 			fs::path targetPath;
 		};
 	private:
+		FILE* fp{};
 		DATA Select;
 	public:
 		SELECT(class GAME* game):SCENE(game){}
@@ -36,6 +39,7 @@ namespace GAME03 {
 		void draw();
 		void nextScene();
 		time_t timepls() const;
+		char name[100]{};
 	};
 }
 

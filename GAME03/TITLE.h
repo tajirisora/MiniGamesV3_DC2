@@ -17,5 +17,7 @@ namespace GAME03 {
 		int delibe = 0;
 		int f1 = 0, f2 = 0;
 		int reset = false;
+		char achievements[100]{};
+		bool master = false;
 	};
 }

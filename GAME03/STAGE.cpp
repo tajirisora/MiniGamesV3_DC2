@@ -86,6 +86,13 @@ namespace GAME03 {
 			Logo(Stage.gameOverImg, Stage.gameOverColor);
 		}
 		else if (game()->characterManager()->player()->survived()) {
+			if(game()->select()->timepls() >= 150){
+				fopen_s(&fp, "assets/game03/data/achievements/achievements.txt", "w");
+				if (fp != NULL) {
+					fprintf(fp,"3•ªˆÈã¶‚«c‚éB\n");
+					fclose(fp);
+				}
+			}
 			Logo(Stage.stageClearImg, Stage.stageClearColor);
 		}
 		else {

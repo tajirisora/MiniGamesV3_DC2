@@ -107,7 +107,7 @@ namespace GAME03 {
 
     }
     void CONTAINER::LoadGraphics() {
-
+        Data.stage.masterImg = loadImage("..\\main\\assets\\game03\\data\\achievements\\.png");
         Data.stage.stageClearImg = loadImage("..\\main\\assets\\game03\\data\\StageClear.png");
         Data.stage.gameOverImg = loadImage("..\\main\\assets\\game03\\data\\GameOver.png");
         Data.stage.backImg = loadImage("..\\main\\assets\\game03\\data\\back_Img.png");

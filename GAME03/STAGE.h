@@ -12,6 +12,7 @@ namespace GAME03 {
 			int playStopImg = 0;
 			int restartImg = 0;
 			int backTitleImg = 0;
+			int masterImg = 0;
 
 			float backToTitleTime = 0;
 

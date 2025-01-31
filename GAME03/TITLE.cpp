@@ -16,6 +16,7 @@ namespace GAME03 {
 		EscapeKeyValid = false;
 		delibe = 0;
 		loopBgm = true;
+		master = false;
 	}
 	void TITLE::draw() {
 		clear(255);
@@ -36,6 +37,14 @@ namespace GAME03 {
 				setVolume(game()->container()->data().volume.Se_D, -(100 - f2) * (100 - f2));
 				setVolume(game()->container()->data().volume.Se_E, -(100 - f2) * (100 - f2));
 				setVolume(game()->container()->data().volume.Se_F, -(100 - f2) * (100 - f2));
+			}
+			fopen_s(&fp, "assets/game03/data/achievements/achievements.txt", "r");
+			if (fp != 0) {
+				fscanf_s(fp,"%s", achievements,(unsigned)_countof(achievements));
+				if (achievements[0] == '3') {
+					master = true;
+				}
+				fclose(fp);
 			}
 			loopBgm = false;
 		}
@@ -76,6 +85,9 @@ namespace GAME03 {
 					text("Escキーでメニューに戻る", width / 1.4f, height / 1.00625f - (float)i * 1.0f);
 				}
 			}
+		}
+		if (master) {
+			image(game()->container()->data().stage.masterImg, 0, 0);
 		}
 		if (isTrigger(KEY_R)) {
 			playSound(game()->container()->data().volume.Se_D);
