@@ -1,0 +1,100 @@
+Hazure
+top   /0
+middle/0
+bottom/13/1
+NO    /19/17/10/6
+Replay
+top   /10/5
+middle/0
+bottom/21/17/12/7
+NO    /0
+Bell_A
+top   /0
+middle/13/1
+bottom/18/11/6
+NO    /0
+Bell_B
+top   /0
+middle/13/1
+bottom/18/11/6
+NO    /0
+Watermelon_A
+top   /18/11
+middle/12/21
+bottom/13/1
+NO    /7/6
+Watermelon_B
+top   /20/18/11
+middle/0
+bottom/13/1
+NO    /7/6
+Cherry_A1
+top   /14/2
+middle/0
+bottom/16/4
+NO    /18/9
+Cherry_A2
+top   /14/2
+middle/0
+bottom/16/4
+NO    /18/9
+Cherry_B
+top   /14/2
+middle/0
+bottom/16/4
+NO    /18/9
+EX_A
+top   /7
+middle/8
+bottom/9
+NO    /19/18/14/13/2/1
+EX_B
+top   /13
+middle/0
+bottom/15
+NO    /17/10/5/1
+EX_C
+top   /6
+middle/18
+bottom/19/8
+NO    /13/12/5/2/1
+EX_D
+top   /0
+middle/15/3
+bottom/0
+NO    /19/17/10/8/6
+EX_E
+top   /0
+middle/20/16/11/6/4
+bottom/0
+NO    /0
+EX_F
+top   /11
+middle/12
+bottom/0
+NO    /19/18/17/14/6/2/1
+BB_Bell_A
+top   /0
+middle/13/8/1
+bottom/18/11/6
+NO    /0
+BB_Bell_B
+top   /21/16/12/9/4
+middle/8
+bottom/0
+NO    /0
+EX_Bell
+top   /6/1
+middle/0
+bottom/19/15/10
+NO    /0
+Challenge
+top   /0
+middle/8
+bottom/0
+NO    /19/17/13/10/6/1
+Lucky
+top   /0
+middle/8
+bottom/0
+NO    /19/17/13/10/6/1

@@ -10,6 +10,7 @@ namespace GAME14 {
         initProbId();
         initStateId();
         initResultId();
+        initBonusId();
         createLevel();//3,4は除外
         std::random_device rd;
         std::mt19937 mt(rd());
@@ -132,86 +133,29 @@ namespace GAME14 {
 
             if (randNumber <= 0) {
                 setResult(i);
+                //Result = Hazure;
+                //Result = Cherry_A2;
+               // BonusResult = RED_BB;
                 return;
             }
         }
             
         Result = Hazure;
-        
+        //Result = Cherry_A2;
+
+        //BonusResult = RED_BB;
+
+
     }
     void LOTTERY::setResult(int id) {
         switch (id) {
             case REPLAY:
-            case F_RT_REPLAY:
 
                 Result = Replay;
 
                 break;
 
-            case JAC_REPLAY:
-
-                Result = Jac_Replay;
-
-                break;
-
-            case JAC_REPLAY_RB:
-
-                Result = Jac_Replay;
-
-                if (BonusResult <= 0)
-                BonusResult = RED_BB;
-
-                break;
-
-            case JAC_REPLAY_BB:
-
-                Result = Jac_Replay;
-
-                if (BonusResult <= 0)
-                BonusResult = BLUE_BB;
-
-                break;
-
-            case RT_REPLAY:
-
-                Result = Rt_Replay;
-
-                break;
-
-            case RT_REPLAY_RB:
-
-                Result = Rt_Replay;
-
-                if (BonusResult <= 0)
-                BonusResult = RED_BB;
-
-                break;
-
-            case RT_REPLAY_BB:
-
-                Result = Rt_Replay;
-
-                if (BonusResult <= 0)
-                BonusResult = BLUE_BB;
-
-                break;
-
-            case RT_REPLAY_REG:
-
-                Result = Rt_Replay;
-
-                if (BonusResult <= 0)
-                BonusResult = REGULAR;
-
-                break;
-
             case BELL_A:
-
-                Result = Bell_A;
-
-                break;
-
-            case BB_BELL_A:
 
                 Result = Bell_A;
 
@@ -232,18 +176,6 @@ namespace GAME14 {
 
                 break;
 
-            case BB_BELL_B:
-
-                Result = Bell_B;
-
-                break;
-
-            case BB_EX_BELL:
-
-                Result = Ex_Bell;
-
-                break;
-
             case WATERMELON_A:
 
                 Result = Watermelon_A;
@@ -251,12 +183,6 @@ namespace GAME14 {
                 break;
 
             case WATERMELON_B:
-
-                Result = Watermelon_B;
-
-                break;
-
-            case REG_WATERMELON:
 
                 Result = Watermelon_B;
 
@@ -361,30 +287,19 @@ namespace GAME14 {
 
                 break;
 
-            case EX_D_BB:
+            case EX_D_RB:
+                Result = Ex_D;
+                
+                if (BonusResult <= 0)
+                BonusResult = RED_BB;
+                
+                break;
 
+            case EX_D_BB:
                 Result = Ex_D;
 
                 if (BonusResult <= 0)
                 BonusResult = BLUE_BB;
-
-                break;
-
-            case EX_D_REG:
-
-                Result = Ex_D;
-
-                if (BonusResult <= 0)
-                BonusResult = REGULAR;
-
-                break;
-
-            case EX_E_RB:
-
-                Result = Ex_E;
-
-                if (BonusResult <= 0)
-                BonusResult = RED_BB;
 
                 break;
 
@@ -406,6 +321,33 @@ namespace GAME14 {
 
                 break;
 
+            case EX_F_RB:
+
+                Result = Ex_F;
+
+                if (BonusResult <= 0)
+                BonusResult = RED_BB;
+
+                break;
+
+            case EX_F_BB:
+
+                Result = Ex_F;
+
+                if (BonusResult <= 0)
+                BonusResult = BLUE_BB;
+
+                break;
+
+            case EX_F_REG:
+
+                Result = Ex_F;
+
+                if (BonusResult <= 0)
+                BonusResult = REGULAR;
+
+                break;
+
             case R_BB:
 
                 if (BonusResult <= 0)
@@ -420,6 +362,24 @@ namespace GAME14 {
 
                 break;
 
+            case BB_BELL_A:
+
+                Result = BB_Bell_A;
+
+                break;
+
+            case BB_BELL_B:
+
+                Result = BB_Bell_B;
+
+                break;
+
+            case BB_EX_BELL:
+
+                Result = Ex_Bell;
+
+                break;
+
             case REG:
 
                 if (BonusResult <= 0)
@@ -427,15 +387,9 @@ namespace GAME14 {
 
                 break;
 
-            case CHALLENGE_A:
+            case CHALLENGE:
 
-                Result = Challenge_A;
-
-                break;
-
-            case CHALLENGE_B:
-
-                Result = Challenge_B;
+                Result = Challenge;
 
                 break;
 
@@ -445,19 +399,13 @@ namespace GAME14 {
 
                 break;
 
-            case REG_EX:
-
-                Result = Reg_Ex;
-
-                break;
-
         }
     }
     void LOTTERY::debugdraw(){
         /*
         textSize(30);
         fill(255);
-        for (int i = 0; i < NUM_RESULT; i++) {
+        for (int i = 0; i < NUM_PROB; i++) {
             text(Prob[i].stateId,0,25*(i+1));
             for (int j = 0; j < 7; j++) {
                 if (j == 1 || j == 2 || j == 5 || j == 6) {
@@ -466,29 +414,27 @@ namespace GAME14 {
 
             }
         }
-        
+        */
+        /*
         print(Level);
         print(ProbId);
         print(BonusResult);
         print(RundNumber);
         */
-        print("成立した役");
+        
+        print("当選した役");
         print(Result);
-        print("成立したボーナス");
+        /*
+        print("当選したボーナス");
         print(BonusResult);
+        print("State");
+        print(State);
+        */
     }
 
     void LOTTERY::initProbId() {
         //確率用のID
         ProbId["Replay"] = REPLAY;
-        ProbId["F_RT_REPLAY"] = F_RT_REPLAY;
-        ProbId["JACReplay"] = JAC_REPLAY;
-        ProbId["JACReplay_RB"] = JAC_REPLAY_RB;
-        ProbId["JACReplay_BB"] = JAC_REPLAY_BB;
-        ProbId["RTReplay"] = RT_REPLAY;
-        ProbId["RTReplay_RB"] = RT_REPLAY_RB;
-        ProbId["RTReplay_BB"] = RT_REPLAY_BB;
-        ProbId["RTReplay_REG"] = RT_REPLAY_REG;
         ProbId["Bell_A"] = BELL_A;
         ProbId["BB_Bell_A"] = BB_BELL_A;
         ProbId["Bell_B"] = BELL_B;
@@ -497,7 +443,6 @@ namespace GAME14 {
         ProbId["BB_Ex_Bell"] = BB_EX_BELL;
         ProbId["Watermelon_A"] = WATERMELON_A;
         ProbId["Watermelon_B"] = WATERMELON_B;
-        ProbId["REG_Watermelon"] = REG_WATERMELON;
         ProbId["Cherry_A1"] = CHERRY_A1;
         ProbId["Cherry_A1_RB"] = CHERRY_A1_RB;
         ProbId["Cherry_A2"] = CHERRY_A2;
@@ -510,23 +455,21 @@ namespace GAME14 {
         ProbId["EX_B_BB"] = EX_B_BB;
         ProbId["EX_B_REG"] = EX_B_REG;
         ProbId["EX_C_RB"] = EX_C_RB;
+        ProbId["EX_D_RB"] = EX_D_RB;
         ProbId["EX_D_BB"] = EX_D_BB;
-        ProbId["EX_D_REG"] = EX_D_REG;
-        ProbId["EX_E_RB"] = EX_E_RB;
         ProbId["EX_E_BB"] = EX_E_BB;
         ProbId["EX_E_REG"] = EX_E_REG;
+        ProbId["EX_F_RB"] = EX_F_RB;
+        ProbId["EX_F_BB"] = EX_F_BB;
+        ProbId["EX_F_REG"] = EX_F_REG;
         ProbId["R_BigBonus"] = R_BB;
         ProbId["B_BigBonus"] = B_BB;
         ProbId["Regular"] = REG;
-        ProbId["Challenge_A"] = CHALLENGE_A;
-        ProbId["Challenge_B"] = CHALLENGE_B;
+        ProbId["Challenge"] = CHALLENGE;
         ProbId["Lucky"] = LUCKY;
-        ProbId["REG_Ex"] = REG_EX;
     }
     void LOTTERY::initStateId() {
         StateId["NR"] = NORMAL;
-        StateId["F_RT"] = F_RT;
-        StateId["S_RT"] = S_RT;
         StateId["BB"] = BB;
         StateId["REG"] = RG;
         StateId["ALL"] = ALL;
@@ -535,8 +478,6 @@ namespace GAME14 {
         
         ResultId["Hazure"] = Hazure ;
         ResultId["Replay"] = Replay ;
-        ResultId["JACReplay"] = Jac_Replay ;
-        ResultId["RTReplay"] = Rt_Replay ;
         ResultId["Bell_A"] = Bell_A ;
         ResultId["Bell_B"] = Bell_B ;
         ResultId["Watermelon_A"] = Watermelon_A ;
@@ -549,11 +490,16 @@ namespace GAME14 {
         ResultId["EX_C"] = Ex_C ;
         ResultId["EX_D"] = Ex_D ;
         ResultId["EX_E"] = Ex_E ;
+        ResultId["EX_F"] = Ex_F;
+        ResultId["BB_Bell_A"] = BB_Bell_A;
+        ResultId["BB_Bell_B"] = BB_Bell_B;
         ResultId["EX_Bell"] = Ex_Bell ;
-        ResultId["Challenge_A"] = Challenge_A ;
-        ResultId["Challenge_B"] = Challenge_B ;
+        ResultId["Challenge"] = Challenge ;
         ResultId["Lucky"] = Lucky ;
-        ResultId["Reg_EX"] = Reg_Ex ;
     }
-
+    void LOTTERY::initBonusId() {
+        BonusId["Red_BB"] = RED_BB;
+        BonusId["Blue_BB"] = BLUE_BB;
+        BonusId["REG"] = REGULAR;
+    }
 }

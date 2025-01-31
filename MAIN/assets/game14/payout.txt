@@ -1,0 +1,19 @@
+Replay        /-1/-1
+Bell_A        / 8/ 0
+Bell_B        / 8/ 0
+Watermelon_A  / 8/ 0
+Watermelon_B  / 8/ 0
+Cherry_A1     / 1/ 0
+Cherry_A2     / 1/ 0
+Cherry_B      / 1/ 0
+EX_A          / 1/ 0
+EX_B          / 1/ 0
+EX_C          / 1/ 0
+EX_D          / 1/ 0
+EX_E          / 1/ 0
+EX_F          / 1/ 0
+BB_Bell_B     /10/ 0
+BB_Bell_A     /10/ 0
+EX_Bell       /10/ 0
+Challenge     /15/ 4
+Lucky         /15/ 4

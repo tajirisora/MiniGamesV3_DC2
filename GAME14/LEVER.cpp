@@ -2,6 +2,8 @@
 #include"CONTAINER.h"
 #include "LEVER.h"
 #include"LOTTERY.h"
+#include"CREDIT.h"
+#include"BET.h"
 #include"../../libOne/inc/graphic.h"
 #include"../../libOne/inc/window.h"
 
@@ -20,13 +22,9 @@ namespace GAME14 {
         CurTime += delta;
         if (collisionCheck(Button.basePos,Button.r)) {
             Button.filterFlag = true;
-            if (isTrigger(MOUSE_LBUTTON)) {
-                //Button.sistemFlag = true;
-                if (CurTime >= Lever.waitTime) {
-                    game()->lottery()->proc();
-                    CurTime -= CurTime;
-                    i += 1;
-                }
+            if (isTrigger(MOUSE_LBUTTON) &&
+                game()->bet()->canTurnBetNum()) {
+                Button.sistemFlag = true;
                 Button.filterFlag = false;
             }
             if (isPress(MOUSE_LBUTTON)) {
@@ -39,6 +37,24 @@ namespace GAME14 {
         }
         else {
             Button.filterFlag = false;
+            Button.drawFlag = false;
+
+        }
+
+        if (CurTime >= Lever.waitTime &&
+            !game()->reel()->tellmovereel() &&
+            Button.sistemFlag) {
+            game()->bet()->resetBet();
+            if (game()->bet()->replayFlag()) {
+                game()->bet()->useReplay();
+            }
+
+            game()->lottery()->proc();
+            game()->credit()->clearCurPayout();
+
+            CurTime -= CurTime;
+            i += 1;
+            Button.sistemFlag = false;
         }
 
     }
@@ -53,5 +69,7 @@ namespace GAME14 {
         print(CurTime);
         print(i);
         print(Lever.waitTime);
+        print("flag");
+        print(Button.sistemFlag);
     }
 }

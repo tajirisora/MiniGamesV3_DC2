@@ -31,7 +31,7 @@ namespace GAME14 {
         void init();
         void update();
         void draw();
-        bool sistemFlag(int buttonId);//ゲッター
+       // bool sistemFlag(int buttonId);//ゲッター
         
     };
 }
