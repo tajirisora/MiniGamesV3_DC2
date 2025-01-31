@@ -147,6 +147,7 @@ namespace GAME03 {
 				playSound(game()->container()->data().volume.Se_C);
 			}
 			if (Select.TimePls < 0) { Select.TimePls = 0; }
+			if (Select.TimePls >= 10000) { Select.TimePls = 9990; }
 			if (isTrigger(KEY_R)) {
 				Select.TimePls = 0;
 				playSound(game()->container()->data().volume.Se_C);
@@ -154,6 +155,9 @@ namespace GAME03 {
 			fill(0);
 			textSize(50);
 			text("default 30•b", 1450, 400);
+			if (Select.TimePls < 100) { textSize(50); }
+			else if (Select.TimePls < 1000) { textSize(48); }
+			else if (Select.TimePls < 10000) { textSize(46); }
 			text("Q © +" + (let)(int)Select.TimePls + "•b ¨ E", 1430, 460);
 			textSize(30);
 			text("R : ƒŠƒZƒbƒg", 1500, 500);
