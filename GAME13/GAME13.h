@@ -15,16 +15,27 @@ namespace GAME13 {
         int score;          
         enum GameState {
             TITLE,
+            KAKURITU,
             PLAY,
+            PUSH,
             SUCCESS,
+            TENSUCCESS,
             OVER
         };
         GameState State = TITLE;
         void Init();
         void Title();
+        void Kakuritu();
         void Play();
+        void Push();
         void Success();
+        void TenSuccess();
         void Over();
         int half;
+        int SuccessCnt = 0;
+
+        bool SuccFlag = false;
+        bool OverFlag = false;
+        bool TenSuccFlag = false;
     };
 }
