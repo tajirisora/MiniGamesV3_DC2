@@ -22,10 +22,12 @@ namespace GAME09 {
 		Banner = game()->container()->data().banner;
 		CurNum = 0;
 		BackGroundImageNum = CurNum;
+		AnimeNum = CurNum;
 	}
 
 	void BANNER::init() {
 		PlayDemoMusic = true;
+		AnimeFlag = false;
 	}
 
 	void BANNER::update() {

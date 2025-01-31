@@ -9,6 +9,16 @@ namespace GAME09 {
 	}
 	LOADOPTION::~LOADOPTION() {
 		for (int i = 0; i < 6; i++) {
+			delete[] OptionData.colorCustomConfig[i];
+		}
+		delete[] OptionData.colorCustomConfig;
+		for (int i = 0; i < 6; i++) {
+			delete[] OptionData.colorDifferentConfig[i];
+		}
+		delete[] OptionData.colorDifferentConfig;
+		delete[] OptionData.color2Config;
+		delete[] OptionData.color1Config;
+		for (int i = 0; i < 6; i++) {
 			delete[] OptionData.keyConfig[i];
 		}
 		delete[] OptionData.keyConfig;

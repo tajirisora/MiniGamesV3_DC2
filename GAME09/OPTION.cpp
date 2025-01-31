@@ -12,7 +12,30 @@ namespace GAME09 {
 
 	}
 	OPTION::~OPTION() {
-
+		//‰ð•ú
+		for (auto e : KindButtons) {
+			delete e;
+		}
+		for (auto e : BindTypeButtons) {
+			delete e;
+		}
+		for (auto e : ColorTypeButtons) {
+			delete e;
+		}
+		for (int y = 0; y < 6; y++) {
+			for (int x = 0; x < 6; x++) {
+				if (KeyButtons[y][x] != nullptr)delete KeyButtons[y][x];
+			}
+		}
+		for (auto e : ColorType1Buttons) {
+			delete e;
+		}
+		for (auto e : ColorType2Buttons) {
+			delete e;
+		}
+		for (auto e : Adjust) {
+			delete e;
+		}
 	}
 	void OPTION::create() {
 		Option = game()->container()->data().option;

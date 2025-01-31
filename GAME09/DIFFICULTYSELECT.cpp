@@ -10,6 +10,10 @@ namespace GAME09 {
 		GAME_OBJECT(game) {
 	}
 	DIFFICULTYSELECT::~DIFFICULTYSELECT() {
+		//‰ð•ú
+		for (auto e : Buttons) {
+			delete e;
+		}
 	}
 
 	void DIFFICULTYSELECT::create() {

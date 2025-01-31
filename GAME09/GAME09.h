@@ -4,6 +4,7 @@
 #include "CHANGEDATA.h"
 #include "NOTE.h"
 #include <vector>
+#define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
 extern bool EscapeKeyValid;
 namespace GAME09
 {
