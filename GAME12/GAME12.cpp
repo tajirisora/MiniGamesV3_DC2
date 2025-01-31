@@ -260,7 +260,7 @@ namespace GAME12
 		currentInput.clear();
 		fill(0, 0, 0);
 		textSize(60);
-		text("表示された漢字の読みを当てる", 525, 200);
+		text("表示された漢字の読みを30秒以内で当てる", 525, 200);
 		text("入力確定or消去にENTER", 525, 300);
 		text("Q　準2級", 575, 400);
 		text("W　2級", 575, 500);
