@@ -10,6 +10,7 @@ STAGE::STAGE(GAME10_GAME* game) :SCENE(game) {}
 STAGE::~STAGE() {
 }
 void STAGE::init() {
+	playSound(Stage.sound);
 	Stage = game()->container()->stage();
 	game()->player()->init();
 	game()->time()->init();
@@ -32,7 +33,6 @@ void STAGE::appear() {
 	game()->objects()->appear();
 }
 void STAGE::update() {
-
 	//ステージの強制スクロール（スピードはプレイヤーのスピードの依存する）
 	if (Stage.gPos.x - Stage.fworldX > width / 2 
 		&& (int)game()->player()->playerOpos().x == (int)game()->player()->playerPos().x) {

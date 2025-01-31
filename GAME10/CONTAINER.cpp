@@ -29,11 +29,14 @@ void CONTAINER::setImage() {
 	Data.stage.frontImg = loadImage("..\\main\\assets\\game10\\frontImg.png");
 	Data.stage.GoalBoardImg = loadImage("..\\main\\assets\\game10\\kanban1.png");
 	Data.stage.GoalImg = loadImage("..\\main\\assets\\game10\\goalTape.png");
+	Data.stage.sound = loadSound("..\\main\\assets\\game10\\stage.wav");
 
 	Data.select.backImg = loadImage("..\\main\\assets\\game10\\selectImg.png");
 	Data.select.weaponImg[0] = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
 	Data.select.weaponImg[1] = loadImage("..\\main\\assets\\game10\\shotgunImg.png");
 	Data.select.weaponImg[2] = loadImage("..\\main\\assets\\game10\\bombImg.png");
+	Data.select.selectMoveSound = loadSound("..\\main\\assets\\game10\\selectMove.wav");
+	Data.select.selectSound = loadSound("..\\main\\assets\\game10\\select.wav");
 
 	Data.result.resultImg[0] = loadImage("..\\main\\assets\\game10\\clearImg.png");
 	Data.result.resultImg[1] = loadImage("..\\main\\assets\\game10\\overImg.png");
@@ -49,10 +52,12 @@ void CONTAINER::setImage() {
 	Data.enemy.Img[0] = loadImage("..\\main\\assets\\game10\\enemyImg00.png");
 	Data.enemy.Img[1] = loadImage("..\\main\\assets\\game10\\enemyImg10.png");
 	Data.enemy.Img[2] = loadImage("..\\main\\assets\\game10\\enemyImg20.png");
+	Data.enemy.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
 
 	Data.object.Img[0] = loadImage("..\\main\\assets\\game10\\objectImg00.png");
 	Data.object.Img[1] = loadImage("..\\main\\assets\\game10\\objectImg10.png");
 	Data.object.Img[2] = loadImage("..\\main\\assets\\game10\\objectImg20.png");
+	Data.object.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
 
 	Data.playerGauge.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
 

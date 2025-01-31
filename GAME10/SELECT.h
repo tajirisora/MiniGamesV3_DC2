@@ -28,6 +28,8 @@ public:
 		int weaponImgMy;
 		bool getFlag[SELECT_NUM];
 		bool selectFlag;
+		int selectMoveSound;
+		int selectSound;
 	};
 private:
 	DATA Select;
