@@ -1,17 +1,29 @@
 #pragma once
 #include"SCENE.h"
 #include"../../libOne/inc/COLOR.h"
-#include"../../libOne/inc/VECTOR2.h"
 namespace GAME06 
 {
 	class STAGE :
-		public SCENE{
+		public SCENE
+	{
 	public:
 		struct DATA {
-			COLOR bgColor;
+			COLOR backScreenColor;
+			float timer = 0.0f;
+			int curState = 0;
 		};
 	private:
 		DATA Stage;
+	public:
+		enum STATE_ID {
+			WAITING_FOR_DECIDING_TYPE_ID,
+			UPDATING_CHARACTER_DATA_ID
+		};
+	private:
+		//Rankä‘ÇÃã´äEê¸
+		const int Line1 = 0;
+		const int Line2 = 3;
+		const int Line3 = 5;
 	public:
 		STAGE(class GAME* game) :SCENE(game){}
 		~STAGE(){}

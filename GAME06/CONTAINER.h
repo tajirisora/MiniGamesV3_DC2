@@ -1,21 +1,30 @@
 #pragma once
-#include"TITLE.h"
-#include"STAGE.h"
-#include"GAME_CLEAR.h"
-#include"GAME_OVER.h"
-#include"PLAYER.h"
-#include"ENEMY.h"
+#include "TITLE.h"
+#include "STAGE.h"
+#include "RANK_C.h"
+#include "RANK_B.h"
+#include "RANK_A.h"
+#include "RANK_S.h"
+#include "JUDGE_LIST.h"
+#include "PLAYER.h"
+#include "TARGET.h"
+#include "BULLET.h"
 namespace GAME06 
 {
-	class CONTAINER {
+	class CONTAINER 
+	{
 	public:
 		struct DATA {
 			TITLE::DATA title;
 			STAGE::DATA stage;
-			GAME_CLEAR::DATA gameClear;
-			GAME_OVER::DATA gameOver;
+			RANK_C::DATA rankC;
+			RANK_B::DATA rankB;
+			RANK_A::DATA rankA;
+			RANK_S::DATA rankS;
+			JUDGE_LIST::DATA judgeList;
 			PLAYER::DATA player;
-			ENEMY::DATA enemy;
+			TARGET::DATA target;
+			BULLET::DATA bullet;
 		};
 	private:
 		DATA Data;

@@ -11,16 +11,25 @@ namespace GAME06
 	}
 
 	void PLAYER::init() {
-		
+		const DATA& player = game()->container()->data().player;
+		Player.img = Player.type1;
+		Player.pos = player.pos;
+		Player.triggerFlag = false;
 	}
 
 	void PLAYER::update() {
-		if (isPress(KEY_W))Player.pos.y += -Player.advSpeed * delta;
-		else if (isPress(KEY_S))Player.pos.y += Player.advSpeed * delta;
+		//ã‰º‚ÌˆÚ“®
+		if (isPress(KEY_W) && Player.pos.y > Player.limmitH)Player.pos.y += -Player.speed * delta;
+		else if (isPress(KEY_S) && Player.pos.y < height - Player.limmitH)Player.pos.y += Player.speed * delta;
+		//’e‚Ì”­ŽË€”õ
+		if (isTrigger(KEY_K) && Player.triggerFlag == false) {
+			game()->bullet()->init();
+			Player.triggerFlag = true;
+		}
 	}
 
 	void PLAYER::draw() {
-		fill(Player.fillColor);
-		circle(Player.pos.x, Player.pos.y, Player.radius * 2);
+		rectMode(CENTER);
+		image(Player.img, Player.pos.x, Player.pos.y, Player.angle, Player.scale);
 	}
 }

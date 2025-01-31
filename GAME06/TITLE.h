@@ -5,18 +5,19 @@
 namespace GAME06 
 {
 	class TITLE :
-		public SCENE{
+		public SCENE
+	{
 	public:
 		struct DATA {
-			COLOR bgColor;
-			float textSize;
-			COLOR textColor;
-			VECTOR2 pos;
-			const char* str;
-			float textSize2;
+			COLOR backScreenColor;
+			COLOR textColor1;
+			float textSize1 = 0.0f;
+			VECTOR2 textPos1;
+			const char* str1 = nullptr;
 			COLOR textColor2;
-			VECTOR2 pos2;
-			const char* str2;
+			float textSize2 = 0.0f;
+			VECTOR2 textPos2;
+			const char* str2 = nullptr;
 		};
 	private:
 		DATA Title;
