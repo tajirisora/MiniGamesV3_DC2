@@ -13,7 +13,7 @@ namespace GAME06
 	void STAGE::init() {
 		const DATA& stage = game()->container()->data().stage;
 		Stage.timer = stage.timer;
-		Stage.curState = CHOOSING_TYPE_ID;
+		Stage.curState = WAITING_FOR_DECIDING_TYPE_ID;
 		game()->collisionCounter() = 0;
 		game()->player()->init();
 		game()->target()->init();
@@ -21,19 +21,18 @@ namespace GAME06
 	}
 
 	void STAGE::update() {
-		if (Stage.curState == CHOOSING_TYPE_ID) {
-			class PLAYER* player = game()->player();
+		if (Stage.curState == WAITING_FOR_DECIDING_TYPE_ID) {
 			if (isTrigger(KEY_LEFT)) {
-				player->img() = player->type1();
+				game()->player()->img() = game()->player()->type1();
 			}
 			else if (isTrigger(KEY_RIGHT)) {
-				player->img() = player->type2();
+				game()->player()->img() = game()->player()->type2();
 			}
 			if (isTrigger(KEY_SPACE)) {
-				Stage.curState = MAIN_ID;
+				Stage.curState = UPDATING_CHARACTER_DATA_ID;
 			}
 		}
-		else if (Stage.curState == MAIN_ID) {
+		else if (Stage.curState == UPDATING_CHARACTER_DATA_ID) {
 			Stage.timer -= delta;
 			game()->player()->update();
 			game()->target()->update();
@@ -43,41 +42,56 @@ namespace GAME06
 
 	void STAGE::draw() {
 		clear(Stage.backScreenColor);
-		if (Stage.curState == CHOOSING_TYPE_ID) {
-			rectMode(CENTER);
-			class PLAYER* player = game()->player();
-			image(player->type1(), width / 2 - 164, height / 2, 0.0f, 0.2f);
-			image(player->type2(), width / 2 + 164, height / 2, 0.0f, 0.2f);
-			textSize(25);
+		rectMode(CORNER);
+		COLOR darkGreen = { 0,88,45 };
+		VECTOR2 sPos = { 100,0 };
+		VECTOR2 ePos = { width - 200,height };
+		fill(darkGreen);
+		rect(sPos.x, sPos.y, ePos.x, ePos.y);
+		rectMode(CENTER);
+		if (Stage.curState == WAITING_FOR_DECIDING_TYPE_ID) {
+			VECTOR2 pos1 = { width / 2 - 164,height / 2 };
+			VECTOR2 pos2 = { width / 2 + 164,height / 2 };
+			float angle = 0.0f;
+			float scale = 0.2f;
+			image(game()->player()->type1(), pos1.x, pos1.y, angle, scale);
+			image(game()->player()->type2(), pos2.x, pos2.y, angle, scale);
+			float size = 25;
+			textSize(size);
 			COLOR brack = { 0,0,0 };
 			COLOR red = { 255,0,0 };
-			if (player->img() == player->type1()) {
+			VECTOR2 textPos1 = { width / 2 - 279,height / 2 + 143 };
+			VECTOR2 textPos2 = { width / 2 + 49,height / 2 + 143 };
+			if (game()->player()->img() == game()->player()->type1()) {
 				fill(red);
-				text("Type1", width / 2 - 279, height / 2 + 143);
+				text("Type1", textPos1.x, textPos1.y);
 				fill(brack);
-				text("Type2", width / 2 + 49, height / 2 + 143);
+				text("Type2", textPos2.x, textPos2.y);
 			}
-			else if (player->img() == player->type2()) {
+			else if (game()->player()->img() == game()->player()->type2()) {
 				fill(brack);
-				text("Type1", width / 2 - 279, height / 2 + 143);
+				text("Type1", textPos1.x, textPos1.y);
 				fill(red);
-				text("Type2", width / 2 + 49, height / 2 + 143);
+				text("Type2", textPos2.x, textPos2.y);
 			}
-			fill(0);
-			textSize(40);
-			text("左右キーで選択、SPACEキーで開始", width / 2 - 360, height - 150);
+			VECTOR2 textPos = { width / 2 - 360,height - 150 };
+			size = 40;
+			fill(brack);
+			textSize(size);
+			text("左右キーで選択、SPACEキーで開始", textPos.x, textPos.y);
 		}
-		else if (Stage.curState == MAIN_ID) {
+		else if (Stage.curState == UPDATING_CHARACTER_DATA_ID) {
 			game()->player()->draw();
 			game()->target()->draw();
 			if (game()->player()->triggerFlag() == true)game()->bullet()->draw();
-			fill(0);
-			textSize(40);
-			text("上に移動：Wキー", 0, 40);
-			text("下に移動：Sキー", 0, 80);
-			text("カウントアップ（テスト用）:Qキー", 0, 120);
-			text((let)"" + Stage.timer, 0, 160);
-			text((let)"" + game()->collisionCounter(), 0, 200);
+			COLOR red = { 255,0,0 };
+			COLOR brack = { 0,0,0 };
+			float size = 50;
+			VECTOR2 pos = { 100,size };
+			if ((int)Stage.timer > 5)fill(brack);
+			else fill(red);
+			textSize(size);
+			text((let)"残り時間：" + (int)Stage.timer + "秒", pos.x, pos.y);
 		}
 	}
 

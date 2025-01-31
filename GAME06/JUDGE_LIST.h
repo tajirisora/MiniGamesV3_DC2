@@ -9,12 +9,12 @@ namespace GAME06
     {
     public:
         struct DATA {
-            COLOR color;
-            float size = 0.0f;
-            VECTOR2 pos1;
-            VECTOR2 pos2;
-            VECTOR2 pos3;
-            VECTOR2 pos4;
+            COLOR textColor;
+            float textSize = 0.0f;
+            VECTOR2 textPos1;
+            VECTOR2 textPos2;
+            VECTOR2 textPos3;
+            VECTOR2 textPos4;
             const char* str1 = nullptr;
             const char* str2 = nullptr;
             const char* str3 = nullptr;

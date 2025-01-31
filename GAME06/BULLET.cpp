@@ -1,6 +1,5 @@
 #include "BULLET.h"
 #include "GAME06.h"
-#include "STAGE.h"
 #include "CONTAINER.h"
 #include "../../libOne/inc/graphic.h"
 #include "../../libOne/inc/mathUtil.h"
@@ -12,18 +11,18 @@ namespace GAME06
 	}
 
 	void BULLET::init() {
-		class PLAYER* player = game()->player();
-		Bullet.pos = player->pos();
+		Bullet.pos = game()->player()->pos();
 	}
 
 	void BULLET::update() {
 		Bullet.pos.x += Bullet.speed * delta;
+		float limmitW = width - 130.0f;
 		if (game()->collision(game()->bullet(),game()->target())) {
 			game()->collisionCounter()++;
 			game()->target()->collisionFlag() = true;
 			game()->player()->triggerFlag() = false;
 		}
-		else if (game()->bullet()->pos().x > game()->target()->pos().x + 50.0f) {
+		else if (game()->bullet()->pos().x > limmitW) {
 			game()->player()->triggerFlag() = false;
 		}
 	}

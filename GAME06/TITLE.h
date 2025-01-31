@@ -10,13 +10,13 @@ namespace GAME06
 	public:
 		struct DATA {
 			COLOR backScreenColor;
-			float size1 = 0.0f;
-			COLOR color1;
-			VECTOR2 pos1;
+			COLOR textColor1;
+			float textSize1 = 0.0f;
+			VECTOR2 textPos1;
 			const char* str1 = nullptr;
-			float size2 = 0.0f;
-			COLOR color2;
-			VECTOR2 pos2;
+			COLOR textColor2;
+			float textSize2 = 0.0f;
+			VECTOR2 textPos2;
 			const char* str2 = nullptr;
 		};
 	private:

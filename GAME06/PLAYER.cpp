@@ -8,7 +8,6 @@ namespace GAME06
 {
 	void PLAYER::create() {
 		Player = game()->container()->data().player;
-		Player.img = Player.type1;
 	}
 
 	void PLAYER::init() {
@@ -19,9 +18,11 @@ namespace GAME06
 	}
 
 	void PLAYER::update() {
+		//ã‰º‚ÌˆÚ“®
 		if (isPress(KEY_W) && Player.pos.y > Player.limmitH)Player.pos.y += -Player.speed * delta;
 		else if (isPress(KEY_S) && Player.pos.y < height - Player.limmitH)Player.pos.y += Player.speed * delta;
-		if (isTrigger(KEY_E) && Player.triggerFlag == false) {
+		//’e‚Ì”­ŽË€”õ
+		if (isTrigger(KEY_K) && Player.triggerFlag == false) {
 			game()->bullet()->init();
 			Player.triggerFlag = true;
 		}

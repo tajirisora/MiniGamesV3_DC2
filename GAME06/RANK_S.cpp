@@ -12,15 +12,15 @@ namespace GAME06
 	void RANK_S::draw() {
 		clear(RankS.backScreenColor);
 		game()->judgeList()->draw();
-		fill(RankS.color1);
-		textSize(RankS.size1);
-		text(RankS.str1, RankS.pos1.x, RankS.pos1.y);
-		fill(RankS.color2);
-		textSize(RankS.size2);
-		text(RankS.str2, RankS.pos2.x, RankS.pos2.y);
-		fill(RankS.color3);
-		textSize(RankS.size3);
-		text((let)"‹L˜^F" + game()->collisionCounter() + "”­", RankS.pos3.x, RankS.pos3.y);
+		fill(RankS.textColor1);
+		textSize(RankS.textSize1);
+		text(RankS.str1, RankS.textPos1.x, RankS.textPos1.y);
+		fill(RankS.textColor2);
+		textSize(RankS.textSize2);
+		text(RankS.str2, RankS.textPos2.x, RankS.textPos2.y);
+		fill(RankS.textColor3);
+		textSize(RankS.textSize3);
+		text((let)"‹L˜^F" + game()->collisionCounter() + "”­", RankS.textPos3.x, RankS.textPos3.y);
 	}
 
 	void RANK_S::nextScene() {

@@ -13,10 +13,9 @@ namespace GAME06
 		const DATA& target = game()->container()->data().target;
 		Target.img = Target.type1;
 		Target.pos = target.pos;
-		Target.speed = target.speed;
 		Target.vec = target.vec;
-		Target.collisionFlag = target.collisionFlag;
-		Target.collisionTimer = target.collisionTimer;
+		Target.collisionFlag = false;
+		Target.collisionDirectionTimer = target.collisionDirectionTimer;
 	}
 
 	void TARGET::update() {
@@ -28,10 +27,10 @@ namespace GAME06
 		}
 		Target.pos.y += Target.speed * delta * Target.vec;
 		if (Target.collisionFlag == true) {
-			Target.collisionTimer -= delta;
-			if (Target.collisionTimer <= 0.0f) {
+			Target.collisionDirectionTimer -= delta;
+			if (Target.collisionDirectionTimer <= 0.0f) {
 				const DATA& target = game()->container()->data().target;
-				Target.collisionTimer = target.collisionTimer;
+				Target.collisionDirectionTimer = target.collisionDirectionTimer;
 				Target.collisionFlag = false;
 			}
 		}

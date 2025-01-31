@@ -13,13 +13,6 @@
 #include "TARGET.h"
 #include "BULLET.h"
 #include "GAME06.h"
-//仕様
-//タイトル「スナイパー」
-//ステージ
-//　プレイヤー　「上下の移動」と「弾の発射」弾は一発発射したらその弾が消えるまで発射不可能にする　発射された弾は的に当たるか画面外に出たら消す
-//　敵(的) 　「上下の移動」と「速度の変化」
-//　制限時間　30秒
-//リザルト　的に当たった数に応じてC～Sランクと記録を表示する　C～Sランクの判定表を左上に表示する
 
 namespace GAME06
 {
@@ -33,7 +26,7 @@ namespace GAME06
 		Scenes[RANK_A_ID] = new RANK_A(this);
 		Scenes[RANK_S_ID] = new RANK_S(this);
 		JudgeList = new JUDGE_LIST(this);
-		CurSceneId = TITLE_ID;
+		CurSceneID = TITLE_ID;
 		Player = new PLAYER(this);
 		Target = new TARGET(this);
 		Bullet = new BULLET(this);
@@ -57,31 +50,27 @@ namespace GAME06
 		delete Target;
 		delete Player;
 		delete JudgeList;
-		for (int i = 0; i < TOTAL_SCENES_ID; ++i) {
+		for (int i = 0; i < NUMBER_OF_SCENES_ID; ++i) {
 			delete Scenes[i];
 		}
 		delete Container;
 	}
 
 	void GAME::changeScene(SCENE_ID nextSceneId) {
-		CurSceneId = nextSceneId;
+		CurSceneID = nextSceneId;
 	}
 
 	bool GAME::collision(class BULLET* bullet, class TARGET* target) {
 		float dx = target->pos().x - bullet->pos().x;
 		float dy = target->pos().y - bullet->pos().y;
 		float distance = Sqrt(dx * dx + dy * dy);
-		if (distance > 50.0f) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		if (distance > 60.0f)return false;
+		else return true;
 	}
 
 	void GAME::proc()
 	{
-		Scenes[CurSceneId]->proc();
+		Scenes[CurSceneID]->proc();
 		if (isTrigger(KEY_ENTER)) {
 			main()->backToMenu();
 		}

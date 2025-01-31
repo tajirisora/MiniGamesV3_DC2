@@ -18,10 +18,6 @@ namespace GAME06
 			float speed = 0.0f;
 			float limmitH = 0.0f;
 			bool triggerFlag = false;
-			//launchVec
-			/*VECTOR2 launchVec;
-			float triggerErapsedTime;
-			float triggerInterval;*/
 		};
 	private:
 		DATA Player;

@@ -10,20 +10,20 @@ namespace GAME06
 		struct DATA {
 			COLOR backScreenColor;
 			float timer = 0.0f;
-			float definedTime = 0.0f;
 			int curState = 0;
 		};
 	private:
 		DATA Stage;
 	public:
 		enum STATE_ID {
-			CHOOSING_TYPE_ID,
-			MAIN_ID
+			WAITING_FOR_DECIDING_TYPE_ID,
+			UPDATING_CHARACTER_DATA_ID
 		};
 	private:
-		const int Line1 = 4;
-		const int Line2 = 9;
-		const int Line3 = 14;
+		//Rankä‘ÇÃã´äEê¸
+		const int Line1 = 0;
+		const int Line2 = 3;
+		const int Line3 = 5;
 	public:
 		STAGE(class GAME* game) :SCENE(game){}
 		~STAGE(){}
