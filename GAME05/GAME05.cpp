@@ -168,7 +168,14 @@ namespace GAME05
 		text("ゲームプレイ数:" + (let)PlayCnt, 0, 200);
 		text("bet:" + (let)BetCoins + "コイン", 0, 300);
 		text("R:遊び方", 0, 400);
-		text(":" + (let)ChikettoCnt + "枚", 100, 500);
+		if (ChikettoCnt >= 99) {
+			ChikettoCnt = 99;
+			text(":" + (let)ChikettoCnt + "枚", 100, 500);
+		}
+		else {
+			text(":" + (let)ChikettoCnt + "枚", 100, 500);
+		}
+		text("(所持上限:99枚)", 0, 580);
 		text("(コインの所持上限:100000000コイン)", 300, 95);
 		text("G:ガチャ(10+1連ガチャが無料で引ける回数:" + (let)freeCnt + "回)", 0, 900);
 		text("C:賭けコイン変更", 0, 1000);
@@ -199,10 +206,10 @@ namespace GAME05
 			State = PLAY;
 		}
 
-		/*if (loopSnd) {
+		if (loopSnd) {
 			playLoopSound(BackSnd);
 			loopSnd = false;
-		}*/
+		}
 
 		if (isTrigger(KEY_R)) {
 			State = RULE;
@@ -316,7 +323,7 @@ namespace GAME05
 				CountDown--;
 			}
 			else{
-				//playLoopSound(BackSnd);
+				playLoopSound(BackSnd);
 				playSound(GetSnd);
 				playerCoins += 1000;
 				BetCoins = 100;
@@ -327,12 +334,12 @@ namespace GAME05
 		}
 		else{
 			text("所持コインが無くなりました...", 600, 100);
-			text("ENTERを10回押してコインを1000枚ゲット", 500, 200);
+			text("ENTERを押してコインを1000枚ゲット", 500, 200);
 			image(Chip_2Img, 600, 450);
 			textSize(200);
 			text("×" + (let)Count, 750, 550);
 			if (isPress(KEY_ENTER)) {
-				Count += 100;
+				Count += 1000;
 			}
 		}
 	}
@@ -591,7 +598,11 @@ namespace GAME05
 			WinCnt = 0;
 			PlayCnt++;
 			stopSound(LoseSnd);
+			playLoopSound(BackSnd);
 			BetCoins = BetCoins;
+			if (BetCoins > playerCoins) {
+				BetCoins = 100;
+			}
 			GetCoins = BetCoins * 2;
 			State = TITLE;
 		}
@@ -714,14 +725,14 @@ namespace GAME05
 			text("コイン不足の為、ガチャが引けません。", 100, 320);
 			textSize(120);
 			fill(0);
-			text("S:シングルガチャ:", 100, 500);
-			text("R:10+1連ガチャ:", 100, 800);
+			text("S:シングルガチャ:", 50, 500);
+			text("R:10+1連ガチャ:", 50, 800);
 			fill(255, 0, 0);
-			text("5000コイン", 1150, 500);
+			text("5000コイン", 1100, 500);
 			fill(255, 0, 0);
 			text("50000コイン", 1000, 800);
 		}
-		else if(freeCnt <= 0 && playerCoins >= 5000 && playerCoins < 50000) {
+		else if(freeCnt <= 0 && ChikettoCnt <= 0 && playerCoins >= 5000 && playerCoins < 50000) {
 			textSize(120);
 			fill(0);
 			text("S:シングルガチャ: 5000コイン", 50, 500);
@@ -735,16 +746,7 @@ namespace GAME05
 			text("S:シングルガチャ: 5000コイン", 100, 500);
 			text("R:10+1連ガチャ: 50000コイン", 100, 800);
 		}
-		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins < 5000) {
-			textSize(120);
-			text("S:シングルガチャ:", 50, 500);
-			fill(255, 0, 0);
-			text("5000コイン:", 1050, 500);
-			fill(0);
-			textSize(110);
-			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
-		}
-		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000) {
+		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
 			image(ChikettoImg, 1180, 450);
@@ -760,6 +762,49 @@ namespace GAME05
 			textSize(110);
 			text("R:10+1連ガチャ: 50000コイン", 100, 800);
 		}
+		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000 && playerCoins < 50000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1180, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ:", 50, 800);
+			fill(255, 0, 0);
+			text("50000コイン", 950, 800);
+		}
+		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins < 5000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			fill(255, 0, 0);
+			text("5000コイン", 1100, 500);
+			fill(0);
+			textSize(110);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
+		}
+		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins >= 5000) {
+			textSize(120);
+			text("S:シングルガチャ: 5000コイン", 50, 500);
+			textSize(110);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
+		}
+		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1180, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ:", 50, 800);
+			fill(255, 0, 0);
+			text("50000コイン", 950, 800);
+		}
+		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1180, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
+		}
 		else if (freeCnt >= 0 && ChikettoCnt >= 10) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -770,28 +815,12 @@ namespace GAME05
 			image(ChikettoImg, 1130, 750);
 			text("消費:10枚", 1280, 800);
 		}
-		else if (freeCnt >= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
-			textSize(120);
-			text("S:シングルガチャ:", 50, 500);
-			image(ChikettoImg, 1180, 450);
-			text("消費:1枚", 1280, 500);
-			textSize(110);
-			text("R:10+1連ガチャ:", 50, 800);
-			fill(255, 0, 0);
-			text("50000コイン", 950, 800);
-		}
-		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins >= 5000) {
-			textSize(120);
-			text("S:シングルガチャ: 5000コイン", 50, 500);
-			textSize(110);
-			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
-		}
 
 		textSize(100);
 		fill(0);
 		text("※チケットから優先的に消費されます。", 100, 1000);
 
-		if (isTrigger(KEY_S) && playerCoins >= 5000) {
+		if (isTrigger(KEY_S) && playerCoins >= 5000 && ChikettoCnt <= 0) {
 			Init2();
 			playerCoins -= 5000;
 			clear(255);
@@ -840,9 +869,9 @@ namespace GAME05
 			State = RESULT2;
 		}
 
-		if (isTrigger(KEY_R) && freeCnt > 0 && ChikettoCnt <= 0) {
+		if (isTrigger(KEY_R) && ChikettoCnt >= 10) {
 			Init2();
-			freeCnt--;
+			ChikettoCnt -= 10;
 			clear(255);
 			image(Egg1Img, 300, 220);
 			image(Egg2Img, 950, 220);
@@ -863,10 +892,9 @@ namespace GAME05
 			}
 			State = RESULT2;
 		}
-
-		if (isTrigger(KEY_R) && ChikettoCnt >= 10) {
+		else if (isTrigger(KEY_R) && freeCnt > 0) {
 			Init2();
-			ChikettoCnt -= 10;
+			freeCnt--;
 			clear(255);
 			image(Egg1Img, 300, 220);
 			image(Egg2Img, 950, 220);
