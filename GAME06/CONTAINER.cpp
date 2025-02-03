@@ -79,11 +79,11 @@ namespace GAME06
 		Data.judgeList.textColor = { 0,0,0 };
 		Data.judgeList.textSize = 40;
 		Data.judgeList.textPos1 = { 0,40 };
-		Data.judgeList.str1 = "S:6î≠à»è„";
+		Data.judgeList.str1 = "S:10î≠à»è„";
 		Data.judgeList.textPos2 = { 0,80 };
-		Data.judgeList.str2 = "A:4Å`5î≠";
+		Data.judgeList.str2 = "A:6Å`9î≠";
 		Data.judgeList.textPos3 = { 0,120 };
-		Data.judgeList.str3 = "B:1Å`3î≠";
+		Data.judgeList.str3 = "B:1Å`5î≠";
 		Data.judgeList.textPos4 = { 0,160 };
 		Data.judgeList.str4 = "C:0î≠";
 		//ÉvÉåÉCÉÑÅ[ÉfÅ[É^
