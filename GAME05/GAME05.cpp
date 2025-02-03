@@ -747,7 +747,7 @@ namespace GAME05
 		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
-			image(ChikettoImg, 1130, 450);
+			image(ChikettoImg, 1180, 450);
 			text("消費:1枚", 1280, 500);
 			textSize(110);
 			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
@@ -755,7 +755,7 @@ namespace GAME05
 		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 50000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
-			image(ChikettoImg, 1130, 450);
+			image(ChikettoImg, 1180, 450);
 			text("消費:1枚", 1280, 500);
 			textSize(110);
 			text("R:10+1連ガチャ: 50000コイン", 100, 800);
@@ -763,7 +763,7 @@ namespace GAME05
 		else if (freeCnt >= 0 && ChikettoCnt >= 10) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
-			image(ChikettoImg, 1130, 450);
+			image(ChikettoImg, 1180, 450);
 			text("消費:1枚", 1280, 500);
 			textSize(110);
 			text("R:10+1連ガチャ:", 50, 800);
@@ -773,7 +773,7 @@ namespace GAME05
 		else if (freeCnt >= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
-			image(ChikettoImg, 1130, 450);
+			image(ChikettoImg, 1180, 450);
 			text("消費:1枚", 1280, 500);
 			textSize(110);
 			text("R:10+1連ガチャ:", 50, 800);
