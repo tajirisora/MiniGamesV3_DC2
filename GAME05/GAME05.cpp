@@ -41,6 +41,11 @@ namespace GAME05
 		WhiteImg = loadImage("..\\main\\assets\\game05\\white.png");
 		GachaImg = loadImage("..\\main\\assets\\game05\\gacha.png");
 		WinImg = loadImage("..\\main\\assets\\game05\\win.png");
+		RuleImg = loadImage("..\\main\\assets\\game05\\RULE.png");
+		Rule2Img = loadImage("..\\main\\assets\\game05\\RULE2.png");
+		Rule3Img = loadImage("..\\main\\assets\\game05\\RULE3.png");
+		ChikettoImg = loadImage("..\\main\\assets\\game05\\chiketto.png");
+		Chiketto2Img = loadImage("..\\main\\assets\\game05\\chiketto2.png");
 
 		DrawSnd = loadSound("..\\main\\assets\\game05\\draw.wav");
 		WinSnd = loadSound("..\\main\\assets\\game05\\ジャジャーン.wav");
@@ -60,6 +65,7 @@ namespace GAME05
 		else if (State == CHANGEBETCOIN)ChangeBetCoin();
 		else if (State == JOB)Job();
 		else if (State == RULE)Rule();
+		else if (State == RULEPAGE)RulePage();
 		else if (State == PLAY)Play(deck);
 		else if (State == SHOW)Show();
 		else if (State == WIN)Win();
@@ -140,7 +146,7 @@ namespace GAME05
 		CardSetPy[1] = 900.0f;
 
 		HaimenPx = 1400.0f;
-		HaimenPy = 200.0f;
+		HaimenPy = 240.0f;
 	}
 
 	void GAME::Title()
@@ -159,17 +165,23 @@ namespace GAME05
 		text("S:ゲームスタート", 550, 780);
 		fill(255);
 		textSize(50);
-		text("bet:" + (let)BetCoins + "コイン", 0, 300);
-		text("C:賭けコイン変更", 0, 900);
-		text("R:遊び方", 0, 400);
 		text("ゲームプレイ数:" + (let)PlayCnt, 0, 200);
+		text("bet:" + (let)BetCoins + "コイン", 0, 300);
+		text("R:遊び方", 0, 400);
+		text(":" + (let)ChikettoCnt + "枚", 100, 500);
+		text("(コインの所持上限:100000000コイン)", 300, 95);
+		text("G:ガチャ(10+1連ガチャが無料で引ける回数:" + (let)freeCnt + "回)", 0, 900);
+		text("C:賭けコイン変更", 0, 1000);
 		text("ENTERキーでメニューに戻る", 0, 1080);
-		//text("J:所持コインが0になったときに押してください", 660, 1080);
-		text("G:ガチャ(ゲームを3回以上遊ぶと回せます。※無料分は引けます。)", 0, 1000);
+		if (freeCnt <= 0) {
+			freeCnt = 0;
+		}
 		rectMode(CENTER);
 		image(ChipImg, 50, 70);
-		if (playerCoins >= 999999) {
-			text("999999+", 80, 95);
+		image(Chiketto2Img, 50, 480);
+		if (playerCoins >= 100000000) {
+			playerCoins = 100000000;
+			text((let)playerCoins, 80, 95);
 		}
 		else {
 			text((let)playerCoins, 80, 95);
@@ -187,10 +199,10 @@ namespace GAME05
 			State = PLAY;
 		}
 
-		if (loopSnd) {
+		/*if (loopSnd) {
 			playLoopSound(BackSnd);
 			loopSnd = false;
-		}
+		}*/
 
 		if (isTrigger(KEY_R)) {
 			State = RULE;
@@ -214,6 +226,7 @@ namespace GAME05
 	void GAME::ChangeBetCoin()
 	{
 		clear(15, 140, 34);
+		hideCursor();
 		textSize(100);
 		text("賭けコインを決めてください。", 300, 300);
 		textSize(120);
@@ -223,10 +236,14 @@ namespace GAME05
 		text((let)BetCoins, 950, 600);
 
 		textSize(80);
-		text("U,↑:+100", 700, 800);
-		text("D,↓:-100", 700, 920);
+		text("U,↑:+100", 300, 700);
+		text("D,↓:-100", 1200, 700);
 		text("S:ゲームスタート", 600, 1050);
-		if (isTrigger(KEY_U)) {
+		text("※最大5000コインまで賭けれます。", 300, 850);
+		textSize(50);
+		text("B:タイトルに戻る",0, 1080);
+
+		if (isPress(KEY_UP)) {
 			BetCoins += 100;
 			if (playerCoins > 5000) {
 				if (BetCoins > 5000) {
@@ -240,7 +257,7 @@ namespace GAME05
 			}
 		}
 
-		if (isPress(KEY_UP)) {
+		if (isTrigger(KEY_U)) {
 			BetCoins += 100;
 			if (playerCoins > 5000) {
 				if (BetCoins > 5000) {
@@ -273,14 +290,20 @@ namespace GAME05
 			playSound(DrawSnd);
 			showCursor();
 			playerCoins -= BetCoins;
-			GetCoins = BetCoins;
+			GetCoins = BetCoins * 2;
 			State = PLAY;
+		}
+
+		if (isTrigger(KEY_B)) {
+			BetCoins = 100;
+			State = TITLE;
 		}
 	}
 
 	void GAME::Job()
 	{
 		clear(255);
+		hideCursor();
 		fill(0);
 		textSize(50);
 		if (Count == 1000) {
@@ -293,11 +316,12 @@ namespace GAME05
 				CountDown--;
 			}
 			else{
-				playLoopSound(BackSnd);
+				//playLoopSound(BackSnd);
 				playSound(GetSnd);
 				playerCoins += 1000;
 				BetCoins = 100;
-				GetCoins = BetCoins;
+				GetCoins = BetCoins * 2;
+				PlayCnt++;
 				State = TITLE;
 			}
 		}
@@ -307,7 +331,7 @@ namespace GAME05
 			image(Chip_2Img, 600, 450);
 			textSize(200);
 			text("×" + (let)Count, 750, 550);
-			if (isTrigger(KEY_ENTER)) {
+			if (isPress(KEY_ENTER)) {
 				Count += 100;
 			}
 		}
@@ -316,42 +340,100 @@ namespace GAME05
 	void GAME::Rule()
 	{
 		rectMode(CENTER);
-		clear(15, 140, 34);
+		clear(100);
+		hideCursor();
 		text("遊び方", 880, 50);
-		fill(0);
-		text("1,Sキーを押してゲームスタート!", 500, 150);
-		text("2,ゲーム画面に来たらHキーまたはLキーを押す", 500, 250);
-		text("3,相手の数字よりも大きかったら勝ち", 500, 350);
-		text("  相手の数字よりも小さかったら負け", 500, 420);
+		fill(255);
+		text("・Sキーを押してゲームスタート!", 500, 150);
+		text("・ゲーム画面に来たらHキーまたはLキーを押します。", 300, 250);
+		text("・相手の数字よりも大きかったら勝ち、", 500, 350);
+		text("  相手の数字よりも小さかったら負けです。", 500, 420);
+		text("D, →:次のページへ", 1420, 100);
+		text((let)PageCnt + "/" + "2", 1820, 200);
 		text("← 小さい", 400, 500);
 		text("大きい →", 1200,500);
 		image(TrampImg, 900, 800);
 		textSize(50);
-		text("ENTERキーでタイトルへ", 0, 100);
+		text("ENTER:タイトル", 0, 100);
+
+		if (isTrigger(KEY_D) || isTrigger(KEY_RIGHT)) {
+			PageCnt++;
+			if (PageCnt > 2) {
+				PageCnt = 2;
+			}
+			State = RULEPAGE;
+		}
+
 		if (isTrigger(KEY_ENTER)) {
-			WinCnt = 0;
 			State = TITLE;
 		}
+	}
+
+	void GAME::RulePage()
+	{
+		clear(100);
+		hideCursor();
+		rectMode(CENTER);
+		fill(255);
+		text("・1回勝つ毎に、もらえる枚数が2倍になります。", 500, 150);
+		image(RuleImg, 350, 300);
+		text("→", 650, 300);
+		image(Rule2Img, 1000, 300);
+		text("→", 1300, 300);
+		image(Rule3Img, 1650, 300);
+		text("・負けるともらえるコインは0枚です。", 500, 550);
+		text("・勝って得たコインはゲームもしくはガチャに使えます。", 300, 650);
+		text("・10回連続で勝てば、10+1連ガチャが無料で１回引けます。", 300, 750);
+		text("  さらにガチャチケットも手に入ります。", 300, 800);
+		text("・入手したガチャチケットは1枚消費でシングルガチャ1回、", 300, 900);
+		text("　10枚消費で10+1連ガチャが1回回せます。", 300, 950);
+		text("A, ←:前のページへ", 0, 100);
+		text((let)PageCnt + "/" + "2", 0, 200);
+		if (isTrigger(KEY_A) || isTrigger(KEY_LEFT)) {
+			PageCnt--;
+			if (PageCnt < 1) {
+				PageCnt = 1;
+			}
+			State = RULE;
+		}
+
+		textSize(50);
+		text("ENTER:タイトル", 0, 1080);
+		if (isTrigger(KEY_ENTER)) {
+			State = TITLE;
+		}
+
 	}
 
 	void GAME::Play(Card* deck)
 	{
 		clear(15, 140, 34);
+		hideCursor();
+		fill(255);
+		textSize(150);
+		text("H", 450, 590);
 		textSize(100);
-		fill(255, 0, 0);
-		text("H", 500, 580);
-		fill(0);
 		text("か", 550, 580);
-		fill(0, 0, 255);
-		text("L", 650, 580);
-		fill(0);
-		text("を押してください", 700, 580);
+		textSize(150);
+		text("L", 650, 590);
+		textSize(100);
+		text("を押してください", 750, 580);
 
 		//画像切替
 		if ((isTrigger(KEY_H)) || (isTrigger(KEY_L))) {
 			playSound(DrawSnd);
 			SetImg[1] = deck->CARD[1].img;
 			SetNum[1] = deck->CARD[1].num;
+			if (isTrigger(KEY_H)) {
+				textSize(150);
+				fill(255, 0, 0);
+				text("H", 450, 590);
+			}
+			else {
+				textSize(150);
+				fill(0, 0, 255);
+				text("L", 650, 590);
+			}
 
 			//相手の数字より自分の数字が大きいとき
 			if (isTrigger(KEY_H) && SetNum[0] < SetNum[1] ||
@@ -404,10 +486,10 @@ namespace GAME05
 		if (loseFlag == true) {
 			loseFlag = false;
 			Sleep(800);
-			stopSound(BackSnd);
 			if (playerCoins > 0) {
 				playSound(LoseSnd);
 			}
+			stopSound(BackSnd);
 			State = LOSE;
 		}
 		if (drawFlag == true) {
@@ -440,6 +522,11 @@ namespace GAME05
 		text("ゲームを続けますか?", 500, 400);
 		text("Y:ゲームを続ける", 600, 600);
 		text("N:タイトル画面に戻る", 500, 800);
+		text("配当:", 500, 900);
+		fill(211, 202, 71);
+		text((let)GetCoins, 750, 900);
+		fill(255);
+		text("コイン", 1300, 900);
 
 		if (isTrigger(KEY_Y)) {
 			WinCnt++;
@@ -457,8 +544,9 @@ namespace GAME05
 			playerCoins += GetCoins;
 			WinCnt = 0;
 			PlayCnt++;
-			BetCoins = 100;
-			GetCoins = BetCoins;
+			BetCoins = BetCoins;
+			GetCoins = BetCoins * 2;
+			playSound(GetSnd);
 			State = TITLE;
 		}
 	}
@@ -474,16 +562,19 @@ namespace GAME05
 		fill(0);
 		textSize(50);
 		text("ENTERキーでタイトルに戻る", 0, 1080);
+		image(Chiketto2Img, 0, 820);
+		text("1枚ゲット!", 100, 880);
 		if (isTrigger(KEY_ENTER)) {
-			GetCoins *= 2;
 			playerCoins += GetCoins;
 			WinCnt = 0;
-			straightCnt++; 
+			freeCnt++; 
 			PlayCnt++;
+			ChikettoCnt++;
 			playLoopSound(BackSnd);
 			stopSound(straightWinSnd);
-			BetCoins = 100;
-			GetCoins = BetCoins;
+			BetCoins = BetCoins;
+			GetCoins = BetCoins * 2;
+			playSound(GetSnd);
 			State = TITLE;
 		}
 	}
@@ -500,9 +591,8 @@ namespace GAME05
 			WinCnt = 0;
 			PlayCnt++;
 			stopSound(LoseSnd);
-			playLoopSound(BackSnd);
-			BetCoins = 100;
-			GetCoins = BetCoins;
+			BetCoins = BetCoins;
+			GetCoins = BetCoins * 2;
 			State = TITLE;
 		}
 	}
@@ -527,8 +617,11 @@ namespace GAME05
 	{
 		TotalProb5 = 58.8f;
 		TotalProb6 = 87.5f;
-		TotalProb7 = 97.1f;
-		confirm = random() % 50;
+		TotalProb7 = 99.7f;
+		confirm = random() % 100;
+		confirm1 = random() % 100; confirm2 = random() % 100; confirm3 = random() % 100; confirm4 = random() % 100; confirm5 = random() % 100;
+		confirm6 = random() % 100; confirm7 = random() % 100; confirm8 = random() % 100; confirm9 = random() % 100; confirm10 = random() % 100;
+		confirm11 = random() % 100;
 		sFrameCnt = 100.0f;
 		rFrameCnt = 300.0f;
 
@@ -575,7 +668,7 @@ namespace GAME05
 		randrare4_11 = random() % rare4Total; randrare5_11 = random() % rare5Total;
 		randrare6_11 = random() % rare6Total; randrare7_11 = random() % rare7Total;
 
-		sPx = 165.0f, sPy = 560.0f;
+		sPx = 200.0f, sPy = 560.0f;
 		r1Px = 10.0f; r1Py = 260.0f;
 		r2Px = 650.0f; r3Px = 1300.0f;
 		r4Py = 460.0f; r7Py = 660.0f;
@@ -595,42 +688,100 @@ namespace GAME05
 		image(GachaImg, 960, 800); 
 		rectMode(CENTER);
 		image(ChipImg, 50, 70);
+		image(Chiketto2Img, 400, 70);
 		fill(0);
 		textSize(50);
-		if (playerCoins >= 999999) {
-			text("999999+", 80, 90);
+		if (playerCoins >= 100000000) {
+			playerCoins = 100000000;
+			text((let)playerCoins, 80, 95);
 		}
 		else {
 			text((let)playerCoins, 80, 95);
 		}
-		text("ゲームプレイ数:" + (let)PlayCnt, 0, 200);
+		text(":" + (let)ChikettoCnt + "枚所持", 450, 90);
 		text("B:獲得キャラ一覧", 600, 1080);
 		text("P:排出確率", 1200, 1080);
 		text("ENTERでタイトルへ", 0, 1080);
-		if (PlayCnt < 3 && straightCnt <= 0) {
+		if (freeCnt <= 0 && ChikettoCnt <= 0 && playerCoins < 5000){
 			textSize(100);
-			text("ゲームを3回以上プレイしていないので", 50, 540);
-			text("ガチャを引くことができません。", 200, 680);
-		}
-		else if(PlayCnt >= 3 && straightCnt <= 0) {
+			fill(255, 0, 0);
+			text("コイン不足の為、ガチャが引けません。", 100, 320);
 			textSize(120);
-			text("S:シングルガチャ 5000コイン", 100, 500);
-			text("R:10+1連ガチャ 50000コイン", 100, 800);
+			fill(0);
+			text("S:シングルガチャ:", 100, 500);
+			text("R:10+1連ガチャ:", 100, 800);
+			fill(255, 0, 0);
+			text("5000コイン", 1150, 500);
+			fill(255, 0, 0);
+			text("50000コイン", 1000, 800);
 		}
-		else if (PlayCnt >= 3 && straightCnt >= 1) {
+		else if(freeCnt <= 0 && playerCoins >= 5000 && playerCoins < 50000) {
 			textSize(120);
-			text("S:シングルガチャ 5000コイン", 50, 500);
+			fill(0);
+			text("S:シングルガチャ: 5000コイン", 50, 500);
+			text("R:10+1連ガチャ:", 50, 800);
+			fill(255, 0, 0);
+			text("50000コイン", 950, 800);
+		}
+		else if (freeCnt <= 0 && ChikettoCnt <= 0 && playerCoins >= 50000) {
+			textSize(120);
+			fill(0);
+			text("S:シングルガチャ: 5000コイン", 100, 500);
+			text("R:10+1連ガチャ: 50000コイン", 100, 800);
+		}
+		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins < 5000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			fill(255, 0, 0);
+			text("5000コイン:", 1050, 500);
+			fill(0);
 			textSize(110);
-			text("R:10+1連ガチャ あと" + (let)straightCnt + "回無料", 50, 800);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
-		else if(PlayCnt < 3 && straightCnt >= 1){
+		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000) {
 			textSize(120);
-			if (straightCnt > 0) {
-				textSize(110);
-				text("R:10+1連ガチャ あと" + (let)straightCnt + "回無料", 80, 630);
-			}
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1130, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
-		if (isTrigger(KEY_S) && playerCoins >= 5000 && PlayCnt >= 3) {
+		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 50000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1130, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ: 50000コイン", 100, 800);
+		}
+		else if (freeCnt >= 0 && ChikettoCnt >= 10) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1130, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ:", 50, 800);
+			image(ChikettoImg, 1130, 750);
+			text("消費:10枚", 1280, 800);
+		}
+		else if (freeCnt >= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1130, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ:", 50, 800);
+			fill(255, 0, 0);
+			text("50000コイン", 950, 800);
+		}
+		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins >= 5000) {
+			textSize(120);
+			text("S:シングルガチャ: 5000コイン", 50, 500);
+			textSize(110);
+			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
+		}
+
+		if (isTrigger(KEY_S) && playerCoins >= 5000) {
 			Init2();
 			playerCoins -= 5000;
 			clear(255);
@@ -642,7 +793,20 @@ namespace GAME05
 			State = RESULT;
 		}
 
-		if (isTrigger(KEY_R) && playerCoins >= 50000 && straightCnt <= 0 && PlayCnt >= 3) {
+		if (isTrigger(KEY_S) && ChikettoCnt > 0) {
+			Init2();
+			ChikettoCnt--;
+			clear(255);
+			image(TamagoImg, width / 2, height / 2);
+			playSound(PakaSnd);
+			if (confirm == 1) {
+				playSound(KakuteiSnd);
+			}
+			State = RESULT;
+		}
+
+
+		if (isTrigger(KEY_R) && playerCoins >= 50000 && freeCnt <= 0 && ChikettoCnt <= 0) {
 			Init2();
 			playerCoins -= 50000;
 			clear(255);
@@ -658,14 +822,17 @@ namespace GAME05
 			image(Egg10Img, 540, 820);
 			image(Egg11Img, 1260, 820);
 			playSound(PakaSnd);
-			if (confirm == 1) {
+			if (confirm1 == 1 || confirm2 == 2 || confirm3 == 3 || confirm4 == 4 || confirm5 == 5 ||
+				confirm6 == 6 || confirm7 == 7 || confirm8 == 8 || confirm9 == 9 || confirm10 == 10 ||
+				confirm11 == 11) {
 				playSound(KakuteiSnd);
 			}
 			State = RESULT2;
 		}
 
-		if (isTrigger(KEY_R) && straightCnt > 0) {
+		if (isTrigger(KEY_R) && freeCnt > 0) {
 			Init2();
+			freeCnt--;
 			clear(255);
 			image(Egg1Img, 300, 220);
 			image(Egg2Img, 950, 220);
@@ -679,7 +846,33 @@ namespace GAME05
 			image(Egg10Img, 540, 820);
 			image(Egg11Img, 1260, 820);
 			playSound(PakaSnd);
-			if (confirm == 1) {
+			if (confirm1 == 1 || confirm2 == 2 || confirm3 == 3 || confirm4 == 4 || confirm5 == 5 ||
+				confirm6 == 6 || confirm7 == 7 || confirm8 == 8 || confirm9 == 9 || confirm10 == 10 ||
+				confirm11 == 11) {
+				playSound(KakuteiSnd);
+			}
+			State = RESULT2;
+		}
+
+		if (isTrigger(KEY_R) && ChikettoCnt >= 10) {
+			Init2();
+			ChikettoCnt -= 10;
+			clear(255);
+			image(Egg1Img, 300, 220);
+			image(Egg2Img, 950, 220);
+			image(Egg3Img, 1600, 220);
+			image(Egg4Img, 300, 420);
+			image(Egg5Img, 950, 420);
+			image(Egg6Img, 1600, 420);
+			image(Egg7Img, 300, 620);
+			image(Egg8Img, 950, 620);
+			image(Egg9Img, 1600, 620);
+			image(Egg10Img, 540, 820);
+			image(Egg11Img, 1260, 820);
+			playSound(PakaSnd);
+			if (confirm1 == 1 || confirm2 == 2 || confirm3 == 3 || confirm4 == 4 || confirm5 == 5 ||
+				confirm6 == 6 || confirm7 == 7 || confirm8 == 8 || confirm9 == 9 || confirm10 == 10 ||
+				confirm11 == 11) {
 				playSound(KakuteiSnd);
 			}
 			State = RESULT2;
@@ -706,6 +899,7 @@ namespace GAME05
 			fill(0);
 			textSize(50);
 			text("☆7確定!", 0, 100);
+			playSound(KakuteiSnd);
 		}
 		if (sFrameCnt < 80) {
 			TamagoImg = WhiteImg;
@@ -714,6 +908,10 @@ namespace GAME05
 				fill(213, 202, 112);
 				textSize(210);
 				text("☆7:" + (let)rare7[randrare7].name, sPx, sPy);
+				if (rare7[randrare7].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1100, 380);
+				}
 			}
 			else {
 				if (s0 > TotalProb7) {
@@ -722,42 +920,57 @@ namespace GAME05
 					text("☆7:", sPx, sPy);
 					fill(0);
 					text((let)rare7[randrare7].name, 600, sPy);
+					if (rare7[randrare7].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1100, 380);
+					}
 				}
 				else if (s0 > TotalProb6) {
+					fill(0);
 					textSize(210);
 					text("☆6:" + (let)rare6[randrare6].name, sPx, sPy);
+						if (rare6[randrare6].getCnt <= 0) {
+							fill(255, 0, 0);
+							text("NEW", 1100, 380);
+						}
 				}
 				else if (s0 > TotalProb5) {
+					fill(0);
 					textSize(210);
 					text("☆5:" + (let)rare5[randrare5].name, sPx, sPy);
+					if (rare5[randrare5].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1100, 380);
+					}
 				}
 				else {
+					fill(0);
 					textSize(210);
 					text("☆4:" + (let)rare4[randrare4].name, sPx, sPy);
+					if (rare4[randrare4].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1100, 380);
+					}
 				}
 			}
 		}
 		if (sFrameCnt <= 0.5f) {
 			if (confirm == 1) {
-				chara = randrare7;
-				rare7[chara].getCnt += 1;
+				rare7[randrare7].getCnt += 1;
 			}
 			else {
 				if (s0 > TotalProb7) {
-					chara = randrare7;
-					rare7[chara].getCnt += 1;
+					rare7[randrare7].getCnt += 1;
+					
 				}
 				else if (s0 > TotalProb6) {
-					chara = randrare6;
-					rare6[chara].getCnt += 1;
+					rare6[randrare6].getCnt += 1;
 				}
 				else if (s0 > TotalProb5) {
-					chara = randrare5;
-					rare5[chara].getCnt += 1;
+					rare5[randrare5].getCnt += 1;
 				}
 				else {
-					chara = randrare4;
-					rare4[chara].getCnt += 1;
+					rare4[randrare4].getCnt += 1;
 				}
 			}
 		}
@@ -772,7 +985,8 @@ namespace GAME05
 
 	void GAME::Result2()
 	{
-		if (confirm == 1) {
+		//1
+		if (confirm1 == 1) {
 			fill(0);
 			textSize(50);
 			text("☆7確定!", 0, 100);
@@ -781,10 +995,13 @@ namespace GAME05
 		if (rFrameCnt < 280.0f) {
 			Egg1Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg1Img, 300, 220);
-			//1
-			if (confirm == 1) {
+			if (confirm1 == 1) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_1].name, r1Px, r1Py);
+				if (rare7[randrare7_1].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 380, 190);
+				}
 			}
 			else {
 				if (r1 > TotalProb7) {
@@ -792,52 +1009,73 @@ namespace GAME05
 					text("☆7:", r1Px, r1Py);
 					fill(0);
 					text((let)rare7[randrare7_1].name, 160, r1Py);
+					if (rare7[randrare7_1].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 190);
+					}
 				}
 				else if (r1 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_1].name, r1Px, r1Py);
+					if (rare6[randrare6_1].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 190);
+					}
 				}
 				else if (r1 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_1].name, r1Px, r1Py);
+					if (rare5[randrare5_1].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 190);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_1].name, r1Px, r1Py);
+					if (rare4[randrare4_1].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 190);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_1;
-					rare7[chara].getCnt += 1;
+				if (confirm1 == 1) {
+					rare7[randrare7_1].getCnt += 1;
 				}
 				else {
-					if (r1 > TotalProb7) {
-						chara = randrare7_1;
-						rare7[chara].getCnt += 1;
+					if (r1 > TotalProb7){
+						rare7[randrare7_1].getCnt += 1;
 					}
 					else if (r1 > TotalProb6) {
-						chara = randrare6_1;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_1].getCnt += 1;
 					}
 					else if (r1 > TotalProb5) {
-						chara = randrare5_1;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_1].getCnt += 1;
 					}
 					else {
-						chara = randrare4_1;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_1].getCnt += 1;
 					}
 				}
 			}
 		}
+		//2
+		if (confirm2 == 2) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80); 
 		if (rFrameCnt < 260.0f) {
-			//2
 			Egg2Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg2Img, 950, 220);
-			if (confirm == 1) {
+			if (confirm2 == 2) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_2].name, r2Px, r1Py);
+				if (rare7[randrare7_2].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1000, 190);
+				}
 			}
 			else {
 				if (r2 > TotalProb7) {
@@ -845,52 +1083,73 @@ namespace GAME05
 					text("☆7:", 650.0f, r1Py);
 					fill(0);
 					text((let)rare7[randrare7_2].name, 820.0f, r1Py);
+					if (rare7[randrare7_2].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 190);
+					}
 				}
 				else if (r2 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_2].name, r2Px, r1Py);
+					if (rare6[randrare6_2].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 190);
+					}
 				}
 				else if (r2 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_2].name, r2Px, r1Py);
+					if (rare5[randrare5_2].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 190);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_2].name, r2Px, r1Py);
+					if (rare4[randrare4_2].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 190);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_2;
-					rare7[chara].getCnt += 1;
+				if (confirm2 == 2) {
+					rare7[randrare7_2].getCnt += 1;
 				}
 				else {
 					if (r2 > TotalProb7) {
-						chara = randrare7_2;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_2].getCnt += 1;
 					}
 					else if (r2 > TotalProb6) {
-						chara = randrare6_2;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_2].getCnt += 1;
 					}
 					else if (r2 > TotalProb5) {
-						chara = randrare5_2;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_2].getCnt += 1;
 					}
 					else {
-						chara = randrare4_2;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_2].getCnt += 1;
 					}
 				}
 			}
 		}
+		//3
+		if (confirm3 == 3) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 240.0f) {
-			//3
 			Egg3Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg3Img, 1600, 220);
-			if (confirm == 1) {
+			if (confirm3 == 3) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_3].name, r3Px, r1Py);
+				if (rare7[randrare7_3].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1660, 190);
+				}
 			}
 			else {
 				if (r3 > TotalProb7) {
@@ -898,51 +1157,72 @@ namespace GAME05
 					text("☆7:", r3Px, r1Py);
 					fill(0);
 					text((let)rare7[randrare7_3].name, 1470, r1Py);
+					if (rare7[randrare7_3].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 190);
+					}
 				}
 				else if (r3 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_3].name, r3Px, r1Py);
+					if (rare6[randrare6_3].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 190);
+					}
 				}
 				else if (r3 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_3].name, r3Px, r1Py);
+					if (rare5[randrare5_3].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 190);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_3].name, r3Px, r1Py);
+					if (rare4[randrare4_3].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 190);
+					}
 				}
 			}if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_3;
-					rare7[chara].getCnt += 1;
+				if (confirm3 == 3) {
+					rare7[randrare7_3].getCnt += 1;
 				}
 				else {
 					if (r3 > TotalProb7) {
-						chara = randrare7_3;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_3].getCnt += 1;
 					}
 					else if (r3 > TotalProb6) {
-						chara = randrare6_3;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_3].getCnt += 1;
 					}
 					else if (r3 > TotalProb5) {
-						chara = randrare5_3;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_3].getCnt += 1;
 					}
 					else {
-						chara = randrare4_3;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_3].getCnt += 1;
 					}
 				}
 			}
 		}
+		//4
+		if (confirm4 == 4) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 220.0f) {
-			//4
 			Egg4Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg4Img, 300, 420);
-			if (confirm == 1) {
+			if (confirm4 == 4) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_4].name, r1Px, r4Py);
+				if (rare7[randrare7_4].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 380, 380);
+				}
 			}
 			else {
 				if (r4 > TotalProb7) {
@@ -950,51 +1230,72 @@ namespace GAME05
 					text("☆7:", r1Px, r4Py);
 					fill(0);
 					text((let)rare7[randrare7_4].name, 160, r4Py);
+					if (rare7[randrare7_4].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 380);
+					}
 				}
 				else if (r4 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_4].name, r1Px, r4Py);
+					if (rare6[randrare6_4].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 380);
+					}
 				}
 				else if (r4 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_4].name, r1Px, r4Py);
+					if (rare5[randrare5_4].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 380);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_4].name, r1Px, r4Py);
+					if (rare4[randrare4_4].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 380);
+					}
 				}
 			}if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7;
-					rare7[chara].getCnt += 1;
+				if (confirm4 == 4) {
+					rare7[randrare7_4].getCnt += 1;
 				}
 				else {
 					if (r4 > TotalProb7) {
-						chara = randrare7_4;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_4].getCnt += 1;
 					}
 					else if (r4 > TotalProb6) {
-						chara = randrare6_4;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_4].getCnt += 1;
 					}
 					else if (r4 > TotalProb5) {
-						chara = randrare5_4;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_4].getCnt += 1;
 					}
 					else {
-						chara = randrare4_4;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_4].getCnt += 1;
 					}
 				}
 			}
 		}
+		//5
+		if (confirm5 == 5) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 200.0f) {
-			//5
 			Egg5Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg5Img, 950, 420);
-			if (confirm == 1) {
+			if (confirm5 == 5) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_5].name, r2Px, r4Py);
+				if (rare7[randrare7_5].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1000, 380);
+				}
 			}
 			else {
 				if (r5 > TotalProb7) {
@@ -1002,51 +1303,73 @@ namespace GAME05
 					text("☆7:", 650, r4Py);
 					fill(0);
 					text((let)rare7[randrare7_5].name, 820, r4Py);
+					if (rare7[randrare7_5].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 380);
+					}
 				}
 				else if (r5 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_5].name, r2Px, r4Py);
+					if (rare6[randrare6_5].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 380);
+					}
 				}
 				else if (r5 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_5].name, r2Px, r4Py);
+					if (rare5[randrare5_5].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 380);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_5].name, r2Px, r4Py);
+					if (rare4[randrare4_5].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 380);
+					}
 				}
 			}if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7;
-					rare7[chara].getCnt += 1;
+				if (confirm5 == 5) {
+					rare7[randrare7_5].getCnt += 1;
 				}
 				else {
 					if (r5 > TotalProb7) {
-						chara = randrare7_5;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_5].getCnt += 1;
 					}
 					else if (r5 > TotalProb6) {
-						chara = randrare6_5;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_5].getCnt += 1;
 					}
 					else if (r5 > TotalProb5) {
-						chara = randrare5_5;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_5].getCnt += 1;
 					}
 					else {
-						chara = randrare4_5;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_5].getCnt += 1;
 					}
 				}
 			}
 		}
+		//6
+		if (confirm6 == 6) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 180.0f) {
-			//6
+			
 			Egg6Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg6Img, 1600, 420);
-			if (confirm == 1) {
+			if (confirm6 == 6) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_6].name, r3Px, r4Py);
+				if (rare7[randrare7_6].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1660, 380);
+				}
 			}
 			else {
 				if (r6 > TotalProb7) {
@@ -1054,52 +1377,74 @@ namespace GAME05
 					text("☆7:", r3Px, r4Py);
 					fill(0);
 					text((let)rare7[randrare7_6].name, 1470, r4Py);
+					if (rare7[randrare7_6].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 380);
+					}
 				}
 				else if (r6 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_6].name, r3Px, r4Py);
+					if (rare6[randrare6_6].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 380);
+					}
 				}
 				else if (r6 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_6].name, r3Px, r4Py);
+					if (rare5[randrare5_6].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 380);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_6].name, r3Px, r4Py);
+					if (rare4[randrare4_6].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 380);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_6;
-					rare7[chara].getCnt += 1;
+				if (confirm6 == 6) {
+					rare7[randrare7_6].getCnt += 1;
 				}
 				else {
 					if (r6 > TotalProb7) {
-						chara = randrare7_6;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_6].getCnt += 1;
 					}
 					else if (r6 > TotalProb6) {
-						chara = randrare6_6;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_6].getCnt += 1;
 					}
 					else if (r6 > TotalProb5) {
-						chara = randrare5_6;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_6].getCnt += 1;
 					}
 					else {
-						chara = randrare4_6;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_6].getCnt += 1;
 					}
 				}
 			}
 		}
+		//7
+		if (confirm7 == 7) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 160.0f) {
-			//7
+			
 			Egg7Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg7Img, 300, 620);
-			if (confirm == 1) {
+			if (confirm7 == 7) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_7].name, r1Px, r7Py);
+				if (rare7[randrare7_7].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 380, 570);
+				}
 			}
 			else {
 				if (r7 > TotalProb7) {
@@ -1107,52 +1452,73 @@ namespace GAME05
 					text("☆7:", r1Px, r7Py);
 					fill(0);
 					text((let)rare7[randrare7_7].name, 160, r7Py);
+					if (rare7[randrare7_7].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 570);
+					}
 				}
 				else if (r7 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_7].name, r1Px, r7Py);
+					if (rare6[randrare6_7].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 570);
+					}
 				}
 				else if (r7 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_7].name, r1Px, r7Py);
+					if (rare5[randrare5_7].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 570);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_7].name, r1Px, r7Py);
+					if (rare4[randrare4_7].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 380, 570);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_7;
-					rare7[chara].getCnt += 1;
+				if (confirm7 == 7) {
+					rare7[randrare7_7].getCnt += 1;
 				}
 				else {
 					if (r7 > TotalProb7) {
-						chara = randrare7_7;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_7].getCnt += 1;
 					}
 					else if (r7 > TotalProb6) {
-						chara = randrare6_7;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_7].getCnt += 1;
 					}
 					else if (r7 > TotalProb5) {
-						chara = randrare5_7;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_7].getCnt += 1;
 					}
 					else {
-						chara = randrare4_7;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_7].getCnt += 1;
 					}
 				}
 			}
 		}
+		//8
+		if (confirm8 == 8) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 140.0f) {
-			//8
 			Egg8Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg8Img, 950, 620);
-			if (confirm == 1) {
+			if (confirm8 == 8) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_8].name, r2Px, r7Py);
+				if (rare7[randrare7_8].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1000, 570);
+				}
 			}
 			else {
 				if (r8 > TotalProb7) {
@@ -1160,52 +1526,73 @@ namespace GAME05
 					text("☆7:", 650, r7Py);
 					fill(0);
 					text((let)rare7[randrare7_8].name, 820, r7Py);
+					if (rare7[randrare7_8].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 570);
+					}
 				}
 				else if (r8 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_8].name, r2Px, r7Py);
+					if (rare6[randrare6_8].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 570);
+					}
 				}
 				else if (r8 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_8].name, r2Px, r7Py);
+					if (rare5[randrare5_8].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 570);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_8].name, r2Px, r7Py);
+					if (rare4[randrare4_8].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1000, 570);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_8;
-					rare7[chara].getCnt += 1;
+				if (confirm8 == 8) {
+					rare7[randrare7_8].getCnt += 1;
 				}
 				else {
 					if (r8 > TotalProb7) {
-						chara = randrare7_8;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_8].getCnt += 1;
 					}
 					else if (r8 > TotalProb6) {
-						chara = randrare6_8;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_8].getCnt += 1;
 					}
 					else if (r8 > TotalProb5) {
-						chara = randrare5_8;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_8].getCnt += 1;
 					}
 					else {
-						chara = randrare4_8;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_8].getCnt += 1;
 					}
 				}
 			}
 		}
+		//9
+		if (confirm9 == 9) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 120.0f) {
-			//9
 			Egg9Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg9Img, 1600, 620);
-			if (confirm == 1) {
+			if (confirm9 == 9) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_9].name, r3Px, r7Py);
+				if (rare7[randrare7_9].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1660, 570);
+				}
 			}
 			else {
 				if (r9 > TotalProb7) {
@@ -1213,52 +1600,73 @@ namespace GAME05
 					text("☆7:", r3Px, r7Py);
 					fill(0);
 					text((let)rare7[randrare7_9].name, 1470, r7Py);
+					if (rare7[randrare7_9].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 570);
+					}
 				}
 				else if (r9 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_9].name, r3Px, r7Py);
+					if (rare6[randrare6_9].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 570);
+					}
 				}
 				else if (r9 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_9].name, r3Px, r7Py);
+					if (rare5[randrare5_9].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 570);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_9].name, r3Px, r7Py);
+					if (rare4[randrare4_9].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1660, 570);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_9;
-					rare7[chara].getCnt += 1;
+				if (confirm9 == 9) {
+					rare7[randrare7_9].getCnt += 1;
 				}
 				else {
 					if (r9 > TotalProb7) {
-						chara = randrare7_9;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_9].getCnt += 1;
 					}
 					else if (r9 > TotalProb6) {
-						chara = randrare6_9;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_9].getCnt += 1;
 					}
 					else if (r9 > TotalProb5) {
-						chara = randrare5_9;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_9].getCnt += 1;
 					}
 					else {
-						chara = randrare4_9;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_9].getCnt += 1;
 					}
 				}
 			}
 		}
+		//10
+		if (confirm10 == 10) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 100.0f) {
-			//10
 			Egg10Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg10Img, 540, 820);
-			if (confirm == 1) {
+			if (confirm10 == 10) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_10].name, r10Px, r10Py);
+				if (rare7[randrare7_10].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 650, 780);
+				}
 			}
 			else {
 				if (r10 > TotalProb7) {
@@ -1266,52 +1674,73 @@ namespace GAME05
 					text("☆7:", r10Px, r10Py);
 					fill(0);
 					text((let)rare7[randrare7_10].name, 450, r10Py);
+					if (rare7[randrare7_10].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 650, 780);
+					}
 				}
 				else if (r10 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_10].name, r10Px, r10Py);
+					if (rare6[randrare6_10].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 650, 780);
+					}
 				}
 				else if (r10 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_10].name, r10Px, r10Py);
+					if (rare5[randrare5_10].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 650, 780);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_10].name, r10Px, r10Py);
+					if (rare4[randrare4_10].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 650, 780);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_10;
-					rare7[chara].getCnt += 1;
+				if (confirm10 == 10) {
+					rare7[randrare7_10].getCnt += 1;
 				}
 				else {
 					if (r10 > TotalProb7) {
-						chara = randrare7_10;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_10].getCnt += 1;
 					}
 					else if (r10 > TotalProb6) {
-						chara = randrare6_10;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_10].getCnt += 1;
 					}
 					else if (r10 > TotalProb5) {
-						chara = randrare5_10;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_10].getCnt += 1;
 					}
 					else {
-						chara = randrare4_10;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_10].getCnt += 1;
 					}
 				}
 			}
 		}
+		//11
+		if (confirm11 == 11) {
+			fill(0);
+			textSize(50);
+			text("☆7確定!", 0, 100);
+		}
+		textSize(80);
 		if (rFrameCnt < 80.0f) {
-			//11
 			Egg11Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg11Img, 1150, 820);
-			if (confirm == 1) {
+			if (confirm11 == 11) {
 				fill(213, 202, 112);
 				text("☆7:" + (let)rare7[randrare7_11].name, r11Px, r10Py);
+				if (rare7[randrare7_11].getCnt <= 0) {
+					fill(255, 0, 0);
+					text("NEW", 1400, 780);
+				}
 			}
 			else {
 				if (r11 > TotalProb7) {
@@ -1319,41 +1748,52 @@ namespace GAME05
 					text("☆7:", 1050, r10Py);
 					fill(0);
 					text((let)rare7[randrare7_11].name, 1200, r10Py);
+					if (rare7[randrare7_11].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1400, 780);
+					}
 				}
 				else if (r11 > TotalProb6) {
 					fill(0);
 					text("☆6:" + (let)rare6[randrare6_11].name, r11Px, r10Py);
+					if (rare6[randrare6_11].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1400, 780);
+					}
 				}
 				else if (r11 > TotalProb5) {
 					fill(0);
 					text("☆5:" + (let)rare5[randrare5_11].name, r11Px, r10Py);
+					if (rare5[randrare5_11].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1400, 780);
+					}
 				}
 				else {
 					fill(0);
 					text("☆4:" + (let)rare4[randrare4_11].name, r11Px, r10Py);
+					if (rare4[randrare7_11].getCnt <= 0) {
+						fill(255, 0, 0);
+						text("NEW", 1400, 780);
+					}
 				}
 			}
 			if (rFrameCnt <= 0.5f) {
-				if (confirm == 1) {
-					chara = randrare7_11;
-					rare7[chara].getCnt += 1;
+				if (confirm11 == 11) {
+					rare7[randrare7_11].getCnt += 1;
 				}
 				else {
 					if (r11 > TotalProb7) {
-						chara = randrare7_11;
-						rare7[chara].getCnt += 1;
+						rare7[randrare7_11].getCnt += 1;
 					}
 					else if (r11 > TotalProb6) {
-						chara = randrare6_11;
-						rare6[chara].getCnt += 1;
+						rare6[randrare6_11].getCnt += 1;
 					}
 					else if (r11 > TotalProb5) {
-						chara = randrare5_11;
-						rare5[chara].getCnt += 1;
+						rare5[randrare5_11].getCnt += 1;
 					}
 					else {
-						chara = randrare4_11;
-						rare4[chara].getCnt += 1;
+						rare4[randrare4_11].getCnt += 1;
 					}
 				}
 			}
@@ -1373,7 +1813,6 @@ namespace GAME05
 			Egg9Img = loadImage("..\\main\\assets\\game05\\tamago2.png");
 			Egg10Img = loadImage("..\\main\\assets\\game05\\tamago2.png");
 			Egg11Img = loadImage("..\\main\\assets\\game05\\tamago2.png");
-			straightCnt--;
 			State = GACHA;
 		}
 	}
@@ -1428,7 +1867,6 @@ namespace GAME05
 				text("×" + (let)rare7[i].getCnt, 1740.0f, 200.0f + 90.0f * i);
 			}
 		}
-
 		textSize(50);
 		text("ENTER:ガチャ選択画面にもどる", 600.0f, 1080.0f);
 		if (isTrigger(KEY_ENTER)) {
@@ -1442,9 +1880,9 @@ namespace GAME05
 		fill(255);
 		textSize(50);
 		for (int i = 0; i < 10; i++) {
-			text("☆4:10体:58.8%", 60, 100);
+			text("☆4:10体:61.3%", 60, 100);
 			text(rare4[i].name, 50.0f, 200.0f + 90.0f * i);
-			text(":5.88%", 300.0f, 200.0f + 90.0f * i);
+			text(":6.13%", 300.0f, 200.0f + 90.0f * i);
 
 		}
 		for (int i = 0; i < 9; i++) {
@@ -1459,10 +1897,10 @@ namespace GAME05
 		}
 		for (int i = 0; i < 7; i++) {
 			fill(213, 202, 112);
-			text("☆7:7体:2.8%", 1500, 100);
+			text("☆7:7体:0.3%", 1500, 100);
 			fill(255);
 			text(rare7[i].name, 1440.0f, 200.0f + 90.0f * i);
-			text(":0.4%", 1690.0f, 200.0f + 90.0f * i);
+			text(":0.04%", 1690.0f, 200.0f + 90.0f * i);
 		}
 		fill(255);
 		textSize(50);
@@ -1477,18 +1915,21 @@ namespace GAME05
 		textSize(50);
 		fill(255);
 		text((let)WinCnt + "/" + (let)straightWinCnt + "連勝", 50, 100);
-		text("勝てばもらえる枚数:" + (let)GetCoins + "コイン", 50, 200);
+		text("勝ったときの配当:" + (let)GetCoins + "コイン", 50, 200);
 		image(HaimenImg, HaimenPx, HaimenPy);
-		image(HaimenImg, HaimenPx, 197);
-		image(HaimenImg, HaimenPx, 194);
-		image(HaimenImg, HaimenPx, 191);
-		image(HaimenImg, HaimenPx, 188);
-		image(HaimenImg, HaimenPx, 185);
-		image(HaimenImg, HaimenPx, 182);
-		image(HaimenImg, HaimenPx, 179);
+		image(HaimenImg, HaimenPx, HaimenPy - 3);
+		image(HaimenImg, HaimenPx, HaimenPy - 6);
+		image(HaimenImg, HaimenPx, HaimenPy - 9);
+		image(HaimenImg, HaimenPx, HaimenPy - 12);
+		image(HaimenImg, HaimenPx, HaimenPy - 15);
+		image(HaimenImg, HaimenPx, HaimenPy - 18);
+		image(HaimenImg, HaimenPx, HaimenPy - 21);
+		image(HaimenImg, HaimenPx, HaimenPy - 24);
+		image(HaimenImg, HaimenPx, HaimenPy - 27);
+		image(HaimenImg, HaimenPx, HaimenPy - 30);
 		image(SetImg[0], CardSetPx[0], CardSetPy[0]);
 		image(SetImg[1], CardSetPx[1], CardSetPy[1]);
-		text("ディーラー", 840, 50);
+		text("ディーラー", 830, 50);
 		strokeWeight(5);
 		stroke(255);
 		line(830, 70, 1080, 70);
