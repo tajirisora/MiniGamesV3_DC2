@@ -746,7 +746,6 @@ namespace GAME05
 			text("S:シングルガチャ: 5000コイン", 100, 500);
 			text("R:10+1連ガチャ: 50000コイン", 100, 800);
 		}
-		
 		else if (freeCnt >= 1 && ChikettoCnt >= 1 && ChikettoCnt <= 9) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -755,7 +754,6 @@ namespace GAME05
 			textSize(110);
 			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
-
 		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 50000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -764,7 +762,6 @@ namespace GAME05
 			textSize(110);
 			text("R:10+1連ガチャ: 50000コイン", 100, 800);
 		}
-
 		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000 && playerCoins < 50000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -775,7 +772,6 @@ namespace GAME05
 			fill(255, 0, 0);
 			text("50000コイン", 950, 800);
 		}
-
 		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins < 5000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -785,14 +781,12 @@ namespace GAME05
 			textSize(110);
 			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
-
 		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins >= 5000) {
 			textSize(120);
 			text("S:シングルガチャ: 5000コイン", 50, 500);
 			textSize(110);
 			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
-
 		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins >= 5000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -921,7 +915,6 @@ namespace GAME05
 			}
 			State = RESULT2;
 		}
-
 
 		if (isTrigger(KEY_B)) {
 			State = BOX;
