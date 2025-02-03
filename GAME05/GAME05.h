@@ -108,7 +108,7 @@ namespace GAME05
         int Count = 0;
         int CountDown = 0;
         int PageCnt = 1;
-        int ChikettoCnt = 0;
+        int ChikettoCnt = 10;
 
         float CardSetPx[2] = { 0.0f };
         float CardSetPy[2] = { 0.0f };
