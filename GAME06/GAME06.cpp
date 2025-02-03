@@ -1,5 +1,6 @@
 #include "../../libOne/inc/input.h"
 #include "../../libOne/inc/mathUtil.h"
+#include "../../libOne/inc/graphic.h"
 #include "../MAIN//MAIN.h"
 #include "TITLE.h"
 #include "STAGE.h"
@@ -71,6 +72,9 @@ namespace GAME06
 	void GAME::proc()
 	{
 		Scenes[CurSceneID]->proc();
+		fill(0);
+		textSize(30);
+		text("ENTERキーでメニューに戻る", 0, height);
 		if (isTrigger(KEY_ENTER)) {
 			main()->backToMenu();
 		}

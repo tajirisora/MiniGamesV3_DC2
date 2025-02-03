@@ -22,8 +22,8 @@ namespace GAME06
 	private:
 		//RankŠÔ‚Ì‹«ŠEü
 		const int Line1 = 0;
-		const int Line2 = 3;
-		const int Line3 = 5;
+		const int Line2 = 5;
+		const int Line3 = 9;
 	public:
 		STAGE(class GAME* game) :SCENE(game){}
 		~STAGE(){}
