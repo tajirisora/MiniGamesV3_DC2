@@ -698,7 +698,13 @@ namespace GAME05
 		else {
 			text((let)playerCoins, 80, 95);
 		}
-		text(":" + (let)ChikettoCnt + "枚所持", 450, 90);
+		if (ChikettoCnt >= 99) {
+			ChikettoCnt = 99;
+			text(":" + (let)ChikettoCnt + "枚所持", 450, 90);
+		}
+		else {
+			text(":" + (let)ChikettoCnt + "枚所持", 450, 90);
+		}
 		text("B:獲得キャラ一覧", 600, 1080);
 		text("P:排出確率", 1200, 1080);
 		text("ENTERでタイトルへ", 0, 1080);
@@ -781,6 +787,10 @@ namespace GAME05
 			text("R:10+1連ガチャ: あと" + (let)freeCnt + "回無料", 50, 800);
 		}
 
+		textSize(100);
+		fill(0);
+		text("※チケットから優先的に消費されます。", 100, 1000);
+
 		if (isTrigger(KEY_S) && playerCoins >= 5000) {
 			Init2();
 			playerCoins -= 5000;
@@ -830,7 +840,7 @@ namespace GAME05
 			State = RESULT2;
 		}
 
-		if (isTrigger(KEY_R) && freeCnt > 0) {
+		if (isTrigger(KEY_R) && freeCnt > 0 && ChikettoCnt <= 0) {
 			Init2();
 			freeCnt--;
 			clear(255);
