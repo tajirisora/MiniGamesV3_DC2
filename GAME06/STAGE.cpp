@@ -13,7 +13,7 @@ namespace GAME06
 	void STAGE::init() {
 		const DATA& stage = game()->container()->data().stage;
 		Stage.timer = stage.timer;
-		Stage.curState = WAITING_FOR_DECIDING_TYPE_ID;
+		Stage.curState = UPDATING_CHARACTER_DATA_ID;
 		game()->collisionCounter() = 0;
 		game()->player()->init();
 		game()->target()->init();
