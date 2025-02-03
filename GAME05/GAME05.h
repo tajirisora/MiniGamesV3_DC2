@@ -20,7 +20,7 @@ namespace GAME05
         void proc();
         void destroy();
     private:
-        enum STATE { TITLE, CHANGEBETCOIN, JOB, RULE, GACHA, PLAY, SHOW, WIN, STRAIGHTWIN, LOSE, DRAW, RESULT, RESULT2, BOX, PROB};
+        enum STATE { TITLE, CHANGEBETCOIN, JOB, RULE, RULEPAGE, GACHA, PLAY, SHOW, WIN, STRAIGHTWIN, LOSE, DRAW, RESULT, RESULT2, BOX, PROB};
         STATE State = TITLE;
         Card* deck = nullptr;
         void Init();
@@ -30,6 +30,7 @@ namespace GAME05
         void ChangeBetCoin();
         void Job();
         void Rule();
+        void RulePage();
         void Play(Card* deck);
         void Show();
         void Win();
@@ -69,6 +70,12 @@ namespace GAME05
         int ChipImg = 0;
         int Chip_2Img = 0;
         int WinImg = 0;
+        int RuleImg = 0;
+        int Rule2Img = 0;
+        int Rule3Img = 0;
+        int ChikettoImg = 0;
+        int Chiketto2Img = 0;
+
         int DrawSnd = 0;
         int WinSnd = 0;
         int LoseSnd = 0;
@@ -80,15 +87,28 @@ namespace GAME05
 
         int WinCnt = 0;
         int BetCoins = 100;
-        int GetCoins = BetCoins;
+        int GetCoins = BetCoins * 2;
         int straightWinCnt = 0;
-        int straightCnt = 0;
+        int freeCnt = 0;
         int PlayCnt = 0;
-        int chara = 0;
+        char chara = 0;
         int playerCoins = 1000;
         int confirm = 0;
+        int confirm1 = 0;
+        int confirm2 = 0;
+        int confirm3 = 0;
+        int confirm4 = 0;
+        int confirm5 = 0;
+        int confirm6 = 0;
+        int confirm7 = 0;
+        int confirm8 = 0;
+        int confirm9 = 0;
+        int confirm10 = 0;
+        int confirm11 = 0;
         int Count = 0;
         int CountDown = 0;
+        int PageCnt = 1;
+        int ChikettoCnt = 0;
 
         float CardSetPx[2] = { 0.0f };
         float CardSetPy[2] = { 0.0f };
@@ -103,6 +123,7 @@ namespace GAME05
         bool drawFlag = false;
         bool jobFlag = false;
         bool straightWinFlag = false;
+        bool ChikettoFlag = false;
 
         int s0 = 0;
         int r1 = 0, r2 = 0, r3 = 0, r4 = 0, r5 = 0,
