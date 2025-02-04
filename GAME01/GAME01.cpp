@@ -12,7 +12,7 @@ namespace GAME01
         bgmSnd = loadSound("..\\main\\assets\\game01\\BGM.wav");
         aaaSnd = loadSound("..\\main\\assets\\game01\\aaa.wav");
         haikeiImg = loadImage("..\\main\\assets\\game01\\haikei1.jpg");
-        haikei2Img = loadImage("..\\main\\assets\\game01\\haikei2.jpg");
+        haikei2Img = loadImage("..\\main\\assets\\game01\\haikei2.png");
         overImg = loadImage("..\\main\\assets\\game01\\over.png");
 
 
@@ -140,7 +140,7 @@ namespace GAME01
         fill(255, 255, 255); 
         textSize(40);
         text("クリックで操作説明画面へ", 750, 500);
-        text("Enterでメニューに戻る", 0, 1080);
+        text("Enterでメニューに戻る", 0, 800);
 
         //シーン切り替え
         setPtnPosition();
@@ -166,12 +166,14 @@ namespace GAME01
         // 説明文字
         fill(255, 255, 255);
         textSize(60);
-        text("右へ１マス:D", 750, 500);
-        text("左へ１マス:A", 750, 550);
-        text("回転:W", 750, 600);
-        text("落下:S", 750, 650);
-        text("levelは8まであり、一定スコア到達でlevelと速度アップ", 250, 760);
-        text("クリックでゲームスタート", 750, 900);
+        text("右へ１マス:D", 780, 520);
+        text("左へ１マス:A", 780, 570);
+        text("回転:W", 780, 620);
+        text("落下:S", 780, 670);
+        fill(255, 255, 0);
+        textSize(40);
+        text("一定スコア到達でlevelと速度アップ", 650, 760);
+        text("クリックでゲームスタート", 650, 900);
 
 
         for (int y = 0; y < ROWS; y++) {
@@ -412,7 +414,7 @@ namespace GAME01
     void GAME::play() {
         //現在のパターン番号（色番号）をステージから消す
         if (!isBgmPlaying) {
-            playSound(bgmSnd);  
+            playLoopSound(bgmSnd);  
             isBgmPlaying = true; // BGMが再生中であることを記録
         }
 
@@ -481,13 +483,13 @@ namespace GAME01
         // スコアに応じて落下速度とレベルを調整
         int newLevel = Level;
 
-        if (Score >= 3000) newLevel = 2, FallSpeed = 25;
-        if (Score >= 5000) newLevel = 3, FallSpeed = 20;
-        if (Score >= 10000) newLevel = 4, FallSpeed = 15;
-        if (Score >= 20000) newLevel = 5, FallSpeed = 10;
-        if (Score >= 30000)newLevel = 6, FallSpeed = 8;
-        if (Score >= 40000)newLevel = 7, FallSpeed = 5;
-        if (Score >= 50000)newLevel = 8, FallSpeed = 2;
+        if (Score >= 3000) newLevel = 2, FallSpeed = 28;
+        if (Score >= 5000) newLevel = 3, FallSpeed = 26;
+        if (Score >= 10000) newLevel = 4, FallSpeed = 20;
+        if (Score >= 20000) newLevel = 5, FallSpeed = 18;        
+        if (Score >= 30000)newLevel = 6, FallSpeed = 16;
+        if (Score >= 40000)newLevel = 7, FallSpeed = 14;
+        if (Score >= 50000)newLevel = 8, FallSpeed = 10;
 
         if (newLevel > Level) {
             Level = newLevel;
@@ -548,12 +550,12 @@ namespace GAME01
         rectMode(CENTER);
         image(overImg, width / 2, height / 2);
         // ゲームオーバー文字
-        fill(255, 255, 255);
+        fill(0, 255, 255);
         textSize(150);
         text("Game Over", 570, 200);
 
         // 最終スコア表示
-        fill(255, 255, 255);
+        fill(0, 255, 255);
         textSize(70);
         char scoreStr[20];
         intToStr(Score, scoreStr); // スコアを文字列に変換
@@ -573,7 +575,7 @@ namespace GAME01
 
         
         // 再開案内
-        fill(255, 255, 255); 
+        fill(0, 255, 255); 
         textSize(80);
         text("SPACEキーでタイトルに戻る", 480, 700);
 
