@@ -10,7 +10,7 @@ namespace GAME13 {
     int GAME::create() {
         return 0;
     }
-
+    
     void GAME::proc() {
         if (State == TITLE)Title();
         else if (State == KAKURITU)Kakuritu();
@@ -26,6 +26,7 @@ namespace GAME13 {
     }
 
     void GAME::Init() {
+        srand(time(0));
         half = random() % 2;
     }
 
@@ -54,7 +55,7 @@ namespace GAME13 {
             main()->backToMenu();
         }
     }  
-
+    
     void GAME::Kakuritu()
     {
         clear(0);
@@ -95,30 +96,44 @@ namespace GAME13 {
         textSize(50);
         text("成功回数:" + (let)SuccessCnt + "/" + "10", 0, 100);
 
-        if (isTrigger(KEY_L)){
+        int playerChoice = -1;
+        bool playerChose = false;
+
+        if (isTrigger(KEY_L)) {
             fill(255, 0, 0);
             textSize(300);
             text("L", 50, 700);
+            playerChoice = 0;
+            playerChose = true;
         }
 
         if (isTrigger(KEY_R)) {
             fill(255, 0, 0);
             textSize(300);
             text("R", 1600, 700);
-        }
-        if (isTrigger(KEY_L)&& half == 1 || isTrigger(KEY_R)&& half == 1) {
-            SuccFlag = true;
-            State = PUSH;
+            playerChoice = 1;
+            playerChose = true;
         }
 
-        if (isPress(KEY_L)&& half == 0 || isPress(KEY_R)&& half == 0) {
-            OverFlag = true;
-            State = PUSH;
-        }
+        if (playerChose) {
+            Sleep(500);
 
-        if (SuccessCnt == 9 && (isTrigger(KEY_L) && half == 1 || isTrigger(KEY_R) && half == 1)) {
-            TenSuccFlag = true;
-            State = PUSH;
+            int computerChoice = rand() % 2;
+
+
+            if (playerChoice == computerChoice) {
+                SuccFlag = true;
+                State = PUSH;
+            }
+            else {
+                OverFlag = true;
+                State = PUSH;
+            }
+
+            if (SuccessCnt == 9 && ((isTrigger(KEY_L) && half == 1) || (isTrigger(KEY_R) && half == 1))) {
+                TenSuccFlag = true;
+                State = PUSH;
+            }
         }
     }
     void GAME::Push()
@@ -162,7 +177,7 @@ namespace GAME13 {
         textSize(300);
         text("10連続達成",250,540);
         textSize(100);
-        text("ENTERキーでメニューに戻る", 50, 1080);
+        text("ENTERキーでタイトルに戻る", 50, 1080);
         if (isTrigger(KEY_ENTER)) {
             SuccessCnt = 0;
             State = TITLE;
@@ -176,7 +191,7 @@ namespace GAME13 {
         textSize(300);
         text("失敗", 600, 600);
         textSize(100);
-        text("ENTERキーでメニューに戻る", 50, 1080);
+        text("ENTERキーでタイトルに戻る", 50, 1080);
         if (isTrigger(KEY_ENTER)) {
             SuccessCnt = 0;
             State = TITLE;
