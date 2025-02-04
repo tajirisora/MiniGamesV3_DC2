@@ -634,7 +634,7 @@ namespace GAME05
 		confirm6 = random() % 100; confirm7 = random() % 100; confirm8 = random() % 100; confirm9 = random() % 100; confirm10 = random() % 100;
 		confirm11 = random() % 100;
 		sFrameCnt = 100.0f;
-		rFrameCnt = 300.0f;
+		rFrameCnt = 500.0f;
 
 		s0 = random() % 100 + 1;
 		r1 = random() % 100 + 1, r2 = random() % 100 + 1, r3 = random() % 100 + 1, r4 = random() % 100 + 1, r5 = random() % 100 + 1,
@@ -772,6 +772,16 @@ namespace GAME05
 			fill(255, 0, 0);
 			text("50000コイン", 950, 800);
 		}
+		else if (freeCnt <= 0 && ChikettoCnt >= 1 && ChikettoCnt <= 9 && playerCoins < 5000) {
+			textSize(120);
+			text("S:シングルガチャ:", 50, 500);
+			image(ChikettoImg, 1180, 450);
+			text("消費:1枚", 1280, 500);
+			textSize(110);
+			text("R:10+1連ガチャ:", 50, 800);
+			fill(255, 0, 0);
+			text("50000コイン", 950, 800);
+		}
 		else if (freeCnt >= 1 && ChikettoCnt <= 0 && playerCoins < 5000) {
 			textSize(120);
 			text("S:シングルガチャ:", 50, 500);
@@ -845,7 +855,7 @@ namespace GAME05
 		}
 
 
-		if (isTrigger(KEY_R) && playerCoins >= 50000 && freeCnt <= 0 && ChikettoCnt <= 0) {
+		if (isTrigger(KEY_R) && playerCoins >= 50000 && freeCnt <= 0) {
 			Init2();
 			playerCoins -= 50000;
 			clear(255);
@@ -926,7 +936,9 @@ namespace GAME05
 		}
 
 		if (isTrigger(KEY_ENTER)) {
-			WinCnt = 0;
+			if (BetCoins > playerCoins) {
+				BetCoins = 100;
+			}
 			State = TITLE;
 		}
 	}
@@ -939,7 +951,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 			playSound(KakuteiSnd);
 		}
-		if (sFrameCnt < 80) {
+		if (sFrameCnt < 60) {
 			TamagoImg = WhiteImg;
 			image(TamagoImg, width / 2, height / 2);
 			if (confirm == 1) {
@@ -1030,7 +1042,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 280.0f) {
+		if (rFrameCnt < 460.0f) {
 			Egg1Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg1Img, 300, 220);
 			if (confirm1 == 1) {
@@ -1104,7 +1116,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80); 
-		if (rFrameCnt < 260.0f) {
+		if (rFrameCnt < 420.0f) {
 			Egg2Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg2Img, 950, 220);
 			if (confirm2 == 2) {
@@ -1178,7 +1190,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 240.0f) {
+		if (rFrameCnt < 380.0f) {
 			Egg3Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg3Img, 1600, 220);
 			if (confirm3 == 3) {
@@ -1251,7 +1263,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 220.0f) {
+		if (rFrameCnt < 340.0f) {
 			Egg4Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg4Img, 300, 420);
 			if (confirm4 == 4) {
@@ -1324,7 +1336,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 200.0f) {
+		if (rFrameCnt < 300.0f) {
 			Egg5Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg5Img, 950, 420);
 			if (confirm5 == 5) {
@@ -1397,7 +1409,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 180.0f) {
+		if (rFrameCnt < 260.0f) {
 			
 			Egg6Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg6Img, 1600, 420);
@@ -1472,7 +1484,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 160.0f) {
+		if (rFrameCnt < 220.0f) {
 			
 			Egg7Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg7Img, 300, 620);
@@ -1547,7 +1559,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 140.0f) {
+		if (rFrameCnt < 180.0f) {
 			Egg8Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg8Img, 950, 620);
 			if (confirm8 == 8) {
@@ -1621,7 +1633,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 120.0f) {
+		if (rFrameCnt < 140.0f) {
 			Egg9Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg9Img, 1600, 620);
 			if (confirm9 == 9) {
@@ -1769,7 +1781,7 @@ namespace GAME05
 			text("☆7確定!", 0, 100);
 		}
 		textSize(80);
-		if (rFrameCnt < 80.0f) {
+		if (rFrameCnt < 60.0f) {
 			Egg11Img = loadImage("..\\main\\assets\\game05\\white2.png");
 			image(Egg11Img, 1150, 820);
 			if (confirm11 == 11) {
