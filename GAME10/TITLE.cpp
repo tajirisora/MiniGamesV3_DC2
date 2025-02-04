@@ -14,9 +14,11 @@ void TITLE::update() {
 void TITLE::selectMove() {
 	if (isTrigger(KEY_S)) {
 		Title.SELECTSTATE = (Title.SELECTSTATE + 1) % Title.STATE_NUM;
+		playSound(Title.titleSelect);
 	}
 	if (isTrigger(KEY_W)) {
 		Title.SELECTSTATE = Title.SELECTSTATE - 1;
+		playSound(Title.titleSelect);
 		if (Title.SELECTSTATE <= -1) {
 			Title.SELECTSTATE = Title.STATE_NUM - 1;
 		}
@@ -44,6 +46,7 @@ void TITLE::sound() {
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE) && Title.TUTORIAL_ID != Title.SELECTSTATE) {
+		playSound(Title.titleSelectSound);
 		game()->changeScene(GAME10_GAME::STAGE_ID);
 		game()->scenes(GAME10_GAME::STAGE_ID)->init();
 		game()->scenes(GAME10_GAME::SELECT_ID)->init();
@@ -52,6 +55,7 @@ void TITLE::nextScene(){
 		game()->scenes(GAME10_GAME::STAGE_ID)->sound();
 	}
 	else if(isTrigger(KEY_SPACE) && Title.TUTORIAL_ID == Title.SELECTSTATE){
+		playSound(Title.titleSelectSound);
 		game()->changeScene(GAME10_GAME::TUTORIAL_ID);
 		game()->scenes(GAME10_GAME::TUTORIAL_ID)->init();
 	}

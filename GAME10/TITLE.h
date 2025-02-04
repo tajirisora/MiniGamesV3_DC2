@@ -23,6 +23,8 @@ public:
 		};
 		int SELECTSTATE = T_ID;
 		int titleSound;
+		int titleSelect;
+		int titleSelectSound;
 	};
 private:
 	DATA Title;

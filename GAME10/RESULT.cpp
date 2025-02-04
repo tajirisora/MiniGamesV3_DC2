@@ -12,9 +12,11 @@ void RESULT::create() {
 }
 void RESULT::draw() {
 	game()->scenes(GAME10_GAME::STAGE_ID)->draw();
-	if (game()->player()->playerHp() <= NULL
-		|| game()->time()->nowTime() <= NULL) {
-		image(Result.resultImg[Result.OVER_ID], Result.imgPos.x, Result.imgPos.y);
+	if (game()->player()->playerHp() <= NULL) {
+		image(Result.resultImg[Result.HPOVER_ID], Result.imgPos.x, Result.imgPos.y);
+	}
+	else if (game()->time()->nowTime() <= NULL) {
+		image(Result.resultImg[Result.TIMEOVER_ID], Result.imgPos.x, Result.imgPos.y);
 	}
 	else {
 		image(Result.resultImg[Result.CLEAR_ID], Result.imgPos.x, Result.imgPos.y);

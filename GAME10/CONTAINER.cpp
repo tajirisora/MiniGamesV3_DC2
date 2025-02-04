@@ -20,6 +20,8 @@ void CONTAINER::load(){
 void CONTAINER::setImage() {
 	Data.title.titleImg = loadImage("..\\main\\assets\\game10\\title.png");
 	Data.title.titleSound = loadSound("..\\main\\assets\\game10\\titleBgm.wav");
+	Data.title.titleSelect = loadSound("..\\main\\assets\\game10\\titleSelect.wav");
+	Data.title.titleSelectSound = loadSound("..\\main\\assets\\game10\\titleSelectSound.wav");
 
 	Data.tutorial.tutoImg[0] = loadImage("..\\main\\assets\\game10\\tutorial0.png");
 	Data.tutorial.tutoImg[1] = loadImage("..\\main\\assets\\game10\\tutorial1.png");
@@ -31,6 +33,9 @@ void CONTAINER::setImage() {
 	Data.stage.GoalBoardImg = loadImage("..\\main\\assets\\game10\\kanban1.png");
 	Data.stage.GoalImg = loadImage("..\\main\\assets\\game10\\goalTape.png");
 	Data.stage.sound = loadSound("..\\main\\assets\\game10\\stage.wav");
+	for (int i = 0; i < 4; i++) {
+		Data.stage.Lanes[i].LaneImg = loadImage("..\\main\\assets\\game10\\stageLane.png");
+	}
 
 	Data.select.backImg = loadImage("..\\main\\assets\\game10\\selectImg.png");
 	Data.select.weaponImg[0] = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
@@ -40,11 +45,9 @@ void CONTAINER::setImage() {
 	Data.select.selectSound = loadSound("..\\main\\assets\\game10\\select.wav");
 	Data.select.upSound = loadSound("..\\main\\assets\\game10\\level.wav");
 
-	Data.result.resultImg[0] = loadImage("..\\main\\assets\\game10\\clearImg.png");
-	Data.result.resultImg[1] = loadImage("..\\main\\assets\\game10\\overImg.png");
-	for (int i = 0; i < 4; i++) {
-		Data.stage.Lanes[i].LaneImg = loadImage("..\\main\\assets\\game10\\stageLane.png");
-	}
+	Data.result.resultImg[Data.result.CLEAR_ID] = loadImage("..\\main\\assets\\game10\\clearImg.png");
+	Data.result.resultImg[Data.result.TIMEOVER_ID] = loadImage("..\\main\\assets\\game10\\timeOverImg.png");
+	Data.result.resultImg[Data.result.HPOVER_ID] = loadImage("..\\main\\assets\\game10\\hpOverImg.png");
 	Data.result.clearBgm = loadSound("..\\main\\assets\\game10\\clearBgm.wav");
 	Data.result.overBgm = loadSound("..\\main\\assets\\game10\\overBgm.wav");
 
@@ -169,7 +172,7 @@ void CONTAINER::setData(){
 	Data.player.ImgRight = 100;
 	Data.player.level = 1;
 	Data.player.levelUpBorder = 2;
-	Data.player.borderSum = 3;
+	Data.player.borderSum = 2;
 	Data.player.nowImage = 0;
 	Data.player.nowFlame = 0;
 	Data.player.nextFlame = 20;
@@ -206,7 +209,7 @@ void CONTAINER::setData(){
 	Data.enemy.opos.y = 540;
 	Data.enemy.my = Data.player.Pmy;
 	Data.enemy.ohp = 200;
-	Data.enemy.upHp = 150;
+	Data.enemy.upHp = 170;
 	Data.enemy.rightMx = 100;
 	Data.enemy.totalNum = 50;
 	Data.enemy.nowNum = 0;
@@ -268,7 +271,7 @@ void CONTAINER::setData(){
 	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
 	Data.handgun.damage = 100;
-	Data.handgun.damageUp = 50;
+	Data.handgun.damageUp = 200;
 	Data.handgun.ctIntervalTime = 50;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
@@ -280,7 +283,7 @@ void CONTAINER::setData(){
 	Data.shotgun.speed = 20;
 	Data.shotgun.bulletNum = 3;
 	Data.shotgun.damage = 70;
-	Data.shotgun.damageUp = 30;
+	Data.shotgun.damageUp = 90;
 	Data.shotgun.ctIntervalTime = 90;
 	Data.shotgun.intervalTime = Data.shotgun.ctIntervalTime;
 	Data.shotgun.Level = 1;
@@ -292,7 +295,7 @@ void CONTAINER::setData(){
 	Data.missile.speed = 0.05f;
 	Data.missile.bulletNum = 1;
 	Data.missile.damage = 150;
-	Data.missile.damageUp = 100;
+	Data.missile.damageUp = 300;
 	Data.missile.ctIntervalTime = 110;
 	Data.missile.intervalTime = Data.missile.ctIntervalTime;
 	Data.missile.Level = 1;
