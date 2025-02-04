@@ -143,7 +143,6 @@ void CONTAINER::setData(){
 	Data.select.getFlag[Data.select.HANDGUN] = true;
 	Data.select.getFlag[Data.select.SHOTGUN] = false;
 	Data.select.getFlag[Data.select.MISSILE] = false;
-	Data.select.getFlag[Data.select.SKIP] = true;
 	Data.select.textPos.x = 550;
 	Data.select.textPos.y = 330;
 	Data.select.skipTextSize = 100;
@@ -158,7 +157,6 @@ void CONTAINER::setData(){
 	Data.select.Moji[0] = "胃薬　威力アップ";
 	Data.select.Moji[1] = "錠剤　威力アップ";
 	Data.select.Moji[2] = "ハンマー　威力アップ";
-	Data.select.Moji[3] = "SKIP";
 	Data.select.selectFlag = false;
 	Data.select.SELECT_NOW = Data.select.HANDGUN;
 
@@ -271,7 +269,7 @@ void CONTAINER::setData(){
 	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
 	Data.handgun.damage = 100;
-	Data.handgun.damageUp = 200;
+	Data.handgun.damageUp = 150;
 	Data.handgun.ctIntervalTime = 50;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
@@ -283,7 +281,7 @@ void CONTAINER::setData(){
 	Data.shotgun.speed = 20;
 	Data.shotgun.bulletNum = 3;
 	Data.shotgun.damage = 70;
-	Data.shotgun.damageUp = 90;
+	Data.shotgun.damageUp = 100;
 	Data.shotgun.ctIntervalTime = 90;
 	Data.shotgun.intervalTime = Data.shotgun.ctIntervalTime;
 	Data.shotgun.Level = 1;
@@ -295,14 +293,14 @@ void CONTAINER::setData(){
 	Data.missile.speed = 0.05f;
 	Data.missile.bulletNum = 1;
 	Data.missile.damage = 150;
-	Data.missile.damageUp = 300;
+	Data.missile.damageUp = 200;
 	Data.missile.ctIntervalTime = 110;
 	Data.missile.intervalTime = Data.missile.ctIntervalTime;
 	Data.missile.Level = 1;
 
 	//時間
-	Data.time.time = 1800;
 	Data.time.frame = 60;
+	Data.time.time = 1800 + Data.time.frame;
 	Data.time.rewindTimeE = 120;
 	Data.time.rewindTimeO = 180;
 	Data.time.Pos.x = 1000;

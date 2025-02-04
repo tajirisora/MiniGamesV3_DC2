@@ -15,7 +15,7 @@ void RESULT::draw() {
 	if (game()->player()->playerHp() <= NULL) {
 		image(Result.resultImg[Result.HPOVER_ID], Result.imgPos.x, Result.imgPos.y);
 	}
-	else if (game()->time()->nowTime() <= NULL) {
+	else if (game()->time()->nowTime() - game()->time()->timeFlame() <= NULL - 1) {
 		image(Result.resultImg[Result.TIMEOVER_ID], Result.imgPos.x, Result.imgPos.y);
 	}
 	else {

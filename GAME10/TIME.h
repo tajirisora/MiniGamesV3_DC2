@@ -20,6 +20,7 @@ public:
 	void timeCount();
 	void rewind(int Enemytype);//“G‚ð“|‚µ‚½Žž‚ÉŽžŠÔ‰ñ•œ
 	void draw();
+	int timeFlame() { return Time.frame; }
 	int nowTime() { return Time.time; }
 };
 

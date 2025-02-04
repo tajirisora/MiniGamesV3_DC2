@@ -147,7 +147,7 @@ void STAGE::nextScene() {
 		game()->changeScene(GAME10_GAME::SELECT_ID);
 	}
 	//ƒŠƒUƒ‹ƒg‚Ö
-	if (game()->time()->nowTime() <= NULL
+	if (game()->time()->nowTime() - game()->time()->timeFlame() <= NULL - 1
 		|| game()->player()->playerHp()<= NULL
 		|| (game()->distance()->clearDist() <= game()->distance()->sumDist()
 		&& game()->player()->playerPos().x>=width)) {
