@@ -159,10 +159,12 @@ namespace GAME03 {
 			textSize(50);
 			text("default 30•b", 1450, 400);
 			if (Select.TimePls < 100) { textSize(50); }
-			else if (Select.TimePls < 1000) { textSize(48); }
-			else if (Select.TimePls < 10000) { textSize(46); }
-			text("Q © +" + (let)(int)Select.TimePls + "•b ¨ E", 1430, 460);
+			else if (Select.TimePls < 1000) { textSize(46.5f); }
+			else if (Select.TimePls < 10000) { textSize(44.5f); }
+			textMode(BCENTER);
+			text("Q © +" + (let)(int)Select.TimePls + "•b ¨ E", width / 1.345f, 440);
 			textSize(30);
+			textMode(BOTTOM);
 			text("R : ƒŠƒZƒbƒg", 1500, 500);
 		}
 		else if (Select.Confirm_selection) {
