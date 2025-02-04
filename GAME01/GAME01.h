@@ -107,6 +107,10 @@ namespace GAME01
     int aaaSnd = 0;
 
     bool isBgmPlaying = false;
+
+    int haikeiImg = 0;
+    int haikei2Img = 0;
+    int overImg = 0;
     
 
 
