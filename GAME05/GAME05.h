@@ -20,7 +20,7 @@ namespace GAME05
         void proc();
         void destroy();
     private:
-        enum STATE { TITLE, CHANGEBETCOIN, JOB, RULE, RULEPAGE, GACHA, PLAY, SHOW, WIN, STRAIGHTWIN, LOSE, DRAW, RESULT, RESULT2, BOX, PROB};
+        enum STATE { TITLE, CHANGEBETCOIN, JOB, RULE, RULEPAGE, RULEPAGE2, GACHA, PLAY, SHOW, WIN, STRAIGHTWIN, LOSE, DRAW, RESULT, RESULT2, BOX, PROB};
         STATE State = TITLE;
         Card* deck = nullptr;
         void Init();
@@ -31,6 +31,7 @@ namespace GAME05
         void Job();
         void Rule();
         void RulePage();
+        void RulePage2();
         void Play(Card* deck);
         void Show();
         void Win();
@@ -75,6 +76,12 @@ namespace GAME05
         int Rule3Img = 0;
         int ChikettoImg = 0;
         int Chiketto2Img = 0;
+        int SeggImg = 0;
+        int SresultImg = 0;
+        int Sresult2Img = 0;
+        int ReggImg = 0;
+        int RresultImg = 0;
+        int Rresult2Img = 0;
 
         int DrawSnd = 0;
         int WinSnd = 0;
