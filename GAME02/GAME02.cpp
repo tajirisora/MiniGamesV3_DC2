@@ -17,18 +17,6 @@ namespace GAME02
 				square[i][j].h = 100.0f;
 				square[i][j].px = (width / 2 - square[i][j].w * 4) - square[i][j].w / 2 + square[i][j].w * j;
 				square[i][j].py = (height / 2 - square[i][j].h * 4) - square[i][j].h / 2 + square[i][j].h * i;
-
-				square[i][j].ansnum = 0;
-
-				square[i][j].emptyFlag = false;
-				square[i][j].ansNumFlag = true;
-				square[i][j].identicalNumFlag = false;
-				square[i][j].clickFlag = false;
-				for (int x = 0; x < 3; x++) {
-					for (int y = 0; y < 3; y++) {
-						square[i][j].candidateNum[x][y] = false;
-					}
-				}
 			}
 		}
 
@@ -48,16 +36,12 @@ namespace GAME02
 				numButton[i][j].h = 100.0f;
 				numButton[i][j].px = (width / 2 - numButton[i][j].w) + numButton[i][j].w * j - numButton[i][j].w / 2 + 650.0f;
 				numButton[i][j].py = (height / 2 - numButton[i][j].h) + numButton[i][j].h * i - numButton[i][j].h / 2 - 300.0f + 150.0f;
-				numButton[i][j].num = num;
 
 
 				candidateNumButton[i][j].w = 100.0f;
 				candidateNumButton[i][j].h = 100.0f;
 				candidateNumButton[i][j].px = (width / 2 - candidateNumButton[i][j].w) + candidateNumButton[i][j].w * j - candidateNumButton[i][j].w / 2 + 650.0f;
 				candidateNumButton[i][j].py = (height / 2 - candidateNumButton[i][j].h) + candidateNumButton[i][j].h * i - candidateNumButton[i][j].h / 2 + 150.0f;
-				candidateNumButton[i][j].num = num;
-
-				num++;
 			}
 		}
 
@@ -78,17 +62,51 @@ namespace GAME02
 			titleButton[i].py = (height / 2 - titleButton[i].h) + 300.0f;
 		}
 
-		levelDifficulty = 0;
-		clearFlag = false;
-		colTime = 0;
-		once = true;
+		bgmButton.w = 400.0f;
+		bgmButton.h = 100.0f;
+		bgmButton.px = 50.0f;
+		bgmButton.py = 50.0f;
 
+		bgmFlag = true;
+		bgmOnce = true;
 		return 0;
 	}
 
 	void GAME::destroy()
 	{
 
+	}
+
+	void GAME::init() {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				square[i][j].ansnum = 0;
+
+				square[i][j].emptyFlag = false;
+				square[i][j].ansNumFlag = true;
+				square[i][j].identicalNumFlag = false;
+				square[i][j].clickFlag = false;
+				for (int x = 0; x < 3; x++) {
+					for (int y = 0; y < 3; y++) {
+						square[i][j].candidateNum[x][y] = false;
+					}
+				}
+			}
+		}
+
+		int num = 1;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				numButton[i][j].num = num;
+				candidateNumButton[i][j].num = num;
+				num++;
+			}
+		}
+
+		levelDifficulty = 0;
+		clearFlag = false;
+		colTime = 0;
+		once = true;
 	}
 
 	bool GAME::numCheck(int x, int y, int num) {
@@ -318,6 +336,14 @@ namespace GAME02
 			strokeWeight(10);
 			rect(resetButton.px, resetButton.py, resetButton.w, resetButton.h);
 			rect(titleReturnButton.px, titleReturnButton.py, titleReturnButton.w, titleReturnButton.h);
+			if (resetButton.selectFlag) {
+				fill(128, 128, 128, 128);
+				rect(resetButton.px, resetButton.py, resetButton.w, resetButton.h);
+			}
+			if (titleReturnButton.selectFlag) {
+				fill(128, 128, 128, 128);
+				rect(titleReturnButton.px, titleReturnButton.py, titleReturnButton.w, titleReturnButton.h);
+			}
 			fill(0);
 			text("盤面リセット", resetButton.px + 50.0f, resetButton.py + 125.0f);
 			text("タイトルに戻る", titleReturnButton.px + 25.0f, titleReturnButton.py + 125.0f);
@@ -402,6 +428,7 @@ namespace GAME02
 			for (int y = 0; y < 9; y++) {
 				if (mouseX > resetButton.px && mouseX < resetButton.px + resetButton.w &&
 					mouseY > resetButton.py && mouseY < resetButton.py + resetButton.h) {
+					resetButton.selectFlag = true;
 					if (isTrigger(MOUSE_LBUTTON)) {
 						playSound(snd[0]);
 						if (!square[x][y].ansNumFlag) {
@@ -416,16 +443,19 @@ namespace GAME02
 						square[x][y].identicalNumFlag = false;
 					}
 				}
+				else resetButton.selectFlag = false;
 			}
 		}
 
 		if (mouseX > titleReturnButton.px && mouseX < titleReturnButton.px + titleReturnButton.w &&
 			mouseY > titleReturnButton.py && mouseY < titleReturnButton.py + titleReturnButton.h) {
+			titleReturnButton.selectFlag = true;
 			if (isTrigger(MOUSE_LBUTTON) && colTime >= 10) {
 				playSound(snd[0]);
 				State = TITLE;
 			}
 		}
+		else titleReturnButton.selectFlag = false;
 	}
 
 	void GAME::titleDraw() {
@@ -436,6 +466,12 @@ namespace GAME02
 		strokeWeight(10);
 		for (int i = 0; i < 3; i++) {
 			rect(titleButton[i].px, titleButton[i].py, titleButton[i].w, titleButton[i].h);
+		}
+		for (int i = 0; i < 3; i++) {
+			if (titleButton[i].selectFlag) {
+				fill(128, 128, 128, 128);
+				rect(titleButton[i].px, titleButton[i].py, titleButton[i].w, titleButton[i].h);
+			}
 		}
 		fill(0);
 		textSize(50);
@@ -457,21 +493,56 @@ namespace GAME02
 		for (int i = 0; i < 3; i++) {
 			if (mouseX > titleButton[i].px && mouseX < titleButton[i].px + titleButton[i].w &&
 				mouseY > titleButton[i].py && mouseY < titleButton[i].py + titleButton[i].h) {
+				titleButton[i].selectFlag = true;
 				if (isTrigger(MOUSE_LBUTTON)) {
 					playSound(snd[0]);
 					deleteNum = 20 + (i + 1) * 10;
 					return true;
 				}
 			}
+			else titleButton[i].selectFlag = false;
 		}
 		return false;
+	}
+
+	void GAME::bgmButtonOperation() {
+		if (bgmFlag && bgmOnce) {
+			playLoopSound(snd[1]);
+			bgmOnce = false;
+		}
+		else if (bgmFlag == false) {
+			stopSound(snd[1]);
+		}
+		strokeWeight(10);
+		fill(255);
+		rect(bgmButton.px, bgmButton.py, bgmButton.w, bgmButton.h);
+		if (bgmButton.selectFlag) {
+			fill(128, 128, 128, 128);
+			rect(bgmButton.px, bgmButton.py, bgmButton.w, bgmButton.h);
+		}
+		rect(bgmButton.px, bgmButton.py, bgmButton.w, bgmButton.h);
+		if (mouseX > bgmButton.px && mouseX < bgmButton.px + bgmButton.w &&
+			mouseY > bgmButton.py && mouseY < bgmButton.py + bgmButton.h) {
+			bgmButton.selectFlag = true;
+			if (isTrigger(MOUSE_LBUTTON)) {
+				playSound(snd[0]);
+				if (bgmFlag)bgmFlag = false;
+				else bgmFlag = true; bgmOnce = true;
+			}
+		}
+		else bgmButton.selectFlag = false;
+
+		fill(0);
+		textSize(50);
+		if (bgmFlag)text("BGM OFF", bgmButton.px + 130.0f, bgmButton.py + 75.0f);
+		else text("BGM ON", bgmButton.px + 130.0f, bgmButton.py + 75.0f);
 	}
 
 	void GAME::title() {
 		deleteNum = 0;
 		titleDraw();
 		if (titleMousecol()) {
-			create();
+			init();
 			State = PLAY;
 		}
 	}
@@ -521,21 +592,14 @@ namespace GAME02
 
 	void GAME::proc()
 	{
-		static bool bgmFlag = true;
-		if (bgmFlag) {
-			playLoopSound(snd[1]);
-			bgmFlag = false;
-		}
-
 		clear(128);
 		textSize(50);
-		fill(255, 255, 0);
-		textSize(50);
 		fill(255);
-
+		
 		if (State == TITLE) { title(); }
 		if (State == PLAY) { play(); }
 		if (State == CLEAR) { gameclear(); }
+		if (State != CLEAR)	bgmButtonOperation();
 		fill(0);
 		textSize(50);
 
