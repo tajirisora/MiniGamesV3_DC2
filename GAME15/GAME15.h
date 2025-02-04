@@ -11,8 +11,6 @@ namespace GAME15
         int create();
         void proc();
         void destroy();
-        void play();
-        void move();
         void draw();
     };
 }
