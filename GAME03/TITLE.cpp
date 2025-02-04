@@ -52,7 +52,7 @@ namespace GAME03 {
 			imageColor(240);
 			image(game()->container()->data().stage.backImg, 0, 0);
 			float size;
-			font("UD デジタル 教科書体 N");
+			font("UD デジタル 教科書体 N"); 
 			for (int i = 0; i < 10; i++) {
 				size = 100;
 				textSize(size);
