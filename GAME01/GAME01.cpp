@@ -11,6 +11,11 @@ namespace GAME01
 	{
         bgmSnd = loadSound("..\\main\\assets\\game01\\BGM.wav");
         aaaSnd = loadSound("..\\main\\assets\\game01\\aaa.wav");
+        haikeiImg = loadImage("..\\main\\assets\\game01\\haikei1.jpg");
+        haikei2Img = loadImage("..\\main\\assets\\game01\\haikei2.jpg");
+        overImg = loadImage("..\\main\\assets\\game01\\over.png");
+
+
         loadHighScore();
 
         for (int i = 0; i < RANKING_SIZE; i++) {
@@ -22,6 +27,10 @@ namespace GAME01
 	void GAME::destroy()
 	{
         saveHighScore();
+        //freeSound();
+        
+        
+        
 	}
 
     void GAME::proc()
@@ -108,13 +117,19 @@ namespace GAME01
         colorMode(RGB); // タイトル画面用にRGBモードに設定
         clear(240, 240, 255); // 薄い青
 
+        clear(0, 0, 0);
+        rectMode(CENTER);
+        image(haikeiImg, width / 2, height / 2);
+
+       
+
         // タイトル文字
         fill(0, 102, 204); // 濃い青
         textSize(200);
         text("Tetris ", 600, 450);
 
         // ハイスコア表示
-        fill(0, 0, 0); // 黒
+        fill(255, 255, 255); 
         textSize(50);
         char highScoreStr[20];
         intToStr(highScore, highScoreStr);
@@ -122,7 +137,7 @@ namespace GAME01
         text(highScoreStr, 750, 600);
 
         // 操作説明文字
-        fill(0, 0, 0); // 黒
+        fill(255, 255, 255); 
         textSize(40);
         text("クリックで操作説明画面へ", 750, 500);
         text("Enterでメニューに戻る", 0, 1080);
@@ -144,16 +159,18 @@ namespace GAME01
     void GAME::init() {
         //壁と背景の色番号をStage2次元配列にセット
         
-        clear(255, 240, 240); // 薄い赤
+        clear(0, 0, 0); 
+        rectMode(CENTER);
+        image(haikei2Img, width / 2, height / 2);
 
         // 説明文字
-        fill(0, 0, 0); // 黒
+        fill(255, 255, 255);
         textSize(60);
         text("右へ１マス:D", 750, 500);
         text("左へ１マス:A", 750, 550);
         text("回転:W", 750, 600);
         text("落下:S", 750, 650);
-        text("levelは8まであり、一定スコア到達でlevelと速度アップ", 350, 760);
+        text("levelは8まであり、一定スコア到達でlevelと速度アップ", 250, 760);
         text("クリックでゲームスタート", 750, 900);
 
 
@@ -220,9 +237,11 @@ namespace GAME01
 
     // ハイスコアを読み込む関数
     void GAME::loadHighScore() {
+        
         FILE* file = nullptr;
         // 保存先のパスを変更
-        errno_t err = fopen_s(&file, "main\\assets\\game01\\highscore.txt", "r");
+        errno_t err = fopen_s(&file, "..\\main\\assets\\game01\\highscore.txt", "r");
+
         if (err == 0 && file) {
             // fscanf_s を使用
             fscanf_s(file, "%d", &highScore);
@@ -238,7 +257,9 @@ namespace GAME01
     void GAME::saveHighScore() {
         FILE* file = nullptr;
         // 保存先のパスを変更
-        fopen_s(&file, "main\\assets\\game01\\highscore.txt", "w");
+        // fopen_s(&file, "C:\\path\\to\\your\\highscore.txt", "w");
+
+        fopen_s(&file, "..\\main\\assets\\game01\\highscore.txt", "w");
         if (file) {
             fprintf(file, "%d", highScore); // ハイスコアを保存する
             fclose(file);
@@ -391,7 +412,7 @@ namespace GAME01
     void GAME::play() {
         //現在のパターン番号（色番号）をステージから消す
         if (!isBgmPlaying) {
-            playSound(bgmSnd);  // ✅ 修正：引数を1つにする
+            playSound(bgmSnd);  
             isBgmPlaying = true; // BGMが再生中であることを記録
         }
 
@@ -522,25 +543,27 @@ namespace GAME01
 
 
         // 背景色
-        clear(255, 204, 204); // 薄いピンク
-
+       
+        clear(0, 0, 0);
+        rectMode(CENTER);
+        image(overImg, width / 2, height / 2);
         // ゲームオーバー文字
-        fill(255, 0, 0); // 赤
-        textSize(100);
-        text("Game Over", 500, 150);
+        fill(255, 255, 255);
+        textSize(150);
+        text("Game Over", 570, 200);
 
         // 最終スコア表示
-        fill(0, 0, 0); // 黒
-        textSize(50);
+        fill(255, 255, 255);
+        textSize(70);
         char scoreStr[20];
         intToStr(Score, scoreStr); // スコアを文字列に変換
-        text("Score: ", 600, 500);
-        text(scoreStr, 750, 500);
+        text("Score: ", 600, 400);
+        text(scoreStr, 800, 400);
 
         char highScoreStr[20];
         intToStr(highScore, highScoreStr);
-        text("High Score: ", 300, 600);
-        text(highScoreStr, 750, 600);
+        text("High Score: ", 600, 500);
+        text(highScoreStr, 1000, 500);
 
 
        //fill(0, 0, 0); // 黒
@@ -550,17 +573,13 @@ namespace GAME01
 
         
         // 再開案内
-        fill(0, 0, 0); // 黒
-        textSize(40);
-        text("SPACEキーでタイトルに戻る", 100, 700);
+        fill(255, 255, 255); 
+        textSize(80);
+        text("SPACEキーでタイトルに戻る", 480, 700);
 
         if (isTrigger(KEY_SPACE)) {
             State = TITLE;
             FallSpeed = 30;
-            
-
-
-
         }
     }
 
