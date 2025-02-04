@@ -11,6 +11,7 @@ namespace GAME02
         int create();
         void proc();
         void destroy();
+        void init();
 
         void title();
         void play();
@@ -29,6 +30,8 @@ namespace GAME02
         void playDraw();
         bool titleMousecol();
         void titleDraw();
+
+        void bgmButtonOperation();
     private:
 
         enum STATE { TITLE, PLAY, CLEAR };
@@ -81,6 +84,8 @@ namespace GAME02
         BUTTON candidateNumButton[3][3];
         FRAME frame[3][3];
 
+        BUTTON bgmButton;
+
         int SolutionCount;
         int deleteNum;
         int levelDifficulty;
@@ -89,5 +94,7 @@ namespace GAME02
 
         bool clearFlag;
         bool once;
+        bool bgmOnce;
+        bool bgmFlag;
     };
 }
