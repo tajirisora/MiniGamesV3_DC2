@@ -11,4 +11,5 @@ void SCENE::proc(){
 void SCENE::update(){}
 void SCENE::draw(){}
 void SCENE::nextScene(){}
+void SCENE::sound() {}
 int SCENE::speed() { return 0; }

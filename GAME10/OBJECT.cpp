@@ -6,7 +6,9 @@
 OBJECT::OBJECT(class GAME10_GAME* game) :GAME_OBJECT10(game) {
 }
 OBJECT::~OBJECT() {
-	delete[] Objects;
+	if (Objects != nullptr) {
+		delete[] Objects;
+	}
 }
 void OBJECT::init() {
 	Object = game()->container()->object();
@@ -14,7 +16,7 @@ void OBJECT::init() {
 		delete[] Objects;
 		Objects = new OBJECTS[Object.totalNum];
 	}
-	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->init();
+	game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->init();
 }
 void OBJECT::create() {
 	Object = game()->container()->object();
@@ -41,6 +43,7 @@ void OBJECT::appear() {
 	}
 }
 void OBJECT::move() {
+	Object.speed = game()->player()->playerSpeed();
 	for (int i = Object.nowNum - 1; i >= 0; i--) {
 		Objects[i].pos.x -= Object.speed;
 		if (Objects[i].pos.x <= 0) {
@@ -65,7 +68,7 @@ void OBJECT::collision() {
 		if (game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->GetHp(i) <= 0) {
 			Object.sumDestroy++;
 			kill(i);
-			game()->time()->rewind();
+			game()->time()->rewind(GAME10_GAME::OBJECT_ID);
 		}
 	}
 }
@@ -83,6 +86,7 @@ void OBJECT::AllKill() {
 	}
 	Object.nowNum = NULL;
 	Object.callIntervalDist = Object.initIntervalDist;
+	game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->allDeath();
 }
 void OBJECT::draw(int objectKind) {
 		image(Objects[objectKind].Img, Objects[objectKind].pos.x, Objects[objectKind].pos.y);

@@ -46,6 +46,14 @@ void ENEMY_HPGAUGE::death(int i) {
 	baseHp[i] = baseHp[EnemyGauge.curHp];
 }
 
+void ENEMY_HPGAUGE::allDeath() {
+	for (int i = 0; i < EnemyGauge.curHp; i++) {
+		NowHp[i] = NowHp[EnemyGauge.curHp];
+		baseHp[i] = NowHp[EnemyGauge.curHp];
+	}
+	EnemyGauge.curHp = NULL;
+}
+
 void ENEMY_HPGAUGE::draw(VECTOR2 pos,int enemyKind) {
 	fill(0);
 	rect(pos.x, pos.y + EnemyGauge.My, EnemyGauge.hpWidth, EnemyGauge.hpHeight);

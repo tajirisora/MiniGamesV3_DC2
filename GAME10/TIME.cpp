@@ -16,11 +16,16 @@ void TIME::init(){
 }
 
 void TIME::timeCount(){
-	Time.time -= delta;
+	Time.time--;
 }
 
-void TIME::rewind(){
-	Time.time += Time.rewindTime;
+void TIME::rewind(int Enemytype){
+	if (Enemytype == GAME10_GAME::ENEMY_ID) {//“G‚ğ“|‚µ‚½ê‡‚Q•b{
+		Time.time += Time.rewindTimeE;
+	}
+	else if (Enemytype == GAME10_GAME::OBJECT_ID) {//ƒIƒuƒWƒFƒNƒg‚ğ“|‚µ‚½ê‡‚V•b{
+		Time.time += Time.rewindTimeO;
+	}
 }
 
 void TIME::draw() {

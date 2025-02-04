@@ -23,6 +23,7 @@ public:
 	void create();
 	void getDamage(float damage, int enemyKind,int weaponKind);
 	void death(int i);
+	void allDeath();
 	void draw(VECTOR2 pos,int enemyKind);
 	int GetHp(int i) { return NowHp[i]; }
 };

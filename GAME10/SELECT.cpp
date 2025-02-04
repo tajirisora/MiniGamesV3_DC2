@@ -58,6 +58,9 @@ void SELECT::draw(){
 		}
 	}
 }
+void SELECT::sound() {
+	playSound(Select.upSound);
+}
 void SELECT::nextScene(){
 	if (Select.selectFlag == true) {
 		game()->changeScene(GAME10_GAME::STAGE_ID);

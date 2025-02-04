@@ -48,11 +48,11 @@ void PLAYER::update() {
 	else if (Player.speed <= Player.maxSpeed) {
 		Player.speed += Player.gearSpeed;
 	}
-	if (isTrigger(KEY_W) && Player.nowLane > 0 && Player.Pos.x == Player.Opos.x) {
+	if (isTrigger(KEY_W) && Player.nowLane > 0) {
 		Player.nowLane--;
 		Player.Pos.y -= Player.Pmy;
 	}
-	if (isTrigger(KEY_S) && Player.nowLane < Player.LaneMax-1 && Player.Pos.x == Player.Opos.x) {
+	if (isTrigger(KEY_S) && Player.nowLane < Player.LaneMax-1) {
 		Player.nowLane++;
 		Player.Pos.y += Player.Pmy;
 	}

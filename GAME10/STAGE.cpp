@@ -18,6 +18,8 @@ void STAGE::init() {
 	game()->enemies()->init();
 	game()->objects()->init();
 	game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->init();
+	game()->bullets(GAME10_GAME::SHOTGUNBULLET_ID)->init();
+	game()->bullets(GAME10_GAME::MISSILEBULLET_ID)->init();
 }
 void STAGE::goalStage() {
 	Stage.bworldX = NULL;
@@ -100,6 +102,9 @@ void STAGE::draw() {
 	text("LEVEL UPまであと" +(let)Stage.DestNum +(let)"体", Stage.DestPos.x, Stage.DestPos.y);
 	fill(255);
 }
+void STAGE::sound() {
+	playSound(Stage.sound);
+}
 void STAGE::layer(int drawLane) {
 	for (int ENum = 0; ENum < game()->enemies()->EnemiesNum(); ENum++) {
 		if (drawLane == game()->enemies()->EnemiesLane(ENum)) {
@@ -138,6 +143,7 @@ void STAGE::layer(int drawLane) {
 void STAGE::nextScene() {
 	//レベルアップした場合、selectへ
 	if (game()->enemies()->sumDestroy() + game()->objects()->sumDestroy() >= game()->player()->levelUpBorder()) {
+		game()->scenes(GAME10_GAME::SELECT_ID)->sound();
 		game()->changeScene(GAME10_GAME::SELECT_ID);
 	}
 	//リザルトへ
@@ -145,6 +151,8 @@ void STAGE::nextScene() {
 		|| game()->player()->playerHp()<= NULL
 		|| (game()->distance()->clearDist() <= game()->distance()->sumDist()
 		&& game()->player()->playerPos().x>=width)) {
+		stopSound(Stage.sound);
 		game()->changeScene(GAME10_GAME::RESULT_ID);
+		game()->scenes(GAME10_GAME::RESULT_ID)->sound();
 	}
 }

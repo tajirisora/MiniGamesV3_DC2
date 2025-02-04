@@ -22,6 +22,7 @@ public:
 			STATE_NUM
 		};
 		int SELECTSTATE = T_ID;
+		int titleSound;
 	};
 private:
 	DATA Title;
@@ -31,6 +32,7 @@ public:
 	void create();
 	void update();
 		void selectMove();
+	void sound();
 	void draw();
 	void nextScene();
 };

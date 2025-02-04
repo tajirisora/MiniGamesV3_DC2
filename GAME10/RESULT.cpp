@@ -20,8 +20,20 @@ void RESULT::draw() {
 		image(Result.resultImg[Result.CLEAR_ID], Result.imgPos.x, Result.imgPos.y);
 	}
 }
+void RESULT::sound() {
+	if ((game()->distance()->clearDist() <= game()->distance()->sumDist()
+		&& game()->player()->playerPos().x >= width)) {
+		playSound(Result.clearBgm);
+	}
+	else if (game()->time()->nowTime() <= NULL
+		|| game()->player()->playerHp() <= NULL) {
+		playSound(Result.overBgm);
+	}
+}
 void RESULT::nextScene() {
 	if (isTrigger(KEY_SPACE)) {
 		game()->changeScene(GAME10_GAME::TITLE_ID);
+		stopSound(Result.clearBgm);
+		game()->scenes(GAME10_GAME::TITLE_ID)->sound();
 	}
 }

@@ -59,6 +59,7 @@ public:
 	void create();
 	void draw();
 	void layer(int drawLane);
+	void sound();
 	void nextScene();
 	int speed() { return Stage.frontMx; }
 };
