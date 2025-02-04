@@ -46,6 +46,12 @@ namespace GAME05
 		Rule3Img = loadImage("..\\main\\assets\\game05\\RULE3.png");
 		ChikettoImg = loadImage("..\\main\\assets\\game05\\chiketto.png");
 		Chiketto2Img = loadImage("..\\main\\assets\\game05\\chiketto2.png");
+		SeggImg = loadImage("..\\main\\assets\\game05\\Segg.png");
+		SresultImg = loadImage("..\\main\\assets\\game05\\Sresult.png");
+		Sresult2Img = loadImage("..\\main\\assets\\game05\\Sresult2.png");
+		ReggImg = loadImage("..\\main\\assets\\game05\\Regg.png");
+		RresultImg = loadImage("..\\main\\assets\\game05\\Rresult.png");
+		Rresult2Img = loadImage("..\\main\\assets\\game05\\Rresult2.png");
 
 		DrawSnd = loadSound("..\\main\\assets\\game05\\draw.wav");
 		WinSnd = loadSound("..\\main\\assets\\game05\\ジャジャーン.wav");
@@ -66,6 +72,7 @@ namespace GAME05
 		else if (State == JOB)Job();
 		else if (State == RULE)Rule();
 		else if (State == RULEPAGE)RulePage();
+		else if (State == RULEPAGE2)RulePage2();
 		else if (State == PLAY)Play(deck);
 		else if (State == SHOW)Show();
 		else if (State == WIN)Win();
@@ -356,7 +363,7 @@ namespace GAME05
 		text("・相手の数字よりも大きかったら勝ち、", 500, 350);
 		text("  相手の数字よりも小さかったら負けです。", 500, 420);
 		text("D, →:次のページへ", 1420, 100);
-		text((let)PageCnt + "/" + "2", 1820, 200);
+		text((let)PageCnt + "/" + "3", 1820, 200);
 		text("← 小さい", 400, 500);
 		text("大きい →", 1200,500);
 		image(TrampImg, 900, 800);
@@ -382,7 +389,7 @@ namespace GAME05
 		hideCursor();
 		rectMode(CENTER);
 		fill(255);
-		text("・1回勝つ毎に、もらえる枚数が2倍になります。", 500, 150);
+		text("・1回勝つ毎に、もらえる枚数が2倍になります。", 400, 150);
 		image(RuleImg, 350, 300);
 		text("→", 650, 300);
 		image(Rule2Img, 1000, 300);
@@ -395,13 +402,21 @@ namespace GAME05
 		text("・入手したガチャチケットは1枚消費でシングルガチャ1回、", 300, 900);
 		text("　10枚消費で10+1連ガチャが1回回せます。", 300, 950);
 		text("A, ←:前のページへ", 0, 100);
-		text((let)PageCnt + "/" + "2", 0, 200);
+		text("D, →:次のページへ", 1400, 100);
+		text((let)PageCnt + "/" + "3", 1820, 200);
 		if (isTrigger(KEY_A) || isTrigger(KEY_LEFT)) {
 			PageCnt--;
 			if (PageCnt < 1) {
 				PageCnt = 1;
 			}
 			State = RULE;
+		}
+		if (isTrigger(KEY_D) || isTrigger(KEY_RIGHT)) {
+			PageCnt++;
+			if (PageCnt < 3) {
+				PageCnt = 3;
+			}
+			State = RULEPAGE2;
 		}
 
 		textSize(50);
@@ -410,6 +425,37 @@ namespace GAME05
 			State = TITLE;
 		}
 
+	}
+
+	void GAME::RulePage2()
+	{
+		clear(100);
+		hideCursor();
+		rectMode(CENTER);
+		text("ガチャについて", 800, 100);
+		text("ガチャはシングルガチャと10+1連ガチャの2種類あります。", 300, 200);
+		text("結果は以下の画像のように出ます。", 600, 300);
+		text("シングルガチャ", 250, 400);
+		image(SeggImg, 200, 530);
+		text("→", 375, 550);
+		image(SresultImg, 600, 530);
+		text("10+1連ガチャ", 1250, 400);
+		image(ReggImg, 1200, 530);
+		text("→", 1375, 550);
+		image(RresultImg, 1600, 530);
+		text("シングルガチャ、10+1連ガチャ共に左上に★7確定の文字が出ると", 200, 680);
+		text("★7の名前の部分が金色になって出てきます。", 450, 780);
+		image(Sresult2Img, 600, 920);
+		image(Rresult2Img, 1300, 920);
+		text("A, ←:前のページへ", 0, 100);
+		text((let)PageCnt + "/" + "3", 0, 200);
+		if (isTrigger(KEY_A) || isTrigger(KEY_LEFT)) {
+			PageCnt--;
+			if (PageCnt <= 2) {
+				PageCnt = 2;
+			}
+			State = RULEPAGE;
+		}
 	}
 
 	void GAME::Play(Card* deck)
