@@ -127,6 +127,7 @@ namespace GAME00
 		textSize(80);
 		print("カードは4枚まで引ける");
 		print("合計が21に近いほうが勝ち");
+		print("21を超えると負け");
 		print("カードがそろったらENTERで次に進む");
 		
 		textSize(80);
@@ -250,7 +251,44 @@ namespace GAME00
 		textMode(BCENTER);
 		text("クリックしてタイトルに戻る",350,900);
 
-		if (score > enemyScore) {
+		if (score > 21 && enemyScore > 21) {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("どっちも負け", 350, 740);
+		}
+		else if (score > 21) {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("負け", 800, 740);
+		}
+		else if (enemyScore > 21) {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("勝ち", 800, 740);
+		}
+		else if (abs(21 - score) < abs(21 - enemyScore)) {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("勝ち", 800, 740);
+		}
+		else if (abs(21 - score) > abs(21 - enemyScore)) {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("負け", 800, 740);
+		}
+		else {
+			fill(240, 255, 16);
+			textSize(200);
+			textMode(BCENTER);
+			text("引き分け", 800, 740);
+		}
+
+		/*if (score > enemyScore) {
 			if (score <= 21) {
 				fill(240, 255, 16);
 				textSize(200);
@@ -308,7 +346,7 @@ namespace GAME00
 				textMode(BCENTER);
 				text("どっちも負け", 800, 740);
 			}
-		}
+		}*/
 
 		
 		if (isTrigger(MOUSE_LBUTTON)) {
