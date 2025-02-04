@@ -8,11 +8,15 @@ public:
 	struct DATA {
 		enum {
 			CLEAR_ID,
-			OVER_ID,
+			TIMEOVER_ID,
+			HPOVER_ID,
+			ID_NUM
 		};
 		int clearBgm;
+		int timeOverImg;
+		int hpOverImg;
 		int overBgm;
-		int resultImg[2];
+		int resultImg[ID_NUM];
 		VECTOR2 imgPos;
 	};
 private:
