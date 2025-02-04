@@ -24,6 +24,7 @@ void TITLE::selectMove() {
 }
 void TITLE::create() {
 	Title = game()->container()->title();
+	playSound(Title.titleSound);
 }
 void TITLE::draw(){
 	clear(255);
@@ -38,11 +39,17 @@ void TITLE::draw(){
 	text("説明", Title.selectX, Title.selectY + Title.selectMy * Title.TUTORIAL_ID);
 	text("ENTERキーでメニューに戻る", 0, 1080);
 }
+void TITLE::sound() {
+	playSound(Title.titleSound);
+}
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE) && Title.TUTORIAL_ID != Title.SELECTSTATE) {
 		game()->changeScene(GAME10_GAME::STAGE_ID);
 		game()->scenes(GAME10_GAME::STAGE_ID)->init();
+		game()->scenes(GAME10_GAME::SELECT_ID)->init();
+		stopSound(Title.titleSound);
 		game()->distance()->setClearDist(Title.SELECTSTATE);
+		game()->scenes(GAME10_GAME::STAGE_ID)->sound();
 	}
 	else if(isTrigger(KEY_SPACE) && Title.TUTORIAL_ID == Title.SELECTSTATE){
 		game()->changeScene(GAME10_GAME::TUTORIAL_ID);

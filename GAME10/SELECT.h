@@ -30,6 +30,8 @@ public:
 		bool selectFlag;
 		int selectMoveSound;
 		int selectSound;
+
+		int upSound;
 	};
 private:
 	DATA Select;
@@ -40,6 +42,7 @@ public:
 	void init();
 	void update();
 	void draw();
+	void sound();
 	void nextScene();
 
 };

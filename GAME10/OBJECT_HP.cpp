@@ -37,7 +37,7 @@ void OBJECT_HP::getDamage(float damage, int objectKind,int weaponKind) {
 		NowHp[objectKind] -= damage / 2;
 	}
 	else {
-		NowHp[objectKind] -= damage;
+		NowHp[objectKind] -= damage * 0.7;
 	}
 }
 
@@ -47,6 +47,13 @@ void OBJECT_HP::death(int i) {
 	baseHp[i] = baseHp[ObjectGauge.curHp];
 }
 
+void OBJECT_HP::allDeath() {
+	for (int i = 0; i < ObjectGauge.curHp; i++) {
+		NowHp[i] = NowHp[ObjectGauge.curHp];
+		baseHp[i] = NowHp[ObjectGauge.curHp];
+	}
+	ObjectGauge.curHp = NULL;
+}
 void OBJECT_HP::draw(VECTOR2 pos, int objectKind) {
 	fill(0);
 	rect(pos.x, pos.y + ObjectGauge.My, ObjectGauge.hpWidth, ObjectGauge.hpHeight);

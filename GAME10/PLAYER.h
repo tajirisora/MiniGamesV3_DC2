@@ -9,6 +9,8 @@ public:
 		VECTOR2 Pos = 0;
 		int level;
 		int levelUpBorder;//この数だけ倒すと、レベルが上がる
+		int borderSum;
+
 		float Pmy = 0;
 		int pImg[2];
 		int nowImage;
@@ -49,7 +51,7 @@ public:
 	void collision();
 	void draw();
 	void playerMove();
-	void doubleUp() { Player.levelUpBorder *= 2; }//レベルが上がったらborderがあがる
+	void doubleUp() { Player.levelUpBorder += Player.borderSum; }//レベルが上がったらborderがあがる
 
 	VECTOR2 playerOpos() { return Player.Opos; }
 	VECTOR2 playerPos() { return Player.Pos; }

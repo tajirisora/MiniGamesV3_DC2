@@ -34,11 +34,17 @@ public:
 		OBJECTHP_ID,
 		NUM_HP
 	};
+	//’e‚ÌŽí—Þ
 	enum BULLET_ID {
 		HANDGUNBULLET_ID,
 		SHOTGUNBULLET_ID,
 		MISSILEBULLET_ID,
 		BULLET_NUM
+	};
+	//“G‚ÌŽí—ÞiŽžŠÔ‚Ì‰ñ•œ—Ê‚É‰e‹¿j
+	enum ENEMYKIND {
+		ENEMY_ID,
+		OBJECT_ID
 	};
 private:
 	class SCENE* Scenes[NUM_SCENES];

@@ -21,6 +21,8 @@ void HP_GAUGE::getDamage(float damage,int EnemyKind,int weaponKind) {
 
 void HP_GAUGE::death(int i) {}
 
+void HP_GAUGE::allDeath() {}
+
 void HP_GAUGE::draw() {
 }
 void HP_GAUGE::draw(VECTOR2 pos,int EnemyKind) {

@@ -45,6 +45,7 @@ void ENEMYS::appear() {
 	}
 }
 void ENEMYS::move() {
+	Enemy.speed = game()->player()->playerSpeed();
 	for (int i = Enemy.nowNum - 1; i >= 0; i--) {
 		Enemies[i].pos.x -= Enemy.speed;
 		if (Enemies[i].pos.x <= 0) {
@@ -69,7 +70,7 @@ void ENEMYS::collision() {
 		if (game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->GetHp(i) <= 0) {
 			Enemy.sumDestroy++;
 			kill(i);
-			game()->time()->rewind();
+			game()->time()->rewind(GAME10_GAME::ENEMY_ID);
 		}
 	}
 }
@@ -87,6 +88,7 @@ void ENEMYS::AllKill() {
 	}
 	Enemy.nowNum = NULL;
 	Enemy.callIntervalDist = Enemy.initIntervalDist;
+	game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->allDeath();
 }
 void ENEMYS::draw(int EnemyKind) {
 	image(Enemies[EnemyKind].Img, Enemies[EnemyKind].pos.x, Enemies[EnemyKind].pos.y);

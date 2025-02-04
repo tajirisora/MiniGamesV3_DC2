@@ -10,6 +10,8 @@ public:
 			CLEAR_ID,
 			OVER_ID,
 		};
+		int clearBgm;
+		int overBgm;
 		int resultImg[2];
 		VECTOR2 imgPos;
 	};
@@ -18,6 +20,7 @@ private:
 public:
 	RESULT(class GAME10_GAME* game);
 	~RESULT();
+	void sound();
 	void create();
 	void draw();
 	void nextScene();

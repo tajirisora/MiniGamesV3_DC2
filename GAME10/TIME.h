@@ -6,7 +6,8 @@ public:
 	struct DATA {
 		int time = 0;
 		int frame = 0;
-		int rewindTime = 0;//アイテムをとった時の回復時間
+		int rewindTimeE = 0;//敵を倒した時の回復時間(ストレス)
+		int rewindTimeO = 0;//オブジェクトを倒した時の回復時間
 		VECTOR2 Pos;
 	};
 private:
@@ -17,7 +18,7 @@ public:
 	void create();
 	void init();
 	void timeCount();
-	void rewind();//アイテムを得たときに時間回復
+	void rewind(int Enemytype);//敵を倒した時に時間回復
 	void draw();
 	int nowTime() { return Time.time; }
 };
