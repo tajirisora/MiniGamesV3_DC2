@@ -99,7 +99,7 @@ namespace GAME05
         int freeCnt = 0;
         int PlayCnt = 0;
         char chara = 0;
-        int playerCoins = 1000000;
+        int playerCoins = 1000;
         int confirm = 0;
         int confirm1 = 0;
         int confirm2 = 0;
