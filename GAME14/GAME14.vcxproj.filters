@@ -13,9 +13,6 @@
     <ClCompile Include="CONTAINER.cpp">
       <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="HOME.cpp">
-      <Filter>scene</Filter>
-    </ClCompile>
     <ClCompile Include="RESULT.cpp">
       <Filter>scene</Filter>
     </ClCompile>
@@ -74,9 +71,6 @@
     </ClInclude>
     <ClInclude Include="CONTAINER.h">
       <Filter>container</Filter>
-    </ClInclude>
-    <ClInclude Include="HOME.h">
-      <Filter>scene</Filter>
     </ClInclude>
     <ClInclude Include="RESULT.h">
       <Filter>scene</Filter>

@@ -141,7 +141,6 @@
     <ClCompile Include="END_BUTTON.cpp" />
     <ClCompile Include="GAME14.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
-    <ClCompile Include="HOME.cpp" />
     <ClCompile Include="LEVER.cpp" />
     <ClCompile Include="LOTTERY.cpp" />
     <ClCompile Include="MAX_BET_BUTTON.cpp" />
@@ -163,7 +162,6 @@
     <ClInclude Include="END_BUTTON.h" />
     <ClInclude Include="GAME14.h" />
     <ClInclude Include="GAME_OBJECT.h" />
-    <ClInclude Include="HOME.h" />
     <ClInclude Include="LEVER.h" />
     <ClInclude Include="LOTTERY.h" />
     <ClInclude Include="MAX_BET_BUTTON.h" />
