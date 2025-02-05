@@ -8,27 +8,48 @@ namespace GAME14 {
     REEL_MAP::REEL_MAP(class GAME* game):
         GAME_OBJECT(game){}
     REEL_MAP::~REEL_MAP(){
-        delete[] Map.reelData;
-        for (int i = 0; i < LOTTERY::NUM_RESULT; i++) {
-            delete[] Control_Data[i].normalBuffer ;
-            delete[] Control_Data[i].R_BB_Buffer ;
-            delete[] Control_Data[i].B_BB_Buffer ;
-            delete[] Control_Data[i].REG_Buffer ;
-        }
-        
-        for (int i = 0; i < LOTTERY::NUM_RESULT * NUM_POS; i++) {
-            delete[] Second_Control_Data[i].normalBuffer;
-            delete[] Second_Control_Data[i].R_BB_Buffer;
-            delete[] Second_Control_Data[i].B_BB_Buffer;
-            delete[] Second_Control_Data[i].REG_Buffer;
-
-        }
-        
+        destroy();
     }
     void REEL_MAP::create(){
         Map = game()->container()->data().map;
-        ControlDatacreate();
+
     }
+    void REEL_MAP::destroy() {
+        if (Map.reelData) {
+            delete[] Map.reelData;
+        }
+        for (int i = 0; i < LOTTERY::NUM_RESULT; i++) {
+            if (Control_Data[i].normalBuffer) {
+                delete[] Control_Data[i].normalBuffer;
+            }
+            if (Control_Data[i].R_BB_Buffer) {
+                delete[] Control_Data[i].R_BB_Buffer;
+            }
+            if (Control_Data[i].B_BB_Buffer) {
+                delete[] Control_Data[i].B_BB_Buffer;
+            }
+            if (Control_Data[i].REG_Buffer) {
+                delete[] Control_Data[i].REG_Buffer;
+            }
+        }
+
+        for (int i = 0; i < LOTTERY::NUM_RESULT * NUM_POS; i++) {
+            if (Second_Control_Data[i].normalBuffer) {
+                delete[] Second_Control_Data[i].normalBuffer;
+            }
+            if (Second_Control_Data[i].R_BB_Buffer) {
+                delete[] Second_Control_Data[i].R_BB_Buffer;
+            }
+            if (Second_Control_Data[i].B_BB_Buffer) {
+                delete[] Second_Control_Data[i].B_BB_Buffer;
+            }
+            if (Second_Control_Data[i].REG_Buffer) {
+                delete[] Second_Control_Data[i].REG_Buffer;
+            }
+        }
+
+    }
+
     void REEL_MAP::ControlDatacreate() {
         for (int i = 0; i < LOTTERY::NUM_RESULT; i++) {
             Control_Data[i].normalBuffer = new int[Map.rows];
@@ -46,21 +67,25 @@ namespace GAME14 {
     }
 
     void REEL_MAP::init(){
+        Map = game()->container()->data().map;
+
+        ControlDatacreate();
         initmap();
         initreelMap();
         initfirstreelControl();
         initsecondreelControl();
         initStopPos_NO_Bonus();
         initStopPos_Bonus();
-
    }
-    void REEL_MAP::initmap() {
+   void REEL_MAP::initmap() {
+        if (StopId.size()) {
+            StopId.clear();
+        }
         StopId["top"] = TOP;
         StopId["middle"] = MID;
         StopId["bottom"] = BOT;
         StopId["NO"] = NO_POS;
     }
-
    void REEL_MAP::initreelMap() {
        std::stringstream buffer;//stringに変換するためのバッファ
        std::string str;
@@ -289,6 +314,7 @@ namespace GAME14 {
        STOP_ID stopId = NUM_POS;
        int cellNum = 0;
        int i = 0;
+       bool resultFlag = false;
 
        file.open(Map.distinction_NO_BonusFile, std::ios::binary);
        if (!file) {
@@ -296,7 +322,6 @@ namespace GAME14 {
            WARNING(1, "リールマップが開けませんでした", Map.distinction_NO_BonusFile);
 
        }
-       int kaka;
        while (1) {
            
            std::getline(file, str);
@@ -304,51 +329,63 @@ namespace GAME14 {
            if (file.eof()) {
                break;
            }
-           kaka = strcspn(str.c_str(), "0123456789");
-           //数値が入っていたら
-           if ( kaka< str.length()) {
-               if (resultId <0) {
-                   file.close();
-                   WARNING(1, "役が指定されてません", Map.distinction_NO_BonusFile);
-               }
-               while (1) {
-                   cutPos = str.find(Map.separator, startPos);
+           resultFlag = false;
+           startPos = 0;
+           cutPos = 0;
+           while (1) {
+               cutPos = str.find(Map.separator, startPos);
 
-                   if (cutPos == std::string::npos) {
-                       cutPos = str.length() - 1;
+               if (cutPos == std::string::npos) {
+                   cutPos = str.length() - 1;
+                   resultFlag = true;
+               }
+
+               cutStr = str.substr(startPos, cutPos - startPos);
+               startPos = cutPos + Map.separator.length();
+               //数字から始まってるか
+               if (strspn(cutStr.c_str(), "0123456789 ")) {
+                   resultFlag = false;
+                   if (resultId < 0) {
+                       file.close();
+                       WARNING(1, "役が指定されてません", Map.distinction_NO_BonusFile);
+                   }
+                   if (stopId<TOP) {
+                       file.close();
+                       WARNING(1, "コマ番号の横に位置がありません", Map.distinction_NO_BonusFile);
                    }
 
-                   cutStr = str.substr(startPos, cutPos - startPos);
-                   startPos = cutPos + Map.separator.length();
+                   cellNum = std::stoi(cutStr) - 1;
+                   if (cellNum > -1&&cellNum<Map.rows+1) {
+                       StopPos_NO_Bonus[resultId].stop[cellNum] = stopId;
+                   }
 
-                   if (strspn(cutStr.c_str(), "0123456789 ") < cutStr.length()) {
+               }
+               else {
+                   if (resultFlag) {
+                       std::string::size_type resizePos = cutStr.find(" ");
+                       if (resizePos != std::string::npos) {
+                           cutStr = cutStr.substr(0, resizePos);
+                       }
+
+                       resultId = game()->lottery()->resultId(cutStr);
+                       if (resultId == LOTTERY::BB_Bell_A) {
+                           int kaak =0;
+                       }
+                       break;
+                   }
+                   else {
                        std::string::size_type resizePos = cutStr.find(" ");
                        if (resizePos != std::string::npos) {
                            cutStr = cutStr.substr(0, resizePos);
                        }
                        stopId = StopId[cutStr];
-                   }
-                   else {
-                       cellNum = std::stoi(cutStr)-1;
-                       if (cellNum > -1) {
-                           StopPos_NO_Bonus[resultId].stop[cellNum] = stopId;
-                       }
-                       
-                   }
 
-                   if (startPos >= str.length()) {
-                       stopId = NUM_POS;
-                       cellNum = 0;
-                       startPos = 0;
-                       cutPos = 0;
-                       break;
                    }
                }
                
-           }
-           else {
-               str = str.substr(0, str.length() - 1);
-               resultId = game()->lottery()->resultId(str);
+               if (startPos >= str.length()) {
+                   break;
+               }
            }
        }
        file.close();
@@ -447,7 +484,6 @@ namespace GAME14 {
         int bonusId = game()->lottery()->bonusResult();
         
         int leftCellPos = StopPos_NO_Bonus[resultId][leftCellId];
-        CellPos = leftCellPos;
         if (resultId == LOTTERY::Hazure && bonusId > LOTTERY::NO_BONUS) {
             leftCellPos = StopPos_Bonus[bonusId][leftCellId];
         }
@@ -468,7 +504,21 @@ namespace GAME14 {
        int bonusId = game()->lottery()->bonusResult();
        if (resultId == LOTTERY::Hazure) {
            if (bonusId > 0) {
-               return game()->reel()->tellbonusexistcell(bonusId, reelId);
+               int range = game()->reel()->tellbonusexistcell(bonusId, reelId);
+               if (range) {
+                   return range;
+               }
+               else {
+                   for (int i = 0; i <= maxMoveRange; i++) {
+                       if (!game()->reel()->checkbonusexist(i, reelId)) {
+
+                           if (!game()->reel()->checkresultexist(i, reelId)) {
+                               return i;
+                           }
+                       }
+                   }
+
+               }
            }
            else {
                for (int i = 0; i <= maxMoveRange; i++) {
@@ -481,7 +531,19 @@ namespace GAME14 {
            }
        }
        else {
-           return game()->reel()->tellresultexistcell(resultId, reelId);
+           int range = game()->reel()->tellresultexistcell(resultId, reelId);
+           if (resultId == LOTTERY::Cherry_A1 ||
+               resultId == LOTTERY::Cherry_A2 ||
+               resultId == LOTTERY::Cherry_B) {
+               for (range = 0; range <= maxMoveRange; range++) {
+                   if (!game()->reel()->checkbonusexist(range, reelId)) {
+                       if (!game()->reel()->checkresultexist(range, reelId)) {
+                           return range;
+                       }
+                   }
+
+               }
+           }
        }
    }
 
@@ -519,11 +581,15 @@ namespace GAME14 {
         //print("大きさ");
         //print(Control_Data[0].normalBuffer[0]);
        
-       
+       /*
         print("左の止まった場所");
         print(CellPos);
         
+        print(Second_Control_Data[LOTTERY::BB_BELL_A + (LOTTERY::NUM_RESULT * StopPos_NO_Bonus[LOTTERY::BB_BELL_A][7])][LOTTERY::RED_BB][7]);
+        */
+        //print(StopPos_Bonus[LOTTERY::RED_BB][7]);
         //text(StopPos_Bonus[LOTTERY::RED_BB][0], 1500, 100);
+        //text(StopPos_NO_Bonus[LOTTERY::Cherry_A1][13], 1500, 100);
 
         /*
         print("滑りコマ数");

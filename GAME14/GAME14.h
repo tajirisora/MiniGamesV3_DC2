@@ -8,7 +8,6 @@ namespace GAME14
     public:
         enum SCENE_ID {
             TITLE_ID,
-            HOME_ID,
             STAGE_ID,
             RESULT_ID,
             NUM_SCENES
@@ -32,6 +31,9 @@ namespace GAME14
         class CREDIT* Credit = nullptr;
         class BET* Bet = nullptr;
         class MAX_BET_BUTTON* Max_betButton = nullptr;
+        class PLAYER* Player = nullptr;
+        class BONUS_ANNOUNCE* Bonus_Announce = nullptr;
+        class END_BUTTON* End_Button = nullptr;
     public:
         class BUTTON* stopButton() { return StopButton; }
         class LEVER* lever() { return Lever; }
@@ -41,6 +43,9 @@ namespace GAME14
         class CREDIT* credit() { return Credit; }
         class BET* bet() { return Bet; }
         class MAX_BET_BUTTON* max_betButton() { return Max_betButton; }
+        class PLAYER* player() { return Player; }
+        class BONUS_ANNOUNCE* bonus_Announce() { return Bonus_Announce; }
+        class END_BUTTON* end_Button() { return End_Button; }
         void charaInit();
         void charaUpdate();
         void charaDraw();

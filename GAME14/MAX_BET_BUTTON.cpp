@@ -3,23 +3,27 @@
 #include"CONTAINER.h"
 #include"BET.h"
 #include"REEL.h"
+#include"CREDIT.h"
 #include "MAX_BET_BUTTON.h"
 namespace GAME14 {
     MAX_BET_BUTTON::MAX_BET_BUTTON( GAME* game):
         BUTTON(game){}
     MAX_BET_BUTTON::~MAX_BET_BUTTON(){}
     void MAX_BET_BUTTON::create(){
+    }
+    void MAX_BET_BUTTON::init(){
         Button = game()->container()->data().max_bet_Button;
         Max_bet = game()->container()->data().max_betButton;
         bet = game()->bet();
+
     }
-    void MAX_BET_BUTTON::init(){}
     void MAX_BET_BUTTON::update(){
         
         if (collisionCheck(Button.basePos, Button.areaSize)) {
             if (isTrigger(MOUSE_LBUTTON)&&
                 bet->betTellVacancy()&&
-                !game()->reel()->tellmovereel()
+                !game()->reel()->tellmovereel()&&
+                !game()->credit()->payoutSistemFlag()
                 ) {
                 bet->maxBet();
 

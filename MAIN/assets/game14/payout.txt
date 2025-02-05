@@ -12,8 +12,8 @@ EX_C          / 1/ 0
 EX_D          / 1/ 0
 EX_E          / 1/ 0
 EX_F          / 1/ 0
-BB_Bell_B     /10/ 0
-BB_Bell_A     /10/ 0
+BB_Bell_B     /10/ 9
+BB_Bell_A     /10/ 9
 EX_Bell       /10/ 0
 Challenge     /15/ 4
 Lucky         /15/ 4

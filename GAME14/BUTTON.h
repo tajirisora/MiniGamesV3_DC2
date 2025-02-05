@@ -23,6 +23,7 @@ namespace GAME14 {
     public:
         BUTTON(class GAME* game):
             GAME_OBJECT(game){}
+        virtual ~BUTTON(){}
         virtual void create();
         virtual void init();
         virtual void update();
@@ -31,7 +32,6 @@ namespace GAME14 {
         bool collisionCheck(VECTOR2 pos, VECTOR2 size);//ŽlŠp‚Ì“–‚½‚è”»’è
         virtual bool sistemFlag() { return Button.sistemFlag; }
         virtual bool sistemFlag(int buttonId) { return 0; }
-        //void setSistemFlag(bool flag) { Button.sistemFlag = flag; }
     };
 }
 

@@ -16,11 +16,12 @@ namespace GAME14 {
         fill(Title.msgColor);
         textSize(Title.msgSize);
         text(Title.msg, Title.msgPos.x, Title.msgPos.y);
-       
+        int adjust = (Title.msgSize * Title.msg2.length()) / 4;
+        text(Title.msg2.c_str(), Title.msg2Pos.x-adjust, Title.msg2Pos.y);
     }
     void TITLE::nextScene(){
         if (isTrigger(MOUSE_LBUTTON)) {
-            game()->changeScene(GAME::HOME_ID);
+            game()->changeScene(GAME::STAGE_ID);
         }
     }
 

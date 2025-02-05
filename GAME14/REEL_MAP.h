@@ -95,12 +95,6 @@ namespace GAME14 {
         };
     private:
         DATA Map;
-        int reelDataSize;
-        std::string Str;
-        int ID;
-        int rowLength = 0;
-        int StopCell = -1;
-        int CellPos = 0;
         CONTROL_DATA Control_Data [LOTTERY::NUM_RESULT] ;//左リールのリール制御
         CONTROL_DATA Second_Control_Data[LOTTERY::NUM_RESULT * NUM_POS];//右リールのリール制御
 
@@ -112,6 +106,7 @@ public:
         REEL_MAP(class GAME* game);
         ~REEL_MAP();
         void create();  
+        void destroy();
         void ControlDatacreate();
         void init();
         void initmap();
@@ -125,5 +120,6 @@ public:
         int tellStopCell(int cellId,int reelId);
         void debagDraw();
         int textureNum(int reelId,int cellNum);
+        int tellStopPos(int resultId, int cellNum) { return StopPos_NO_Bonus[resultId][cellNum]; }
     };
 }

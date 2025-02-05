@@ -1,7 +1,6 @@
 #include "../../libOne/inc/input.h"
 #include "../MAIN/MAIN.h"
 #include"TITLE.h"
-#include"HOME.h"
 #include"STAGE.h"
 #include"RESULT.h"
 #include"BUTTON.h"
@@ -14,6 +13,8 @@
 #include"CREDIT.h"
 #include"BET.h"
 #include"MAX_BET_BUTTON.h"
+#include"PLAYER.h"
+#include"BONUS_ANNOUNCE.h"
 #include "GAME14.h"
 namespace GAME14
 {
@@ -25,7 +26,6 @@ namespace GAME14
 		Container = new CONTAINER();
 		Container->load();
 		Scenes[TITLE_ID] = new TITLE(this);
-		Scenes[HOME_ID] = new HOME(this);
 		Scenes[STAGE_ID] = new STAGE(this);
 		Scenes[RESULT_ID] = new RESULT(this);
 		for (int i = 0; i < NUM_SCENES; i++) {
@@ -39,6 +39,12 @@ namespace GAME14
 		Credit = new CREDIT(this);
 		Bet = new BET(this);
 		Max_betButton = new MAX_BET_BUTTON(this);
+		Player = new PLAYER(this);
+		Bonus_Announce = new BONUS_ANNOUNCE(this);
+		End_Button = new END_BUTTON(this);
+		End_Button->create();
+		Bonus_Announce->create();
+		Player->create();
 		Max_betButton->create();
 		Bet->create();
 		Credit->create();
@@ -52,6 +58,9 @@ namespace GAME14
 
 	void GAME::destroy()
 	{
+		delete End_Button;
+		delete Bonus_Announce;
+		delete Player;
 		delete Max_betButton;
 		delete Bet;
 		delete Credit;
@@ -69,7 +78,8 @@ namespace GAME14
 	void GAME::proc()
 	{
 		Scenes[CurSceneId]->proc();
-		if (isTrigger(KEY_ENTER)) {
+		if (isTrigger(KEY_ENTER)&&
+			(CurSceneId==TITLE_ID||CurSceneId == RESULT_ID)) {
 			main()->backToMenu();
 		}
 	}
@@ -86,25 +96,33 @@ namespace GAME14
 		Credit->init();
 		Bet->init();
 		Max_betButton->init();
+		Player->init();
+		Bonus_Announce->init();
+		End_Button->init();
 	}
 	void GAME::charaUpdate() {
+		Player->update();
 		Lever->update();
 		Reel->update();
 		StopButton->update();
 		Credit->update();
 		Max_betButton->update();
 		Bet->update();
+		End_Button->update();
 	}
 	void GAME::charaDraw() {
 		StopButton->draw();
 		Lever->draw();
-		Reel->draw();
+		//Reel->draw();
 		//Reel->debagDraw();
-		Lottery->debugdraw();
+		//Lottery->debugdraw();
 		//Credit->debagdraw();
 		Credit->draw();
 		Bet->draw();
 		Max_betButton->draw();
-		ReelMap->debagDraw();
+		//ReelMap->debagDraw();
+		Player->draw();
+		Bonus_Announce->draw();
+		End_Button->draw();
 	}
 }

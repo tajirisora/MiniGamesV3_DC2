@@ -7,7 +7,8 @@ namespace GAME14 {
         enum ID {
             LEFT_BUTTON,
             MIDDLE_BUTTON,
-            RIGHT_BUTTON
+            RIGHT_BUTTON,
+            NUM_BUTTON
         };
         struct DATA {
             int numButton = 0;
@@ -20,9 +21,11 @@ namespace GAME14 {
             VECTOR2 pos = 0.0f;
             bool sistemFlag = false;//ì‡ïîèàóùóp(Trigger)
             bool drawFlag = false;//ï`âÊèàóùóp(Press)
+            bool filterFlag = false;
         };
         DATA StopButtons;
         STOP_BUTTONS* StopButton = nullptr;
+        int CurStopButtonState;
     public:
         STOP_BUTTON(class GAME* game):
             BUTTON(game){}

@@ -35,6 +35,7 @@ namespace GAME14 {
             std::string separator;
             int reelNum = 0;
             int img[NUM_IMG] = { 0 };
+            int BBAdjustImgId = 0;;//BB中の枚数調整用の先頭画像ID
             int cellNum = 0;
             int checkLineNum = 0;
             VECTOR2 bacePos = 0.0f;//リールの基準位置
@@ -82,15 +83,17 @@ namespace GAME14 {
         float AnimeTime = 0.0f;//動き始めてからの時間
         int StopCunt = 0;//止めたリールのカウント
         int StopCell;//止めたリールのコマ番号
-        int AfterNum;
-        int DrawCellId;
-        float CurCell;
-        int Result;
-        int Bonus;
-        int moveCell;
+        //int AfterNum;
+        //int DrawCellId;
+        //float CurCell;
+        //int Result;
+        //int Bonus;
+        //int moveCell;
         std::vector<COMBI_DATA> Buffer;
         void initresultcombination();
         void initbonuscombination();
+        int I = 0;
+        int J = 0;
     public:
         REEL(class GAME* game);
         ~REEL();

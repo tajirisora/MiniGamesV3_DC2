@@ -52,6 +52,15 @@
     <ClCompile Include="MAX_BET_BUTTON.cpp">
       <Filter>character\button\bet_button</Filter>
     </ClCompile>
+    <ClCompile Include="PLAYER.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="END_BUTTON.cpp">
+      <Filter>character\button</Filter>
+    </ClCompile>
+    <ClCompile Include="BONUS_ANNOUNCE.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME14.h">
@@ -78,9 +87,6 @@
     <ClInclude Include="TITLE.h">
       <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="BUTTON.h">
-      <Filter>character\button\bace</Filter>
-    </ClInclude>
     <ClInclude Include="LEVER.h">
       <Filter>character\button\lever</Filter>
     </ClInclude>
@@ -104,6 +110,18 @@
     </ClInclude>
     <ClInclude Include="MAX_BET_BUTTON.h">
       <Filter>character\button\bet_button</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="END_BUTTON.h">
+      <Filter>character\button</Filter>
+    </ClInclude>
+    <ClInclude Include="BONUS_ANNOUNCE.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="BUTTON.h">
+      <Filter>character\button\bace</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
