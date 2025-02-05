@@ -16,7 +16,14 @@ void TIME::init(){
 }
 
 void TIME::timeCount(){
-	Time.time--;
+	if (isPress(KEY_A)) {
+		Time.time--;
+		Time.time--;
+		Time.time--;//éOî{ÇÃë¨ìxÇ≈êiÇﬁ
+	}
+	else {
+		Time.time--;
+	}
 }
 
 void TIME::rewind(int Enemytype){
@@ -30,6 +37,11 @@ void TIME::rewind(int Enemytype){
 
 void TIME::draw() {
 	textSize(70);
-	fill(255);
-	text(Time.time/Time.frame,Time.Pos.x,Time.Pos.y);
+	if (isPress(KEY_A)) {
+		fill(Time.dengerRed);
+	}
+	else {
+		fill(255);
+	}
+		text(Time.time/Time.frame,Time.Pos.x,Time.Pos.y);
 }

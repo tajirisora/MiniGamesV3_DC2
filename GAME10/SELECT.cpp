@@ -51,6 +51,9 @@ void SELECT::draw(){
 			text(Select.Moji[i],Select.textPos.x,Select.textPos.y + Select.textMy * i);
 		}
 	}
+	fill(255);
+	textSize(Select.spaceTextSize);
+	text(Select.spaceText, Select.spacePos.x, Select.spacePos.y);
 }
 void SELECT::sound() {
 	playSound(Select.upSound);

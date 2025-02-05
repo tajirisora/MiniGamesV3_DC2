@@ -49,6 +49,8 @@ public:
 	void load();
 	void setImage();
 	void setData();
+	void setSound();
+	void volumeSound();
 	const TITLE::DATA& title() { return Data.title; }
 	const TUTORIAL::DATA& tutorial(){ return Data.tutorial; }
 	const STAGE::DATA& stage() { return Data.stage; }

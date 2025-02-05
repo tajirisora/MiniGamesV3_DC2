@@ -16,8 +16,9 @@ public:
 		int SELECT_NOW = HANDGUN;
 		int weaponImg[SELECT_NUM];
 		VECTOR2 textPos;
-		VECTOR2 skipPos;
-		int skipTextSize;
+		VECTOR2 spacePos;
+		const char* spaceText;
+		int spaceTextSize;
 		COLOR selectColor;
 		COLOR noSelectColor;
 		const char* Moji[3];

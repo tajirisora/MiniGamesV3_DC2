@@ -98,9 +98,9 @@ void STAGE::draw() {
 	game()->time()->draw();
 	Stage.DestNum = game()->player()->levelUpBorder() - (game()->enemies()->sumDestroy() + game()->objects()->sumDestroy());
 	game()->distance()->draw();
+	fill(255);
 	textSize(Stage.DestTextSize);
 	text("LEVEL UP‚Ü‚Å‚ ‚Æ" +(let)Stage.DestNum +(let)"‘Ì", Stage.DestPos.x, Stage.DestPos.y);
-	fill(255);
 }
 void STAGE::sound() {
 	playSound(Stage.sound);

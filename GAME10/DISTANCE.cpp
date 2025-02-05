@@ -28,5 +28,6 @@ void DISTANCE::errorCorrection() {
 	}
 }
 void DISTANCE::draw(){
+	fill(255);
 	text((let)+(int)Dist.sumDist+(let)"m", Dist.distPos.x, Dist.distPos.y);
 }
