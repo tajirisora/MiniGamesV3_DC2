@@ -424,7 +424,6 @@ namespace GAME05
 		if (isTrigger(KEY_ENTER)) {
 			State = TITLE;
 		}
-
 	}
 
 	void GAME::RulePage2()
@@ -455,6 +454,12 @@ namespace GAME05
 				PageCnt = 2;
 			}
 			State = RULEPAGE;
+		}
+
+		textSize(50);
+		text("ENTER:ƒ^ƒCƒgƒ‹", 0, 1080);
+		if (isTrigger(KEY_ENTER)) {
+			State = TITLE;
 		}
 	}
 
