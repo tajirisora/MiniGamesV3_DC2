@@ -285,70 +285,9 @@ namespace GAME00
 			fill(240, 255, 16);
 			textSize(200);
 			textMode(BCENTER);
-			text("à¯Ç´ï™ÇØ", 800, 740);
+			text("à¯Ç´ï™ÇØ", 350, 740);
 		}
 
-		/*if (score > enemyScore) {
-			if (score <= 21) {
-				fill(240, 255, 16);
-				textSize(200);
-				textMode(BCENTER);
-				text("èüÇø", 800, 740);
-			}
-			else if (score >= 22) {
-				fill(240, 255, 16);
-				textSize(200);
-				textMode(BCENTER);
-				text("ïâÇØ", 800, 740);
-
-			}
-		}
-		else if (score < enemyScore) {
-			if (enemyScore >= 21) {
-				fill(240, 255, 16);
-					textSize(100);
-				textMode(BCENTER);
-				text("èüÇø", 800, 740);
-			}
-			else if (enemyScore <= 21) {
-				fill(240, 255, 16);
-				textSize(100);
-				textMode(BCENTER);
-				text("ïâÇØ", 800, 740);
-			}
-		}
-		else if (score == enemyScore) {
-			if (score <= 21) {
-				fill(240, 255, 16);
-				textSize(100);
-				textMode(BCENTER);
-				text("à¯Ç´ï™ÇØ", 800, 740);
-			}
-			else if (score >= 22) {
-				fill(240, 255, 16);
-				textSize(100);
-				textMode(BCENTER);
-				text("Ç«Ç¡ÇøÇ‡ïâÇØ", 800, 740);
-			}
-		}
-		else if (score >= 21) {
-			if (enemyScore >= 21) {
-				fill(240, 255, 16);
-				textSize(100);
-				textMode(BCENTER);
-				text("Ç«Ç¡ÇøÇ‡ïâÇØ", 800, 740);
-			}
-		}
-		else if (enemyScore >= 21) {
-			if (score >= 21) {
-				fill(240, 255, 16);
-				textSize(100);
-				textMode(BCENTER);
-				text("Ç«Ç¡ÇøÇ‡ïâÇØ", 800, 740);
-			}
-		}*/
-
-		
 		if (isTrigger(MOUSE_LBUTTON)) {
 			State = TITLE;
 		}
