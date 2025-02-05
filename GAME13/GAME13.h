@@ -23,7 +23,6 @@ namespace GAME13 {
             OVER
         };
         GameState State = TITLE;
-        void Init();
         void Title();
         void Kakuritu();
         void Play();
@@ -31,7 +30,6 @@ namespace GAME13 {
         void Success();
         void TenSuccess();
         void Over();
-        int half;
         int SuccessCnt = 0;
 
         bool SuccFlag = false;
