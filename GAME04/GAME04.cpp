@@ -181,7 +181,7 @@ namespace GAME04
 		if (d->PBullet.hp == 0 && isPress(KEY_SPACE)) {
 			playSound(FireSoundP);
 			//”­ŽËˆÊ’u
-			d->PBullet.px = d->Player.px + d->Player.bulletOfsX - 500;
+			d->PBullet.px = d->Player.px + d->Player.bulletOfsX - 420;
 			d->PBullet.py = d->Player.py;
 			d->PBullet.hp = 1;
 		}
@@ -197,7 +197,7 @@ namespace GAME04
 		if (d->PBOM.hp == 0 && d->PBOM.cnt > 0 && isTrigger(KEY_B)) {
 			playSound(FireSoundPBOM);
 			//”­ŽËˆÊ’u
-			d->PBOM.px = d->Player.px + d->Player.bulletOfsX - 500;
+			d->PBOM.px = d->Player.px + d->Player.bulletOfsX - 420;
 			d->PBOM.py = d->Player.py;
 			d->PBOM.hp = 1;
 			d->PBOM.cnt--;
