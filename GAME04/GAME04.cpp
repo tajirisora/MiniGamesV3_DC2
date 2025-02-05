@@ -15,6 +15,7 @@ namespace GAME04
 
 		d->Enemy.normalImg = loadImage("..\\main\\assets\\game04\\Enemy1.png");
 		d->Enemy.damageImg = loadImage("..\\main\\assets\\game04\\Enemy2.png");
+		d->Enemy.damage2Img = loadImage("..\\main\\assets\\game04\\Enemy3.png");
 
 		d->BOSS.normalImg = loadImage("..\\main\\assets\\game04\\BOSS1.png");
 		d->BOSS.damageImg = loadImage("..\\main\\assets\\game04\\BOSS2.png");
@@ -74,7 +75,7 @@ namespace GAME04
 			return;
 		}
 		fill(0);
-		textSize(100);
+		textSize(80);
 		text("Enterでメニューに戻る", 0, height);
 		if (isTrigger(KEY_ENTER)) {
 			main()->backToMenu();
@@ -102,7 +103,8 @@ namespace GAME04
 		d->Enemy.totalCnt = 3;
 		d->Enemy.Imghp = 1;
 		d->Enemy.MaxHp = d->Enemy.hp;
-
+		d->Enemy.repoptimeFlag = true;
+		d->Enemy.ColFlag = true;
 
 		d->BOSS.img = d->BOSS.normalImg;
 		d->BOSS.px = 1540.0f;
@@ -126,12 +128,12 @@ namespace GAME04
 
 		d->PBullet.px = 0.0f;
 		d->PBullet.py = 0.0f;
-		d->PBullet.vx = 30.0f;
+		d->PBullet.vx = 25.0f;
 		d->PBullet.hp = 0;
 
 		d->PBOM.px = 0.0f;
 		d->PBOM.py = 0.0f;
-		d->PBOM.vx = 25.0f;
+		d->PBOM.vx = 20.0f;
 		d->PBOM.hp = 0;
 		d->PBOM.cnt = 7;
 		//当たり判定用データ
@@ -145,7 +147,7 @@ namespace GAME04
 		d->BOSS.halfH = 100;
 
 		d->PBullet.halfW = 50;
-		d->PBullet.halfH = 26;
+		d->PBullet.halfH = 24;
 
 		d->EBullet.halfW = 50;
 		d->EBullet.halfH = 26;
@@ -162,6 +164,7 @@ namespace GAME04
 		hpDanger = d->Player.hp * 0.1f;
 
 	}
+
 	void GAME::Play(DATA* d)
 	{
 		//プレイヤーを動かす
@@ -178,7 +181,7 @@ namespace GAME04
 		if (d->PBullet.hp == 0 && isPress(KEY_SPACE)) {
 			playSound(FireSoundP);
 			//発射位置
-			d->PBullet.px = d->Player.px - d->Player.bulletOfsX;
+			d->PBullet.px = d->Player.px + d->Player.bulletOfsX - 500;
 			d->PBullet.py = d->Player.py;
 			d->PBullet.hp = 1;
 		}
@@ -191,10 +194,10 @@ namespace GAME04
 			}
 		}
 		//PlayerBOM発射
-		if (d->PBOM.hp == 0 && d->PBOM.cnt>0&& isTrigger(KEY_B)) {
+		if (d->PBOM.hp == 0 && d->PBOM.cnt > 0 && isTrigger(KEY_B)) {
 			playSound(FireSoundPBOM);
 			//発射位置
-			d->PBOM.px = d->Player.px - d->Player.bulletOfsX;
+			d->PBOM.px = d->Player.px + d->Player.bulletOfsX - 500;
 			d->PBOM.py = d->Player.py;
 			d->PBOM.hp = 1;
 			d->PBOM.cnt--;
@@ -209,20 +212,23 @@ namespace GAME04
 		}
 
 		//Enemyを動かす
-		d->Enemy.py +=d->Enemy.vy;
+		d->Enemy.py += d->Enemy.vy;
 		if (d->Enemy.py<d->Enemy.halfH ||
 			d->Enemy.py>height - d->Enemy.halfH) {
 			//移動方向反転	
 			d->Enemy.vy = -d->Enemy.vy;
 		}
 		//EnemyBullet発射
-		if (d->EBullet.hp == 0) {
-			playSound(FireSoundE);
-			//発射位置
-			d->EBullet.px = d->Enemy.px+d->Enemy.bulletOfsX;
-			d->EBullet.py = d->Enemy.py;
-			d->EBullet.hp = 1;
-			d->EBullet.vx = -30;
+			
+		if (d->EBullet.hp == 0&&d->Enemy.hp>0) {
+			
+				playSound(FireSoundE);
+				//発射位置
+				d->EBullet.px = d->Enemy.px + d->Enemy.bulletOfsX - 150;
+				d->EBullet.py = d->Enemy.py;
+				d->EBullet.hp = 1;
+				d->EBullet.vx = -30;
+						
 		}
 		//EnemyBulletMove
 		if (d->EBullet.hp > 0) {
@@ -232,14 +238,10 @@ namespace GAME04
 				d->EBullet.hp = 0;
 			}
 		}
-
-		if (d->Enemy.totalCnt >= 1) {
-			
-		}
 		if (d->Enemy.totalCnt == 0) {
 			d->Enemy.Imghp = 0;
 			d->EBullet.hp = 0;
-				stopSound(FireSoundE);			
+			stopSound(FireSoundE);
 		}
 
 		//BOSSを動かす
@@ -256,7 +258,7 @@ namespace GAME04
 				playSound(FireSoundB);
 				//発射位置
 				d->BBullet.px = d->BOSS.px + d->BOSS.bulletOfsX;
-				d->BBullet.py = d->BOSS.py ;
+				d->BBullet.py = d->BOSS.py;
 				d->BBullet.hp = 1;
 			}
 		}
@@ -269,70 +271,109 @@ namespace GAME04
 			}
 		}
 
-		if (d->PBullet.hp <= 0) {
-			PBHitFlag = false;
+		if (d->EBullet.hp <= 0) {
+			EBHitFlag = false;
 		}
 
 		//当たり判定・Player&EnemyBullet
-			if (Collision(&d->Player, &d->EBullet) && PBHitFlag == false) {
-				playSound(DamageSndP);
-				d->EBullet.hp = 0;
-				d->Player.img = d->Player.damageImg;
-				d->Player.hp--;
-				PBHitFlag = true;
-			}
+		if (Collision(&d->Player, &d->EBullet) && EBHitFlag == false) {
+			playSound(DamageSndP);
+			d->EBullet.hp = 0;
+			d->Player.img = d->Player.damageImg;
+			d->Player.hp--;
+			EBHitFlag = true;
+		}
 		else {
 			d->Player.img = d->Player.normalImg;
 		}
 		//あたり判定・Enemy&PlayerBullet
-		if (Collision(&d->Enemy, &d->PBullet)) {
-			playSound(DamageSndE);
-			d->PBullet.hp = 0;
+		if (d->PBullet.hp <= 0) {
+			PBHitFlag = false;
+		}
+		if (d->Enemy.ColFlag) {
+			if (Collision(&d->Enemy, &d->PBullet) && PBHitFlag == false) {
+				playSound(DamageSndE);
+				d->Enemy.img = d->Enemy.damage2Img;
+				d->PBullet.hp = 0;
+				d->Enemy.hp--;
+				PBHitFlag = true;
+			}
+			else {
+				d->Enemy.img = d->Enemy.normalImg;
+			}
 
-			d->Enemy.img = d->Enemy.damageImg;
-			d->Enemy.hp--;
-		}
-		else {
-			d->Enemy.img = d->Enemy.normalImg;
-		}
-		if (d->Enemy.hp == 0) {
-			d->Enemy.py = 0;
-			if (d->Enemy.totalCnt > 0) {
-				d->Enemy.px = 1540.0f;
-				d->Enemy.py = 860.0f;
-				d->Enemy.vy = 15.0f;
-				d->Enemy.hp = 10;
-				d->Enemy.Imghp = 1;
-				d->Enemy.totalCnt--;
-			}		
+			if (d->Enemy.hp <= 0) {
+				if (d->Enemy.totalCnt > 0) {
+
+					if (d->Enemy.repoptimeFlag) {
+						d->Enemy.repoptime = 0;
+						d->Enemy.repoptimeFlag = false;
+					}
+					if (d->Enemy.repoptime > 180) {
+						d->Enemy.py = 0;
+						if (d->Enemy.totalCnt > 0) {
+							d->Enemy.px = 1540.0f;
+							d->Enemy.py = 860.0f;
+							d->Enemy.vy = 15.0f;
+							d->Enemy.hp = 10;
+							d->Enemy.totalCnt--;
+							d->Enemy.Imghp = 1;
+							d->Enemy.repoptimeFlag = true;
+						}
+					}
+					else {
+						d->Enemy.repoptime++;
+					}
+				}
+			}
 		}
 		//あたり判定・Enemy&PlayerBOM
-		if (Collision(&d->Enemy, &d->PBOM)) {
-			playSound(DamageSndE);
-			d->Enemy.img = d->Enemy.damageImg;
-			d->PBOM.hp = 0;
-			d->Enemy.hp -= 5;
+		if (d->PBOM.hp <= 0) {
+			PBOMHitFlag = false;
 		}
-		else {
-			d->Enemy.img = d->Enemy.normalImg;
-		}
-		if (d->Enemy.hp <= 0) {
-			d->Enemy.py = 0;
-			if (d->Enemy.totalCnt > 0) {
-  				d->Enemy.px = 1540.0f;
-				d->Enemy.py = 860.0f;
-				d->Enemy.vy = 15.0f;
-				d->Enemy.hp = 10;
-				d->Enemy.Imghp = 1;
-				d->Enemy.totalCnt--;
-			}		
+		if (d->Enemy.ColFlag) {
+			if (Collision(&d->Enemy, &d->PBOM) && PBOMHitFlag == false) {
+				playSound(DamageSndE);
+				d->Enemy.img = d->Enemy.damage2Img;
+				d->PBOM.hp = 0;
+				d->Enemy.hp -= 5;
+				PBOMHitFlag = true;
+			}
+			else {
+				d->Enemy.img = d->Enemy.normalImg;
+			}
+			if (d->Enemy.hp <= 0) {
+				if (d->Enemy.totalCnt > 0) {
+					if (d->Enemy.repoptimeFlag) {
+						d->Enemy.repoptime = 0;
+						d->Enemy.repoptimeFlag = false;
+					}
+					if (d->Enemy.repoptime > 180) {
+						d->Enemy.py = 0;
+
+						if (d->Enemy.totalCnt > 0) {
+							d->Enemy.px = 1540.0f;
+							d->Enemy.py = 860.0f;
+							d->Enemy.vy = 15.0f;
+							d->Enemy.hp = 10;
+							d->Enemy.Imghp = 1;
+							d->Enemy.totalCnt--;
+							d->Enemy.repoptimeFlag = true;
+						}
+					}
+					else {
+						d->Enemy.repoptime++;
+					}
+				}
+			}
 		}
 		//当たり判定・Player&BBullet
 		if (Collision(&d->Player, &d->BBullet)) {
 			playSound(DamageSndP);
 			d->BBullet.hp = 0;
+
 			d->Player.img = d->Player.damageImg;
-			d->Player.hp--;
+			d->Player.hp-=2;
 		}
 		else {
 			d->Player.img = d->Player.normalImg;
@@ -351,6 +392,7 @@ namespace GAME04
 		}
 		//当たり判定・BOSS & PBOM
 		if (d->BOSS.Imghp == 1 && d->Enemy.totalCnt == 0) {
+			d->Enemy.ColFlag = false;
 			if (Collision(&d->BOSS, &d->PBOM)) {
 				playSound(DamageSndB);
 			d->PBOM.hp = 0;
@@ -477,19 +519,10 @@ namespace GAME04
 		if (d->EBullet.hp > 0) {
 			image(d->EBullet.img, d->EBullet.px, d->EBullet.py);
 		}
+
 		if (d->BBullet.hp > 0) {
 			image(d->BBullet.img, d->BBullet.px, d->BBullet.py);
 		}
-
-		/*if (d->Enemy.Imghp == 1) {
-			text((let)d->Enemy.hp, 0, 300);
-		}
-		if (d->BOSS.Imghp == 1) {
-			text((let)d->BOSS.hp, 0, 400);
-		}
-		text((let)d->Enemy.totalCnt, 0, 500);*/
-		
-		
 		
 		HpGauge(&d->Player);
 
@@ -510,7 +543,7 @@ namespace GAME04
 	{
 		strokeWeight(0);
 		fill(128);
-		rect(c->px, c->py + c->hpGaugeOfsY, c->MaxHp, 10);
+		rect(c->px, c->py + c->hpGaugeOfsY, c->MaxHp*6, 10);
 		if (d->Player.hp > hpWarning) {
 			fill(0, 255, 0);
 		}
@@ -520,9 +553,7 @@ namespace GAME04
 		else {
 			fill(255, 0, 0);
 		}
-		rect(c->px, c->py + c->hpGaugeOfsY, c->hp, 10);
-		textSize(100);
-		text((let)d->Player.hp, 0, 200);
+		rect(c->px, c->py + c->hpGaugeOfsY, c->hp*6, 10);			
 	}
 	
 }
