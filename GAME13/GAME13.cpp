@@ -2,7 +2,7 @@
 #include "../MAIN/MAIN.h"
 #include "GAME13.h"
 #include <cstdlib> 
-#include <ctime>   
+#include <time.h>   
 #include <string>  
 
 namespace GAME13 {
@@ -25,11 +25,6 @@ namespace GAME13 {
     
     }
 
-    void GAME::Init() {
-        srand(time(0));
-        half = random() % 2;
-    }
-
     void GAME::Title() {
         clear(255);
         fill(0);
@@ -39,7 +34,6 @@ namespace GAME13 {
         text("Sキー:GAME START", 500, 900);
 
         if (isTrigger(KEY_S)) {
-            Init();
             State = PLAY;
         }
 
@@ -83,7 +77,7 @@ namespace GAME13 {
             State = TITLE;
         }
     }
-
+    
     void GAME::Play() {
         clear(100);
         fill(255);
@@ -116,10 +110,8 @@ namespace GAME13 {
         }
 
         if (playerChose) {
-            Sleep(500);
-
-            int computerChoice = rand() % 2;
-
+           srand(time(NULL));
+           int computerChoice = rand() % 2;
 
             if (playerChoice == computerChoice) {
                 SuccFlag = true;
@@ -130,10 +122,10 @@ namespace GAME13 {
                 State = PUSH;
             }
 
-            if (SuccessCnt == 9 && ((isTrigger(KEY_L) && half == 1) || (isTrigger(KEY_R) && half == 1))) {
+            if (SuccessCnt==9  && playerChoice == computerChoice){
                 TenSuccFlag = true;
                 State = PUSH;
-            }
+            } 
         }
     }
     void GAME::Push()
@@ -152,7 +144,7 @@ namespace GAME13 {
 
         if (TenSuccFlag == true) {
             TenSuccFlag = false;
-            Sleep(800);
+            Sleep(400);
             State = TENSUCCESS;
         }
     }
@@ -165,7 +157,6 @@ namespace GAME13 {
         textSize(100);
         text("スペースでもう一度", 500, 700);
         if(isTrigger(KEY_SPACE)) {
-            Init();
             SuccessCnt++;
             State = PLAY;
         }
