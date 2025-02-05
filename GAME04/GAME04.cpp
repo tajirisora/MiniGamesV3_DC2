@@ -112,7 +112,7 @@ namespace GAME04
 		d->BOSS.vy = 10.0f;
 		d->BOSS.bulletOfsX = 55;
 		d->BOSS.hpGaugeOfsY = -90;
-		d->BOSS.hp = 10;
+		d->BOSS.hp = 15;
 		d->BOSS.Imghp = 1;
 		d->BOSS.MaxHp = d->BOSS.hp;
 
@@ -162,6 +162,12 @@ namespace GAME04
 
 		hpWarning = d->Player.hp * 0.3f;
 		hpDanger = d->Player.hp * 0.1f;
+
+		hpWarning = d->Enemy.hp * 0.4f;
+		hpDanger = d->Enemy.hp * 0.2f;
+		
+		hpWarning = d->BOSS.hp * 0.4f;
+		hpDanger = d->BOSS.hp * 0.2f;
 
 	}
 
@@ -280,7 +286,7 @@ namespace GAME04
 			playSound(DamageSndP);
 			d->EBullet.hp = 0;
 			d->Player.img = d->Player.damageImg;
-			d->Player.hp--;
+			d->Player.hp -= 2;
 			EBHitFlag = true;
 		}
 		else {
@@ -373,7 +379,7 @@ namespace GAME04
 			d->BBullet.hp = 0;
 
 			d->Player.img = d->Player.damageImg;
-			d->Player.hp-=2;
+			d->Player.hp-=3;
 		}
 		else {
 			d->Player.img = d->Player.normalImg;
@@ -539,12 +545,12 @@ namespace GAME04
 
 	}
 
-	void GAME::HpGauge(CHARA* c)
+	void GAME::HpGauge(CHARA*c)
 	{
 		strokeWeight(0);
 		fill(128);
 		rect(c->px, c->py + c->hpGaugeOfsY, c->MaxHp*6, 10);
-		if (d->Player.hp > hpWarning) {
+		if (c->hp > hpWarning) {
 			fill(0, 255, 0);
 		}
 		else if(c->hp > hpDanger){
