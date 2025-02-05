@@ -62,8 +62,8 @@ namespace GAME09
 		Data.songTitle.difficultyFrameImgSize = 0.42f;
 		Data.songTitle.titlePosOfst = VECTOR2(-210, 5);
 		Data.songTitle.artistPosOfst = VECTOR2(-200, 55);
-		Data.songTitle.titleStrSize = VECTOR2(680, 50);
-		Data.songTitle.artistStrSize = VECTOR2(700, 35);
+		Data.songTitle.titleStrSize = VECTOR2(500, 50);
+		Data.songTitle.artistStrSize = VECTOR2(450, 35);
 		Data.songTitle.numStrSize = VECTOR2(60, 60);
 
 		Data.banner.centerPos = VECTOR2(450, height / 2 - 30);
