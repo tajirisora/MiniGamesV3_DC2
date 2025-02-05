@@ -16,12 +16,44 @@ CONTAINER::~CONTAINER() {
 void CONTAINER::load(){
 	setData();
 	setImage();
+	setSound();
+	volumeSound();
 }
-void CONTAINER::setImage() {
-	Data.title.titleImg = loadImage("..\\main\\assets\\game10\\title.png");
+void CONTAINER::setSound() {
 	Data.title.titleSound = loadSound("..\\main\\assets\\game10\\titleBgm.wav");
 	Data.title.titleSelect = loadSound("..\\main\\assets\\game10\\titleSelect.wav");
 	Data.title.titleSelectSound = loadSound("..\\main\\assets\\game10\\titleSelectSound.wav");
+
+	Data.stage.sound = loadSound("..\\main\\assets\\game10\\stage.wav");
+
+	Data.select.selectMoveSound = loadSound("..\\main\\assets\\game10\\selectMove.wav");
+	Data.select.selectSound = loadSound("..\\main\\assets\\game10\\select.wav");
+	Data.select.upSound = loadSound("..\\main\\assets\\game10\\level.wav");
+
+	Data.result.clearBgm = loadSound("..\\main\\assets\\game10\\clearBgm.wav");
+	Data.result.overBgm = loadSound("..\\main\\assets\\game10\\overBgm.wav");
+
+	Data.object.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
+
+	Data.enemy.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
+}
+void CONTAINER::volumeSound() {
+	setVolume(Data.title.titleSound, -600);
+	setVolume(Data.title.titleSelect, -400);
+	setVolume(Data.title.titleSelectSound, -400);
+
+	setVolume(Data.stage.sound, -600);
+
+	setVolume(Data.select.upSound, -300);
+
+	setVolume(Data.result.clearBgm, -200);
+
+	setVolume(Data.object.hitSound, -300);
+
+	setVolume(Data.enemy.hitSound, -300);
+}
+void CONTAINER::setImage() {
+	Data.title.titleImg = loadImage("..\\main\\assets\\game10\\title.png");
 
 	Data.tutorial.tutoImg[0] = loadImage("..\\main\\assets\\game10\\tutorial0.png");
 	Data.tutorial.tutoImg[1] = loadImage("..\\main\\assets\\game10\\tutorial1.png");
@@ -32,7 +64,7 @@ void CONTAINER::setImage() {
 	Data.stage.frontImg = loadImage("..\\main\\assets\\game10\\frontImg.png");
 	Data.stage.GoalBoardImg = loadImage("..\\main\\assets\\game10\\kanban1.png");
 	Data.stage.GoalImg = loadImage("..\\main\\assets\\game10\\goalTape.png");
-	Data.stage.sound = loadSound("..\\main\\assets\\game10\\stage.wav");
+
 	for (int i = 0; i < 4; i++) {
 		Data.stage.Lanes[i].LaneImg = loadImage("..\\main\\assets\\game10\\stageLane.png");
 	}
@@ -41,15 +73,12 @@ void CONTAINER::setImage() {
 	Data.select.weaponImg[0] = loadImage("..\\main\\assets\\game10\\HandgunImg.png");
 	Data.select.weaponImg[1] = loadImage("..\\main\\assets\\game10\\shotgunImg.png");
 	Data.select.weaponImg[2] = loadImage("..\\main\\assets\\game10\\bombImg.png");
-	Data.select.selectMoveSound = loadSound("..\\main\\assets\\game10\\selectMove.wav");
-	Data.select.selectSound = loadSound("..\\main\\assets\\game10\\select.wav");
-	Data.select.upSound = loadSound("..\\main\\assets\\game10\\level.wav");
+
 
 	Data.result.resultImg[Data.result.CLEAR_ID] = loadImage("..\\main\\assets\\game10\\clearImg.png");
 	Data.result.resultImg[Data.result.TIMEOVER_ID] = loadImage("..\\main\\assets\\game10\\timeOverImg.png");
 	Data.result.resultImg[Data.result.HPOVER_ID] = loadImage("..\\main\\assets\\game10\\hpOverImg.png");
-	Data.result.clearBgm = loadSound("..\\main\\assets\\game10\\clearBgm.wav");
-	Data.result.overBgm = loadSound("..\\main\\assets\\game10\\overBgm.wav");
+
 
 	Data.player.playerImg = loadImage("..\\main\\assets\\game10\\playerImg0.png");
 	Data.player.pImg[0] = loadImage("..\\main\\assets\\game10\\playerImg0.png");
@@ -59,12 +88,10 @@ void CONTAINER::setImage() {
 	Data.enemy.Img[0] = loadImage("..\\main\\assets\\game10\\enemyImg00.png");
 	Data.enemy.Img[1] = loadImage("..\\main\\assets\\game10\\enemyImg10.png");
 	Data.enemy.Img[2] = loadImage("..\\main\\assets\\game10\\enemyImg20.png");
-	Data.enemy.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
 
 	Data.object.Img[0] = loadImage("..\\main\\assets\\game10\\objectImg00.png");
 	Data.object.Img[1] = loadImage("..\\main\\assets\\game10\\objectImg10.png");
 	Data.object.Img[2] = loadImage("..\\main\\assets\\game10\\objectImg20.png");
-	Data.object.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
 
 	Data.playerGauge.gaugeImg = loadImage("..\\main\\assets\\game10\\heartImg.png");
 
@@ -143,12 +170,12 @@ void CONTAINER::setData(){
 	Data.select.getFlag[Data.select.HANDGUN] = true;
 	Data.select.getFlag[Data.select.SHOTGUN] = false;
 	Data.select.getFlag[Data.select.MISSILE] = false;
-	Data.select.getFlag[Data.select.SKIP] = true;
 	Data.select.textPos.x = 550;
 	Data.select.textPos.y = 330;
-	Data.select.skipTextSize = 100;
-	Data.select.skipPos.x = 870;
-	Data.select.skipPos.y = 970;
+	Data.select.spaceTextSize = 100;
+	Data.select.spacePos.x = 700;
+	Data.select.spacePos.y = 970;
+	Data.select.spaceText = "Spaceで決定";
 	Data.select.textMy = 200;
 	Data.select.selectColor = COLOR(255, 255, 0);
 	Data.select.noSelectColor = COLOR(255,255,255);
@@ -158,7 +185,6 @@ void CONTAINER::setData(){
 	Data.select.Moji[0] = "胃薬　威力アップ";
 	Data.select.Moji[1] = "錠剤　威力アップ";
 	Data.select.Moji[2] = "ハンマー　威力アップ";
-	Data.select.Moji[3] = "SKIP";
 	Data.select.selectFlag = false;
 	Data.select.SELECT_NOW = Data.select.HANDGUN;
 
@@ -271,7 +297,7 @@ void CONTAINER::setData(){
 	Data.handgun.speed = 15;
 	Data.handgun.bulletNum = 1;
 	Data.handgun.damage = 100;
-	Data.handgun.damageUp = 200;
+	Data.handgun.damageUp = 150;
 	Data.handgun.ctIntervalTime = 50;
 	Data.handgun.intervalTime = Data.handgun.ctIntervalTime;
 	Data.handgun.Level = 1;
@@ -283,7 +309,7 @@ void CONTAINER::setData(){
 	Data.shotgun.speed = 20;
 	Data.shotgun.bulletNum = 3;
 	Data.shotgun.damage = 70;
-	Data.shotgun.damageUp = 90;
+	Data.shotgun.damageUp = 100;
 	Data.shotgun.ctIntervalTime = 90;
 	Data.shotgun.intervalTime = Data.shotgun.ctIntervalTime;
 	Data.shotgun.Level = 1;
@@ -295,18 +321,19 @@ void CONTAINER::setData(){
 	Data.missile.speed = 0.05f;
 	Data.missile.bulletNum = 1;
 	Data.missile.damage = 150;
-	Data.missile.damageUp = 300;
+	Data.missile.damageUp = 200;
 	Data.missile.ctIntervalTime = 110;
 	Data.missile.intervalTime = Data.missile.ctIntervalTime;
 	Data.missile.Level = 1;
 
 	//時間
-	Data.time.time = 1800;
 	Data.time.frame = 60;
+	Data.time.time = 1800 + Data.time.frame;
 	Data.time.rewindTimeE = 120;
 	Data.time.rewindTimeO = 180;
 	Data.time.Pos.x = 1000;
 	Data.time.Pos.y = 90;
+	Data.time.dengerRed = COLOR(255, 0, 0);
 
 	//距離
 	Data.distance.loopNum = 0;

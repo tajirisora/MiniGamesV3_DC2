@@ -8,6 +8,7 @@ public:
 		int frame = 0;
 		int rewindTimeE = 0;//敵を倒した時の回復時間(ストレス)
 		int rewindTimeO = 0;//オブジェクトを倒した時の回復時間
+		COLOR dengerRed;
 		VECTOR2 Pos;
 	};
 private:
@@ -20,6 +21,7 @@ public:
 	void timeCount();
 	void rewind(int Enemytype);//敵を倒した時に時間回復
 	void draw();
+	int timeFlame() { return Time.frame; }
 	int nowTime() { return Time.time; }
 };
 

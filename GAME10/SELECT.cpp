@@ -15,7 +15,7 @@ void SELECT::update(){
 		playSound(Select.selectMoveSound);
 		Select.SELECT_NOW--;
 		if (Select.SELECT_NOW < false) {
-			Select.SELECT_NOW = Select.SKIP;
+			Select.SELECT_NOW = Select.MISSILE;
 		}
 	}
 	if (isTrigger(KEY_S)) {
@@ -33,7 +33,7 @@ void SELECT::update(){
 void SELECT::draw(){
 	game()->scenes(GAME10_GAME::STAGE_ID)->draw();
 	image(Select.backImg, Select.ImgPos.x, Select.ImgPos.y);
-	for (int i = 0; i < Select.SELECT_NUM - 1; i++) {
+	for (int i = 0; i < Select.SELECT_NUM; i++) {
 		image(Select.weaponImg[i], Select.weaponImgPos.x, Select.weaponImgPos.y + Select.weaponImgMy * i);
 	}
 	for (int i = 0; i < Select.SELECT_NUM; i++) {
@@ -44,19 +44,16 @@ void SELECT::draw(){
 		else {
 			fill(Select.noSelectColor);
 		}
-		if (Select.SKIP == i) {
-			textSize(Select.skipTextSize);
-			text(Select.Moji[i], Select.skipPos.x, Select.skipPos.y);
+		if(Select.getFlag[i] == false){
+			text(Select.noGetMoji[i], Select.textPos.x, Select.textPos.y + Select.textMy * i);
 		}
 		else {
-			if(Select.getFlag[i] == false){
-				text(Select.noGetMoji[i], Select.textPos.x, Select.textPos.y + Select.textMy * i);
-			}
-			else {
-				text(Select.Moji[i],Select.textPos.x,Select.textPos.y + Select.textMy * i);
-			}
+			text(Select.Moji[i],Select.textPos.x,Select.textPos.y + Select.textMy * i);
 		}
 	}
+	fill(255);
+	textSize(Select.spaceTextSize);
+	text(Select.spaceText, Select.spacePos.x, Select.spacePos.y);
 }
 void SELECT::sound() {
 	playSound(Select.upSound);
@@ -64,7 +61,6 @@ void SELECT::sound() {
 void SELECT::nextScene(){
 	if (Select.selectFlag == true) {
 		game()->changeScene(GAME10_GAME::STAGE_ID);
-			if (Select.SELECT_NOW != Select.SKIP) {
 			if (Select.getFlag[Select.SELECT_NOW] == true) {
 				game()->weapons(Select.SELECT_NOW)->levelUp();
 			}
@@ -75,7 +71,6 @@ void SELECT::nextScene(){
 			game()->enemies()->DestroyReset();
 			game()->objects()->DestroyReset();
 			game()->player()->doubleUp();
-			}
 		Select.selectFlag = false;
 	}
 }

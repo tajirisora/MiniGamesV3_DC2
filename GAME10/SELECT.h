@@ -11,17 +11,17 @@ public:
 			HANDGUN,
 			SHOTGUN,
 			MISSILE,
-			SKIP,
 			SELECT_NUM
 		};
 		int SELECT_NOW = HANDGUN;
 		int weaponImg[SELECT_NUM];
 		VECTOR2 textPos;
-		VECTOR2 skipPos;
-		int skipTextSize;
+		VECTOR2 spacePos;
+		const char* spaceText;
+		int spaceTextSize;
 		COLOR selectColor;
 		COLOR noSelectColor;
-		const char* Moji[4];
+		const char* Moji[3];
 		const char* noGetMoji[3];
 		int textMy;
 		VECTOR2 weaponImgPos;
