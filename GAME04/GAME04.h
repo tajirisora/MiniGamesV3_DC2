@@ -59,6 +59,7 @@ namespace GAME04
         //各画像番号
         int normalImg;
         int damageImg;
+        int damage2Img;
         int Imghp;
         //現在の画像番号
         int img;
@@ -78,11 +79,17 @@ namespace GAME04
         int MaxHp;
         //ＨＰゲージ表示オフセット位置
         float hpGaugeOfsY;
+        float hpGaugeOfsX;
         //当たり判定用、半分の幅と高さ
         float halfW;
         float halfH;
+        bool ColFlag;
+
         //エネミーの倒された数
         int totalCnt = 0;
+        //リポップタイム
+        int repoptime;
+        bool repoptimeFlag;
     };
     //プレイヤーの弾とNPCの弾用構造体型
     struct BULLET {
