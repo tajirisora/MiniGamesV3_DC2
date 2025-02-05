@@ -135,20 +135,19 @@ namespace GAME14 {
         std::map<std::string, STATE_ID> StateId;
         std::map<std::string, RESULT_ID> ResultId;
         std::map<std::string, BONUS_ID> BonusId;
-        bool SeedCreate = true;
         std::mt19937 Mt;
         std::uniform_int_distribution<int>Dist;
         int Level;
         int Result;//成立した小役
         int BonusResult;//成立中のボーナス
         int State;//現在のゲームの状態
-        int RundNumber;
     public:
         LOTTERY(class GAME* game) :
             GAME_OBJECT(game) {}
         ~LOTTERY();
         void create();
         void init();
+        void initProb();
         void createLevel();
         void proc();
         void debugdraw();
@@ -160,10 +159,15 @@ namespace GAME14 {
         void deletResult() { Result = -1; }
         int result() { return Result ; }
         int bonusResult(){ return BonusResult ; }
+        void clearBonusResult() { BonusResult = NO_BONUS; }
         void setResult(int id);
         int resultId(std::string str) { return ResultId[str]; }
         int bonusId(std::string str) { return BonusId[str]; }
         int state() { return State; }
+        bool stateBonus() {
+            if (State > BONUS) { return true; }
+            else { return false; }
+        }
         void changeStateBB() { State = BB; }
         void changeStateREG() { State = RG; }
         void changeStateNORMAL() { State = NORMAL; }

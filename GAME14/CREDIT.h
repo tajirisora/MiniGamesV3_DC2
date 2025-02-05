@@ -14,11 +14,12 @@ public:
         COLOR drawPayoutColor;
         float drawPayoutSize;
 
+        VECTOR2 drawBBPayoutPos;
+
         float onePayoutTime;//一枚払い出すのにかかる時間
 
         int BBPayoutMaxNum;//払い出し枚数がこの枚数を超えたらBIGボーナス終了
-        int REGPlayMaxTime;//REGの最大ゲーム数
-        int REGPayoutMaxTime;//REG中の最大払い出し回数 払い出しがあったら1ゲーム減らす
+        int REGPayoutMaxTime;//REGの最大払い出し回数
     };
     struct RESULT_DATA {
         int resultId = 0;
@@ -31,8 +32,10 @@ private:
     int Payout;//払い出す枚数
     int CurPayout;//今いくら払いだされたか
     float CurTime;
-    int BBPayoutCurNum;//BIGボーナス中いくら払い出したか
-    int REGPlayCurTime;//REG中の回したゲーム数
+    int BBPayoutNum;//BIGボーナスの残り払い出し枚数
+    int REGPlayTime;//REG中の残りゲーム数
+    bool BBAdjustFlag;//BB中の枚数調整出目が出たか
+    bool SistemFlag;//処理中のフラグ
 public:
     CREDIT(class GAME* game);
     ~CREDIT();
@@ -45,6 +48,9 @@ public:
     void draw();
     void debagdraw();
     void clearCurPayout() { CurPayout = 0; }
+    void onBBAdjustFlag() { BBAdjustFlag = true; }
+    bool payoutSistemFlag() { return SistemFlag; }
+
 };
 }
 

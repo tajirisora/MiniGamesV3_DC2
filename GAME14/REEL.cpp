@@ -5,6 +5,8 @@
 #include"LOTTERY.h"
 #include "REEL.h"
 #include"CREDIT.h"
+#include"PLAYER.h"
+#include"BONUS_ANNOUNCE.h"
 #include<fstream>
 namespace GAME14 {
     REEL::REEL(class GAME* game) :
@@ -14,9 +16,15 @@ namespace GAME14 {
     }
     void REEL::create() {
         Reels = game()->container()->data().reel;
+        if (Reel) { delete[] Reel; }
         Reel = new REELS[Reels.cellNum];
     }
     void REEL::init() {
+        MoveFlag = false;
+        AnimeTime = 0.0f;
+        StopCunt = 0;
+        StopCell;
+
         for (int i = 0; i < Reels.reelNum; i++) {
             Reel[i].reelId = i;
             Reel[i].beforeNum = 0;
@@ -27,10 +35,10 @@ namespace GAME14 {
             Reel[i].setAfter = false;
         }
         initcombination();
+        if (Buffer.size()) { Buffer.resize(0); }
         for (int i = 0; i < Reels.checkLineNum; i++) {
             Buffer.emplace_back();
         }
-
     }
     void REEL::initcombination() {
         initresultcombination();
@@ -48,7 +56,9 @@ namespace GAME14 {
             file.close();
             WARNING(1, "ファイルが開けませんでした", Reels.combinationFileName);
         }
-
+        if (Combi.size()) {
+            Combi.resize(0);
+        }
         while (1) {
             std::getline(file, str);
 
@@ -104,6 +114,9 @@ namespace GAME14 {
             WARNING(1, "ファイルが開けませんでした", Reels.bonusCombinationFileName);
         }
 
+        if (BonusCombi.size()) {
+            BonusCombi.resize(0);
+        }
         while (1) {
             std::getline(file, str);
 
@@ -189,7 +202,6 @@ namespace GAME14 {
                             case RIGHT:
                                 int LeftStop = Reel[LEFT].afterNum % Reels.cellNum;
                                 Reel[i].afterNum = Reel[i].afterNum + game()->reelMap()->tellSecondTableStopCell(StopCell, Reel[i].reelId, LeftStop);
-                                AfterNum = Reel[i].afterNum;
                                 break;
 
                             }
@@ -217,6 +229,13 @@ namespace GAME14 {
             }
             if (stopreel >= Reels.reelNum) {
                 Reels.animeFlag = false;
+                if (game()->lottery()->state() == LOTTERY::NORMAL) {
+                    game()->player()->addPlayTime();
+                    game()->player()->addPlayTimeForBonus();
+                    if (game()->lottery()->bonusResult()) {
+                        game()->bonus_Announce()->addPlayTimeforBonus();
+                    }
+                }
                 game()->credit()->resultPayout(checkresultexist());
                 game()->credit()->resultBonus(checkbonusexist());
                 StopCunt = 0;
@@ -230,16 +249,12 @@ namespace GAME14 {
         textSize(50);
         for (int i = 0; i < Reels.reelNum; i++) {
             int startIdx = round(Reel[i].curNum) - 1;//表示し始めるコマcurNumは下段
-            if (i == 0) {
-                DrawCellId = startIdx;
-            }
             for (int j = 0; j < Reels.drawNum; j++) {
                 float dist = Reel[i].curNum - startIdx - j;//表示し始めるコマからどれくらい離れているか
                 int cellNum = (startIdx + j + Reels.cellNum) % Reels.cellNum;//0から20に収まるように
                 VECTOR2 pos = VECTOR2(Reels.imgPos.x + (Reels.reelSize.x * i), Reels.imgPos.y);//表示位置の決定
                 pos.y += Reels.cellSize.y * dist;//y軸の調整
                 int imgIdx = game()->reelMap()->textureNum(Reel[i].reelId, cellNum);//(reelId)行(cellNum)列目の画像インデックスを取得
-                text(cellNum, pos.x - 30, pos.y + 150);
                 image(Reels.img[imgIdx], pos.x, pos.y, 0, Reels.imgSize);
             }
         }
@@ -260,12 +275,14 @@ namespace GAME14 {
           print("現在のコマ番号");
           print(CurCell);
           */
-          print("止まるコマ番号");
+        /*
+        print("止まるコマ番号");
           print(AfterNum);
           
         
         print("成立した役");
         print(Result);
+        */
         /*
         print("成立したボーナス");
         print(Bonus);
@@ -306,6 +323,10 @@ namespace GAME14 {
                 text(BonusCombi[i][j], 1500 + j * 50, 300 + i * 40);
             }
         }*/
+        print("I");
+        print(I);
+        print("J");
+        print(J);
     }
     bool REEL::checkresultexist() {
         int resultId = game()->lottery()->result();
@@ -352,6 +373,9 @@ namespace GAME14 {
                         if ((buffer[i][0] == Combi[j][0]) &&
                             (buffer[i][1] == Combi[j][1]) &&
                             (buffer[i][2] == Combi[j][2])) {
+                            if (buffer[i][0] == Reels.BBAdjustImgId) {
+                                game()->credit()->onBBAdjustFlag();
+                            }
                             return true;
                         }
                     }
@@ -449,6 +473,7 @@ namespace GAME14 {
         buffer[4][1] = map->textureNum(MIDDLE, (Reel[1].afterNum + middlerange + 2) % Reels.cellNum);
         buffer[4][2] = map->textureNum(RIGHT, (Reel[2].afterNum + rightrange + 2) % Reels.cellNum);
 
+
         for (int i = 0; i < Reels.checkLineNum; i++) {
             for (int j = 0; j < Combi.size(); j++) {
                 if ((Combi[j].resultId != LOTTERY::Cherry_A1) ||
@@ -527,6 +552,8 @@ namespace GAME14 {
     int REEL::tellresultexistcell(int resultId, int reelId) {
         REEL_MAP* map = game()->reelMap();
         std::vector<COMBI_DATA> buffer;
+        int checkStartLine = 0;
+        int checkEndLine = Reels.checkLineNum;
         for (int i = 0; i < Reels.checkLineNum; i++) {
             buffer.emplace_back();
         }
@@ -567,8 +594,20 @@ namespace GAME14 {
             buffer[4][1] = map->textureNum(MIDDLE, (Reel[1].afterNum + middlerange + 2) % Reels.cellNum);
             buffer[4][2] = map->textureNum(RIGHT, (Reel[2].afterNum + rightrange + 2) % Reels.cellNum);
             //Buffer = buffer;
-
-            for (int i = 0; i < Reels.checkLineNum; i++) {
+            if (resultId == LOTTERY::Replay) {
+                //I = game()->reelMap()->tellStopPos(resultId, Reel[0].afterNum%Reels.cellNum);
+                switch (game()->reelMap()->tellStopPos(resultId, Reel[0].afterNum%Reels.cellNum)) {
+                case REEL_MAP::TOP:
+                    checkStartLine = 3;
+                    I = checkStartLine;
+                    break;
+                case REEL_MAP::BOT:
+                    checkEndLine = 2;
+                    J = checkEndLine;
+                    break;
+                }
+            }
+            for (int i = checkStartLine; i < checkEndLine; i++) {
                 for (int j = 0; j < Combi.size(); j++) {
                     if ((resultId == LOTTERY::Cherry_A1) ||
                         (resultId == LOTTERY::Cherry_A2) ||
@@ -652,7 +691,6 @@ namespace GAME14 {
             buffer[4][0] = map->textureNum(LEFT, (Reel[0].afterNum + leftrange + 2) % Reels.cellNum);
             buffer[4][1] = map->textureNum(MIDDLE, (Reel[1].afterNum + middlerange + 2) % Reels.cellNum);
             buffer[4][2] = map->textureNum(RIGHT, (Reel[2].afterNum + rightrange + 2) % Reels.cellNum);
-            //Buffer = buffer;
 
 
             for (int i = 0; i < Reels.checkLineNum; i++) {

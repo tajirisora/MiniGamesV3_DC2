@@ -2,7 +2,6 @@
 #include"../../libOne/inc/COLOR.h"
 #include"../../libOne/inc/VECTOR2.h"
 #include"TITLE.h"
-#include"HOME.h"
 #include"STAGE.h"
 #include"RESULT.h"
 #include"BUTTON.h"
@@ -14,12 +13,17 @@
 #include"CREDIT.h"
 #include"BET.h"
 #include"MAX_BET_BUTTON.h"
+#include"PLAYER.h"
+#include"BONUS_ANNOUNCE.h"
+#include"END_BUTTON.h"
+#include"RESULT.h"
 #include"GAME14.h"
 namespace GAME14 {
 	class CONTAINER{
 	private:
 		struct DATA {
 			GAME14::TITLE::DATA title;
+			GAME14::STAGE::DATA stage;
 			GAME14::BUTTON::DATA leverButton;
 			GAME14::LEVER::DATA lever;
 			GAME14::BUTTON::DATA stopButton;
@@ -31,6 +35,11 @@ namespace GAME14 {
 			GAME14::BET::DATA bet;
 			GAME14::BUTTON::DATA max_bet_Button;
 			GAME14::MAX_BET_BUTTON::DATA max_betButton;
+			GAME14::PLAYER::DATA player;
+			GAME14::BONUS_ANNOUNCE::DATA bonus_announce;
+			GAME14::BUTTON::DATA endButton;
+			GAME14::END_BUTTON::DATA end;
+			GAME14::RESULT::DATA result;
 		};
 		DATA Data;
 		void setData();

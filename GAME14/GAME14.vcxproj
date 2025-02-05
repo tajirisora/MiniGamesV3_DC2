@@ -134,15 +134,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BET.cpp" />
+    <ClCompile Include="BONUS_ANNOUNCE.cpp" />
     <ClCompile Include="BUTTON.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="CREDIT.cpp" />
+    <ClCompile Include="END_BUTTON.cpp" />
     <ClCompile Include="GAME14.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
-    <ClCompile Include="HOME.cpp" />
     <ClCompile Include="LEVER.cpp" />
     <ClCompile Include="LOTTERY.cpp" />
     <ClCompile Include="MAX_BET_BUTTON.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="REEL.cpp" />
     <ClCompile Include="REEL_MAP.cpp" />
     <ClCompile Include="RESULT.cpp" />
@@ -153,15 +155,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BET.h" />
+    <ClInclude Include="BONUS_ANNOUNCE.h" />
     <ClInclude Include="BUTTON.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="CREDIT.h" />
+    <ClInclude Include="END_BUTTON.h" />
     <ClInclude Include="GAME14.h" />
     <ClInclude Include="GAME_OBJECT.h" />
-    <ClInclude Include="HOME.h" />
     <ClInclude Include="LEVER.h" />
     <ClInclude Include="LOTTERY.h" />
     <ClInclude Include="MAX_BET_BUTTON.h" />
+    <ClInclude Include="PLAYER.h" />
     <ClInclude Include="REEL.h" />
     <ClInclude Include="REEL_MAP.h" />
     <ClInclude Include="RESULT.h" />

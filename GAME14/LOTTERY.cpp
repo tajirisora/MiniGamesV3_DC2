@@ -7,19 +7,6 @@
 namespace GAME14 {
     void LOTTERY::create() {
         Lottery = game()->container()->data().lottery;
-        initProbId();
-        initStateId();
-        initResultId();
-        initBonusId();
-        createLevel();//3,4は除外
-        std::random_device rd;
-        std::mt19937 mt(rd());
-        std::uniform_int_distribution<int> dist(1, Lottery.probFlagMax);
-        Mt = mt;
-        Dist = dist;
-        Result = -1;
-        BonusResult = 0;
-        State = NORMAL;
 
     }
     void LOTTERY::createLevel() {
@@ -40,6 +27,23 @@ namespace GAME14 {
     }
 
     void LOTTERY::init() {
+        initProbId();
+        initStateId();
+        initResultId();
+        initBonusId();
+        initProb();
+        createLevel();//3,4は除外
+        std::random_device rd;
+        std::mt19937 mt(rd());
+        std::uniform_int_distribution<int> dist(1, Lottery.probFlagMax);
+        Mt = mt;
+        Dist = dist;
+        Result = -1;
+        BonusResult = 0;
+        State = NORMAL;
+
+    }
+    void LOTTERY::initProb() {
         std::string str;
         std::string cutStr;
         std::string::size_type startPos = 0;
@@ -47,10 +51,10 @@ namespace GAME14 {
         std::string state = "\0";
         int level = 0;
 
-        std::ifstream file(Lottery.fileName , std::ios::binary);
-        if (!file) { 
+        std::ifstream file(Lottery.fileName, std::ios::binary);
+        if (!file) {
             file.close();
-            WARNING(1, "flag_prob.txtが開けませんでした","");
+            WARNING(1, "flag_prob.txtが開けませんでした", "");
         }
         while (1) {
 
@@ -58,11 +62,11 @@ namespace GAME14 {
             if (file.eof()) { break; }
 
             while (1) {
-                
+
                 std::string::size_type pos = str.find(Lottery.separator, startPos);
                 //　'/'が見つからなかったら 最後だったら
                 if (pos == std::string::npos) {
-                    pos = str.length()-1;
+                    pos = str.length() - 1;
                 }
 
                 cutStr = str.substr(startPos, pos - startPos);
@@ -84,12 +88,12 @@ namespace GAME14 {
 
                 //長さが１のときレベルとする
                 if (cutStr.length() == 1) {
-                        level = std::stoi(cutStr);
+                    level = std::stoi(cutStr);
                 }
                 else {
                     //ニューメリック・チェック
                     if (strspn(cutStr.c_str(), "1234567890 ") < cutStr.length()) {
-                        
+
                         std::string::size_type cutPos = cutStr.find(" ");
                         if (cutPos != std::string::npos) {
                             //スペースを削除
@@ -108,6 +112,7 @@ namespace GAME14 {
             }
         }
         file.close();
+
     }
     void LOTTERY::proc(){
         playlottery();
@@ -133,18 +138,11 @@ namespace GAME14 {
 
             if (randNumber <= 0) {
                 setResult(i);
-                //Result = Hazure;
-                //Result = Cherry_A2;
-               // BonusResult = RED_BB;
                 return;
             }
         }
             
         Result = Hazure;
-        //Result = Cherry_A2;
-
-        //BonusResult = RED_BB;
-
 
     }
     void LOTTERY::setResult(int id) {
@@ -421,15 +419,15 @@ namespace GAME14 {
         print(BonusResult);
         print(RundNumber);
         */
-        
+        /*
+        */
+        fill(255);
         print("当選した役");
         print(Result);
-        /*
         print("当選したボーナス");
         print(BonusResult);
         print("State");
         print(State);
-        */
     }
 
     void LOTTERY::initProbId() {
@@ -475,7 +473,6 @@ namespace GAME14 {
         StateId["ALL"] = ALL;
     }
     void LOTTERY::initResultId() {
-        
         ResultId["Hazure"] = Hazure ;
         ResultId["Replay"] = Replay ;
         ResultId["Bell_A"] = Bell_A ;

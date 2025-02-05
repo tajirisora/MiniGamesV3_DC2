@@ -36,6 +36,7 @@ namespace GAME14 {
         void init();
         void update();
         void draw();
+        void debagdraw();
         void replay();
         void maxBet();
 
@@ -50,6 +51,7 @@ namespace GAME14 {
         bool replayFlag() { return ReplayFlag; }
         void resetBet() { CurBet = 0; }
         void useReplay() { ReplayFlag = false; }
+        void betPayout();
     };
 }
 
