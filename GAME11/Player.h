@@ -1,4 +1,5 @@
 #include"DICE.h"
+#include "../../libOne/inc/libOne.h"
 namespace GAME11 {
 	class Player
 	{
@@ -6,7 +7,8 @@ namespace GAME11 {
 		Player ();
 		~Player();
 
-		
+		void init();
+
 		void reset();
 		void yotto();
 
@@ -31,52 +33,47 @@ namespace GAME11 {
 		int d5num() { return DiceNum[4]; }
 		int d6num() { return DiceNum[5]; }
 
-	    int yottonum() { return DiceNum[6]; }
+	    const int yottonum() { return DiceNum[6]; }
 
-		int fourdicenum() { return DiceNum[7]; }
+		const int fourdicenum() { return DiceNum[7]; }
 
-		int fullhousenum() { return DiceNum[8]; }
+		const int fullhousenum() { return DiceNum[8]; }
 
-	    int st4num() { return DiceNum[9]; }
+	    const int st4num() { return DiceNum[9]; }
 
-	    int st5num() { return DiceNum[10]; }
+	    const int st5num() { return DiceNum[10]; }
 
-		void sort(DiceSync* sync) {
-			int change = 0;
-			for (int i = 0; i < 5 - 1; i++) {  // ”z—ñ‚Ì’·‚³-1‰ñ‚Ìƒ‹[ƒv
-				for (int j = 0; j < 5 - 1 - i; j++) {  // —×Ú‚·‚é—v‘f‚ð”äŠr
-					if (sync->dice[j].num > sync->dice[j + 1].num) {
-						// —v‘f‚ðŒðŠ·
-						change = sync->dice[j].num;
-						sync->dice[j].num = sync->dice[j + 1].num;
-						sync->dice[j + 1].num = change;
-					}
-				}
-			}
-		}
+		const int scorenum() { return ScoreNum; }
+		
 
+		void chgflg0();
+		void chgflg1();
+		void chgflg2();
+		void chgflg3();
+		void chgflg4();
+		void chgflg5();
+		void chgflg6();
+		void chgflg7();
+		void chgflg8();
+		void chgflg9();
+		void chgflg10();
 
-		void ChgFlg0();
-		void ChgFlg1();
-		void ChgFlg2();
-		void ChgFlg3();
-		void ChgFlg4();
-		void ChgFlg5();
-		void ChgFlg6();
-		void ChgFlg7();
-		void ChgFlg8();
-		void ChgFlg9();
-		void ChgFlg10();
+		
+		bool dflag(int i) { return DFlag[i]; }
+
+		void select(int i);
+
+		void total();
 
 
 
 	private:
 		
-		int DiceNum[11] = {0},//{0~5] = D1~D6,Flag[6~10]Yotto,FourDice,FullHouse,Staraight4,Staraight5,
+		int DiceNum[11] = { 0 },//{0~5] = D1~D6,Flag[6~10]Yotto,FourDice,FullHouse,Staraight4,Staraight5,
 
 			ScoreNum = 0,
-			
-			Sort[5] = {0};
+
+			change = 0;
 
 		bool DFlag[11] = { false };
 
