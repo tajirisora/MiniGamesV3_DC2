@@ -5,6 +5,8 @@ namespace GAME08
 {
 	int GAME::create()
 	{
+		Bgm = loadSound("..\\main\\assets\\game08\\bgm.wav");
+
 		TitleImg = loadImage("..\\main\\assets\\game08\\title.png");
 
 		FrameImg = loadImage("..\\main\\assets\\game08\\Frame.png");
@@ -29,6 +31,10 @@ namespace GAME08
 		AnomalyImg[7] = loadImage("..\\main\\assets\\game08\\2-3ihen3.png");
 		AnomalyImg[8] = loadImage("..\\main\\assets\\game08\\4-1ihen2.png");
 		AnomalyImg[9] = loadImage("..\\main\\assets\\game08\\4-1ihen3.png");
+		AnomalyImg[10] = loadImage("..\\main\\assets\\game08\\3-1ihen.png");
+		AnomalyImg[11] = loadImage("..\\main\\assets\\game08\\3-1ihen2.png");
+		AnomalyImg[12] = loadImage("..\\main\\assets\\game08\\3-1ihen3.png");
+
 
 
 
@@ -40,10 +46,18 @@ namespace GAME08
 		NumberImg[3] = loadImage("..\\main\\assets\\game08\\3.png");
 		NumberImg[4] = loadImage("..\\main\\assets\\game08\\4.png");
 		NumberImg[5] = loadImage("..\\main\\assets\\game08\\5.png");
+		NumberImg[6] = loadImage("..\\main\\assets\\game08\\6.png");
+		NumberImg[7] = loadImage("..\\main\\assets\\game08\\7.png");
+		NumberImg[8] = loadImage("..\\main\\assets\\game08\\8.png");
+		NumberImg[9] = loadImage("..\\main\\assets\\game08\\9.png");
 
 		GameClearImg = loadImage("..\\main\\assets\\game08\\gameclear.png");
 
+		SpaceImg = loadImage("..\\main\\assets\\game08\\space.png");
+
 		RightImg = loadImage("..\\main\\assets\\game08\\right.png");
+
+		BgmFlag = true;
 
 		return 0;
 	}
@@ -64,11 +78,17 @@ namespace GAME08
 		onceAnomalyFlag = false;
 		AnomalyClearFlag = false;
 
+		
+
 	}
 
 
 	void GAME::proc()
 	{
+		if (BgmFlag) {
+			playLoopSound(Bgm);
+			BgmFlag = false;
+		}
 		clear(0, 0, 64);
 		textSize(50);
 		fill(255, 255, 0);
@@ -122,9 +142,9 @@ namespace GAME08
 					}
 					if (AnomalyFlag) {
 						int AnomalyType = 0;
-						AnomalyType = (random() % 10) + 1;
+						AnomalyType = (random() % 13) + 1;
 						while (AnomalyType == BeforeAnomaly) {
-							AnomalyType = (random() % 10) + 1;
+							AnomalyType = (random() % 13) + 1;
 						}
 						AnomalyTypeFlag = AnomalyType;
 						BeforeAnomaly = AnomalyType;
@@ -150,7 +170,7 @@ namespace GAME08
 				onceAnomalyFlag = true;
 				AnomalyClearFlag = true;
 				AnomalyFlag = false;
-				if (ClearNum == 5)STATE = RESULT;
+				if (ClearNum == 9)STATE = RESULT;
 				SCENE = SCENE1;
 			}
 		}
@@ -263,6 +283,16 @@ namespace GAME08
 				else if (AnomalyFlag && AnomalyTypeFlag == 7) {
 					image(AnomalyImg[4], width / 2, height / 2);
 				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 11) {
+					image(AnomalyImg[10], width / 2, height / 2);
+				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 12) {
+					image(AnomalyImg[11], width / 2, height / 2);
+				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 13) {
+					image(AnomalyImg[12], width / 2, height / 2);
+				}
+
 
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[4], width / 2, height / 2);
@@ -290,9 +320,9 @@ namespace GAME08
 			if (SCENE == SCENE5) {
 				image(BackImg, width / 2, height / 2);
 				image(RightImg, width / 2, height / 2);
-				if (ClearNum == 5)image(BasicImg[6], width / 2, height / 2);
+				if (ClearNum == 9)image(BasicImg[6], width / 2, height / 2);
 				image(PlayerImg, player.px, player.py);
-				for (int i = 0; i < 6; i++) {
+				for (int i = 0; i < 10; i++) {
 					if (ClearNum == i)image(NumberImg[i], width / 2, height / 2);
 				}
 				image(FrameImg, width / 2, height / 2);
@@ -304,6 +334,7 @@ namespace GAME08
 			rectMode(CENTER);
 			image(BackImg, width / 2, height / 2);
 			image(GameClearImg, width / 2, height / 2);	
+			image(SpaceImg, width / 2, height / 2);
 			image(FrameImg, width / 2, height / 2);
 
 		}
