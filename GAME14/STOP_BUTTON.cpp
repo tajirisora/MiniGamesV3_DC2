@@ -24,36 +24,45 @@ namespace GAME14 {
 
         }
         CurStopButtonState = LEFT_BUTTON;
+        CurTime = 0;
     }
     void STOP_BUTTON::update(){
+        
+        if (game()->reel()->tellmovereel()) {
+            CurTime += delta;
+            if (CurTime > StopButtons.waiteTime) {
+                for (int i = 0; i < StopButtons.numButton; i++) {
+                    if (collisionCheck(StopButton[i].pos, Button.r) &&
+                        i == CurStopButtonState) {
+                        if (isTrigger(MOUSE_LBUTTON)) {
+                            if (game()->reel()->tellmovereel(i)) {
+                                game()->reel()->stop(i);
+                            }
 
-        for (int i = 0; i < StopButtons.numButton; i++) {
-            if (collisionCheck(StopButton[i].pos, Button.r)&&
-                i == CurStopButtonState) {
-                if (isTrigger(MOUSE_LBUTTON)) {
-                    if (game()->reel()->tellmovereel(i)) {
-                        game()->reel()->stop(i);
+                            //StopButton[i].sistemFlag = true;
+                            StopButton[i].drawFlag = true;
+
+                            switch (CurStopButtonState) {
+                            case LEFT_BUTTON:
+                                CurStopButtonState = RIGHT_BUTTON;
+                                break;
+                            case MIDDLE_BUTTON:
+                                CurStopButtonState = LEFT_BUTTON;
+                                break;
+                            case RIGHT_BUTTON:
+                                CurStopButtonState = MIDDLE_BUTTON;
+                            }
+                        }
+                        StopButton[i].filterFlag = true;
                     }
-
-                    //StopButton[i].sistemFlag = true;
-                    StopButton[i].drawFlag = true;
-
-                    switch (CurStopButtonState) {
-                    case LEFT_BUTTON:
-                        CurStopButtonState = RIGHT_BUTTON;
-                        break;
-                    case MIDDLE_BUTTON:
-                        CurStopButtonState = LEFT_BUTTON;
-                        break;
-                    case RIGHT_BUTTON:
-                        CurStopButtonState = MIDDLE_BUTTON;
+                    else {
+                        StopButton[i].filterFlag = false;
                     }
                 }
-                StopButton[i].filterFlag = true;
             }
-            else {
-                StopButton[i].filterFlag = false;
-            }
+        }
+        else {
+            CurTime = 0;
         }
 
     }

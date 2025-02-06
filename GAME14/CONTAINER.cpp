@@ -99,15 +99,24 @@ namespace GAME14 {
 		Data.stage.text[16] = "ると枚数調整できる";
 		Data.stage.text[17] = " ";
 		Data.stage.text[18] = "レギュラーボーナス中";
-		Data.stage.text[19] = "三連BARをビタ止めして";
-		Data.stage.text[20] = "右リールの上中段に赤か";
-		Data.stage.text[21] = "青のBB図柄を止めること";
-		Data.stage.text[22] = "で最高払い出しになる";
-		Data.stage.text[23] = " ";
-		Data.stage.text[24] = "終わり方";
-		Data.stage.text[25] = "終わるときは赤い丸を長";
-		Data.stage.text[26] = "押しする";
+		Data.stage.text[19] = "左リールに三連BARを";
+		Data.stage.text[20] = "ビタ止めして";
+		Data.stage.text[21] = "右リールの上中段に赤か";
+		Data.stage.text[22] = "青のBB図柄を止める";
+		Data.stage.text[23] = "中リールにBARを止める";
+		Data.stage.text[24] = "ことで最高払い出しにな";
+		Data.stage.text[25] = "る";
+		Data.stage.text[26] = " ";
+		Data.stage.text[27] = "終わり方";
+		Data.stage.text[28] = "終わるときは赤い丸を長";
+		Data.stage.text[29] = "押しする";
+		Data.stage.numText = 30;
+		Data.stage.numReel = 3;
 
+		Data.stage.text2Pos = VECTOR2(width / 2, 250);
+		Data.stage.text2Size = 170;
+		Data.stage.text2 = "傷 物 語";
+		Data.stage.text2Color = COLOR(0, 0, 0);
 
 
 		Data.stop.numButton = 3;
@@ -121,6 +130,7 @@ namespace GAME14 {
 		Data.stopButton.drawFlag = false;
 		Data.stopButton.filterFlag = false;
 		Data.stop.imgAlterSize = 0.9f;
+		Data.stop.waiteTime = 0.6f;
 
 		Data.leverButton.basePos = VECTOR2(width / 2.0f- Data.stop.offset*2.50f, 960.0f);
 		Data.leverButton.areaColor = COLOR(0.0f, 0.0f, 0.0f);
@@ -279,9 +289,9 @@ namespace GAME14 {
 		Data.result.textPos = VECTOR2(Width / 2, Height / 3);
 		Data.result.textColor = COLOR(115, 255, 0);
 		Data.result.textSize = 150.0f;
+		Data.result.messageColor = COLOR(255, 255, 255);
 		Data.result.message = "push Z to title...";
 		Data.result.messagePos = VECTOR2(Width / 2, height - 200);
-		Data.result.textColor = COLOR(80, 80, 80);
 		Data.result.messageSize = 50.0f;
 		Data.result.message2 = "push Enter to END";
 		Data.result.message2Pos = VECTOR2(Width / 2, height - 100);

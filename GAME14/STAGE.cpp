@@ -19,13 +19,13 @@ namespace GAME14 {
         //image(img, pos.x,pos.y);
         fill(Stage.textColor);
         textSize(Stage.textSize);
-        for (int i = 0; i < 27; i++) {
+        for (int i = 0; i < Stage.numText; i++) {
             text(Stage.text[i], Stage.startPos.x, Stage.startPos.y + Stage.offsetPosY * i);
         }
         //ƒŠ[ƒ‹
         strokeWeight(10);
         fill(Stage.reelColor);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Stage.numReel; i++) {
             rect(Stage.reelStartPos.x+Stage.reelSize.x*i, Stage.reelStartPos.y, Stage.reelSize.x, Stage.reelSize.y);
         }
         game()->reel()->draw();
@@ -67,6 +67,13 @@ namespace GAME14 {
         //•¥‚¢o‚µ
         fill(Stage.payoutColor);
         rect(Stage.payoutPos.x, Stage.payoutPos.y, Stage.payoutSize.x, Stage.payoutSize.y);
+
+        font("‚l‚r –¾’©");
+        textSize(Stage.text2Size);
+        fill(Stage.text2Color);
+        int adjust = (Stage.text2Size * Stage.text2.length()) / 4;
+        text(Stage.text2.c_str(), Stage.text2Pos.x-adjust, Stage.text2Pos.y);
+        font("Arial");
         game()->charaDraw();
     }
     void STAGE::nextScene(){

@@ -323,13 +323,16 @@ namespace GAME14 {
                 text(BonusCombi[i][j], 1500 + j * 50, 300 + i * 40);
             }
         }*/
+        /*
         print("I");
         print(I);
         print("J");
         print(J);
+        */
     }
     bool REEL::checkresultexist() {
         int resultId = game()->lottery()->result();
+        int bonusId = game()->lottery()->bonusResult();
         REEL_MAP* map = game()->reelMap();
         std::vector<COMBI_DATA> buffer;
         for (int i = 0; i < Reels.checkLineNum; i++) {
@@ -373,9 +376,12 @@ namespace GAME14 {
                         if ((buffer[i][0] == Combi[j][0]) &&
                             (buffer[i][1] == Combi[j][1]) &&
                             (buffer[i][2] == Combi[j][2])) {
-                            if (buffer[i][0] == Reels.BBAdjustImgId) {
+                            if ((bonusId == LOTTERY::RED_BB||
+                                bonusId == LOTTERY::BLUE_BB)&&
+                                buffer[i][0] == Reels.BBAdjustImgId) {
                                 game()->credit()->onBBAdjustFlag();
                             }
+                            
                             return true;
                         }
                     }
@@ -561,6 +567,7 @@ namespace GAME14 {
         int middlerange = 0;
         int rightrange = 0;
         int r = 0;
+        int nullRange = 0;
         for (r = 0; r <= Reels.maxMoveRange; r++) {
             switch (reelId) {
             case LEFT:
@@ -599,11 +606,9 @@ namespace GAME14 {
                 switch (game()->reelMap()->tellStopPos(resultId, Reel[0].afterNum%Reels.cellNum)) {
                 case REEL_MAP::TOP:
                     checkStartLine = 3;
-                    I = checkStartLine;
                     break;
                 case REEL_MAP::BOT:
                     checkEndLine = 2;
-                    J = checkEndLine;
                     break;
                 }
             }
@@ -645,9 +650,17 @@ namespace GAME14 {
                     }
                 }
             }
+
+
+        }
+        for (int i = 0; i <= Reels.maxMoveRange; i++) {
+            if (!game()->reel()->checkbonusexist(i, reelId)) {
+                if (!game()->reel()->checkresultexist(i, reelId)) {
+                    return i;
+                }
+            }
         }
 
-        return 0;
     }
     int REEL::tellbonusexistcell(int bounasId, int reelId) {
         REEL_MAP* map = game()->reelMap();
@@ -704,7 +717,7 @@ namespace GAME14 {
                 }
             }
         }
-            return 0;
+            return -1;
     }
 
 }
