@@ -1,10 +1,18 @@
 #include "Player.h"
 namespace GAME11 {
-	Player::Player(){}
-	Player::~Player(){}
+	Player::Player() {}
+	Player::~Player() {}
 
+	void Player::init() {
+		int DiceNum[11] = { 0 },//{0~5] = D1~D6,Flag[6~10]Yotto,FourDice,FullHouse,Staraight4,Staraight5,
 
-	
+			ScoreNum = 0,
+
+			change = 0;
+
+		bool DFlag[11] = { false };
+	}
+
 	void Player::reset() {
 		for (int i = 0; i < 10; i++) {
 			if (DFlag[i] == false) {
@@ -15,23 +23,20 @@ namespace GAME11 {
 
 	void Player::yotto() {
 		if (DFlag[6] == false) {
-			DiceNum[6] = 50;
-			DFlag[6] = true;
+			for (int i = 0; i < 5; i++) {
+				DiceNum[6] = 50;
+			}
 		}
 	}
-	
+
 	int Player::fourdice(DiceSync* sync) {
 		if (DFlag[7] == false) {
-			for (int i = 0; i < 5; i++) {
-				if (sync->dice[i].num == sync->dice[i + 1].num) {
-					DiceNum[7] += sync->dice[i].num;
-				}
-			}
-			DFlag[7] = true;
-			return DiceNum[7];
+			DiceNum[7] = sync->dice[0].num * 4;
 		}
-	
+		return DiceNum[7];
 	}
+
+
 	
 	int Player::fullhouse(DiceSync* sync) {
 		if (DFlag[8] == false) {
@@ -39,7 +44,6 @@ namespace GAME11 {
 			for (int i = 0; i < 5; i++) {
 				DiceNum[8] += sync->dice[i].num;
 			}
-			DFlag[8] = true;
 			return DiceNum[8];
 		}
 	}
@@ -48,14 +52,12 @@ namespace GAME11 {
 		if (DFlag[9] == false) {
 
 			DiceNum[9] = 20;
-			DFlag[9] = true;
 		}
 	}
 	void Player::straight5() {
 		if (DFlag[10] == false) {
 
 			DiceNum[10] = 30;
-			DFlag[10] = true;
 		}
 	}
 
@@ -67,7 +69,6 @@ namespace GAME11 {
 					DiceNum[0] += 1;
 				}
 			}
-			DFlag[0] = true;
 			return DiceNum[0];
 		}
 	}
@@ -78,7 +79,6 @@ namespace GAME11 {
 					DiceNum[1] += 2;
 				}
 			}
-			DFlag[1] = true;
 			return DiceNum[1];
 		}
 	}
@@ -90,64 +90,120 @@ namespace GAME11 {
 					DiceNum[2] += 3;
 				}
 			}
-
-			DFlag[2] = true;
 			return DiceNum[2];
 		}
 	}
 	int Player::dice4(DiceSync* sync) {
 		if (DFlag[3] == false) {
-
 			for (int i = 0; i < 5; i++) {
 				if (sync->dice[i].num == 4) {
 					DiceNum[3] += 4;
 				}
 			}
-			DFlag[3] = true;
 			return DiceNum[3];
 		}
 	}
 	int Player::dice5(DiceSync* sync) {
 		if (DFlag[4] == false) {
-
 			for (int i = 0; i < 5; i++) {
 				if (sync->dice[i].num == 5) {
 					DiceNum[4] += 5;
 				}
 			}
-			DFlag[4] = true;
 			return DiceNum[4];
 		}
 	}
 	int Player::dice6(DiceSync* sync) {
 		if (DFlag[5] == false) {
-
 			for (int i = 0; i < 5; i++) {
 				if (sync->dice[i].num == 6) {
 					DiceNum[5] += 6;
 				}
 			}
-			DFlag[5] = true;
 			return DiceNum[5];
 		}
 	}
 
-	void Player::ChgFlg0(){
+	void Player::chgflg0(){
 		if (DFlag[0] == false) {
 			DFlag[0] = true;
 		}
 		else DFlag[0] = false;
 	}
-	void Player::ChgFlg1(){}
-	void Player::ChgFlg2(){}
-	void Player::ChgFlg3(){}
-	void Player::ChgFlg4(){}
-	void Player::ChgFlg5(){}
-	void Player::ChgFlg6(){}
-	void Player::ChgFlg7(){}
-	void Player::ChgFlg8(){}
-	void Player::ChgFlg9(){}
-	void Player::ChgFlg10(){}
+	void Player::chgflg1(){
+		if (DFlag[1] == false) {
+			DFlag[1] = true;
+		}
+		else DFlag[1] = false;
+	}
+	void Player::chgflg2(){
+		if (DFlag[2] == false) {
+			DFlag[2] = true;
+		}
+		else DFlag[2] = false;
+	}
+	void Player::chgflg3(){
+		if (DFlag[3] == false) {
+			DFlag[3] = true;
+		}
+		else DFlag[3] = false;
+	}
+	void Player::chgflg4(){
+		if (DFlag[4] == false) {
+			DFlag[4] = true;
+		}
+		else DFlag[4] = false;
+	}
+	void Player::chgflg5(){
+		if (DFlag[5] == false) {
+			DFlag[5] = true;
+		}
+		else DFlag[5] = false;
+	}
+	void Player::chgflg6(){
+		if (DFlag[6] == false) {
+			DFlag[6] = true;
+		}
+		else DFlag[6] = false;
+	}
+	void Player::chgflg7(){
+		if (DFlag[7] == false) {
+			DFlag[7] = true;
+		}
+		else DFlag[7] = false;
+	}
+	void Player::chgflg8(){
+		if (DFlag[8] == false) {
+			DFlag[8] = true;
+		}
+		else DFlag[8] = false;
+	}
+	void Player::chgflg9(){
+		if (DFlag[9] == false) {
+			DFlag[9] = true;
+		}
+		else DFlag[9] = false;
+	}
+	void Player::chgflg10(){
+		if (DFlag[10] == false) {
+			DFlag[10] = true;
+		}
+		else DFlag[10] = false;
+	}
 
 
+	void Player::select(int i) {
+		if (DFlag[i] == true) {
+			fill(255, 0, 0);
+		}
+		else {
+			fill(0);
+		}
+	}
+
+	void Player::total() {
+		for (int i = 0; i < 10; i++) {
+			ScoreNum += DiceNum[i];
+		}
+	}
 }
