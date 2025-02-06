@@ -26,7 +26,7 @@ void TITLE::selectMove() {
 }
 void TITLE::create() {
 	Title = game()->container()->title();
-	playSound(Title.titleSound);
+	playLoopSound(Title.titleSound);
 }
 void TITLE::draw(){
 	clear(255);

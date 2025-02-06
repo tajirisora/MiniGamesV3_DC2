@@ -10,7 +10,6 @@ STAGE::STAGE(GAME10_GAME* game) :SCENE(game) {}
 STAGE::~STAGE() {
 }
 void STAGE::init() {
-	playSound(Stage.sound);
 	Stage = game()->container()->stage();
 	game()->player()->init();
 	game()->time()->init();
