@@ -597,6 +597,18 @@ namespace GAME05
 			stopSound(WinSnd);
 			State = PLAY;
 		}
+
+		if (isTrigger(KEY_C)) {
+			WinCnt += 9;
+			GetCoins += 51200;
+			SetImg[0] = SetImg[1];
+			SetNum[0] = SetNum[1];
+			shuffleCards(deck);
+			SetImg[1] = HaimenImg;
+			playSound(DrawSnd);
+			stopSound(WinSnd);
+			State = PLAY;
+		}
 		
 		if (isTrigger(KEY_N)) {
 			playerCoins += GetCoins;
