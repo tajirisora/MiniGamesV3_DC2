@@ -13,6 +13,7 @@ void BULLETS::init(){
 }
 void BULLETS::launch(const VECTOR2& pos,float speed,int lane) {
 	if (Bullet.curNum < Bullet.totalNum) {
+		playSound(Bullet.shotSound);
 		if (Bullet.BulletNum < 2 ) {
 			int i = Bullet.curNum;
 			Bullets[i].pos.x = pos.x + Bullet.ImgHalf + Bullet.BulletSmx;

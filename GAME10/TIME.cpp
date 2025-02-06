@@ -26,11 +26,15 @@ void TIME::timeCount(){
 	}
 }
 
+void TIME::goalRewind() {
+	Time.time += 
+}
+
 void TIME::rewind(int Enemytype){
 	if (Enemytype == GAME10_GAME::ENEMY_ID) {//敵を倒した場合２秒＋
 		Time.time += Time.rewindTimeE;
 	}
-	else if (Enemytype == GAME10_GAME::OBJECT_ID) {//オブジェクトを倒した場合７秒＋
+	else if (Enemytype == GAME10_GAME::OBJECT_ID) {//オブジェクトを倒した場合3秒＋
 		Time.time += Time.rewindTimeO;
 	}
 }

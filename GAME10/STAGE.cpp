@@ -24,6 +24,7 @@ void STAGE::init() {
 void STAGE::goalStage() {
 	Stage.bworldX = NULL;
 	Stage.fworldX = NULL;
+	game()->time()->goalRewind();//goal‚µ‚½‚Æ‚«‚É‚P‚O•bŽžŠÔ‚ð‰ÁŽZ‚·‚é
 	game()->bullets(GAME10_GAME::HANDGUNBULLET_ID)->AllKill();//’eŠÛ‚ð‘S•”Á‚·
 	game()->bullets(GAME10_GAME::SHOTGUN_ID)->AllKill();//’eŠÛ‚ð‘S•”Á‚·
 	game()->enemies()->AllKill();//“G‚ð‘S•”Á‚·

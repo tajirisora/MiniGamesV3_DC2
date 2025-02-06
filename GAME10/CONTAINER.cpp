@@ -34,8 +34,13 @@ void CONTAINER::setSound() {
 	Data.result.overBgm = loadSound("..\\main\\assets\\game10\\overBgm.wav");
 
 	Data.object.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
+	Data.object.downSound = loadSound("..\\main\\assets\\game10\\downSound.wav");
 
 	Data.enemy.hitSound = loadSound("..\\main\\assets\\game10\\hitObj.wav");
+	Data.enemy.downSound = loadSound("..\\main\\assets\\game10\\downSound.wav");
+
+	Data.handgunBullet.shotSound = loadSound("..\\main\\assets\\game10\\HSshotSound.wav");
+	Data.shotGunBullet.shotSound = loadSound("..\\main\\assets\\game10\\HSshotSound.wav");
 }
 void CONTAINER::volumeSound() {
 	setVolume(Data.title.titleSound, -600);
@@ -48,9 +53,12 @@ void CONTAINER::volumeSound() {
 
 	setVolume(Data.result.clearBgm, -200);
 
-	setVolume(Data.object.hitSound, -300);
+	setVolume(Data.object.hitSound, -800);
 
-	setVolume(Data.enemy.hitSound, -300);
+	setVolume(Data.enemy.hitSound, -800);
+
+	setVolume(Data.handgunBullet.shotSound, -700);
+	setVolume(Data.shotGunBullet.shotSound, -700);
 }
 void CONTAINER::setImage() {
 	Data.title.titleImg = loadImage("..\\main\\assets\\game10\\title.png");
@@ -329,8 +337,9 @@ void CONTAINER::setData(){
 	//ŽžŠÔ
 	Data.time.frame = 60;
 	Data.time.time = 1800 + Data.time.frame;
-	Data.time.rewindTimeE = 120;
-	Data.time.rewindTimeO = 180;
+	Data.time.rewindTimeE = Data.time.frame* 2;
+	Data.time.rewindTimeO = Data.time.frame * 3;
+	Data.time.rewindTimeG = Data.time.frame * 10;
 	Data.time.Pos.x = 1000;
 	Data.time.Pos.y = 90;
 	Data.time.dengerRed = COLOR(255, 0, 0);
