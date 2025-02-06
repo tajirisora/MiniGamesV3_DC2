@@ -63,7 +63,7 @@ namespace GAME04
 
 	void GAME::Title(DATA* d)
 	{
-		playSound(BgmSound);
+		playLoopSound(BgmSound);
 		rectMode(CORNER);
 		clear();
 		imageColor(255, 255, 255);
@@ -263,7 +263,7 @@ namespace GAME04
 			if (d->BBullet.hp == 0) {
 				playSound(FireSoundB);
 				//”­ŽËˆÊ’u
-				d->BBullet.px = d->BOSS.px + d->BOSS.bulletOfsX;
+				d->BBullet.px = d->BOSS.px + d->BOSS.bulletOfsX - 150;
 				d->BBullet.py = d->BOSS.py;
 				d->BBullet.hp = 1;
 			}
