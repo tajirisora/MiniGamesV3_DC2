@@ -18,7 +18,7 @@ namespace GAME12
 		back1 = loadImage("..\\main\\assets\\game12\\image\\back1.jpg");
 		back2 = loadImage("..\\main\\assets\\game12\\image\\back2.jpg");
 		back3 = loadImage("..\\main\\assets\\game12\\image\\back3.jpg");
-		back4 = loadImage("..\\main\\assets\\game12\\image\\back4.jpg");
+		back4 = loadImage("..\\main\\assets\\game12\\image\\kami.jpg");
 		missimage = loadImage("..\\main\\assets\\game12\\image\\miss.png");
 		//over
 		overback = loadImage("..\\main\\assets\\game12\\image\\over.jpg");
@@ -576,7 +576,7 @@ namespace GAME12
 			else if (mflag == 1) {
 				rectMode(CENTER);
 				image(missimage, 990, 540);
-				fill(255, 255, 0);
+				fill(0);
 				text("SPACEで続行", 500, 650);
 				if (isTrigger(KEY_SPACE)) {
 					ch.clear();
@@ -628,7 +628,7 @@ namespace GAME12
 			else if (mflag == 1) {
 				rectMode(CENTER);
 				image(missimage, 990, 540);
-				fill(255, 255, 0);
+				fill(0);
 				text("SPACEで続行", 500, 650);
 				if (isTrigger(KEY_SPACE)) {
 					ch.clear();
@@ -678,7 +678,7 @@ namespace GAME12
 			else if (mflag == 1) {
 				rectMode(CENTER);
 				image(missimage, 990, 540);
-				fill(255, 255, 0);
+				fill(0);
 				text("SPACEで続行", 500, 650);
 				if (isTrigger(KEY_SPACE)) {
 					ch.clear();
@@ -728,7 +728,7 @@ namespace GAME12
 			else if (mflag == 1) {
 				rectMode(CENTER);
 				image(missimage, 990, 540);
-				fill(255, 255, 0);
+				fill(0);
 				text("SPACEで続行", 500, 650);
 				if (isTrigger(KEY_SPACE)) {
 					ch.clear();
