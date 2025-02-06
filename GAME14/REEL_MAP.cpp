@@ -510,7 +510,7 @@ namespace GAME14 {
                }
                else {
                    for (int i = 0; i <= maxMoveRange; i++) {
-                       if (game()->reel()->checkbonusexist(i, reelId)) {
+                       if (!game()->reel()->checkbonusexist(i, reelId)) {
 
                            if (!game()->reel()->checkresultexist(i, reelId)) {
                                return i;
