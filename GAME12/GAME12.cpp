@@ -58,7 +58,10 @@ namespace GAME12
 		else if (State == PLAY2)play2();
 		else if (State == PLAY3)play3();
 		else if (State == PLAY4)play4();
-		else if (State == OVER)over();
+		else if (State == OVER1)over1();
+		else if (State == OVER2)over2();
+		else if (State == OVER3)over3();
+		else if (State == OVER4)over4();
 		else if (State == END)end();
 	}
 	void GAME::randomnum() {
@@ -427,13 +430,13 @@ namespace GAME12
 		}
 		textSize(50);
 		text("ゲーム終了　左クリック", 1350, 200);
-		if (curtime > 20) {
+		if (20 < curtime) {
 			fill(50, 0, 0);
 		}
-		else if (10 < curtime <= 20) {
+		else if (10 < curtime) {
 			fill(100, 0, 0);
 		}
-		else if (0 < curtime <= 10) {
+		else {
 			fill(200, 0, 0);
 		}
 		print(curtime);
@@ -462,13 +465,13 @@ namespace GAME12
 		}
 		textSize(50);
 		text("ゲーム終了　左クリック", 1350, 200);
-		if (curtime > 20) {
+		if (20 < curtime) {
 			fill(50, 0, 0);
 		}
-		else if (10 < curtime <= 20) {
+		else if (10 < curtime) {
 			fill(100, 0, 0);
 		}
-		else if (0 < curtime <= 10) {
+		else {
 			fill(200, 0, 0);
 		}
 		print(curtime);
@@ -497,13 +500,13 @@ namespace GAME12
 		}
 		textSize(50);
 		text("ゲーム終了　左クリック", 1350, 200);
-		if (curtime > 20) {
+		if (20 < curtime) {
 			fill(50, 0, 0);
 		}
-		else if (10 < curtime <= 20) {
+		else if (10 < curtime) {
 			fill(100, 0, 0);
 		}
-		else if (0 < curtime <= 10) {
+		else {
 			fill(200, 0, 0);
 		}
 		print(curtime);
@@ -532,13 +535,13 @@ namespace GAME12
 		}
 		textSize(50);
 		text("ゲーム終了　左クリック", 1350, 200);
-		if (curtime > 20) {
+		if (20 < curtime) {
 			fill(50, 0, 0);
 		}
-		else if (10 < curtime <= 20) {
+		else if (10 < curtime) {
 			fill(100, 0, 0);
 		}
-		else if (0 < curtime <= 10) {
+		else {
 			fill(200, 0, 0);
 		}
 		print(curtime);
@@ -551,7 +554,9 @@ namespace GAME12
 		clear(200);
 		curtime -= delta;
 		draw1(num[number]);
-		recordInputToKana();
+		if (flag != 1) {
+			recordInputToKana();
+		}
 		if (flag == 1 && ch == pretwoWord[num[number]][1]) {
 			playSound(correctsound);
 			setVolume(correctsound, -4000);
@@ -586,7 +591,7 @@ namespace GAME12
 			stopSound(playbgm);
 			playSound(oversound);
 			setVolume(oversound, -4000);
-			State = OVER;
+			State = OVER1;
 		}
 		if (count == 15) {
 			stopSound(playbgm);
@@ -601,7 +606,9 @@ namespace GAME12
 
 		curtime -= delta;
 		draw2(num[number]);
-		recordInputToKana();
+		if (flag != 1) {
+			recordInputToKana();
+		}
 		if (flag == 1 && ch == twoWord[num[number]][1]) {
 			playSound(correctsound);
 			setVolume(correctsound, -4000);
@@ -635,7 +642,7 @@ namespace GAME12
 			stopSound(playbgm);
 			playSound(oversound);
 			setVolume(oversound, -4000);
-			State = OVER;
+			State = OVER2;
 		}
 		if (count == 15) {
 			stopSound(playbgm);
@@ -648,7 +655,9 @@ namespace GAME12
 		clear(200);
 		curtime -= delta;
 		draw3(num[number]);
-		recordInputToKana();
+		if (flag != 1) {
+			recordInputToKana();
+		}
 		if (flag == 1 && ch == preoneWord[num[number]][1]) {
 			playSound(correctsound);
 			setVolume(correctsound, -4000);
@@ -683,7 +692,7 @@ namespace GAME12
 			stopSound(playbgm);
 			playSound(oversound);
 			setVolume(oversound, -4000);
-			State = OVER;
+			State = OVER3;
 		}
 		if (count == 15) {
 			stopSound(playbgm);
@@ -697,7 +706,9 @@ namespace GAME12
 
 		curtime -= delta;
 		draw4(num[number]);
-		recordInputToKana();
+		if (flag != 1) {
+			recordInputToKana();
+		}
 		if (flag == 1 && ch == oneWord[num[number]][1]) {
 			playSound(correctsound);
 			setVolume(correctsound, -4000);
@@ -731,7 +742,7 @@ namespace GAME12
 			stopSound(playbgm);
 			playSound(oversound);
 			setVolume(oversound, -4000);
-			State = OVER;
+			State = OVER4;
 		}
 		if (count == 15) {
 			stopSound(playbgm);
@@ -740,16 +751,20 @@ namespace GAME12
 			State = END;
 		}
 	}
-
-	void GAME::over() {
+	
+	void GAME::over1() {
 		clear(0);
 		rectMode(CORNER);
 		image(overback, 0, 0);
 		rectMode(CENTER);
 		image(overmale, 200, 600);
 		image(overfemale, 1700, 600);
-		fill(255, 0, 0);
 		//ゲームオーバーテキスト 
+		fill(0);
+		textSize(100);
+		text("答え", 550, 800);
+		text((let) + pretwoWord[num[number]][1], 850, 800);
+		fill(255, 0, 0);
 		textSize(200);
 		text("GAMEOVER", 550, 525);
 		textSize(80);
@@ -759,7 +774,72 @@ namespace GAME12
 			State = TITLE;
 		}
 	}
-
+	void GAME::over2() {
+		clear(0);
+		rectMode(CORNER);
+		image(overback, 0, 0);
+		rectMode(CENTER);
+		image(overmale, 200, 600);
+		image(overfemale, 1700, 600);
+		//ゲームオーバーテキスト 
+		fill(0);
+		textSize(100);
+		text("答え", 550, 800);
+		text((let)+twoWord[num[number]][1], 850, 800);
+		fill(255, 0, 0);
+		textSize(200);
+		text("GAMEOVER", 550, 525);
+		textSize(80);
+		text("SPACEキーでタイトルに戻る", 500, 1000);
+		if (isTrigger(KEY_SPACE)) {
+			stopSound(oversound);
+			State = TITLE;
+		}
+	}
+	void GAME::over3() {
+		clear(0);
+		rectMode(CORNER);
+		image(overback, 0, 0);
+		rectMode(CENTER);
+		image(overmale, 200, 600);
+		image(overfemale, 1700, 600);
+		//ゲームオーバーテキスト 
+		fill(0);
+		textSize(100);
+		text("答え", 550, 800);
+		text((let)+preoneWord[num[number]][1], 850, 800);
+		fill(255, 0, 0);
+		textSize(200);
+		text("GAMEOVER", 550, 525);
+		textSize(80);
+		text("SPACEキーでタイトルに戻る", 500, 1000);
+		if (isTrigger(KEY_SPACE)) {
+			stopSound(oversound);
+			State = TITLE;
+		}
+	}
+	void GAME::over4() {
+		clear(0);
+		rectMode(CORNER);
+		image(overback, 0, 0);
+		rectMode(CENTER);
+		image(overmale, 200, 600);
+		image(overfemale, 1700, 600);
+		//ゲームオーバーテキスト 
+		fill(0);		
+		textSize(100);
+		text("答え", 550, 800);
+		text((let)+oneWord[num[number]][1], 850, 800);
+		fill(255, 0, 0);
+		textSize(200);
+		text("GAMEOVER", 550, 525);
+		textSize(80);
+		text("SPACEキーでタイトルに戻る", 500, 1000);
+		if (isTrigger(KEY_SPACE)) {
+			stopSound(oversound);
+			State = TITLE;
+		}
+	}
 	void GAME::end() {
 		clear(0);
 		rectMode(CORNER);
