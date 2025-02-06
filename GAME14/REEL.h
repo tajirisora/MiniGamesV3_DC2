@@ -35,7 +35,7 @@ namespace GAME14 {
             std::string separator;
             int reelNum = 0;
             int img[NUM_IMG] = { 0 };
-            int BBAdjustImgId = 0;;//BB中の枚数調整用の先頭画像ID
+            int BBAdjustImgId = 0;//BB中の枚数調整用の先頭画像ID
             int cellNum = 0;
             int checkLineNum = 0;
             VECTOR2 bacePos = 0.0f;//リールの基準位置

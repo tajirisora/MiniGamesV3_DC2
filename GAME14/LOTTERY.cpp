@@ -138,12 +138,12 @@ namespace GAME14 {
 
             if (randNumber <= 0) {
                 setResult(i);
+
                 return;
             }
         }
             
         Result = Hazure;
-
     }
     void LOTTERY::setResult(int id) {
         switch (id) {
@@ -419,15 +419,18 @@ namespace GAME14 {
         print(BonusResult);
         print(RundNumber);
         */
+        
+        
         /*
-        */
         fill(255);
-        print("当選した役");
-        print(Result);
-        print("当選したボーナス");
-        print(BonusResult);
-        print("State");
-        print(State);
+        textSize(50);
+        text("当選した役",Width/2,50);
+        text(Result,Width/2,100);
+        text("当選したボーナス",Width/2,150);
+        text(BonusResult,Width/2,200);
+        */
+        //print("State");
+        //print(State);
     }
 
     void LOTTERY::initProbId() {

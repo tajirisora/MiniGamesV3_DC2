@@ -115,7 +115,7 @@ namespace GAME14
 		Lever->draw();
 		//Reel->draw();
 		//Reel->debagDraw();
-		//Lottery->debugdraw();
+		Lottery->debugdraw();
 		//Credit->debagdraw();
 		Credit->draw();
 		Bet->draw();

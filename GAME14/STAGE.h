@@ -13,7 +13,16 @@ namespace GAME14 {
             COLOR textColor;
             float offsetPosY;
 
+            VECTOR2 text2Pos;
+            std::string text2;
+            COLOR text2Color;
+            float text2Size;
+
             const char* text[80];
+
+            int numText = 0;
+
+            int numReel = 0;
 
             VECTOR2 kyoutaiPos1;
             VECTOR2 kyoutaiSize1;

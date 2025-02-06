@@ -182,6 +182,11 @@ namespace GAME14 {
             adjust = (Credit.drawPayoutSize * (std::to_string(BBPayoutNum).length() - 1)) / 2;
             text(BBPayoutNum, Credit.drawBBPayoutPos.x - adjust, Credit.drawBBPayoutPos.y);
         }
+        if (game()->lottery()->state() == LOTTERY::RG) {
+            adjust = (Credit.drawPayoutSize * (std::to_string(REGPlayTime).length() - 1)) / 2;
+            text(REGPlayTime, Credit.drawBBPayoutPos.x - adjust, Credit.drawBBPayoutPos.y);
+
+        }
     }
     void CREDIT::debagdraw() {
         /*

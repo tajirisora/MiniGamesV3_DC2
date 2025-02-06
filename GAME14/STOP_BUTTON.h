@@ -14,6 +14,7 @@ namespace GAME14 {
             int numButton = 0;
             float offset = 0.0f;
             float imgAlterSize = 0.0f;//押しているときのサイズ
+            float waiteTime;//リールが動いてどれくらいで押せるようになるか
         };
     private:
         struct STOP_BUTTONS {
@@ -26,6 +27,7 @@ namespace GAME14 {
         DATA StopButtons;
         STOP_BUTTONS* StopButton = nullptr;
         int CurStopButtonState;
+        float CurTime;
     public:
         STOP_BUTTON(class GAME* game):
             BUTTON(game){}

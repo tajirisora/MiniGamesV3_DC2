@@ -505,12 +505,12 @@ namespace GAME14 {
        if (resultId == LOTTERY::Hazure) {
            if (bonusId > 0) {
                int range = game()->reel()->tellbonusexistcell(bonusId, reelId);
-               if (range) {
+               if (range>-1) {
                    return range;
                }
                else {
                    for (int i = 0; i <= maxMoveRange; i++) {
-                       if (!game()->reel()->checkbonusexist(i, reelId)) {
+                       if (game()->reel()->checkbonusexist(i, reelId)) {
 
                            if (!game()->reel()->checkresultexist(i, reelId)) {
                                return i;

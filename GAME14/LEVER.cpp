@@ -14,7 +14,7 @@ namespace GAME14 {
     }
     void LEVER::init(){
         MoveDis = Lever.moveDis;
-        CurTime = 0.0f;
+        CurTime = Lever.waitTime;
 
     }
     void LEVER::update(){
