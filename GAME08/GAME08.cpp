@@ -25,6 +25,12 @@ namespace GAME08
 		AnomalyImg[3] = loadImage("..\\main\\assets\\game08\\backihen1.png");
 		AnomalyImg[4] = loadImage("..\\main\\assets\\game08\\backihen2.png");
 		AnomalyImg[5] = loadImage("..\\main\\assets\\game08\\4-1ihen.png");
+		AnomalyImg[6] = loadImage("..\\main\\assets\\game08\\2-3ihen2.png");
+		AnomalyImg[7] = loadImage("..\\main\\assets\\game08\\2-3ihen3.png");
+		AnomalyImg[8] = loadImage("..\\main\\assets\\game08\\4-1ihen2.png");
+		AnomalyImg[9] = loadImage("..\\main\\assets\\game08\\4-1ihen3.png");
+
+
 
 		PlayerImg = loadImage("..\\main\\assets\\game08\\player.png");
 
@@ -37,6 +43,7 @@ namespace GAME08
 
 		GameClearImg = loadImage("..\\main\\assets\\game08\\gameclear.png");
 
+		RightImg = loadImage("..\\main\\assets\\game08\\right.png");
 
 		return 0;
 	}
@@ -51,7 +58,7 @@ namespace GAME08
 
 		player.px = width / 2;
 		player.py = height / 2;
-		player.vx = 15.0f;
+		player.vx = 1300.0f;
 
 		firstFlag = true;
 		onceAnomalyFlag = false;
@@ -99,8 +106,8 @@ namespace GAME08
 	{
 
 		draw();
-		if (isPress(KEY_A))player.px -= player.vx;
-		if (isPress(KEY_D))player.px += player.vx;
+		if (isPress(KEY_A) || isPress(KEY_LEFT))player.px -= player.vx * delta;
+		if (isPress(KEY_D) || isPress(KEY_RIGHT))player.px += player.vx * delta;
 		int scene = 0;
 
 		//âEÇ…êiÇÒÇæèÍçá
@@ -115,9 +122,9 @@ namespace GAME08
 					}
 					if (AnomalyFlag) {
 						int AnomalyType = 0;
-						AnomalyType = (random() % 6) + 1;
+						AnomalyType = (random() % 10) + 1;
 						while (AnomalyType == BeforeAnomaly) {
-							AnomalyType = (random() % 6) + 1;
+							AnomalyType = (random() % 10) + 1;
 						}
 						AnomalyTypeFlag = AnomalyType;
 						BeforeAnomaly = AnomalyType;
@@ -135,12 +142,14 @@ namespace GAME08
 			else if (SCENE == SCENE4) {
 				if (AnomalyFlag == false)ClearNum++;
 				else ClearNum = 0;
+				AnomalyClearFlag = true;
 				SCENE = SCENE5;
 			}
 			else if (SCENE == SCENE5) {
 				if (firstFlag == true)firstFlag = false;
 				onceAnomalyFlag = true;
 				AnomalyClearFlag = true;
+				AnomalyFlag = false;
 				if (ClearNum == 5)STATE = RESULT;
 				SCENE = SCENE1;
 			}
@@ -148,7 +157,7 @@ namespace GAME08
 
 		//ç∂Ç…êiÇÒÇæèÍçá
 		if (player.px <= 0 + 200.0f) {
-			if (firstFlag && SCENE == SCENE1 || AnomalyClearFlag && SCENE == SCENE5)player.px = 201.0f;
+			if (firstFlag && SCENE == SCENE1 || AnomalyClearFlag && SCENE == SCENE5 )player.px = 201.0f;
 			else player.px = width - 121.0f;
 
 			if (SCENE == SCENE1) {
@@ -183,7 +192,8 @@ namespace GAME08
 		//text((let)+scene, 0, height);
 		//text((let)+AnomalyFlag, 50, height);
 		//text((let)+AnomalyTypeFlag, 100, height);
-		
+		//text((let)+firstFlag, 150, height);
+		//text((let)+AnomalyClearFlag, 200, height);
 		//if (isTrigger(KEY_SPACE)) {
 			//STATE = RESULT;
 		//}
@@ -207,17 +217,21 @@ namespace GAME08
 			image(TitleImg, width / 2, height / 2);
 			image(FrameImg, width / 2, height / 2);
 		}
+
 		if (STATE == PLAY) {
 			clear(0, 0, 0);
 			rectMode(CENTER);
 			if (SCENE == SCENE1) {
 				image(BackImg, width / 2, height / 2);
+				image(RightImg, width / 2, height / 2);
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[0], width / 2, height / 2);
 				image(FrameImg, width / 2, height / 2);
 			}
+
 			if (SCENE == SCENE2) {
 				image(BackImg, width / 2, height / 2);
+				image(RightImg, width / 2, height / 2);
 				image(PlayerImg, player.px, player.py);
 				for (int i = 1; i < 4; i++) {
 					image(BasicImg[i], width / 2, height / 2);
@@ -231,35 +245,51 @@ namespace GAME08
 				else if (AnomalyFlag && AnomalyTypeFlag == 3) {
 					image(AnomalyImg[2], width / 2, height / 2);
 				}
-				image(FrameImg, width / 2, height / 2);
-			}
-			if (SCENE == SCENE3) {
-				image(BackImg, width / 2, height / 2);
-				if (AnomalyFlag && AnomalyTypeFlag == 4) {
-					image(AnomalyImg[3], width / 2, height / 2);
+				else if (AnomalyFlag && AnomalyTypeFlag == 4) {
+					image(AnomalyImg[6], width / 2, height / 2);
 				}
 				else if (AnomalyFlag && AnomalyTypeFlag == 5) {
+					image(AnomalyImg[7], width / 2, height / 2);
+				}
+				image(FrameImg, width / 2, height / 2);
+			}
+
+			if (SCENE == SCENE3) {
+				image(BackImg, width / 2, height / 2);
+				image(RightImg, width / 2, height / 2);
+				if (AnomalyFlag && AnomalyTypeFlag == 6) {
+					image(AnomalyImg[3], width / 2, height / 2);
+				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 7) {
 					image(AnomalyImg[4], width / 2, height / 2);
 				}
 
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[4], width / 2, height / 2);
-
 				image(FrameImg, width / 2, height / 2);
 			}
+
 			if (SCENE == SCENE4) {
 				image(BackImg, width / 2, height / 2);
+				image(RightImg, width / 2, height / 2);
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[5], width / 2, height / 2);
 
-
-				if (AnomalyFlag && AnomalyTypeFlag == 6) {
+				if (AnomalyFlag && AnomalyTypeFlag == 8) {
 					image(AnomalyImg[5], width / 2, height / 2);
+				}
+				if (AnomalyFlag && AnomalyTypeFlag == 9) {
+					image(AnomalyImg[8], width / 2, height / 2);
+				}
+				if (AnomalyFlag && AnomalyTypeFlag == 10) {
+					image(AnomalyImg[8], width / 2, height / 2);
 				}
 				image(FrameImg, width / 2, height / 2);
 			}
+
 			if (SCENE == SCENE5) {
 				image(BackImg, width / 2, height / 2);
+				image(RightImg, width / 2, height / 2);
 				if (ClearNum == 5)image(BasicImg[6], width / 2, height / 2);
 				image(PlayerImg, player.px, player.py);
 				for (int i = 0; i < 6; i++) {
@@ -268,6 +298,7 @@ namespace GAME08
 				image(FrameImg, width / 2, height / 2);
 			}
 		}
+
 		if (STATE == RESULT) {
 			clear(0, 0, 0);
 			rectMode(CENTER);
@@ -276,6 +307,5 @@ namespace GAME08
 			image(FrameImg, width / 2, height / 2);
 
 		}
-
 	}
 }
