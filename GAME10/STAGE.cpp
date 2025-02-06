@@ -104,7 +104,7 @@ void STAGE::draw() {
 	text("LEVEL UP‚Ü‚Å‚ ‚Æ" +(let)Stage.DestNum +(let)"‘Ì", Stage.DestPos.x, Stage.DestPos.y);
 }
 void STAGE::sound() {
-	playSound(Stage.sound);
+	playLoopSound(Stage.sound);
 }
 void STAGE::layer(int drawLane) {
 	for (int ENum = 0; ENum < game()->enemies()->EnemiesNum(); ENum++) {
