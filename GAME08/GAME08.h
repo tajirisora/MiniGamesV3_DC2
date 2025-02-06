@@ -35,6 +35,7 @@ namespace GAME08
         int FrameImg;
 
         int BackImg, BasicImg[10], AnomalyImg[10];
+        int RightImg;
         int PlayerImg;
         int NumberImg[6];
 
@@ -56,6 +57,8 @@ namespace GAME08
         bool firstFlag;
         bool onceAnomalyFlag;
         bool AnomalyClearFlag;
+
+
 
         int SCENE = SCENE1;
         int STATE = TITLE;
