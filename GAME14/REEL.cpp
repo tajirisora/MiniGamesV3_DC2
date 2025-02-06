@@ -504,6 +504,7 @@ namespace GAME14 {
     bool REEL::checkbonusexist(int moveCell, int reelId) {
         REEL_MAP* map = game()->reelMap();
         std::vector<COMBI_DATA> buffer;
+        int bonusId = game()->lottery()->bonusResult();
         for (int i = 0; i < Reels.checkLineNum; i++) {
             buffer.emplace_back();
         }
@@ -546,10 +547,12 @@ namespace GAME14 {
 
         for (int i = 0; i < Reels.checkLineNum; i++) {
             for (int j = 0; j < BonusCombi.size(); j++) {
-                if ((buffer[i][0] == BonusCombi[j][0]) &&
-                    (buffer[i][1] == BonusCombi[j][1]) &&
-                    (buffer[i][2] == BonusCombi[j][2])) {
-                    return true;
+                if (BonusCombi[j].bonusId == bonusId) {
+                    if ((buffer[i][0] == BonusCombi[j][0]) &&
+                        (buffer[i][1] == BonusCombi[j][1]) &&
+                        (buffer[i][2] == BonusCombi[j][2])) {
+                        return true;
+                    }
                 }
             }
         }
@@ -665,6 +668,7 @@ namespace GAME14 {
     int REEL::tellbonusexistcell(int bounasId, int reelId) {
         REEL_MAP* map = game()->reelMap();
         std::vector<COMBI_DATA> buffer;
+        int bonusId = game()->lottery()->bonusResult();
         for (int i = 0; i < Reels.checkLineNum; i++) {
             buffer.emplace_back();
         }
@@ -708,10 +712,12 @@ namespace GAME14 {
 
             for (int i = 0; i < Reels.checkLineNum; i++) {
                 for (int j = 0; j < BonusCombi.size(); j++) {
-                    if ((buffer[i][0] == BonusCombi[j][0]) &&
-                        (buffer[i][1] == BonusCombi[j][1]) &&
-                        (buffer[i][2] == BonusCombi[j][2])) {
-                        return r;
+                    if (BonusCombi[j].bonusId == bonusId) {
+                        if ((buffer[i][0] == BonusCombi[j][0]) &&
+                            (buffer[i][1] == BonusCombi[j][1]) &&
+                            (buffer[i][2] == BonusCombi[j][2])) {
+                            return r;
+                        }
                     }
 
                 }
