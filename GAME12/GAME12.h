@@ -26,7 +26,7 @@ namespace GAME12
         void proc();
         void destroy();
     private:
-        enum STATE { TITLE, INIT, WAIT, PLAY1, PLAY2, PLAY3, PLAY4, OVER, END };
+        enum STATE { TITLE, INIT, WAIT, PLAY1, PLAY2, PLAY3, PLAY4, OVER1, OVER2, OVER3, OVER4, END };
         STATE State = TITLE;
         void title();
         void init();
@@ -35,7 +35,10 @@ namespace GAME12
         void play2();
         void play3();
         void play4();
-        void over();
+        void over1();
+        void over2();
+        void over3();
+        void over4();
         void end();
         void recordInputToKana();
         void draw1(int snum);
@@ -45,7 +48,8 @@ namespace GAME12
         void randomnum();
         INPUT_CODE gettriggerkeycode();
 
-        int num[Qnumber], rnum, number, flag, set, count, stop;
+        int num[Qnumber] = {}; 
+        int rnum, number, flag, set, count, stop;
         int background = 0;
         int teachimage = 0;
         int pretwoimage = 0;
@@ -74,7 +78,7 @@ namespace GAME12
         float curtime, mflag;
         std::string currentInput; // åªç›ÇÃì¸óÕï∂éöóÒ
 
-        const char* pretwoWord[Qnumber][3] = {
+        const char* pretwoWord[Qnumber][2] = {
             {"íöîJ","ÇƒÇ¢ÇÀÇ¢"},
             {"äjêS","Ç©Ç≠ÇµÇÒ"},
             {"ìùäç","Ç∆Ç§Ç©Ç¬"},
