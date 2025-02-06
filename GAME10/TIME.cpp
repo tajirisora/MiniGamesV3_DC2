@@ -27,7 +27,7 @@ void TIME::timeCount(){
 }
 
 void TIME::goalRewind() {
-	Time.time += 
+	Time.time += Time.rewindTimeG;
 }
 
 void TIME::rewind(int Enemytype){
