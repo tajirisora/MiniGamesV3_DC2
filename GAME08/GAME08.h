@@ -34,10 +34,13 @@ namespace GAME08
         int TitleImg;
         int FrameImg;
 
-        int BackImg, BasicImg[10], AnomalyImg[10];
+        int BackImg, BasicImg[10], AnomalyImg[15];
         int RightImg;
         int PlayerImg;
-        int NumberImg[6];
+        int NumberImg[10];
+
+        int Bgm;
+        bool BgmFlag;
 
         struct PLAYER {
             float px, py;
@@ -51,6 +54,8 @@ namespace GAME08
         int AnomalyTypeFlag;
 
         int BeforeAnomaly;
+
+        int SpaceImg;
 
         bool AnomalyFlag;
 
