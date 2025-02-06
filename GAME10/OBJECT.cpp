@@ -67,6 +67,7 @@ void OBJECT::collision() {
 
 		if (game()->Hp_gauge(GAME10_GAME::OBJECTHP_ID)->GetHp(i) <= 0) {
 			Object.sumDestroy++;
+			playSound(Object.downSound);
 			kill(i);
 			game()->time()->rewind(GAME10_GAME::OBJECT_ID);
 		}

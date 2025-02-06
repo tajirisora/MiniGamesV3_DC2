@@ -69,6 +69,7 @@ void ENEMYS::collision() {
 
 		if (game()->Hp_gauge(GAME10_GAME::ENEMYHP_ID)->GetHp(i) <= 0) {
 			Enemy.sumDestroy++;
+			playSound(Enemy.downSound);
 			kill(i);
 			game()->time()->rewind(GAME10_GAME::ENEMY_ID);
 		}

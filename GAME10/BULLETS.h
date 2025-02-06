@@ -22,6 +22,7 @@ public:
 		int bulletShadowMy;
 		int BulletNum;
 		int EPGap;//“G‚ÆƒvƒŒƒCƒ„[‚Ì‰æ‘œ‚Ì‘å‚«‚³‚Ì·
+		int shotSound;
 	};
 protected:
 	void SetBullets(const BULLETS::DATA& data);

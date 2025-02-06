@@ -23,6 +23,7 @@ public:
 		int shortTime;//’Z‚­‚·‚éŠÔ
 		int level;
 		int sumDestroy;//“|‚µ‚½”
+		int downSound;
 		VECTOR2 opos;
 	};
 private:
