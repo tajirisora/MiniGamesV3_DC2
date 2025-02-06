@@ -283,19 +283,19 @@ namespace GAME08
 				else if (AnomalyFlag && AnomalyTypeFlag == 7) {
 					image(AnomalyImg[4], width / 2, height / 2);
 				}
-				else if (AnomalyFlag && AnomalyTypeFlag == 11) {
-					image(AnomalyImg[10], width / 2, height / 2);
-				}
-				else if (AnomalyFlag && AnomalyTypeFlag == 12) {
-					image(AnomalyImg[11], width / 2, height / 2);
-				}
-				else if (AnomalyFlag && AnomalyTypeFlag == 13) {
-					image(AnomalyImg[12], width / 2, height / 2);
-				}
 
 
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[4], width / 2, height / 2);
+				if (AnomalyFlag && AnomalyTypeFlag == 8) {
+					image(AnomalyImg[10], width / 2, height / 2);
+				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 9) {
+					image(AnomalyImg[11], width / 2, height / 2);
+				}
+				else if (AnomalyFlag && AnomalyTypeFlag == 10) {
+					image(AnomalyImg[12], width / 2, height / 2);
+				}
 				image(FrameImg, width / 2, height / 2);
 			}
 
@@ -305,13 +305,13 @@ namespace GAME08
 				image(PlayerImg, player.px, player.py);
 				image(BasicImg[5], width / 2, height / 2);
 
-				if (AnomalyFlag && AnomalyTypeFlag == 8) {
+				if (AnomalyFlag && AnomalyTypeFlag == 11) {
 					image(AnomalyImg[5], width / 2, height / 2);
 				}
-				if (AnomalyFlag && AnomalyTypeFlag == 9) {
+				if (AnomalyFlag && AnomalyTypeFlag == 12) {
 					image(AnomalyImg[8], width / 2, height / 2);
 				}
-				if (AnomalyFlag && AnomalyTypeFlag == 10) {
+				if (AnomalyFlag && AnomalyTypeFlag == 13) {
 					image(AnomalyImg[8], width / 2, height / 2);
 				}
 				image(FrameImg, width / 2, height / 2);
