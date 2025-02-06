@@ -43,59 +43,42 @@ namespace GAME06
 	void STAGE::draw() {
 		clear(Stage.backScreenColor);
 		rectMode(CORNER);
-		COLOR darkGreen = { 0,88,45 };
-		VECTOR2 sPos = { 100,0 };
-		VECTOR2 ePos = { width - 200,height };
-		fill(darkGreen);
-		rect(sPos.x, sPos.y, ePos.x, ePos.y);
+		fill(0,88,45);
+		rect(Stage.sPos.x, Stage.sPos.y, Stage.ePos.x, Stage.ePos.y);
+		fill(255);
+		textSize(30);
+		text("ENTERキーでメニューに戻る", 0, height);
 		rectMode(CENTER);
 		if (Stage.curState == WAITING_FOR_DECIDING_TYPE_ID) {
-			VECTOR2 pos1 = { width / 2 - 164,height / 2 };
-			VECTOR2 pos2 = { width / 2 + 164,height / 2 };
-			float angle = 0.0f;
-			float scale = 0.2f;
-			image(game()->player()->type1(), pos1.x, pos1.y, angle, scale);
-			image(game()->player()->type2(), pos2.x, pos2.y, angle, scale);
-			float size = 25;
-			textSize(size);
-			COLOR brack = { 0,0,0 };
-			COLOR red = { 255,0,0 };
-			VECTOR2 textPos1 = { width / 2 - 279,height / 2 + 143 };
-			VECTOR2 textPos2 = { width / 2 + 49,height / 2 + 143 };
+			image(game()->player()->type1(), Pos1.x, Pos1.y, Angle, Scale);
+			image(game()->player()->type2(), Pos2.x, Pos2.y, Angle, Scale);
+			textSize(25);
 			if (game()->player()->img() == game()->player()->type1()) {
-				fill(red);
-				text("Type1", textPos1.x, textPos1.y);
-				fill(brack);
-				text("Type2", textPos2.x, textPos2.y);
+				fill(255,0,0);
+				text("Type1", Stage.textPos1.x, Stage.textPos1.y);
+				fill(0);
+				text("Type2", Stage.textPos2.x, Stage.textPos2.y);
 			}
 			else if (game()->player()->img() == game()->player()->type2()) {
-				fill(brack);
-				text("Type1", textPos1.x, textPos1.y);
-				fill(red);
-				text("Type2", textPos2.x, textPos2.y);
+				fill(0);
+				text("Type1", Stage.textPos1.x, Stage.textPos1.y);
+				fill(255,0,0);
+				text("Type2", Stage.textPos2.x, Stage.textPos2.y);
 			}
-			VECTOR2 textPos3 = { width / 2 - 314,400 };
-			VECTOR2 textPos4 = { width / 2 - 360,height - 150 };
-			fill(brack);
-			size = 50;
-			textSize(size);
-			text("見た目を選んでください", textPos3.x, textPos3.y);
-			size = 40;
-			textSize(size);
-			text("左右キーで選択、SPACEキーで開始", textPos4.x, textPos4.y);
+			fill(0);
+			textSize(50);
+			text("見た目を選んでください", Stage.textPos3.x, Stage.textPos3.y);
+			textSize(40);
+			text("左右キーで選択、SPACEキーで開始", Stage.textPos4.x, Stage.textPos4.y);
 		}
 		else if (Stage.curState == UPDATING_CHARACTER_DATA_ID) {
 			game()->player()->draw();
 			game()->target()->draw();
 			if (game()->player()->triggerFlag() == true)game()->bullet()->draw();
-			COLOR red = { 255,0,0 };
-			COLOR brack = { 0,0,0 };
-			float size = 50;
-			VECTOR2 pos = { 100,size };
-			if ((int)Stage.timer > 5)fill(brack);
-			else fill(red);
-			textSize(size);
-			text((let)"残り時間：" + (int)Stage.timer + "秒", pos.x, pos.y);
+			if ((int)Stage.timer > 5)fill(0);
+			else fill(255,0,0);
+			textSize(50);
+			text((let)"残り時間：" + (int)Stage.timer + "秒", 100, 50);
 		}
 	}
 

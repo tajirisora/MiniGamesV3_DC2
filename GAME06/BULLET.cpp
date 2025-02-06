@@ -16,13 +16,12 @@ namespace GAME06
 
 	void BULLET::update() {
 		Bullet.pos.x += Bullet.speed * delta;
-		float limmitW = width - 130.0f;
 		if (game()->collision(game()->bullet(),game()->target())) {
 			game()->collisionCounter()++;
 			game()->target()->collisionFlag() = true;
 			game()->player()->triggerFlag() = false;
 		}
-		else if (game()->bullet()->pos().x > limmitW) {
+		else if (game()->bullet()->pos().x > Bullet.limmitW) {
 			game()->player()->triggerFlag() = false;
 		}
 	}
