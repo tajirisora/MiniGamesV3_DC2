@@ -42,7 +42,7 @@ void TITLE::draw(){
 	text("ENTERキーでメニューに戻る", 0, 1080);
 }
 void TITLE::sound() {
-	playSound(Title.titleSound);
+	playLoopSound(Title.titleSound);
 }
 void TITLE::nextScene(){
 	if (isTrigger(KEY_SPACE) && Title.TUTORIAL_ID != Title.SELECTSTATE) {
