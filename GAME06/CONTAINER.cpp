@@ -22,6 +22,12 @@ namespace GAME06
 		Data.stage.backScreenColor = { 75,45,22 };
 		Data.stage.timer = 30.0f;
 		Data.stage.curState = STAGE::WAITING_FOR_DECIDING_TYPE_ID;
+		Data.stage.sPos = { 100,0 };
+		Data.stage.ePos = { width - 200,height };
+		Data.stage.textPos1 = { 681,683 };
+		Data.stage.textPos2 = { 1009,683 };
+		Data.stage.textPos3 = { 646,400 };
+		Data.stage.textPos4 = { 600,930 };
 		//リザルトデータ
 		//CRank
 		Data.rankC.backScreenColor = { 128,128,128 };
@@ -106,6 +112,7 @@ namespace GAME06
 		Data.bullet.angle = 90.0f;
 		Data.bullet.scale = 0.05f;//60*60
 		Data.bullet.speed = width / 2;
+		Data.bullet.limmitW = width - 130.0f;
 	}
 
 	void CONTAINER::loadGraphic() {

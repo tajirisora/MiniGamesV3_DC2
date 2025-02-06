@@ -13,6 +13,7 @@ namespace GAME06
             float angle = 0.0f;
             float scale = 0.0f;
             float speed = 0.0f;
+            float limmitW = 0.0f;
         };
     private:
         DATA Bullet;

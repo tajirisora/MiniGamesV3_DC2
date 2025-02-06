@@ -65,16 +65,13 @@ namespace GAME06
 		float dx = target->pos().x - bullet->pos().x;
 		float dy = target->pos().y - bullet->pos().y;
 		float distance = Sqrt(dx * dx + dy * dy);
-		if (distance > 60.0f)return false;
+		if (distance > 60)return false;
 		else return true;
 	}
 
 	void GAME::proc()
 	{
 		Scenes[CurSceneID]->proc();
-		fill(0);
-		textSize(30);
-		text("ENTERキーでメニューに戻る", 0, height);
 		if (isTrigger(KEY_ENTER)) {
 			main()->backToMenu();
 		}

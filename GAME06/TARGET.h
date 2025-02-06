@@ -25,7 +25,6 @@ namespace GAME06
     public:
         const VECTOR2& pos() { return Target.pos; }
         bool& collisionFlag() { return Target.collisionFlag; }
-        //float& collisionDirectionTimer() { return Target.collisionDirectionTimer; }
     public:
         TARGET(class GAME* game):GAME_OBJECT(game){}
         ~TARGET(){}

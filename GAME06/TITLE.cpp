@@ -17,18 +17,18 @@ namespace GAME06
 		fill(Title.textColor2);
 		textSize(Title.textSize2);
 		text(Title.str2, Title.textPos2.x, Title.textPos2.y);
-		COLOR grey = { 128,128,128 };
-		COLOR brack = { 0,0,0 };
-		float size = 40;
-		rectMode(CORNER);
-		fill(grey);
-		rect(0, 0, size * 10, size * 4.5f);
-		fill(brack);
-		textSize(size);
-		text("操作方法", 0, size);
-		text("上に移動する：Wキー", 0, size * 2);
-		text("下に移動する：Sキー", 0, size * 3);
-		text("弾を発射する：Kキー", 0, size * 4);
+		rectMode(CORNER);	
+		fill(128,128,128);
+		rect(0, 0, Size * 10, Size * 4.5f);
+		fill(0);
+		textSize(Size);
+		text("操作方法", 0, Size);
+		text("上に移動する：Wキー", 0, Size * 2);
+		text("下に移動する：Sキー", 0, Size * 3);
+		text("弾を発射する：Kキー", 0, Size * 4);
+		fill(0);
+		textSize(30);
+		text("ENTERキーでメニューに戻る", 0, height);
 	}
 
 	void TITLE::nextScene() {

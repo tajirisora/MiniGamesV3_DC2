@@ -21,6 +21,9 @@ namespace GAME06
 		fill(RankS.textColor3);
 		textSize(RankS.textSize3);
 		text((let)"記録：" + game()->collisionCounter() + "発", RankS.textPos3.x, RankS.textPos3.y);
+		fill(0);
+		textSize(30);
+		text("ENTERキーでメニューに戻る", 0, height);
 	}
 
 	void RANK_S::nextScene() {

@@ -21,6 +21,8 @@ namespace GAME06
 		};
 	private:
 		DATA Title;
+	private:
+		float Size = 40;
 	public:
 		TITLE(class GAME* game):SCENE(game){}
 		~TITLE(){}
